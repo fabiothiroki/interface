@@ -21,7 +21,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "generate": "yarn plop --plopfile ./generators/plopfile.js"
   },
   "eslintConfig": {
     "extends": [
@@ -53,6 +54,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "plop": "^3.0.5",
     "prettier": "^2.5.1"
   }
 }

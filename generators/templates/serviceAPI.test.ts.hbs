@@ -1,0 +1,31 @@
+import {{camelCase name}}Api from ".";
+import api from "..";
+import store from "../../../store";
+import userFactory from "../../../config/testUtils/factories/userFactory";
+
+describe("{{camelCase name}}Api", () => {
+const user = userFactory();
+
+beforeEach(() => {
+store.getState = jest.fn().mockReturnValue({ user });
+});
+
+describe("FUNCTION YOU WANT TO TEST", () => {
+beforeEach(() => {
+// If it's a different method just change it to: post, put, delete, etc.
+api.get = jest.fn();
+});
+
+it("expects to send a get request with the correct info: url, params and headers", () => {
+{{camelCase name}}Api.exampleFunction();
+const expectedHeaders = { Authorization: user.accessToken };
+
+expect(api.get).toHaveBeenCalledWith("/v3/sample", {
+headers: expectedHeaders,
+params: {
+example: true,
+},
+});
+});
+});
+});

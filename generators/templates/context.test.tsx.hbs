@@ -1,0 +1,15 @@
+import React from "react";
+import { render, screen, } from "@testing-library/react";
+import { use{{pascalCase name}} } from ".";
+
+function {{ pascalCase name }}TestPage(){
+  use{{pascalCase name}}();
+  return <div>{{pascalCase name}}</div>
+}
+
+describe("use{{pascalCase name}}", () => {
+it("should render without error", () => {
+  render(<{{ pascalCase name }}TestPage />);
+  expect(screen.getByText("{{ pascalCase name }}")).toBeInTheDocument();
+});
+});
