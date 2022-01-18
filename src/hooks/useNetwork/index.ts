@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const networks = [
   {
@@ -21,12 +21,20 @@ export function useNetwork() {
     }
   }, []);
 
-  function isValidNetwork(networkId?: number) {
-    if (!networkId) return false;
+  const isValidNetwork = useCallback(() => {
+    if (!currentNetworkId) return false;
 
     const networksChainIds = networks.map((network) => network.chainId);
-    return networksChainIds.includes(Number(networkId));
-  }
+    return networksChainIds.includes(Number(currentNetworkId));
+  }, [currentNetworkId]);
+
+  useEffect(() => {
+    getCurrentNetworkId();
+  }, []);
+
+  useEffect(() => {
+    window.ethereum?.on("chainChanged", getCurrentNetworkId);
+  }, []);
 
   return {
     currentNetworkId,
