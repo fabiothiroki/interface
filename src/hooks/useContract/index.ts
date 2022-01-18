@@ -7,7 +7,6 @@ type Props = {
   address: string;
   ABI: any;
 };
-declare let window: any;
 
 export function useContract<T extends Contract = Contract>({
   address,

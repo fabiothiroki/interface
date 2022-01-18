@@ -1,4 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
+import { Network } from "@ethersproject/networks";
+import { useProvider } from "../useProvider";
 
 const networks = [
   {
@@ -7,38 +9,37 @@ const networks = [
     chainName: "Mumbai Testnet",
   },
 ];
-declare let window: any;
 
 export function useNetwork() {
-  const [currentNetworkId, setCurrentNetworkId] = useState<number>();
+  const [currentNetwork, setCurrentNetwork] = useState<Network>();
+  const provider = useProvider();
 
-  const getCurrentNetworkId = useCallback(async () => {
+  const getCurrentNetwork = useCallback(async () => {
     try {
-      const chainId = await window.ethereum?.request({ method: "eth_chainId" });
-      setCurrentNetworkId(chainId);
+      setCurrentNetwork(await provider.getNetwork());
     } catch (e) {
       console.log(e);
     }
-  }, []);
+  }, [provider]);
 
   const isValidNetwork = useCallback(() => {
-    if (!currentNetworkId) return false;
+    if (!currentNetwork) return false;
 
     const networksChainIds = networks.map((network) => network.chainId);
-    return networksChainIds.includes(Number(currentNetworkId));
-  }, [currentNetworkId]);
+    return networksChainIds.includes(Number(currentNetwork.chainId));
+  }, [currentNetwork]);
 
   useEffect(() => {
-    getCurrentNetworkId();
-  }, []);
+    getCurrentNetwork();
+  }, [getCurrentNetwork]);
 
   useEffect(() => {
-    window.ethereum?.on("chainChanged", getCurrentNetworkId);
+    window.ethereum?.on("chainChanged", getCurrentNetwork);
   }, []);
 
   return {
-    currentNetworkId,
-    getCurrentNetworkId,
+    currentNetwork,
+    getCurrentNetwork,
     isValidNetwork,
   };
 }

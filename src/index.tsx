@@ -3,6 +3,14 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+declare global {
+  interface Window {
+    ethereum: any;
+  }
+}
+
+window.ethereum = window.ethereum || {};
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

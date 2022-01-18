@@ -1,5 +1,3 @@
-declare let window: any;
-
 export async function checkConnectionRequest(): Promise<string | null> {
   try {
     const { ethereum } = window;
