@@ -19,11 +19,11 @@ export type Props = {
 
 export default function Button({
   text,
-  textColor,
-  backgroundColor,
-  borderColor,
-  ribons,
-  ribonsColor,
+  textColor = theme.colors.ribonWhite,
+  backgroundColor = theme.colors.ribonBlue,
+  borderColor = "",
+  ribons = false,
+  ribonsColor = theme.colors.ribonBlue,
   leftIcon,
   onClick,
   altLeftIconText = "left icon",
@@ -45,12 +45,3 @@ export default function Button({
     </S.Container>
   );
 }
-
-// TODO: remove default props
-Button.defaultProps = {
-  textColor: "white",
-  backgroundColor: theme.colors.ribonBlue,
-  borderColor: null,
-  ribons: false,
-  ribonsColor: theme.colors.ribonBlue,
-};
