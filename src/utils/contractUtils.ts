@@ -1,6 +1,7 @@
 import { getAddress } from "@ethersproject/address";
 import { AddressZero } from "@ethersproject/constants";
 import { Contract } from "@ethersproject/contracts";
+import { Signer } from "ethers";
 
 export function isAddress(value: any): string | false {
   try {
@@ -10,10 +11,13 @@ export function isAddress(value: any): string | false {
   }
 }
 
-export function getContract(address: string, ABI: any): Contract {
+export function getContract(
+  address: string,
+  ABI: any,
+  signer: Signer,
+): Contract {
   if (!isAddress(address) || address === AddressZero) {
     throw Error(`Invalid 'address' parameter '${address}'.`);
   }
-
-  return new Contract(address, ABI);
+  return new Contract(address, ABI, signer);
 }
