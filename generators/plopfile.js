@@ -34,8 +34,8 @@ module.exports = function (plop) {
       },
       {
         type: "add",
-        path: "../src/components/{{componentType}}/{{pascalCase name}}/stories.tsx",
-        templateFile: "templates/stories.tsx.hbs",
+        path: "../src/components/{{componentType}}/{{pascalCase name}}/index.stories.tsx",
+        templateFile: "templates/index.stories.tsx.hbs",
       },
       {
         type: "add",
