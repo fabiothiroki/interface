@@ -69,12 +69,6 @@
     "plop": "^3.0.5",
     "prettier": "^2.5.1"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsc && lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "lint-staged": {
     "*.ts": [
       "eslint",
