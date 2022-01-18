@@ -7,3 +7,4 @@ Atente-se a colocar aqui componentes que `apenas tem Props e Estados`. Caso o co
 mais coisas externas do app (como chamadas a API, redux, contextos, etc.) ele possívelmente pertence a pasta `src/pages`
 
 Aqui devem residir apenas componentes genéricos de apresentação que podem ser usados em toda aplicação.
+s
