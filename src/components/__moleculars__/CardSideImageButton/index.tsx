@@ -1,11 +1,8 @@
 import React from "react";
 import theme from "styles/theme";
 import Button from "components/__atomics__/Button";
-import RibonIcon from "components/__atomics__/RibonIcon";
+import RibonsSparkleNumber from "components/__atomics__/RibonsSparkleNumber";
 import * as S from "./styles";
-
-import LeftSparkle from "./assets/reward-sparkle-left.svg";
-import RightSparkle from "./assets/reward-sparkle-right.svg";
 import checkIcon from "./assets/check-icon.svg";
 
 const { colors } = theme;
@@ -20,7 +17,6 @@ export type Props = {
   buttonTextColor?: string;
   buttonBackgroundColor?: string;
   buttonText?: string;
-  ribonColor?: string;
   onClick: () => void;
   counter?: number;
   isCollected?: boolean;
@@ -33,7 +29,6 @@ function CardSideImageButton({
   buttonBackgroundColor = ribonBlue,
   buttonText,
   description,
-  ribonColor = ribonBlue,
   onClick,
   counter,
   isCollected,
@@ -50,6 +45,7 @@ function CardSideImageButton({
       />
     );
   }
+
   return (
     <S.Container onClick={onClick}>
       <S.CardSection>
@@ -59,10 +55,7 @@ function CardSideImageButton({
             <S.Image src={icon} alt={title} />
             {ribons && (
               <S.RibonsAmountContainer>
-                <S.Sparkle src={LeftSparkle} />
-                <S.RibonsAmount>{ribons}</S.RibonsAmount>
-                <RibonIcon color={ribonColor} />
-                <S.Sparkle src={RightSparkle} />
+                <RibonsSparkleNumber ribons={ribons} />
               </S.RibonsAmountContainer>
             )}
           </S.ImageSection>

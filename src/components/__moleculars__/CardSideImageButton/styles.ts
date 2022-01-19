@@ -11,7 +11,8 @@ export const Container = styled.div`
     border: 1px solid ${theme.colors.ribonWhite};
     box-sizing: border-box;
     border-radius: 16px;
-    width: 312px;
+    width: 100%;
+    max-width: 312px;
     height: 104px;
     cursor: pointer;
 
@@ -55,25 +56,11 @@ export const TextContainer = styled.div`
 `;
 
 export const RibonsAmountContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
   background-color: #fff;
-  align-items: center;
-  position: absolute;
   width: 60%;
   border-radius: 20px;
+  position: absolute;
   bottom: 4px;
-`;
-
-export const RibonsAmount = styled.p`
-  ${({ theme }) => css`
-    font-size: 14px;
-    line-height: 17px;
-    font-weight: bold;
-    margin-right: 2px;
-    color: ${theme.colors.ribonBlue};
-  `}
 `;
 
 export const TitleContainer = styled.div`
@@ -116,11 +103,6 @@ export const ImageSection = styled.div`
 export const Image = styled.img`
   width: 88px;
   height: auto;
-`;
-
-export const Sparkle = styled.img`
-  width: 20px;
-  height: 20px;
 `;
 
 export const CounterContainer = styled.span`
