@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import ModalError, { Props } from ".";
-import { customStyles } from "../customStyles";
+import { defaultCustomStyles } from "../defaultCustomStyles";
 
 export default {
   title: "ModalError",
@@ -18,5 +18,5 @@ Default.args = {
   title: "Title",
   body: "Um erro ocorreu",
   buttonText: "voltar",
-  modalStyles: customStyles,
+  customStyles: defaultCustomStyles,
 };
