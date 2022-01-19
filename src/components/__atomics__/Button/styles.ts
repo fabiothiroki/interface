@@ -26,7 +26,7 @@ export const Container = styled.button`
     color: ${textColor};
     opacity: ${disabled ? 0.5 : 1};
 
-    :hover {
+    media :hover {
       cursor: pointer;
     }
 

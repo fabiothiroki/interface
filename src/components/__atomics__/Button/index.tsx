@@ -15,6 +15,7 @@ export type Props = {
   leftIcon?: string;
   altLeftIconText?: string;
   onClick: onClickType;
+  outline?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export default function Button({
@@ -27,13 +28,14 @@ export default function Button({
   leftIcon,
   onClick,
   altLeftIconText = "left icon",
+  outline = false,
   ...props
 }: Props): JSX.Element {
   return (
     <S.Container
-      textColor={textColor}
-      backgroundColor={backgroundColor}
-      borderColor={borderColor}
+      textColor={outline ? theme.colors.ribonBlue : textColor}
+      backgroundColor={outline ? theme.colors.ribonWhite : backgroundColor}
+      borderColor={outline ? theme.colors.ribonBlue : borderColor}
       ribonsColor={ribonsColor}
       onClick={onClick}
       leftIcon={leftIcon}

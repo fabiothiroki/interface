@@ -12,7 +12,13 @@ const Template: ComponentStory<typeof Button> = function (args: Props) {
 };
 
 export const Primary = Template.bind({});
+export const Outline = Template.bind({});
 
 Primary.args = {
   text: "Button",
+};
+
+Outline.args = {
+  text: "Button",
+  outline: true,
 };
