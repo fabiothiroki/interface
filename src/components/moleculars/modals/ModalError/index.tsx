@@ -3,6 +3,7 @@ import Button from "components/atomics/Button";
 import ReactModal from "react-modal";
 import * as S from "./styles";
 import errorIcon from "./assets/alert.svg";
+import { customStyles } from "../customStyles";
 
 export type Props = {
   visible?: boolean;
@@ -11,7 +12,7 @@ export type Props = {
   body?: string | null;
   contentLabel?: string;
   onClose?: () => void;
-  customStyles?: ReactModal.Styles;
+  modalStyles?: ReactModal.Styles;
   buttonText?: string;
 };
 function ModalError({
@@ -21,14 +22,14 @@ function ModalError({
   body = null,
   onClose = () => {},
   contentLabel,
-  customStyles,
+  modalStyles,
   buttonText,
 }: Props): JSX.Element {
   return (
     <S.ModalWithIcon
       isOpen={visible}
       onRequestClose={onClose}
-      style={customStyles}
+      style={modalStyles || customStyles}
       contentLabel={contentLabel}
       ariaHideApp={false}
     >
