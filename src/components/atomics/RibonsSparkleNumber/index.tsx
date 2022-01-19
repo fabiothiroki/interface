@@ -1,5 +1,5 @@
 import React from "react";
-import RibonIcon from "components/__atomics__/RibonIcon";
+import RibonIcon from "components/atomics/RibonIcon";
 import theme from "styles/theme";
 import * as S from "./styles";
 import LeftSparkle from "./assets/reward-sparkle-left.svg";

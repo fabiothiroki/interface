@@ -15,7 +15,17 @@ module.exports = function (plop) {
         message: "atomic or molecular?",
         choices: ["atomic", "molecular"],
         filter(val) {
-          return `__${val.toLowerCase()}s__`
+          return `${val.toLowerCase()}s`
+        },
+      },
+      {
+        type: "input",
+        name: "scope",
+        message: "scope? (empty for no scope)",
+        filter(val) {
+          if(!val) return null;
+
+          return `/${val.toLowerCase()}`
         },
       },
     ],
@@ -24,22 +34,22 @@ module.exports = function (plop) {
     actions: [
       {
         type: "add",
-        path: "../src/components/{{componentType}}/{{pascalCase name}}/index.tsx",
+        path: "../src/components/{{componentType}}{{scope}}/{{pascalCase name}}/index.tsx",
         templateFile: "templates/index.tsx.hbs",
       },
       {
         type: "add",
-        path: "../src/components/{{componentType}}/{{pascalCase name}}/styles.ts",
+        path: "../src/components/{{componentType}}{{scope}}/{{pascalCase name}}/styles.ts",
         templateFile: "templates/styles.ts.hbs",
       },
       {
         type: "add",
-        path: "../src/components/{{componentType}}/{{pascalCase name}}/index.stories.tsx",
+        path: "../src/components/{{componentType}}{{scope}}/{{pascalCase name}}/index.stories.tsx",
         templateFile: "templates/index.stories.tsx.hbs",
       },
       {
         type: "add",
-        path: "../src/components/{{componentType}}/{{pascalCase name}}/index.test.tsx",
+        path: "../src/components/{{componentType}}{{scope}}/{{pascalCase name}}/index.test.tsx",
         templateFile: "templates/index.test.tsx.hbs",
       },
     ],

@@ -1,5 +1,5 @@
 import React from "react";
-import LottieAnimation from "components/__atomics__/LottieAnimation";
+import LottieAnimation from "components/atomics/LottieAnimation";
 import animationData from "./assets/loader.json";
 import * as S from "./styles";
 

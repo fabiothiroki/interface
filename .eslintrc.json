@@ -27,7 +27,7 @@
         "react/jsx-filename-extension": [
             1,
             {
-                "extensions": [".ts", ".tsx"]
+                "extensions": [".ts", ".tsx", "native.js"]
             }
         ],
         "react/jsx-one-expression-per-line": "off",
