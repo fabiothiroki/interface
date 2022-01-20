@@ -1,5 +1,5 @@
+import React from "react";
 import { act, render, RenderResult } from "@testing-library/react";
-import React, { ComponentType } from "react";
 import { ThemeProvider } from "styled-components";
 import { createMemoryHistory, MemoryHistory } from "history";
 import { Router } from "react-router-dom";
@@ -12,68 +12,18 @@ import WalletProvider, {
   WalletContext,
 } from "contexts/walletContext";
 
-interface Options {
-  [key: string]: any;
-}
-
-interface WrapperProps {
-  children: JSX.Element;
-}
-
-interface RenderWithRouterResult {
-  component: RenderResult;
-  history: MemoryHistory;
-}
-
-export function renderWithRouter(
-  children: JSX.Element,
-  history = createMemoryHistory(),
-  reduxOptions = {
-    initialState: {
-      user: userFactory(),
-    },
-  },
-): RenderWithRouterResult {
-  return {
-    component: renderWithRedux(
-      <Router history={history}>{children}</Router>,
-      reduxOptions,
-    ),
-    history,
-  };
-}
-
-export function renderWithI18n(
-  children: JSX.Element,
-  history = createMemoryHistory(),
-  reduxOptions = {
-    initialState: {
-      user: userFactory(),
-    },
-  },
-): RenderWithRouterResult {
-  return {
-    component: renderWithRedux(
-      <I18nextProvider i18n={i18n}>
-        <Router history={history}>{children}</Router>,
-      </I18nextProvider>,
-      reduxOptions,
-    ),
-    history,
-  };
-}
-
 export function renderWithTheme(children: React.ReactNode): RenderResult {
   return render(<ThemeProvider theme={theme}>{children}</ThemeProvider>);
 }
 
 interface RenderWithContextResult {
-  component: JSX.Element;
+  component: RenderResult;
   history: MemoryHistory;
   value?: IWalletContext;
 }
 
 export async function waitForPromises() {
+  // eslint-disable-next-line no-promise-executor-return
   await act(() => new Promise((resolve) => setImmediate(resolve)));
 }
 
@@ -88,6 +38,7 @@ function renderProvider(
       <RContext.Consumer>
         {(val: Record<any, any>) => (
           <RContext.Provider
+            // eslint-disable-next-line react/jsx-no-constructed-context-values
             value={{
               ...val,
               ...value,
@@ -103,25 +54,23 @@ function renderProvider(
 
 export type RenderComponentProps = {
   history?: MemoryHistory;
-  reduxOptions?: Record<any, any>;
   walletProviderValue?: Partial<IWalletContext>;
 };
 export function renderComponent(
   component: JSX.Element,
   {
     history = createMemoryHistory(),
-    reduxOptions = {},
     walletProviderValue = {},
   }: RenderComponentProps = {},
 ): RenderWithContextResult {
   const queryClient = new QueryClient();
 
   return {
-    component: (
+    component: render(
       <ThemeProvider theme={theme}>
         <QueryClientProvider client={queryClient}>
           <I18nextProvider i18n={i18n}>
-            <Router history={history}>
+            <Router navigator={history} location={history?.location}>
               {renderProvider(
                 WalletProvider,
                 WalletContext,
@@ -131,7 +80,8 @@ export function renderComponent(
             </Router>
           </I18nextProvider>
         </QueryClientProvider>
-      </ThemeProvider>
+      </ThemeProvider>,
     ),
+    history,
   };
 }
