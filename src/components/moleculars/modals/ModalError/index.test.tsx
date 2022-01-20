@@ -5,7 +5,7 @@ import ModalError from ".";
 
 describe("ModalError", () => {
   it("should render without error", () => {
-    renderComponent(<ModalError />);
+    renderComponent(<ModalError title="ModalError" visible />);
     expect(screen.getByText("ModalError")).toBeInTheDocument();
   });
 });
