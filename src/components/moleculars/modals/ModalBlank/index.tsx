@@ -4,7 +4,7 @@ import * as S from "./styles";
 export type Props = {
   visible?: boolean;
   contentLabel?: string;
-  children?: JSX.Element[] | null;
+  children?: JSX.Element[] | JSX.Element | null;
   onClose?: () => void;
 };
 
