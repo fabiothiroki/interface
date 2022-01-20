@@ -24,11 +24,7 @@ describe("#logError", () => {
   it("expects to call captureException", () => {
     logError(error, customMessage);
     const contexts = {
-      contextParams: {
-        currentUser: {
-          ribons: 0,
-        },
-      },
+      contextParams: {},
     };
 
     expect(Sentry.captureException).toHaveBeenCalledWith(error, { contexts });

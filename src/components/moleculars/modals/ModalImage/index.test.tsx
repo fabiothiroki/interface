@@ -5,7 +5,7 @@ import ModalImage from ".";
 
 describe("ModalImage", () => {
   it("should render without error", () => {
-    renderComponent(<ModalImage />);
+    renderComponent(<ModalImage title="ModalImage" visible />);
     expect(screen.getByText("ModalImage")).toBeInTheDocument();
   });
 });

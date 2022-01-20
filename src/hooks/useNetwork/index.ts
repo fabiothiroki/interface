@@ -16,7 +16,7 @@ export function useNetwork() {
 
   const getCurrentNetwork = useCallback(async () => {
     try {
-      setCurrentNetwork(await provider.getNetwork());
+      setCurrentNetwork(await provider?.getNetwork());
     } catch (e) {
       console.log(e);
     }
