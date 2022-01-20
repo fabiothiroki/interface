@@ -1,5 +1,6 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
+import { renderComponent } from "config/testUtils";
 import Button from ".";
 
 describe("<Button />", () => {
@@ -9,7 +10,7 @@ describe("<Button />", () => {
       onClick: jest.fn(),
     };
 
-    render(<Button {...props} />);
+    renderComponent(<Button {...props} />);
     expect(screen.getByText(props.text)).toBeInTheDocument();
   });
 });

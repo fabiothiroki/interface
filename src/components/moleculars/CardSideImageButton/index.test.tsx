@@ -13,6 +13,6 @@ describe("CardSideImageButton", () => {
         title="title"
       />,
     );
-    expect(screen.getByText("CardSideImageButton")).toBeInTheDocument();
+    expect(screen.getByText("text")).toBeInTheDocument();
   });
 });

@@ -6,6 +6,6 @@ import RibonsSparkleNumber from ".";
 describe("RibonsSparkleNumber", () => {
   it("should render without error", () => {
     renderComponent(<RibonsSparkleNumber ribons={100} />);
-    expect(screen.getByText("RibonsSparkleNumber")).toBeInTheDocument();
+    expect(screen.getByText("100")).toBeInTheDocument();
   });
 });

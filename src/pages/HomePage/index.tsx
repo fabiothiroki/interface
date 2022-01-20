@@ -1,9 +1,10 @@
 import { useEffect } from "react";
+import { useContract } from "hooks/useContract";
 import { useWalletContext } from "contexts/walletContext";
 import { useNetwork } from "hooks/useNetwork";
 import RibonABI from "utils/abis/RibonAbi.json";
-import { useContract } from "hooks/useContract";
 import * as S from "./styles";
+import Button from "../../components/atomics/Button";
 
 function HomePage(): JSX.Element {
   const { wallet, connectWallet } = useWalletContext();
@@ -26,9 +27,7 @@ function HomePage(): JSX.Element {
   return (
     <S.Container>
       <h1>HomePage</h1>
-      <button type="button" onClick={connectWallet}>
-        Conectar Carteira
-      </button>
+      <Button text="Conectar Carteira" onClick={connectWallet} />
       <p>wallet: {wallet}</p>
       <p>
         network: {currentNetwork?.chainId} (
