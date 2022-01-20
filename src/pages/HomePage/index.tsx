@@ -5,6 +5,7 @@ import { useNetwork } from "hooks/useNetwork";
 import RibonABI from "utils/abis/RibonAbi.json";
 import * as S from "./styles";
 import Button from "../../components/atomics/Button";
+import SliderImage from "../../components/moleculars/sliders/SliderImage";
 
 function HomePage(): JSX.Element {
   const { wallet, connectWallet } = useWalletContext();
@@ -33,6 +34,12 @@ function HomePage(): JSX.Element {
         network: {currentNetwork?.chainId} (
         {isValidNetwork() ? "valid" : "invalid"})
       </p>
+      <SliderImage
+        sliderImages={[
+          { imageUrl: "https://picsum.photos/400/300" },
+          { imageUrl: "https://picsum.photos/400/300" },
+        ]}
+      />
     </S.Container>
   );
 }

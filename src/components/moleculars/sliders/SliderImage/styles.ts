@@ -19,6 +19,10 @@ export const NavigationWrapper = styled.div`
   }
 `;
 
+export const SlideImageContainer = styled.div`
+  width: 344px;
+`;
+
 export const SlideImage = styled.div`
   background-image: url(${(props: NgoImageProps) => props.image});
   width: calc(100vw - 16px);

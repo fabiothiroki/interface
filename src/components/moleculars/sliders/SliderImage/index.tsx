@@ -14,18 +14,18 @@ function DonationImageSlider({ sliderImages }: Props): JSX.Element {
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     initial: 0,
     slideChanged(slide) {
-      setCurrentSlide(slide.details().relativeSlide);
+      setCurrentSlide(slide.track.details.maxIdx);
     },
   });
 
   function sliderSize() {
-    return slider.details().size;
+    return (slider.current?.track.details.maxIdx || 0) + 1;
   }
 
   const onPrevPress = useCallback(
     (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
       e.stopPropagation();
-      slider.prev();
+      slider.current?.prev();
     },
     [],
   );
@@ -33,7 +33,7 @@ function DonationImageSlider({ sliderImages }: Props): JSX.Element {
   const onNextPress = useCallback(
     (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
       e.stopPropagation();
-      slider.next();
+      slider.current?.next();
     },
     [],
   );
@@ -41,7 +41,11 @@ function DonationImageSlider({ sliderImages }: Props): JSX.Element {
   return (
     <>
       <S.NavigationWrapper>
-        <div ref={sliderRef} className="keen-slider" id="slider">
+        <S.SlideImageContainer
+          ref={sliderRef}
+          className="keen-slider"
+          id="slider"
+        >
           {sliderImages.map((item, idx) =>
             isVideo(item.imageUrl) ? (
               <S.SlideVideo
@@ -61,7 +65,7 @@ function DonationImageSlider({ sliderImages }: Props): JSX.Element {
               />
             ),
           )}
-        </div>
+        </S.SlideImageContainer>
 
         {slider && (
           <>
@@ -73,7 +77,7 @@ function DonationImageSlider({ sliderImages }: Props): JSX.Element {
             <Arrow
               direction="right"
               onClick={onNextPress}
-              disabled={currentSlide === slider.details().size - 1}
+              disabled={currentSlide === (slider.current?.size || 1) - 1}
             />
           </>
         )}
