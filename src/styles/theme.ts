@@ -33,6 +33,7 @@ const theme: ThemeType = {
     sciGreen: "#6DC100",
     ribonWhite: "#FFFFFF",
     phcYellow2: "#FF8F00",
+    ribonTransparent: "rgba(255, 255, 255, 0)",
   },
   spacings: {},
   breakpoints: {

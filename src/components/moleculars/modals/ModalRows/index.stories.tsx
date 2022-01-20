@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import ModalRows, { Props } from ".";
 import icon from "assets/images/newspaper.svg";
+import ModalRows, { Props } from ".";
 
 export default {
   title: "ModalRows",
@@ -20,8 +20,9 @@ Default.args = {
   secondaryButtonText: "Secondary",
   rowsContent: [
     {
-        id: 1,
-        icon: icon,
-        text: "dunaaa"
-    }]
+      id: 1,
+      icon,
+      text: "dunaaa",
+    },
+  ],
 };
