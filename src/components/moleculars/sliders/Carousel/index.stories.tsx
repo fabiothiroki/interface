@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import CardSideImageButton from "components/moleculars/CardSideImageButton";
+import CardSideImageButton from "components/moleculars/cards/CardSideImageButton";
 import image from "assets/images/newspaper.svg";
 import theme from "styles/theme";
 import Carousel, { Props } from ".";

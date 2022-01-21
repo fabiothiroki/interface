@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import CardImage from "assets/images/newspaper.svg";
 import theme from "styles/theme";
-import CardSideImageButton, { Props } from ".";
+import CardSideImageButton, { Props } from "./index";
 
 export default {
   title: "CardSideImageButton",
