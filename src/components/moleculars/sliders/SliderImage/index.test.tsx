@@ -6,6 +6,6 @@ import SliderImage from ".";
 describe("SliderImage", () => {
   it("should render without error", () => {
     renderComponent(<SliderImage sliderImages={[{ imageUrl: "" }]} />);
-    expect(screen.getByText("SliderImage")).toBeInTheDocument();
+    expect(screen.getByLabelText("image-0")).toBeInTheDocument();
   });
 });

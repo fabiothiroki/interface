@@ -55,13 +55,14 @@ function DonationImageSlider({ sliderImages }: Props): JSX.Element {
                 muted
                 playsInline
                 className="keen-slider__slide"
+                aria-label={`video-${idx}`}
               />
             ) : (
               <S.SlideImage
                 key={idx.toString()}
                 image={item.imageUrl}
                 className="keen-slider__slide"
-                aria-label="NgoImage 3"
+                aria-label={`image-${idx}`}
               />
             ),
           )}
