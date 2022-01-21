@@ -8,7 +8,7 @@ import * as S from "./styles";
 import Button from "../../components/atomics/Button";
 import SliderImage from "../../components/moleculars/sliders/SliderImage";
 import Carousel from "../../components/moleculars/sliders/Carousel";
-import CardSideImageButton from "../../components/moleculars/CardSideImageButton";
+import CardSideImageButton from "../../components/moleculars/cards/CardSideImageButton";
 
 function HomePage(): JSX.Element {
   const { wallet, connectWallet } = useWalletContext();

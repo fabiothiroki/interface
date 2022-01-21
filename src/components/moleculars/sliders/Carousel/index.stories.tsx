@@ -1,8 +1,9 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import CardSideImageButton from "components/moleculars/CardSideImageButton";
+import CardSideImageButton from "components/moleculars/cards/CardSideImageButton";
 import image from "assets/images/newspaper.svg";
 import theme from "styles/theme";
 import Carousel, { Props } from ".";
+import CardCircleImage from "../../cards/CardCircleImage";
 
 export default {
   title: "Carousel",
@@ -22,6 +23,7 @@ const Template: ComponentStory<typeof Carousel> = function (args: Props) {
 export const Default = Template.bind({});
 export const Free = Template.bind({});
 export const FreeSnap = Template.bind({});
+export const CircleCard = Template.bind({});
 
 const children = [
   <CardSideImageButton
@@ -72,4 +74,15 @@ FreeSnap.args = {
   spacing: 10,
   children,
   mode: "free-snap",
+};
+
+CircleCard.args = {
+  sliderPerView: 2,
+  spacing: 10,
+  children: [
+    <CardCircleImage image={image} title="title" subtitle="subtitle" />,
+    <CardCircleImage image={image} title="title" subtitle="subtitle" />,
+    <CardCircleImage image={image} title="title" subtitle="subtitle" />,
+    <CardCircleImage image={image} title="title" subtitle="subtitle" />,
+  ],
 };
