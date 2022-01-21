@@ -14,12 +14,12 @@ function DonationImageSlider({ sliderImages }: Props): JSX.Element {
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     initial: 0,
     slideChanged(slide) {
-      setCurrentSlide(slide.track.details.maxIdx);
+      setCurrentSlide(slide.track.details.rel);
     },
   });
 
   function sliderSize() {
-    return (slider.current?.track.details.maxIdx || 0) + 1;
+    return slider.current?.slides.length;
   }
 
   const onPrevPress = useCallback(
@@ -39,7 +39,7 @@ function DonationImageSlider({ sliderImages }: Props): JSX.Element {
   );
 
   return (
-    <>
+    <S.Container>
       <S.NavigationWrapper>
         <S.SlideImageContainer
           ref={sliderRef}
@@ -77,7 +77,7 @@ function DonationImageSlider({ sliderImages }: Props): JSX.Element {
             <Arrow
               direction="right"
               onClick={onNextPress}
-              disabled={currentSlide === (slider.current?.size || 1) - 1}
+              disabled={currentSlide === (sliderSize() || 0) - 1}
             />
           </>
         )}
@@ -90,7 +90,7 @@ function DonationImageSlider({ sliderImages }: Props): JSX.Element {
           </S.PaginationNumber>
         </S.PaginationContainer>
       )}
-    </>
+    </S.Container>
   );
 }
 

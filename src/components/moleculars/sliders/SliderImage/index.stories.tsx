@@ -14,11 +14,7 @@ export const Default = Template.bind({});
 
 Default.args = {
   sliderImages: [
-    {
-      imageUrl: "https://picsum.photos/400/300",
-    },
-    {
-      imageUrl: "https://picsum.photos/400/300",
-    },
+    { imageUrl: "https://picsum.photos/600/600" },
+    { imageUrl: "https://picsum.photos/600/600?random=2" },
   ],
 };

@@ -4,23 +4,18 @@ type NgoImageProps = {
   image: string;
 };
 
+export const Container = styled.div`
+  position: relative;
+  width: 344px;
+  height: 204px;
+`;
+
 export const NavigationWrapper = styled.div`
   position: relative;
-  [class^="number-slide"],
-  [class*=" number-slide"] {
-    background: grey;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 50px;
-    color: #fff;
-    font-weight: 500;
-    height: 200px;
-  }
 `;
 
 export const SlideImageContainer = styled.div`
-  width: 344px;
+  width: 100%;
 `;
 
 export const SlideImage = styled.div`
@@ -58,16 +53,17 @@ export const SlideVideo = styled.video`
 `;
 
 export const PaginationContainer = styled.div`
-  align-self: center;
   padding: 4px 8px;
-  margin-top: -44px;
-  margin-bottom: 23px;
   z-index: 1;
-  min-width: 36px;
+  width: 36px;
   height: 27px;
   opacity: 0.7;
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
 `;
 
 export const PaginationNumber = styled.h5`

@@ -36,8 +36,8 @@ function HomePage(): JSX.Element {
       </p>
       <SliderImage
         sliderImages={[
-          { imageUrl: "https://picsum.photos/400/300" },
-          { imageUrl: "https://picsum.photos/400/300" },
+          { imageUrl: "https://picsum.photos/600/600" },
+          { imageUrl: "https://picsum.photos/600/600?random=2" },
         ]}
       />
     </S.Container>
