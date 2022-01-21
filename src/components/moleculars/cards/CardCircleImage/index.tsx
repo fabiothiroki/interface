@@ -11,7 +11,7 @@ function CardCircleImage({ image, title, subtitle }: Props): JSX.Element {
     <S.Container>
       <S.Image src={image} alt="circle-img" />
       {title && <S.Title>{title}</S.Title>}
-      {subtitle && <S.Subtitle>{title}</S.Subtitle>}
+      {subtitle && <S.Subtitle>{subtitle}</S.Subtitle>}
     </S.Container>
   );
 }

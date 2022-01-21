@@ -20,4 +20,6 @@ export const Default = Template.bind({});
 
 Default.args = {
   image: "https://picsum.photos/600/600",
+  title: "title",
+  subtitle: "this is a subtitle",
 };
