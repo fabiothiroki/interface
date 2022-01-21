@@ -3,9 +3,12 @@ import { useContract } from "hooks/useContract";
 import { useWalletContext } from "contexts/walletContext";
 import { useNetwork } from "hooks/useNetwork";
 import RibonABI from "utils/abis/RibonAbi.json";
+import NewsPaperImage from "assets/images/newspaper.svg";
 import * as S from "./styles";
 import Button from "../../components/atomics/Button";
 import SliderImage from "../../components/moleculars/sliders/SliderImage";
+import Carousel from "../../components/moleculars/sliders/Carousel";
+import CardSideImageButton from "../../components/moleculars/CardSideImageButton";
 
 function HomePage(): JSX.Element {
   const { wallet, connectWallet } = useWalletContext();
@@ -40,6 +43,28 @@ function HomePage(): JSX.Element {
           { imageUrl: "https://picsum.photos/600/600?random=2" },
         ]}
       />
+      <S.CarouselContainer>
+        <Carousel>
+          <CardSideImageButton
+            icon={NewsPaperImage}
+            title="title"
+            onClick={() => {}}
+            buttonText="button"
+          />
+          <CardSideImageButton
+            icon={NewsPaperImage}
+            title="title"
+            onClick={() => {}}
+            buttonText="button"
+          />
+          <CardSideImageButton
+            icon={NewsPaperImage}
+            title="title"
+            onClick={() => {}}
+            buttonText="button"
+          />
+        </Carousel>
+      </S.CarouselContainer>
     </S.Container>
   );
 }
