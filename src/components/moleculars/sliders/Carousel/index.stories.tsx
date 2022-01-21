@@ -20,40 +20,56 @@ const Template: ComponentStory<typeof Carousel> = function (args: Props) {
 };
 
 export const Default = Template.bind({});
+export const Free = Template.bind({});
+export const FreeSnap = Template.bind({});
+
+const children = [
+  <CardSideImageButton
+    icon={image}
+    title="title"
+    onClick={() => {}}
+    buttonText="button"
+  />,
+  <CardSideImageButton
+    icon={image}
+    title="title"
+    onClick={() => {}}
+    buttonText="button"
+  />,
+  <CardSideImageButton
+    icon={image}
+    title="title"
+    onClick={() => {}}
+    buttonText="button"
+  />,
+  <CardSideImageButton
+    icon={image}
+    title="title"
+    onClick={() => {}}
+    buttonText="button"
+  />,
+  <CardSideImageButton
+    icon={image}
+    title="title"
+    onClick={() => {}}
+    buttonText="button"
+  />,
+];
 
 Default.args = {
   sliderPerView: 3,
   spacing: 10,
-  children: [
-    <CardSideImageButton
-      icon={image}
-      title="title"
-      onClick={() => {}}
-      buttonText="button"
-    />,
-    <CardSideImageButton
-      icon={image}
-      title="title"
-      onClick={() => {}}
-      buttonText="button"
-    />,
-    <CardSideImageButton
-      icon={image}
-      title="title"
-      onClick={() => {}}
-      buttonText="button"
-    />,
-    <CardSideImageButton
-      icon={image}
-      title="title"
-      onClick={() => {}}
-      buttonText="button"
-    />,
-    <CardSideImageButton
-      icon={image}
-      title="title"
-      onClick={() => {}}
-      buttonText="button"
-    />,
-  ],
+  children,
+};
+Free.args = {
+  sliderPerView: 3,
+  spacing: 10,
+  children,
+  mode: "free",
+};
+FreeSnap.args = {
+  sliderPerView: 3,
+  spacing: 10,
+  children,
+  mode: "free-snap",
 };

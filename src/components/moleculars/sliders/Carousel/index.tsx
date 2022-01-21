@@ -7,17 +7,20 @@ export type Props = {
   sliderPerView?: number;
   spacing?: number;
   children: JSX.Element[];
+  mode?: "free" | "free-snap" | "snap";
 };
 function Carousel({
   sliderPerView = 2,
   spacing = 15,
   children,
+  mode = "snap",
 }: Props): JSX.Element {
   const [ref] = useKeenSlider<HTMLDivElement>({
     slides: {
       perView: sliderPerView,
       spacing,
     },
+    mode,
   });
   return (
     <S.Container>

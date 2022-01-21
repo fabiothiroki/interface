@@ -34,6 +34,10 @@ const GlobalStyle = createGlobalStyle`
       display: none !important;
     }
   `}
+  
+  button:hover {
+    cursor: pointer;
+  }
 `;
 
 export default GlobalStyle;
