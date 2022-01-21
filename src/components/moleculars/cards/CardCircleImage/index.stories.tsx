@@ -10,7 +10,7 @@ const Template: ComponentStory<typeof CardCircleImage> = function (
   args: Props,
 ) {
   return (
-    <div style={{ height: 184, width: 184 }}>
+    <div style={{ height: 184, width: 164 }}>
       <CardCircleImage {...args} />
     </div>
   );

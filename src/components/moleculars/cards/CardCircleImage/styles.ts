@@ -18,13 +18,20 @@ export const Container = styled.div`
 `;
 
 export const Image = styled.img`
-  width: 80%;
+  width: 60%;
   height: auto;
   object-fit: cover;
   border-radius: 200px;
   margin-bottom: 8px;
 `;
 
-export const Title = styled.h5``;
+export const Title = styled.h3`
+  margin: 0;
+  line-height: 25px;
+`;
 
-export const Subtitle = styled.h6``;
+export const Subtitle = styled.h5`
+  ${({ theme }) => css`
+    color: ${theme.colors.ribonBlue};
+  `}
+`;
