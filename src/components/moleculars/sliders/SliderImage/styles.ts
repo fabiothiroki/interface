@@ -7,7 +7,7 @@ type NgoImageProps = {
 export const Container = styled.div`
   position: relative;
   width: 344px;
-  height: 204px;
+  height: 209px;
 `;
 
 export const NavigationWrapper = styled.div`
