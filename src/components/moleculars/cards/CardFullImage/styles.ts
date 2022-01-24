@@ -48,14 +48,22 @@ export const RoundLogo = styled.img`
   `}
 `;
 
-export const Title = styled.h4`
+export const Title = styled.h3`
   ${({ theme }) => css`
     color: ${theme.colors.ribonWhite};
     line-height: 25px;
     text-align: center;
+    margin-left: 3px;
   `}
 `;
-export const Subtitle = styled.h4`
+
+export const TitleContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Subtitle = styled.h3`
   ${({ theme }) => css`
     color: ${theme.colors.ribonWhite};
     line-height: 25px;

@@ -3,6 +3,10 @@ import styled, { css } from "styled-components";
 export const Container = styled.div`
   ${() => css`
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 8px 0;
   `}
 `;
 

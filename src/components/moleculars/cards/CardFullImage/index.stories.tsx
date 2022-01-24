@@ -11,9 +11,17 @@ const Template: ComponentStory<typeof CardFullImage> = function (args: Props) {
 };
 
 export const Default = Template.bind({});
+export const Loading = Template.bind({});
 
 Default.args = {
   title: "Doando...",
   subtitle: "Os apoiadores da Ribon são os que pagam pelas doações gratuitas",
   roundImage: "https://i.imgur.com/E1GNgB8.png",
+};
+
+Loading.args = {
+  title: "Doando...",
+  subtitle: "Os apoiadores da Ribon são os que pagam pelas doações gratuitas",
+  roundImage: "https://i.imgur.com/E1GNgB8.png",
+  loading: true,
 };
