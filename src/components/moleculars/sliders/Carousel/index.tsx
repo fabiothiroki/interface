@@ -25,8 +25,10 @@ function Carousel({
   return (
     <S.Container>
       <div ref={ref} className="keen-slider">
-        {children.map((component) => (
-          <div className="keen-slider__slide">{component}</div>
+        {children.map((component, idx) => (
+          <div className="keen-slider__slide" key={idx.toString()}>
+            {component}
+          </div>
         ))}
       </div>
     </S.Container>

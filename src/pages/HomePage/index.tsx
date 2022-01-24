@@ -11,6 +11,7 @@ import Carousel from "../../components/moleculars/sliders/Carousel";
 import CardSideImageButton from "../../components/moleculars/cards/CardSideImageButton";
 import Loader from "../../components/atomics/Loader";
 import theme from "../../styles/theme";
+import { useCurrentUser } from "../../contexts/currentUserContext";
 
 function HomePage(): JSX.Element {
   const { wallet, connectWallet } = useWalletContext();
@@ -19,6 +20,7 @@ function HomePage(): JSX.Element {
     address: "0x3e9D9ec429055BB7757ae30B51C356503b98dF79",
     ABI: RibonABI.abi,
   });
+  const { currentUser } = useCurrentUser();
 
   async function getDonations() {
     console.log(contract);
@@ -68,6 +70,7 @@ function HomePage(): JSX.Element {
         </Carousel>
         <Loader color={theme.colors.ribonBlack} />
       </S.CarouselContainer>
+      <p>{currentUser?.email}</p>
     </S.Container>
   );
 }

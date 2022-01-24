@@ -6,7 +6,7 @@ const { ribonWhite, ribonTransparent } = colors;
 
 export type Props = {
   disabled: boolean;
-  // eslint-disable-next-line 
+  // eslint-disable-next-line
   onClick: (...args: any[]) => void;
   direction: "left" | "right";
 };

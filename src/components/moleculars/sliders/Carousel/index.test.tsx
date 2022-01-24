@@ -1,6 +1,5 @@
 import React from "react";
-import { screen } from "@testing-library/react";
-import { renderComponent } from "config/testUtils";
+import { expectTextToBeInTheDocument, renderComponent } from "config/testUtils";
 import Carousel from ".";
 
 describe("Carousel", () => {
@@ -11,6 +10,7 @@ describe("Carousel", () => {
         <div>2</div>
       </Carousel>,
     );
-    expect(screen.getByText("1")).toBeInTheDocument();
+
+    expectTextToBeInTheDocument("1");
   });
 });

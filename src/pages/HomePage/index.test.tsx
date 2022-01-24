@@ -1,11 +1,16 @@
 import React from "react";
-import { screen } from "@testing-library/react";
-import { renderComponent } from "config/testUtils";
+import { expectTextToBeInTheDocument, renderComponent } from "config/testUtils";
+import userFactory from "config/testUtils/factories/userFactory";
 import Home from ".";
 
 describe("Home", () => {
   it("should render without error", () => {
-    renderComponent(<Home />);
-    expect(screen.getByText("Conectar Carteira")).toBeInTheDocument();
+    renderComponent(<Home />, {
+      currentUserProviderValue: {
+        currentUser: userFactory({ email: "email@email.com" }),
+      },
+    });
+    expectTextToBeInTheDocument("Conectar Carteira");
+    expectTextToBeInTheDocument("email@email.com");
   });
 });
