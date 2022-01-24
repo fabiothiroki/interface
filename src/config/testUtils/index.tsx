@@ -82,7 +82,7 @@ export function renderComponent(
       <ThemeProvider theme={theme}>
         <QueryClientProvider client={queryClient}>
           <I18nextProvider i18n={i18n}>
-            <Router navigator={history} location={history?.location}>
+            <Router history={history}>
               {renderProvider(
                 WalletProvider,
                 WalletContext,
