@@ -11,6 +11,10 @@ import WalletProvider, {
   IWalletContext,
   WalletContext,
 } from "contexts/walletContext";
+import CurrentUserProvider, {
+  CurrentUserContext,
+  ICurrentUserContext,
+} from "contexts/currentUserContext";
 
 export function renderWithTheme(children: React.ReactNode): RenderResult {
   return render(<ThemeProvider theme={theme}>{children}</ThemeProvider>);
@@ -55,12 +59,14 @@ function renderProvider(
 export type RenderComponentProps = {
   history?: MemoryHistory;
   walletProviderValue?: Partial<IWalletContext>;
+  currentUserProviderValue?: Partial<ICurrentUserContext>;
 };
 export function renderComponent(
   component: JSX.Element,
   {
     history = createMemoryHistory(),
     walletProviderValue = {},
+    currentUserProviderValue = {},
   }: RenderComponentProps = {},
 ): RenderWithContextResult {
   const queryClient = new QueryClient();
@@ -75,7 +81,12 @@ export function renderComponent(
                 WalletProvider,
                 WalletContext,
                 walletProviderValue,
-                component,
+                renderProvider(
+                  CurrentUserProvider,
+                  CurrentUserContext,
+                  currentUserProviderValue,
+                  component,
+                ),
               )}
             </Router>
           </I18nextProvider>

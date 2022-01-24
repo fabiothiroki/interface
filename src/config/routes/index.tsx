@@ -13,7 +13,9 @@ function RoutesComponent(): JSX.Element {
         path="/"
         element={
           <WalletProvider>
-            <HomePage />
+            <CurrentUserProvider>
+              <HomePage />
+            </CurrentUserProvider>
           </WalletProvider>
         }
       />
