@@ -4,6 +4,13 @@ import { ThemeProvider } from "styled-components";
 import { MINIMAL_VIEWPORTS} from '@storybook/addon-viewport';
 
 const customViewports = {
+    motoG4: {
+        name: 'Moto G4',
+        styles: {
+            width: '360px',
+            height: '640px',
+        },
+    },
     width900: {
         name: 'Width 900',
         styles: {

@@ -9,6 +9,8 @@ import Button from "../../components/atomics/Button";
 import SliderImage from "../../components/moleculars/sliders/SliderImage";
 import Carousel from "../../components/moleculars/sliders/Carousel";
 import CardSideImageButton from "../../components/moleculars/cards/CardSideImageButton";
+import Loader from "../../components/atomics/Loader";
+import theme from "../../styles/theme";
 
 function HomePage(): JSX.Element {
   const { wallet, connectWallet } = useWalletContext();
@@ -64,6 +66,7 @@ function HomePage(): JSX.Element {
             buttonText="button"
           />
         </Carousel>
+        <Loader color={theme.colors.ribonBlack} />
       </S.CarouselContainer>
     </S.Container>
   );
