@@ -1,15 +1,23 @@
 import React from "react";
-import { expectTextToBeInTheDocument, renderComponent } from "config/testUtils";
+import {
+  clickOn,
+  expectTextToBeInTheDocument,
+  renderComponent,
+} from "config/testUtils";
 import Button from ".";
 
 describe("<Button />", () => {
-  it("should render the heading", () => {
-    const props = {
-      text: "apertar",
-      onClick: jest.fn(),
-    };
+  it("renders the text", () => {
+    renderComponent(<Button text="button" onClick={() => {}} />);
 
-    renderComponent(<Button {...props} />);
-    expectTextToBeInTheDocument(props.text);
+    expectTextToBeInTheDocument("button");
+  });
+
+  it("calls the passed function when clicked", () => {
+    const mockFunction = jest.fn();
+    renderComponent(<Button text="button" onClick={mockFunction} />);
+    clickOn("button");
+
+    expect(mockFunction).toHaveBeenCalled();
   });
 });

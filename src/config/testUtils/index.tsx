@@ -1,5 +1,11 @@
 import React from "react";
-import { act, render, RenderResult, screen } from "@testing-library/react";
+import {
+  act,
+  fireEvent,
+  render,
+  RenderResult,
+  screen,
+} from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
 import { createMemoryHistory, MemoryHistory } from "history";
 import { Router } from "react-router-dom";
@@ -99,4 +105,8 @@ export function renderComponent(
 
 export function expectTextToBeInTheDocument(text: string) {
   return expect(screen.getByText(text)).toBeInTheDocument();
+}
+
+export function clickOn(text: string) {
+  return fireEvent.click(screen.getByText(text));
 }
