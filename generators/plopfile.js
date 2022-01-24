@@ -234,12 +234,12 @@ module.exports = function (plop) {
     actions: [
       {
         type: "add",
-        path: "../src/contexts/{{camelCase name}}/index.tsx",
+        path: "../src/contexts/{{camelCase name}}Context/index.tsx",
         templateFile: "templates/context.tsx.hbs",
       },
       {
         type: "add",
-        path: "../src/contexts/{{camelCase name}}/index.test.tsx",
+        path: "../src/contexts/{{camelCase name}}Context/index.test.tsx",
         templateFile: "templates/context.test.tsx.hbs",
       },
     ],
