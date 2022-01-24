@@ -12,7 +12,6 @@ import CardSideImageButton from "../../components/moleculars/cards/CardSideImage
 import Loader from "../../components/atomics/Loader";
 import theme from "../../styles/theme";
 import { useCurrentUser } from "../../contexts/currentUserContext";
-import useNavigation from "../../hooks/useNavigation";
 
 function HomePage(): JSX.Element {
   const { wallet, connectWallet } = useWalletContext();
@@ -22,7 +21,6 @@ function HomePage(): JSX.Element {
     ABI: RibonABI.abi,
   });
   const { currentUser } = useCurrentUser();
-  const { navigateTo } = useNavigation();
 
   async function getDonations() {
     console.log(contract);
@@ -73,12 +71,6 @@ function HomePage(): JSX.Element {
         <Loader color={theme.colors.ribonBlack} />
       </S.CarouselContainer>
       <p>{currentUser?.email}</p>
-      <Button
-        text="Ir para causes"
-        onClick={() => {
-          navigateTo({ pathname: "/causes", search: "?id=2" });
-        }}
-      />
     </S.Container>
   );
 }
