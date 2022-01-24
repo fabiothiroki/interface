@@ -1,5 +1,5 @@
 import React from "react";
-import { act, render, RenderResult } from "@testing-library/react";
+import { act, render, RenderResult, screen } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
 import { createMemoryHistory, MemoryHistory } from "history";
 import { Router } from "react-router-dom";
@@ -84,4 +84,8 @@ export function renderComponent(
     ),
     history,
   };
+}
+
+export function expectTextToBeInTheDocument(text: string) {
+  return expect(screen.getByText(text)).toBeInTheDocument();
 }

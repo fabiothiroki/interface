@@ -1,6 +1,5 @@
 import React from "react";
-import { screen } from "@testing-library/react";
-import { renderComponent } from "config/testUtils";
+import { expectTextToBeInTheDocument, renderComponent } from "config/testUtils";
 import Button from ".";
 
 describe("<Button />", () => {
@@ -11,6 +10,6 @@ describe("<Button />", () => {
     };
 
     renderComponent(<Button {...props} />);
-    expect(screen.getByText(props.text)).toBeInTheDocument();
+    expectTextToBeInTheDocument(props.text);
   });
 });
