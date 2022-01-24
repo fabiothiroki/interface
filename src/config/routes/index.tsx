@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import HomePage from "pages/HomePage";
 import WalletProvider from "../../contexts/walletContext";
 import CausesPage from "../../pages/donations/CausesPage";
@@ -8,34 +8,26 @@ import ConfirmEmailPage from "../../pages/donations/ConfirmEmailPage";
 
 function RoutesComponent(): JSX.Element {
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <WalletProvider>
-            <CurrentUserProvider>
-              <HomePage />
-            </CurrentUserProvider>
-          </WalletProvider>
-        }
-      />
-      <Route
-        path="causes"
-        element={
+    <Switch>
+      <Route path="/" exact>
+        <WalletProvider>
           <CurrentUserProvider>
-            <CausesPage />
+            <HomePage />
           </CurrentUserProvider>
-        }
-      />
-      <Route
-        path="confirm-email"
-        element={
-          <CurrentUserProvider>
-            <ConfirmEmailPage />
-          </CurrentUserProvider>
-        }
-      />
-    </Routes>
+        </WalletProvider>
+      </Route>
+
+      <Route path="/causes" exact>
+        <CurrentUserProvider>
+          <CausesPage />
+        </CurrentUserProvider>
+      </Route>
+      <Route path="/confirm-email" exact>
+        <CurrentUserProvider>
+          <ConfirmEmailPage />
+        </CurrentUserProvider>
+      </Route>
+    </Switch>
   );
 }
 
