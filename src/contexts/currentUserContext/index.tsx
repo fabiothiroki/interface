@@ -3,6 +3,7 @@ import React, {
   Dispatch,
   SetStateAction,
   useContext,
+  useEffect,
   useMemo,
   useState,
 } from "react";
@@ -12,6 +13,7 @@ export interface ICurrentUserContext {
   currentUser: User | undefined;
   setCurrentUser: Dispatch<SetStateAction<User | undefined>>;
   updateCurrentUser: (data: Partial<User>) => void;
+  signedIn: boolean;
 }
 
 export type Props = {
@@ -24,18 +26,24 @@ export const CurrentUserContext = createContext<ICurrentUserContext>(
 
 function CurrentUserProvider({ children }: Props) {
   const [currentUser, setCurrentUser] = useState<User>();
+  const [signedIn, setSignedIn] = useState(false);
 
   function updateCurrentUser(data: Partial<User>) {
     setCurrentUser({ ...currentUser, data } as User);
   }
+
+  useEffect(() => {
+    setSignedIn(!!currentUser);
+  }, [currentUser]);
 
   const currentUserObject: ICurrentUserContext = useMemo(
     () => ({
       currentUser,
       setCurrentUser,
       updateCurrentUser,
+      signedIn,
     }),
-    [currentUser],
+    [currentUser, signedIn],
   );
 
   return (

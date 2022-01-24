@@ -65,23 +65,33 @@ module.exports = function (plop) {
         name: "name",
         message: "page name?",
       },
+      {
+        type: "input",
+        name: "scope",
+        message: "scope? (empty for no scope)",
+        filter(val) {
+          if(!val) return null;
+
+          return `/${val.toLowerCase()}`
+        },
+      },
     ],
 
     // actions to perform
     actions: [
       {
         type: "add",
-        path: "../src/pages/{{pascalCase name}}Page/index.tsx",
+        path: "../src/pages{{scope}}/{{pascalCase name}}Page/index.tsx",
         templateFile: "templates/page.tsx.hbs",
       },
       {
         type: "add",
-        path: "../src/pages/{{pascalCase name}}Page/styles.ts",
+        path: "../src/pages{{scope}}/{{pascalCase name}}Page/styles.ts",
         templateFile: "templates/styles.ts.hbs",
       },
       {
         type: "add",
-        path: "../src/pages/{{pascalCase name}}Page/index.test.tsx",
+        path: "../src/pages{{scope}}/{{pascalCase name}}Page/index.test.tsx",
         templateFile: "templates/index.test.tsx.hbs",
       },
     ],
