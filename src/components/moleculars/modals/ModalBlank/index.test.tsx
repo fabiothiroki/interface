@@ -1,6 +1,5 @@
 import React from "react";
-import { screen } from "@testing-library/react";
-import { renderComponent } from "config/testUtils";
+import { expectTextToBeInTheDocument, renderComponent } from "config/testUtils";
 import ModalBlank from ".";
 
 describe("ModalBlank", () => {
@@ -10,6 +9,7 @@ describe("ModalBlank", () => {
         <div>blank</div>
       </ModalBlank>,
     );
-    expect(screen.getByText("blank")).toBeInTheDocument();
+
+    expectTextToBeInTheDocument("blank");
   });
 });
