@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, } from "@testing-library/react";
+import { expectTextToBeInTheDocument, renderComponent } from "config/testUtils";
 import { use{{pascalCase name}} } from ".";
 
 function {{ pascalCase name }}TestPage(){
@@ -8,8 +8,8 @@ function {{ pascalCase name }}TestPage(){
 }
 
 describe("use{{pascalCase name}}", () => {
-it("should render without error", () => {
-  render(<{{ pascalCase name }}TestPage />);
-  expect(screen.getByText("{{ pascalCase name }}")).toBeInTheDocument();
-});
+  it("renders without error", () => {
+    renderComponent(<{{ pascalCase name }}TestPage />);
+    expectTextToBeInTheDocument("{{pascalCase name}}");
+  });
 });
