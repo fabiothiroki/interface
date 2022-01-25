@@ -12,6 +12,7 @@ export type Props = {
   subtitle?: string;
   roundImage?: string;
   loading?: boolean;
+  backgroundImage: string;
 };
 
 function CardFullImage({
@@ -19,9 +20,10 @@ function CardFullImage({
   subtitle,
   roundImage,
   loading,
+  backgroundImage,
 }: Props): JSX.Element {
   return (
-    <S.Container backgroundImage="https://i.imgur.com/BwtK2hX.png">
+    <S.Container backgroundImage={backgroundImage}>
       {roundImage ? <S.RoundLogo src={roundImage} alt="logo" /> : <div />}
       <S.TextContainer>
         <S.TitleContainer>
