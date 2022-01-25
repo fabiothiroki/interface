@@ -9,7 +9,6 @@ export const Container = styled.div`
     height: 100%;
     border-radius: 16px;
     box-sizing: border-box;
-    padding: 1px;
     background-color: ${theme.colors.ribonWhite};
     cursor: pointer;
     box-shadow: 8px 8px 20px -2px rgba(192, 192, 192, 0.75);

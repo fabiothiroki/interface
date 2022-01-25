@@ -1,4 +1,3 @@
-import React from "react";
 import LottieAnimation from "components/atomics/LottieAnimation";
 import theme from "styles/theme";
 import { flatten } from "lottie-colorify";
