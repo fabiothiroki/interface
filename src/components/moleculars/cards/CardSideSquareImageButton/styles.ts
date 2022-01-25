@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import Button from "components/atomics/Button";
 
 export const Container = styled.div`
   ${() => css`
@@ -9,8 +10,8 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h3`
-  ${({theme}) => css`
-  color: ${theme.colors.ribonBlack};  
+  ${({ theme }) => css`
+    color: ${theme.colors.ribonBlack};
   `}
 `;
 
@@ -36,4 +37,10 @@ export const ImageContainer = styled.div`
   height: 96px;
   width: 96px;
   margin-bottom: 8px;
+`;
+
+export const SideButton = styled(Button)`
+  border-radius: 16px;
+  font-size: 12px;
+  height: 28px;
 `;

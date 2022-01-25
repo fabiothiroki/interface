@@ -1,4 +1,3 @@
-import Button from "components/atomics/Button";
 import * as S from "./styles";
 import CardSquareImage from "../CardSquareImage";
 
@@ -22,11 +21,7 @@ function CardSideSquareImageButton({
         <S.ImageContainer>
           <CardSquareImage image={image} />
         </S.ImageContainer>
-        <Button
-          text={buttonText}
-          onClick={onButtonClick}
-          style={{ borderRadius: 16, fontSize: 12, height: 28 }}
-        />
+        <S.SideButton text={buttonText} onClick={onButtonClick} />
       </S.LeftContainer>
       <S.RightContainer>
         <S.Title>{title}</S.Title>
