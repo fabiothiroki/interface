@@ -17,6 +17,7 @@ Default.args = {
   title: "Doando...",
   subtitle: "Os apoiadores da Ribon são os que pagam pelas doações gratuitas",
   roundImage: "https://i.imgur.com/E1GNgB8.png",
+  backgroundImage: "https://i.imgur.com/BwtK2hX.png",
 };
 
 Loading.args = {
