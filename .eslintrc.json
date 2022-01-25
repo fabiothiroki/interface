@@ -50,7 +50,8 @@
         "@typescript-eslint/no-non-null-assertion": "off",
         "react/jsx-wrap-multilines": "off",
         "@typescript-eslint/no-empty-function": "off",
-        "no-else-return": "off"
+        "no-else-return": "off",
+        "no-unused-vars": ["error", { "args": "none" }]
     },
     "settings": {
         "import/resolver": {

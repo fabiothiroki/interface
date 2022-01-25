@@ -1,6 +1,5 @@
 import React from "react";
-import { screen } from "@testing-library/react";
-import { renderComponent } from "config/testUtils";
+import { expectTextToBeInTheDocument, renderComponent } from "config/testUtils";
 import CardSideImageButton from "./index";
 
 describe("CardSideImageButton", () => {
@@ -13,6 +12,7 @@ describe("CardSideImageButton", () => {
         title="title"
       />,
     );
-    expect(screen.getByText("text")).toBeInTheDocument();
+
+    expectTextToBeInTheDocument("text");
   });
 });

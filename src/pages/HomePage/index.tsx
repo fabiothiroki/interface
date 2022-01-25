@@ -4,13 +4,15 @@ import { useWalletContext } from "contexts/walletContext";
 import { useNetwork } from "hooks/useNetwork";
 import RibonABI from "utils/abis/RibonAbi.json";
 import NewsPaperImage from "assets/images/newspaper.svg";
+import Button from "components/atomics/Button";
+import SliderImage from "components/moleculars/sliders/SliderImage";
+import Carousel from "components/moleculars/sliders/Carousel";
+import CardSideImageButton from "components/moleculars/cards/CardSideImageButton";
+import Loader from "components/atomics/Loader";
+import theme from "styles/theme";
+import { useCurrentUser } from "contexts/currentUserContext";
+import useNavigation from "hooks/useNavigation";
 import * as S from "./styles";
-import Button from "../../components/atomics/Button";
-import SliderImage from "../../components/moleculars/sliders/SliderImage";
-import Carousel from "../../components/moleculars/sliders/Carousel";
-import CardSideImageButton from "../../components/moleculars/cards/CardSideImageButton";
-import Loader from "../../components/atomics/Loader";
-import theme from "../../styles/theme";
 
 function HomePage(): JSX.Element {
   const { wallet, connectWallet } = useWalletContext();
@@ -19,6 +21,8 @@ function HomePage(): JSX.Element {
     address: "0x3e9D9ec429055BB7757ae30B51C356503b98dF79",
     ABI: RibonABI.abi,
   });
+  const { currentUser } = useCurrentUser();
+  const { navigateTo } = useNavigation();
 
   async function getDonations() {
     console.log(contract);
@@ -68,6 +72,8 @@ function HomePage(): JSX.Element {
         </Carousel>
         <Loader color={theme.colors.ribonBlack} />
       </S.CarouselContainer>
+      <p>{currentUser?.email}</p>
+      <Button text="Ir para causes" onClick={() => navigateTo("/causes")} />
     </S.Container>
   );
 }

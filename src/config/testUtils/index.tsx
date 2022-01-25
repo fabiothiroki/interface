@@ -1,5 +1,11 @@
 import React from "react";
-import { act, render, RenderResult } from "@testing-library/react";
+import {
+  act,
+  fireEvent,
+  render,
+  RenderResult,
+  screen,
+} from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
 import { createMemoryHistory, MemoryHistory } from "history";
 import { Router } from "react-router-dom";
@@ -11,6 +17,10 @@ import WalletProvider, {
   IWalletContext,
   WalletContext,
 } from "contexts/walletContext";
+import CurrentUserProvider, {
+  CurrentUserContext,
+  ICurrentUserContext,
+} from "contexts/currentUserContext";
 
 export function renderWithTheme(children: React.ReactNode): RenderResult {
   return render(<ThemeProvider theme={theme}>{children}</ThemeProvider>);
@@ -24,7 +34,7 @@ interface RenderWithContextResult {
 
 export async function waitForPromises() {
   // eslint-disable-next-line no-promise-executor-return
-  await act(() => new Promise((resolve) => setImmediate(resolve)));
+  await act(() => new Promise((resolve) => setTimeout(resolve, 0)));
 }
 
 function renderProvider(
@@ -55,12 +65,14 @@ function renderProvider(
 export type RenderComponentProps = {
   history?: MemoryHistory;
   walletProviderValue?: Partial<IWalletContext>;
+  currentUserProviderValue?: Partial<ICurrentUserContext>;
 };
 export function renderComponent(
   component: JSX.Element,
   {
     history = createMemoryHistory(),
     walletProviderValue = {},
+    currentUserProviderValue = {},
   }: RenderComponentProps = {},
 ): RenderWithContextResult {
   const queryClient = new QueryClient();
@@ -70,12 +82,17 @@ export function renderComponent(
       <ThemeProvider theme={theme}>
         <QueryClientProvider client={queryClient}>
           <I18nextProvider i18n={i18n}>
-            <Router navigator={history} location={history?.location}>
+            <Router history={history}>
               {renderProvider(
                 WalletProvider,
                 WalletContext,
                 walletProviderValue,
-                component,
+                renderProvider(
+                  CurrentUserProvider,
+                  CurrentUserContext,
+                  currentUserProviderValue,
+                  component,
+                ),
               )}
             </Router>
           </I18nextProvider>
@@ -84,4 +101,12 @@ export function renderComponent(
     ),
     history,
   };
+}
+
+export function expectTextToBeInTheDocument(text: string) {
+  return expect(screen.getByText(text)).toBeInTheDocument();
+}
+
+export function clickOn(text: string) {
+  return fireEvent.click(screen.getByText(text));
 }

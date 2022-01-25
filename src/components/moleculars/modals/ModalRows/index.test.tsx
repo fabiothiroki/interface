@@ -1,6 +1,5 @@
 import React from "react";
-import { screen } from "@testing-library/react";
-import { renderComponent } from "config/testUtils";
+import { expectTextToBeInTheDocument, renderComponent } from "config/testUtils";
 import icon from "assets/icons/ribon.svg";
 import ModalRows from ".";
 
@@ -18,6 +17,7 @@ describe("ModalRows", () => {
         visible
       />,
     );
-    expect(screen.getByText("rows")).toBeInTheDocument();
+
+    expectTextToBeInTheDocument("rows");
   });
 });

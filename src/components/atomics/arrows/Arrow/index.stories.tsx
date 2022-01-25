@@ -15,5 +15,5 @@ export const Default = Template.bind({});
 Default.args = {
   disabled: false,
   onClick: () => {},
-  direction: "left"
+  direction: "left",
 };
