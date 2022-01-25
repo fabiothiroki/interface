@@ -23,7 +23,11 @@ function CardSideSquareImageButton({
         <S.ImageContainer>
           <CardSquareImage image={image} />
         </S.ImageContainer>
-        <Button text={buttonText} onClick={onButtonClick} />
+        <Button
+          text={buttonText}
+          onClick={onButtonClick}
+          style={{ borderRadius: 16 }}
+        />
       </S.LeftContainer>
       <S.RightContainer>
         <S.Title>{title}</S.Title>
