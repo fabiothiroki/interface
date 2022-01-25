@@ -1,7 +1,6 @@
 import React, { ButtonHTMLAttributes } from "react";
 import { ReactComponent as RibonIcon } from "assets/icons/ribon.svg";
 import theme from "styles/theme";
-import { CSSProperties } from "styled-components";
 import * as S from "./styles";
 
 export type onClickType = () => void;
@@ -17,7 +16,6 @@ export type Props = {
   altLeftIconText?: string;
   onClick: onClickType;
   outline?: boolean;
-  customStyle?: CSSProperties;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export default function Button({
