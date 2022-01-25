@@ -9,14 +9,17 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h3`
-  ${() => css``}
+  ${({theme}) => css`
+  color: ${theme.colors.ribonBlack};  
+  `}
 `;
 
 export const Text = styled.h4`
-  ${() => css`
+  ${({ theme }) => css`
     font-weight: 400;
     line-height: 24px;
     margin-top: 4px;
+    color: ${theme.colors.darkGray};
   `}
 `;
 

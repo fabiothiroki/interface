@@ -1,4 +1,3 @@
-import React from "react";
 import Button from "components/atomics/Button";
 import * as S from "./styles";
 import CardSquareImage from "../CardSquareImage";
@@ -26,7 +25,7 @@ function CardSideSquareImageButton({
         <Button
           text={buttonText}
           onClick={onButtonClick}
-          style={{ borderRadius: 16 }}
+          style={{ borderRadius: 16, fontSize: 12, height: 28 }}
         />
       </S.LeftContainer>
       <S.RightContainer>
