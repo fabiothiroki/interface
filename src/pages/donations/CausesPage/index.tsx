@@ -67,7 +67,7 @@ function CausesPage(): JSX.Element {
               <CardCenterImageButton
                 image={ngo.image}
                 title={ngo.impactDescription}
-                buttonText="Donate"
+                buttonText={t("donations.causesPage.donateText")}
                 onClickButton={() => {
                   chooseNgo(ngo);
                 }}

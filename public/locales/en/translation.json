@@ -6,7 +6,8 @@
       "donationModalButtonText": "Continue",
       "confirmModalTitle": "Confirm your donation",
       "confirmModalPrimaryButtonText": "Confirm",
-      "confirmModalSecondaryButtonText": "Cancel"
+      "confirmModalSecondaryButtonText": "Cancel",
+      "donateText": "Donate"
     }
   }
 }
