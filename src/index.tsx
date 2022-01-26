@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./i18n";
+import { initializeFirebase } from "./services";
 
 declare global {
   interface Window {
@@ -11,6 +12,7 @@ declare global {
 }
 
 window.ethereum = window.ethereum || {};
+initializeFirebase();
 
 ReactDOM.render(
   <React.StrictMode>

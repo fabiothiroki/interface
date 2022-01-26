@@ -1,7 +1,7 @@
 import * as Sentry from "@sentry/react";
 
 export function logError(
-  error: Error,
+  error: any,
   customMessage?: string,
   context: Record<string, unknown> = {},
 ): void {

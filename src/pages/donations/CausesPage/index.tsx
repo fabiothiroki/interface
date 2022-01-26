@@ -1,11 +1,12 @@
 import Header from "components/atomics/sections/Header";
 import CardCenterImageButton from "components/moleculars/cards/CardCenterImageButton";
 import ngoFactory from "config/testUtils/factories/ngoFactory";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Ngo from "types/entities/Ngo";
 import Heart from "assets/images/heart.svg";
 import ModalIcon from "components/moleculars/modals/ModalIcon";
 import { useTranslation } from "react-i18next";
+import { logEvent } from "services/analytics";
 import * as S from "./styles";
 
 function CausesPage(): JSX.Element {
@@ -17,6 +18,10 @@ function CausesPage(): JSX.Element {
     keyPrefix: "donations.causesPage",
   });
 
+  useEffect(() => {
+    logEvent("donateIntroDial_view");
+  }, []);
+
   const closeDonationModal = useCallback(() => {
     setDonationModalVisible(false);
   }, []);
@@ -25,11 +30,22 @@ function CausesPage(): JSX.Element {
     setConfirmModalVisible(false);
   }, []);
 
-  const donate = useCallback(() => {}, []);
+  const donate = useCallback(() => {
+    logEvent("donateConfirmDialButton_click", {
+      causeId: chosenNgo?.id,
+    });
+  }, []);
   const chooseNgo = useCallback((ngo: Ngo) => {
     setChosenNgo(ngo);
     setConfirmModalVisible(true);
   }, []);
+
+  function handleButtonClick(ngo: Ngo) {
+    logEvent("donateCardButton_click", {
+      causeId: ngo.id,
+    });
+    chooseNgo(ngo);
+  }
 
   return (
     <S.Container>
@@ -66,9 +82,7 @@ function CausesPage(): JSX.Element {
                 image={ngo.image}
                 title={ngo.impactDescription}
                 buttonText={t("donateText")}
-                onClickButton={() => {
-                  chooseNgo(ngo);
-                }}
+                onClickButton={() => handleButtonClick(ngo)}
               />
             </S.CausesCardContainer>
           ))}

@@ -1,4 +1,5 @@
-export default interface Ngo{
+export default interface Ngo {
+  id: number;
   name: string;
   image: string;
   impactDescription: string;
