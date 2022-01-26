@@ -27,6 +27,7 @@ export const BodyContainer = styled.div`
 export const Title = styled.h1`
   text-transform: uppercase;
   margin: 4px 0;
+  font-weight: 900;
 
   ${({ theme }) => css`
     @media (min-width: ${theme.breakpoints.pad}) {
@@ -36,6 +37,8 @@ export const Title = styled.h1`
 `;
 
 export const Text = styled.h3`
+  font-weight: 700;
+
   ${({ theme }) => css`
     color: ${theme.colors.darkGray};
   `}

@@ -4,9 +4,7 @@ export const Container = styled.div`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
-    width: 100%;
     height: 56px;
-    width: 100%;
     margin-left: 18px;
 
     @media (min-width: ${theme.breakpoints.pad}) {

@@ -31,7 +31,7 @@ export const Image = styled.img`
 
 export const ContainerText = styled.div`
   ${() => css`
-    padding: 12px;
+    padding: 8px 12px 12px 12px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -45,6 +45,6 @@ export const Text = styled.h3`
     color: ${theme.colors.ribonBlack};
     font-weight: 400;
     text-align: center;
-    margin: 8px 0;
+    margin-bottom: 8px;
   `}
 `;
