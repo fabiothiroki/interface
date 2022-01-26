@@ -8,6 +8,7 @@ function Header({ sideLogo }: Props): JSX.Element {
   return (
     <S.Container>
       <S.Logo src={Logo} />
+      <S.Divider>|</S.Divider>
       <S.Logo src={sideLogo} />
     </S.Container>
   );

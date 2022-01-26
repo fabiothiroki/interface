@@ -6,21 +6,25 @@ import Ngo from "types/entities/Ngo";
 import * as S from "./styles";
 
 function CausesPage(): JSX.Element {
-  const [ngos] = useState<Ngo[]>([ngoFactory()]);
+  const [ngos] = useState<Ngo[]>([ngoFactory(), ngoFactory()]);
 
   return (
     <S.Container>
-      <Header />
-      <h1>Causes</h1>
-      <p>Donate for free for a cause of your choice</p>
-      {ngos.map((ngo) => (
-        <CardCenterImageButton
-          image={ngo.image}
-          title={ngo.name}
-          buttonText="Donate"
-          onClickButton={() => {}}
-        />
-      ))}
+      <Header sideLogo="https://i.imgur.com/kJA77FC.png" />
+      <S.BodyContainer>
+        <S.Title>Causes</S.Title>
+        <S.Text>Donate for free for a cause of your choice</S.Text>
+        <S.CausesContainer>
+          {ngos.map((ngo) => (
+            <CardCenterImageButton
+              image={ngo.image}
+              title={ngo.name}
+              buttonText="Donate"
+              onClickButton={() => {}}
+            />
+          ))}
+        </S.CausesContainer>
+      </S.BodyContainer>
     </S.Container>
   );
 }

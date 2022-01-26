@@ -13,7 +13,7 @@ export const Container = styled.div`
     width: 100%;
     height: 100%;
     max-width: 312px;
-    box-shadow: 8px 8px 20px -2px ${theme.colors.ribonShadow};
+    box-shadow: 0px 4px 12px 0px ${theme.colors.ribonShadow};
   `}
 `;
 
