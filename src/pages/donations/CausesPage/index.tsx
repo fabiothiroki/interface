@@ -5,6 +5,7 @@ import { useCallback, useState } from "react";
 import Ngo from "types/entities/Ngo";
 import Heart from "assets/images/heart.svg";
 import ModalIcon from "components/moleculars/modals/ModalIcon";
+import { useTranslation } from "react-i18next";
 import * as S from "./styles";
 
 function CausesPage(): JSX.Element {
@@ -12,6 +13,7 @@ function CausesPage(): JSX.Element {
   const [donationModalVisible, setDonationModalVisible] = useState(true);
   const [confirmModalVisible, setConfirmModalVisible] = useState(false);
   const [chosenNgo, setChosenNgo] = useState<Ngo>();
+  const { t } = useTranslation();
 
   const closeDonationModal = useCallback(() => {
     setDonationModalVisible(false);
@@ -31,20 +33,24 @@ function CausesPage(): JSX.Element {
     <S.Container>
       <ModalIcon
         icon={Heart}
-        title="Donate for free!"
-        body="Choose one cause and send a donation sponsored by Ribon’s supporters."
-        primaryButtonText="Continue"
+        title={t("donations.causesPage.donationModalTitle")}
+        body={t("donations.causesPage.donationModalBody")}
+        primaryButtonText={t("donations.causesPage.donationModalButtonText")}
         visible={donationModalVisible}
         onClose={closeDonationModal}
         primaryButtonCallback={closeDonationModal}
       />
       <ModalIcon
         icon={chosenNgo?.image}
-        title="Confirm your donation"
-        body="Choose one cause and send a donation sponsored by Ribon’s supporters."
-        primaryButtonText="Confirm"
+        title={t("donations.causesPage.confirmModalTitle")}
+        body={chosenNgo?.impactDescription}
+        primaryButtonText={t(
+          "donations.causesPage.confirmModalPrimaryButtonText",
+        )}
         primaryButtonCallback={donate}
-        secondaryButtonText="Cancel"
+        secondaryButtonText={t(
+          "donations.causesPage.confirmModalSecondaryButtonText",
+        )}
         secondaryButtonCallback={closeConfirmModal}
         visible={confirmModalVisible}
         onClose={closeConfirmModal}
