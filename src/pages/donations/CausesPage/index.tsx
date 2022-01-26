@@ -11,10 +11,9 @@ function CausesPage(): JSX.Element {
     <S.Container>
       <h1>Causes</h1>
       {ngos.map((ngo) => (
-        <CardCenterImageButton image={ngo.image} title={ngo.name} buttonText="doar" />)
+        <CardCenterImageButton image={ngo.image} title={ngo.name} buttonText="doar" onClickButton={() => {}}/>))
       }
     </S.Container>
-  );
-}
+  )};
 
 export default CausesPage;
