@@ -1,4 +1,4 @@
-import User from "types/User";
+import User from "types/entities/User";
 
 function userFactory(params: Partial<User> = {}): User {
   const defaultValues: User = {
