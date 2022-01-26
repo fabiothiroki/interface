@@ -12,16 +12,20 @@ export const Container = styled.div`
     border-radius: 16px;
     width: 100%;
     height: 100%;
-    max-width: 312px;
     box-shadow: 0px 4px 12px 0px ${theme.colors.ribonShadow};
   `}
 `;
 
 export const Image = styled.img`
-  ${() => css`
+  ${({ theme }) => css`
     width: 100%;
-    height: auto;
+    height: 194px;
     border-radius: 16px;
+    object-fit: cover;
+
+    @media (min-width: ${theme.breakpoints.pad}) {
+      height: auto;
+    }
   `}
 `;
 

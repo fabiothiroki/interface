@@ -2,6 +2,12 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
+
+  ${({ theme }) => css`
+    @media (min-width: ${theme.breakpoints.pad}) {
+      margin: 0 14%;
+    }
+  `}
 `;
 
 export const BodyContainer = styled.div`
@@ -41,9 +47,20 @@ export const CausesContainer = styled.div`
     grid-template-columns: 1fr 1fr;
     margin-top: 20px;
     column-gap: 8px;
+    row-gap: 8px;
 
     @media (min-width: ${theme.breakpoints.pad}) {
       margin-top: 56px;
+      width: 70%;
+      row-gap: 16px;
+      column-gap: 12px;
     }
   `}
+`;
+
+export const CausesCardContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

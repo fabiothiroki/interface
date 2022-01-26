@@ -16,12 +16,14 @@ function CausesPage(): JSX.Element {
         <S.Text>Donate for free for a cause of your choice</S.Text>
         <S.CausesContainer>
           {ngos.map((ngo) => (
-            <CardCenterImageButton
-              image={ngo.image}
-              title={ngo.name}
-              buttonText="Donate"
-              onClickButton={() => {}}
-            />
+            <S.CausesCardContainer>
+              <CardCenterImageButton
+                image={ngo.image}
+                title={ngo.impactDescription}
+                buttonText="Donate"
+                onClickButton={() => {}}
+              />
+            </S.CausesCardContainer>
           ))}
         </S.CausesContainer>
       </S.BodyContainer>
