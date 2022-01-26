@@ -7,7 +7,9 @@
       "confirmModalTitle": "Confirme sua doação",
       "confirmModalPrimaryButtonText": "Confirmar",
       "confirmModalSecondaryButtonText": "Cancelar",
-      "donateText": "Doar"
+      "donateText": "Doar",
+      "pageTitle": "Causas",
+      "pageSubtitle": "Doe de graça para uma causa de sua escolha"
     }
   }
 }

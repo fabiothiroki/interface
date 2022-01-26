@@ -7,7 +7,9 @@
       "confirmModalTitle": "Confirm your donation",
       "confirmModalPrimaryButtonText": "Confirm",
       "confirmModalSecondaryButtonText": "Cancel",
-      "donateText": "Donate"
+      "donateText": "Donate",
+      "pageTitle": "Causes",
+      "pageSubtitle": "Donate for free for a cause of your choice"
     }
   }
 }

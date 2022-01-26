@@ -13,7 +13,9 @@ function CausesPage(): JSX.Element {
   const [donationModalVisible, setDonationModalVisible] = useState(true);
   const [confirmModalVisible, setConfirmModalVisible] = useState(false);
   const [chosenNgo, setChosenNgo] = useState<Ngo>();
-  const { t } = useTranslation();
+  const { t } = useTranslation("translation", {
+    keyPrefix: "donations.causesPage",
+  });
 
   const closeDonationModal = useCallback(() => {
     setDonationModalVisible(false);
@@ -33,24 +35,20 @@ function CausesPage(): JSX.Element {
     <S.Container>
       <ModalIcon
         icon={Heart}
-        title={t("donations.causesPage.donationModalTitle")}
-        body={t("donations.causesPage.donationModalBody")}
-        primaryButtonText={t("donations.causesPage.donationModalButtonText")}
+        title={t("donationModalTitle")}
+        body={t("donationModalBody")}
+        primaryButtonText={t("donationModalButtonText")}
         visible={donationModalVisible}
         onClose={closeDonationModal}
         primaryButtonCallback={closeDonationModal}
       />
       <ModalIcon
         icon={chosenNgo?.image}
-        title={t("donations.causesPage.confirmModalTitle")}
+        title={t("confirmModalTitle")}
         body={chosenNgo?.impactDescription}
-        primaryButtonText={t(
-          "donations.causesPage.confirmModalPrimaryButtonText",
-        )}
+        primaryButtonText={t("confirmModalPrimaryButtonText")}
         primaryButtonCallback={donate}
-        secondaryButtonText={t(
-          "donations.causesPage.confirmModalSecondaryButtonText",
-        )}
+        secondaryButtonText={t("confirmModalSecondaryButtonText")}
         secondaryButtonCallback={closeConfirmModal}
         visible={confirmModalVisible}
         onClose={closeConfirmModal}
@@ -59,15 +57,15 @@ function CausesPage(): JSX.Element {
 
       <Header sideLogo="https://i.imgur.com/kJA77FC.png" />
       <S.BodyContainer>
-        <S.Title>Causes</S.Title>
-        <S.Text>Donate for free for a cause of your choice</S.Text>
+        <S.Title>{t("pageTitle")}</S.Title>
+        <S.Text>{t("pageSubtitle")}</S.Text>
         <S.CausesContainer>
-          {ngos.map((ngo) => (
-            <S.CausesCardContainer>
+          {ngos.map((ngo, idx) => (
+            <S.CausesCardContainer key={idx.toString()}>
               <CardCenterImageButton
                 image={ngo.image}
                 title={ngo.impactDescription}
-                buttonText={t("donations.causesPage.donateText")}
+                buttonText={t("donateText")}
                 onClickButton={() => {
                   chooseNgo(ngo);
                 }}
