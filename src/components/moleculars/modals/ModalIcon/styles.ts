@@ -44,6 +44,15 @@ export const BiggerIcon = styled.img`
   margin: -64px auto 16px auto;
 `;
 
+export const RoundIcon = styled.img`
+  display: block;
+  width: 96px;
+  height: 96px;
+  margin: -64px auto 8px auto;
+  border-radius: 70px;
+  object-fit: cover;
+`;
+
 export const Image = styled.img`
   width: 100%;
   height: 152px;

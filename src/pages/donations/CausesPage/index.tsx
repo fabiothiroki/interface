@@ -10,9 +10,21 @@ import * as S from "./styles";
 function CausesPage(): JSX.Element {
   const [ngos] = useState<Ngo[]>([ngoFactory(), ngoFactory()]);
   const [donationModalVisible, setDonationModalVisible] = useState(true);
+  const [confirmModalVisible, setConfirmModalVisible] = useState(false);
+  const [chosenNgo, setChosenNgo] = useState<Ngo>();
 
-  const closeModal = useCallback(() => {
+  const closeDonationModal = useCallback(() => {
     setDonationModalVisible(false);
+  }, []);
+
+  const closeConfirmModal = useCallback(() => {
+    setConfirmModalVisible(false);
+  }, []);
+
+  const donate = useCallback(() => {}, []);
+  const chooseNgo = useCallback((ngo: Ngo) => {
+    setChosenNgo(ngo);
+    setConfirmModalVisible(true);
   }, []);
 
   return (
@@ -23,9 +35,22 @@ function CausesPage(): JSX.Element {
         body="Choose one cause and send a donation sponsored by Ribon’s supporters."
         primaryButtonText="Continue"
         visible={donationModalVisible}
-        onClose={closeModal}
-        primaryButtonCallback={closeModal}
+        onClose={closeDonationModal}
+        primaryButtonCallback={closeDonationModal}
       />
+      <ModalIcon
+        icon={chosenNgo?.image}
+        title="Confirm your donation"
+        body="Choose one cause and send a donation sponsored by Ribon’s supporters."
+        primaryButtonText="Confirm"
+        primaryButtonCallback={donate}
+        secondaryButtonText="Cancel"
+        secondaryButtonCallback={closeConfirmModal}
+        visible={confirmModalVisible}
+        onClose={closeConfirmModal}
+        roundIcon
+      />
+
       <Header sideLogo="https://i.imgur.com/kJA77FC.png" />
       <S.BodyContainer>
         <S.Title>Causes</S.Title>
@@ -37,7 +62,9 @@ function CausesPage(): JSX.Element {
                 image={ngo.image}
                 title={ngo.impactDescription}
                 buttonText="Donate"
-                onClickButton={() => {}}
+                onClickButton={() => {
+                  chooseNgo(ngo);
+                }}
               />
             </S.CausesCardContainer>
           ))}

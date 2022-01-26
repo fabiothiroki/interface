@@ -9,6 +9,7 @@ export type Props = {
   visible?: boolean;
   icon?: string | null;
   biggerIcon?: boolean;
+  roundIcon?: boolean;
   title?: string | null;
   titleColor?: string;
   body?: string | null;
@@ -38,6 +39,7 @@ function ModalIcon({
   visible = false,
   icon = null,
   biggerIcon = false,
+  roundIcon = false,
   title = null,
   titleColor,
   body = null,
@@ -58,6 +60,13 @@ function ModalIcon({
   highlightedText,
   customStyles,
 }: Props): JSX.Element {
+  function renderIcon() {
+    if (biggerIcon) return icon && <S.BiggerIcon src={icon} />;
+    if (roundIcon) return icon && <S.RoundIcon src={icon} />;
+
+    return icon && <S.Icon src={icon} />;
+  }
+
   return (
     <S.ModalWithIcon
       isOpen={visible}
@@ -66,9 +75,7 @@ function ModalIcon({
       contentLabel={contentLabel}
       ariaHideApp={false}
     >
-      {biggerIcon
-        ? icon && <S.BiggerIcon src={icon} />
-        : icon && <S.Icon src={icon} />}
+      {renderIcon()}
       {title && <S.Title color={titleColor}>{title}</S.Title>}
       {body && (
         <S.Body>
