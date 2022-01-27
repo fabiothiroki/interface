@@ -1,4 +1,5 @@
 import firebase from "firebase/app";
+import "firebase/analytics";
 
 export function initializeFirebase(): firebase.app.App {
   const firebaseConfig = {
