@@ -27,7 +27,6 @@ export function logEvent(eventName: string, params?: EventParams): void {
         ? convertParamsToString(params)
         : undefined;
 
-      console.log(eventName);
       firebase.analytics().logEvent(eventName, convertedParams);
     }
   } catch (error) {
