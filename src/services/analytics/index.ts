@@ -1,10 +1,5 @@
-import {
-  logEvent as logAnalyticsEvent,
-  setUserId as setAnalyticsUserId,
-  CustomParams,
-  setUserProperties as setAnalyticsUserProperties,
-} from "@firebase/analytics";
-import { analyticsInstance } from "services/index";
+import firebase from "firebase/app";
+import "firebase/analytics";
 import { logError } from "../crashReport";
 
 interface EventParams {
@@ -32,7 +27,8 @@ export function logEvent(eventName: string, params?: EventParams): void {
         ? convertParamsToString(params)
         : undefined;
 
-      logAnalyticsEvent(analyticsInstance, eventName, convertedParams);
+      console.log(eventName);
+      firebase.analytics().logEvent(eventName, convertedParams);
     }
   } catch (error) {
     if (!(error instanceof EventNameTooLongError)) {
@@ -41,14 +37,17 @@ export function logEvent(eventName: string, params?: EventParams): void {
   }
 }
 
-export function setUserProperties(properties: CustomParams): void {
+export function setUserProperties(
+  properties: firebase.analytics.CustomParams,
+): void {
   try {
-    setAnalyticsUserProperties(analyticsInstance, properties);
+    firebase.analytics().setUserProperties(properties);
   } catch (error) {
     logError(error, "Error sending properties to analytics");
   }
 }
 
 export function setUserId(userId: number): void {
-  setAnalyticsUserId(analyticsInstance, userId.toString());
+  const preparedUserId = userId.toString();
+  firebase.analytics().setUserId(preparedUserId);
 }

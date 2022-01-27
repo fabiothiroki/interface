@@ -1,7 +1,6 @@
-import { initializeApp, FirebaseApp } from "@firebase/app";
-import { getAnalytics } from "@firebase/analytics";
+import firebase from "firebase/app";
 
-export function initializeFirebase(): FirebaseApp {
+export function initializeFirebase(): firebase.app.App {
   const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -12,7 +11,5 @@ export function initializeFirebase(): FirebaseApp {
     measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
   };
 
-  return initializeApp(firebaseConfig);
+  return firebase.initializeApp(firebaseConfig);
 }
-
-export const analyticsInstance = getAnalytics(initializeFirebase());
