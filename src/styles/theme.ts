@@ -34,7 +34,8 @@ const theme: ThemeType = {
     ribonWhite: "#FFFFFF",
     phcYellow2: "#FF8F00",
     ribonTransparent: "rgba(255, 255, 255, 0)",
-    ribonShadow: "rgba(192, 192, 192, 0.75)",
+    ribonShadow: "rgba(24, 86, 105, 0.15)",
+    modalBackground: "rgba(24, 86, 105, 0.6)",
   },
   spacings: {},
   breakpoints: {

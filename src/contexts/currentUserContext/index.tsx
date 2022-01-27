@@ -7,7 +7,7 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import User from "types/User";
+import User from "types/entities/User";
 
 export interface ICurrentUserContext {
   currentUser: User | undefined;
