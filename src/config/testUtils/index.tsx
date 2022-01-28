@@ -106,6 +106,9 @@ export function renderComponent(
 export function expectTextToBeInTheDocument(text: string) {
   return expect(screen.getByText(text)).toBeInTheDocument();
 }
+export function expectImageToBeInTheDocument(alt: string) {
+  return expect(screen.getByAltText(alt)).toBeInTheDocument();
+}
 
 export function clickOn(text: string) {
   return fireEvent.click(screen.getByText(text));

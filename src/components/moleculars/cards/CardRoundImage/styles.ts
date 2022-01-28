@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 export const Container = styled.div`
   ${() => css``}
 `;
-export const RigthImage = styled.img`
+export const RightImage = styled.img`
   ${({ theme }) => css`
     position: absolute;
     width: 168px;
