@@ -6,7 +6,10 @@ function DonationDonePage(): JSX.Element {
   return (
     <S.Container>
       <h1>DonationDonePage</h1>
-      <CardRoundDoubleImage/>
+      <CardRoundDoubleImage
+        leftImage="https://picsum.photos/200/300"
+        rightImage="https://picsum.photos/200/300"
+      />
 
       <CardSideSquareImageButton
         title="About Amor em Patas"
