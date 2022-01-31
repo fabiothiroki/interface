@@ -14,7 +14,6 @@ jest.mock(
 
 describe("Causes", () => {
   beforeEach(() => {
-    console.log(Header, Causes);
     renderComponent(<Causes />);
   });
 
