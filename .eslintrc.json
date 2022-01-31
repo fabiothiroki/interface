@@ -51,7 +51,9 @@
         "react/jsx-wrap-multilines": "off",
         "@typescript-eslint/no-empty-function": "off",
         "no-else-return": "off",
-        "no-unused-vars": ["error", { "args": "none" }]
+        "no-unused-vars": ["error", { "args": "none" }],
+        "@typescript-eslint/no-explicit-any": "off",
+        "func-names": "off"
     },
     "settings": {
         "import/resolver": {

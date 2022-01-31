@@ -3,7 +3,7 @@ import { AddressZero } from "@ethersproject/constants";
 import { Contract } from "@ethersproject/contracts";
 import { Signer } from "ethers";
 
-export function isAddress(value: any): string | false {
+export function isAddress(value: string): string | false {
   try {
     return getAddress(value);
   } catch {
