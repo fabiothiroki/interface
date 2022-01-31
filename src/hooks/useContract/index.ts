@@ -2,7 +2,7 @@ import { Contract } from "@ethersproject/contracts";
 import { useMemo } from "react";
 import { getContract } from "utils/contractUtils";
 import { Web3Provider } from "@ethersproject/providers";
-import { logError } from "../../services/crashReport";
+import { logError } from "services/crashReport";
 
 type Props = {
   address: string;

@@ -14,6 +14,7 @@ declare global {
 window.ethereum = window.ethereum || {};
 initializeFirebase();
 initializeSentry();
+console.log(process.env);
 
 ReactDOM.render(
   <React.StrictMode>
