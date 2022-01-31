@@ -3,7 +3,13 @@ import { expectTextToBeInTheDocument, renderComponent } from "config/testUtils";
 import Header from "components/atomics/sections/Header";
 import Causes from ".";
 
-// jest.mock("components/atomics/sections/Header", () => jest.fn(() => <div />));
+jest.mock(
+  "components/atomics/sections/Header",
+  () =>
+    function () {
+      return null;
+    },
+);
 // const spy = jest.spyOn(Header, "Header");
 
 describe("Causes", () => {
