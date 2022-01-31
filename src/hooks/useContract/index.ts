@@ -2,6 +2,7 @@ import { Contract } from "@ethersproject/contracts";
 import { useMemo } from "react";
 import { getContract } from "utils/contractUtils";
 import { Web3Provider } from "@ethersproject/providers";
+import { logError } from "services/crashReport";
 
 type Props = {
   address: string;
@@ -24,7 +25,7 @@ export function useContract<T extends Contract = Contract>({
 
       return null;
     } catch (error) {
-      console.error("Failed to get contract", error);
+      logError(error);
       return null;
     }
   }, [address, ABI]) as T;
