@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "ribon-dapp"
+    "default": "ribon-dapp",
+    "staging": "ribon-dapp-staging"
   }
 }
