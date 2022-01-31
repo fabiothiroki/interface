@@ -8,10 +8,10 @@ function DonationInProcesPage(): JSX.Element {
       <Header sideLogo="https://i.imgur.com/kJA77FC.png" />
       <S.BodyContainer>
         <CardRoundImage
-          rightImage="https://i.imgur.com/usCwtqX.png"
-          leftImage="https://i.imgur.com/0ReKH37.png"
+          leftImage=" https://i.imgur.com/0ReKH37.png"
           centerImage="https://i.imgur.com/XcuQwoJ.png"
           bottomImage="https://i.imgur.com/5oJSpVO.png"
+          rightImage="https://i.imgur.com/usCwtqX.png"
         />
       </S.BodyContainer>
       <S.AnimationContainer>
