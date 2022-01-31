@@ -7,6 +7,7 @@ import Heart from "assets/images/heart.svg";
 import ModalIcon from "components/moleculars/modals/ModalIcon";
 import { useTranslation } from "react-i18next";
 import { logEvent } from "services/analytics";
+import useNavigation from "hooks/useNavigation";
 import * as S from "./styles";
 
 function CausesPage(): JSX.Element {
@@ -17,6 +18,7 @@ function CausesPage(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "donations.causesPage",
   });
+  const { navigateTo } = useNavigation();
 
   useEffect(() => {
     logEvent("donateIntroDial_view");
@@ -45,6 +47,7 @@ function CausesPage(): JSX.Element {
       causeId: ngo.id,
     });
     chooseNgo(ngo);
+    navigateTo("/donation-in-process");
   }
 
   return (

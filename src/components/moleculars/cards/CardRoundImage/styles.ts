@@ -1,7 +1,10 @@
 import styled, { css } from "styled-components";
 
 export const Container = styled.div`
-  ${() => css``}
+  ${() => css`
+    position: relative;
+    width: 100%;
+  `}
 `;
 export const RightImage = styled.img`
   ${({ theme }) => css`
@@ -60,6 +63,5 @@ export const BottomImage = styled.img`
     width: 56px;
     height: 48px;
     margin: 16px 12px 16px 12px;
-    background: url(amor-em-patas-logo.png);
   `}
 `;
