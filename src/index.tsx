@@ -14,6 +14,7 @@ declare global {
 window.ethereum = window.ethereum || {};
 initializeFirebase();
 initializeSentry();
+// eslint-disable-next-line no-console
 console.log(process.env);
 
 ReactDOM.render(
