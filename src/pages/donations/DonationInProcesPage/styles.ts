@@ -2,7 +2,6 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-
   ${({ theme }) => css`
     @media (min-width: ${theme.breakpoints.pad}) {
       display: flex;
@@ -15,13 +14,12 @@ export const Container = styled.div`
 
 export const BodyContainer = styled.div`
   width: 100%;
-
   ${({ theme }) => css`
     @media (min-width: ${theme.breakpoints.pad}) {
       display: flex;
       flex-direction: column;
       align-items: center;
-      flex-grow: 3;
+      margin: 20px 460px 100px 460px;
     }
   `}
 `;
@@ -33,16 +31,37 @@ export const AnimationContainer = styled.div`
       flex-direction: column;
       align-items: center;
       flex-grow: 1;
-
+      height: 52px;
+      width: 320px;
   `}
 `;
 
-export const AnimationText = styled.h4`
-  margin: 4px 0;
+export const LoaderContainer = styled.div`
+  ${({ theme }) => css`
+    @media (min-width: ${theme.breakpoints.pad}) {
+      display: flex;
+  `}
+`;
 
+export const Divider = styled.span`
+  ${() => css`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 48px;
+    height: 1px;
+    border-radius: 2px;
+    margin: 20px 10px;
+    font-weight: 900;
+  `}
+`;
+
+export const AnimationText = styled.h2`
+  margin: 4px 0;
   ${({ theme }) => css`
     @media (min-width: ${theme.breakpoints.pad}) {
       color: ${theme.colors.ribonBlue};
+      text-align: center;
     }
   `}
 `;
@@ -50,5 +69,7 @@ export const AnimationText = styled.h4`
 export const ImpactText = styled.h3`
   ${({ theme }) => css`
     color: ${theme.colors.darkGray};
+    text-align: center;
+    margin-top: 20px;
   `}
 `;

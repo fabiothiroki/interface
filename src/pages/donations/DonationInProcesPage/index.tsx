@@ -1,3 +1,4 @@
+import Loader from "components/atomics/Loader";
 import Header from "components/atomics/sections/Header";
 import CardRoundImage from "components/moleculars/cards/CardRoundImage";
 import * as S from "./styles";
@@ -15,7 +16,11 @@ function DonationInProcesPage(): JSX.Element {
         />
       </S.BodyContainer>
       <S.AnimationContainer>
-        <S.AnimationText>Donating...</S.AnimationText>
+        <S.LoaderContainer>
+          <Loader />
+          <S.AnimationText>Donating...</S.AnimationText>
+        </S.LoaderContainer>
+        <S.Divider>____</S.Divider>
         <S.ImpactText>
           Ribon’s supporters are those responsible for paying for the free
           donations
