@@ -1,15 +1,12 @@
 import { AxiosResponse } from "axios";
 import api from "..";
-import store from "../../../store";
 
 const {{camelCase name}}Api = {
-// FIXME: CHANGE THIS "ANY" RETURN TYPE ON AXIOS_RESPONSE!
-// For example: if you're getting a list of feeds you can have a AxiosResponse<Feed[]>
+  // FIXME: CHANGE THIS "ANY" RETURN TYPE ON AXIOS_RESPONSE!
+  // For example: if you're getting a list of feeds you can have a AxiosResponse<Feed[]>
   exampleFunction: (): Promise<AxiosResponse<any>> => {
-    const { user } = store.getState();
+    return api.get("/api/v1/sample_url");
+  },
+};
 
-    return api.get("/v3/sample_url", { headers: { Authorization: user.accessToken } });
-    },
-    };
-
-    export default {{camelCase name}}Api;
+export default {{camelCase name}}Api;
