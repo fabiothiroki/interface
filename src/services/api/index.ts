@@ -1,4 +1,4 @@
-import Axios from "axios";
+import Axios, { AxiosRequestConfig } from "axios";
 import camelCaseKeys from "camelcase-keys";
 import snakeCaseKeys from "snakecase-keys";
 
@@ -36,5 +36,29 @@ api.interceptors.request.use((config) => {
 
   return config;
 });
+
+export function apiGet(url: string, config?: AxiosRequestConfig) {
+  if (config) return api.get(`${API_SCOPE}/${url}`, config);
+
+  return api.get(`${API_SCOPE}/${url}`);
+}
+
+export function apiPost(url: string, data: any, config?: AxiosRequestConfig) {
+  if (config) return api.post(`${API_SCOPE}/${url}`, data, config);
+
+  return api.post(`${API_SCOPE}/${url}`, data);
+}
+
+export function apiPut(url: string, data: any, config?: AxiosRequestConfig) {
+  if (config) return api.put(`${API_SCOPE}/${url}`, data, config);
+
+  return api.put(`${API_SCOPE}/${url}`, data);
+}
+
+export function apiDelete(url: string, config?: AxiosRequestConfig) {
+  if (config) return api.delete(`${API_SCOPE}/${url}`, config);
+
+  return api.delete(`${API_SCOPE}/${url}`);
+}
 
 export default api;
