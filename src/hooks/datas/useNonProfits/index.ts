@@ -1,5 +1,4 @@
 import { useApi } from "hooks/useApi";
-
 import nonProfitsApi from "services/api/nonProfitsApi";
 import NonProfit from "types/entities/NonProfit";
 
