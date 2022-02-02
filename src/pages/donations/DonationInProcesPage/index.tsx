@@ -2,10 +2,14 @@ import Loader from "components/atomics/Loader";
 import Header from "components/atomics/sections/Header";
 import Divider from "components/atomics/Divider";
 import CardRoundImage from "components/moleculars/cards/CardRoundImage";
+import { useTranslation } from "react-i18next";
 import theme from "styles/theme";
 import * as S from "./styles";
 
 function DonationInProcesPage(): JSX.Element {
+  const { t } = useTranslation("translation", {
+    keyPrefix: "donationInProcess",
+  });
   return (
     <S.Container>
       <Header sideLogo="https://i.imgur.com/kJA77FC.png" />
@@ -20,15 +24,12 @@ function DonationInProcesPage(): JSX.Element {
       <S.AnimationContainer>
         <S.LoaderContainer>
           <Loader />
-          <S.AnimationText>Donating...</S.AnimationText>
+          <S.AnimationText>{t("animationText")}</S.AnimationText>
         </S.LoaderContainer>
         <S.DividerContainer>
           <Divider color={theme.colors.ribonBlack} width="48px" />
         </S.DividerContainer>
-        <S.ImpactText>
-          Ribon’s supporters are those responsible for paying for the free
-          donations
-        </S.ImpactText>
+        <S.ImpactText>{t("impactText")}</S.ImpactText>
       </S.AnimationContainer>
     </S.Container>
   );

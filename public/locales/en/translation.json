@@ -11,5 +11,9 @@
       "pageTitle": "Causes",
       "pageSubtitle": "Donate for free for a cause of your choice"
     }
+  },
+  "donationInProcess": {
+    "animationText": "Donating...",
+    "impactText": "Ribon’s supporters are those responsible for paying for the free donations"
   }
 }
