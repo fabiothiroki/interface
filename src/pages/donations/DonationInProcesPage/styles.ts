@@ -43,16 +43,10 @@ export const LoaderContainer = styled.div`
   `}
 `;
 
-export const Divider = styled.span`
+export const DividerContainer = styled.span`
   ${() => css`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 48px;
-    height: 1px;
-    border-radius: 2px;
-    margin: 20px 10px;
-    font-weight: 900;
+    margin: 24px 20px;
+    text-align: center;
   `}
 `;
 

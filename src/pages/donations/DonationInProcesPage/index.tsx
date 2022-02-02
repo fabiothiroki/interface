@@ -1,6 +1,8 @@
 import Loader from "components/atomics/Loader";
 import Header from "components/atomics/sections/Header";
+import Divider from "components/atomics/Divider";
 import CardRoundImage from "components/moleculars/cards/CardRoundImage";
+import theme from "styles/theme";
 import * as S from "./styles";
 
 function DonationInProcesPage(): JSX.Element {
@@ -20,7 +22,9 @@ function DonationInProcesPage(): JSX.Element {
           <Loader />
           <S.AnimationText>Donating...</S.AnimationText>
         </S.LoaderContainer>
-        <S.Divider>____</S.Divider>
+        <S.DividerContainer>
+          <Divider color={theme.colors.ribonBlack} width="48px" />
+        </S.DividerContainer>
         <S.ImpactText>
           Ribon’s supporters are those responsible for paying for the free
           donations
