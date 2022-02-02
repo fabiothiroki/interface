@@ -1,9 +1,12 @@
 import styled, { css } from "styled-components";
 
 export const Container = styled.div`
-  width: 100%;
+  min-height: 640px;
+  min-width: 434px;
+
   ${({ theme }) => css`
     @media (min-width: ${theme.breakpoints.pad}) {
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;

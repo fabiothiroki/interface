@@ -24,7 +24,9 @@ function CardFullImage({
 }: Props): JSX.Element {
   return (
     <S.Container backgroundImage={backgroundImage}>
-      {roundImage ? <S.RoundLogo src={roundImage} alt="logo" /> : <div />}
+      <S.ImageContainer>
+        {roundImage ? <S.RoundLogo src={roundImage} alt="logo" /> : <div />}
+      </S.ImageContainer>
       <S.TextContainer>
         <S.TitleContainer>
           {loading && <Loader color={ribonWhite} width={25} height={25} />}
