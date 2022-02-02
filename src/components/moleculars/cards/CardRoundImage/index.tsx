@@ -22,12 +22,18 @@ function CardRoundImage({
 }: Props): JSX.Element {
   return (
     <S.Container>
-      <S.RightImage src={rightImage} alt={rightImageAlt} />
-      <S.LeftImage src={leftImage} alt={leftImageAlt} />
-      <S.CenterImage src={centerImage} alt={centerImageAlt} />
-      <S.BottomImageContainer>
-        <S.BottomImage src={bottomImage} alt={bottomImageAlt} />
-      </S.BottomImageContainer>
+      <S.Column>
+        <S.BoxImage>
+          <S.RightImage src={rightImage} alt={rightImageAlt} />
+          <S.CenterImage src={centerImage} alt={centerImageAlt} />
+          <S.LeftImage src={leftImage} alt={leftImageAlt} />
+        </S.BoxImage>
+        <S.BoxBottomImage>
+          <S.BottomImageContainer>
+            <S.BottomImage src={bottomImage} alt={bottomImageAlt} />
+          </S.BottomImageContainer>
+        </S.BoxBottomImage>
+      </S.Column>
     </S.Container>
   );
 }
