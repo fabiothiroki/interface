@@ -33,6 +33,7 @@ function CausesPage(): JSX.Element {
   }, []);
 
   const donate = useCallback(() => {
+    navigateTo("/donation-in-process");
     logEvent("donateConfirmDialButton_click", {
       causeId: chosenNgo?.id,
     });
@@ -47,7 +48,7 @@ function CausesPage(): JSX.Element {
       causeId: ngo.id,
     });
     chooseNgo(ngo);
-    navigateTo("/donation-in-process");
+    setConfirmModalVisible(true);
   }
 
   return (
