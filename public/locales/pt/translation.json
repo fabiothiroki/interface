@@ -10,10 +10,10 @@
       "donateText": "Doar",
       "pageTitle": "Causas",
       "pageSubtitle": "Doe de graça para uma causa de sua escolha"
+    },
+    "donationInProcess": {
+      "animationText": "Doando...",
+      "impactText": "Os apoiadores da Ribon são os responsáveis pelo pagamento das doações gratuitas"
     }
-  },
-  "donationInProcess": {
-    "animationText": "Doando...",
-    "impactText": "Os apoiadores da Ribon são os responsáveis pelo pagamento das doações gratuitas"
   }
 }

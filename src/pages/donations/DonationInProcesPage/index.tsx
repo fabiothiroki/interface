@@ -8,7 +8,7 @@ import * as S from "./styles";
 
 function DonationInProcesPage(): JSX.Element {
   const { t } = useTranslation("translation", {
-    keyPrefix: "donationInProcess",
+    keyPrefix: "donations.donationInProcess",
   });
   return (
     <S.Container>
