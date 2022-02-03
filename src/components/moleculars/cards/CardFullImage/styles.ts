@@ -20,8 +20,18 @@ export const Container = styled.div<ContainerProps>`
     align-items: center;
     justify-content: space-between;
     padding: 40px 0;
+
     @media (min-width: ${theme.breakpoints.pad}) {
     }
+  `}
+`;
+
+export const ImageContainer = styled.div`
+  ${({ theme }) => css`
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: ${theme.colors.ribonBlue};
   `}
 `;
 
