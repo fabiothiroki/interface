@@ -13,7 +13,7 @@ function DonationInProcesPage(): JSX.Element {
     keyPrefix: "donations.donationInProcess",
   });
 
-  const { isPad } = useBreakpoint();
+  const { isPad, isDesktop } = useBreakpoint();
 
   function renderMobile() {
     return (
@@ -54,7 +54,7 @@ function DonationInProcesPage(): JSX.Element {
     );
   }
 
-  return isPad ? renderResponsive() : renderMobile();
+  return isPad || isDesktop ? renderResponsive() : renderMobile();
 }
 
 export default DonationInProcesPage;

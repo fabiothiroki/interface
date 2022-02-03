@@ -2,7 +2,6 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   min-height: 640px;
-  min-width: 434px;
 
   ${({ theme }) => css`
     @media (min-width: ${theme.breakpoints.pad}) {
