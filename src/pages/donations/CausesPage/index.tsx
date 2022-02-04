@@ -8,6 +8,7 @@ import ModalIcon from "components/moleculars/modals/ModalIcon";
 import { useTranslation } from "react-i18next";
 import { logEvent } from "services/analytics";
 import useNavigation from "hooks/useNavigation";
+import useNonProfits from "hooks/apiHooks/useNonProfits";
 import * as S from "./styles";
 
 function CausesPage(): JSX.Element {
@@ -19,6 +20,11 @@ function CausesPage(): JSX.Element {
     keyPrefix: "donations.causesPage",
   });
   const { navigateTo } = useNavigation();
+  const { nonProfits } = useNonProfits();
+
+  useEffect(() => {
+    console.log(nonProfits);
+  }, [nonProfits]);
 
   useEffect(() => {
     logEvent("donateIntroDial_view");
