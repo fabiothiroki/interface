@@ -10,6 +10,11 @@
       "donateText": "Doar",
       "pageTitle": "Causas",
       "pageSubtitle": "Doe de graça para uma causa de sua escolha"
+    },
+    "donationDonePage": {
+      "title": "Obrigada pela sua doação!",
+      "subtitle": "1 dia de ração para animais resgatados",
+      "button": "Terminar"
     }
   }
 }

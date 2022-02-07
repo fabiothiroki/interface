@@ -8,7 +8,6 @@ export type Props = {
 function CardRoundDoubleImage({ leftImage, rightImage }: Props): JSX.Element {
   return (
     <S.Container>
-      <h1>CardRoundDoubleImage</h1>
       <S.ImageContainer>
         <S.LeftImage src={leftImage} />
         <S.RightImage src={rightImage} />

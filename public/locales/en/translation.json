@@ -10,6 +10,11 @@
       "donateText": "Donate",
       "pageTitle": "Causes",
       "pageSubtitle": "Donate for free for a cause of your choice"
+    },
+    "donationDonePage": {
+      "title": "Thank you for your donation!",
+      "subtitle": "1 day of pet food for rescued animals",
+      "button": "Finish"
     }
   }
 }
