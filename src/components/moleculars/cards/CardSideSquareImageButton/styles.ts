@@ -2,10 +2,13 @@ import styled, { css } from "styled-components";
 import Button from "components/atomics/Button";
 
 export const Container = styled.div`
-  ${() => css`
-    max-width: 344px;
-    height: 100%;
-    display: flex;
+  ${({ theme }) => css`
+  height: 100%;
+  display: flex;
+  margin-top: 40px;
+  max-width: 320px;
+  @media (min-width: ${theme.breakpoints.pad}) {
+    max-width: 390px;
   `}
 `;
 
