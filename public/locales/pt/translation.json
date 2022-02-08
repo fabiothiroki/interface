@@ -15,6 +15,10 @@
       "title": "Obrigada pela sua doação!",
       "subtitle": "1 dia de ração para animais resgatados",
       "button": "Terminar"
+    },
+    "donationInProcess": {
+      "animationText": "Doando...",
+      "impactText": "Os apoiadores da Ribon são os responsáveis pelo pagamento das doações gratuitas"
     }
   }
 }

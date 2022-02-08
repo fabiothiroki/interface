@@ -5,13 +5,15 @@ function componentLoader(
   attemptsLeft: number,
 ): Promise<{ default: ComponentType<any> }> {
   return new Promise((resolve, reject) => {
+    const { confirm, location } = window;
+
     lazyComponent()
       .then(resolve)
       .catch((error: any) => {
         setTimeout(() => {
           if (attemptsLeft === 1) {
-            if (window.confirm("Erro ao carregar página. Deseja atualizar?")) {
-              window.location.reload();
+            if (confirm("Erro ao carregar página. Deseja atualizar?")) {
+              location.reload();
             } else {
               reject(error);
               return;

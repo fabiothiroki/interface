@@ -15,6 +15,10 @@
       "title": "Thank you for your donation!",
       "subtitle": "1 day of pet food for rescued animals",
       "button": "Finish"
+    },
+    "donationInProcess": {
+      "animationText": "Donating...",
+      "impactText": "Ribon’s supporters are those responsible for paying for the free donations"
     }
   }
 }

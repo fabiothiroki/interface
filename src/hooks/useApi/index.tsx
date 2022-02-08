@@ -7,8 +7,8 @@ interface Props {
   fetchMethod(): Promise<AxiosResponse>;
   options?: UseQueryOptions<any, Error, any>;
 }
-export function useApi({ key, fetchMethod, options }: Props) {
-  const { isLoading, error, data, refetch } = useQuery<any, Error>(
+export function useApi<T>({ key, fetchMethod, options }: Props) {
+  const { isLoading, error, data, refetch } = useQuery<T, Error>(
     key,
     async () => {
       const { data: fetchData } = await fetchMethod();
