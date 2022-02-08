@@ -1,11 +1,15 @@
 import Divider from "components/atomics/Divider";
 import CardRoundDoubleImage from "components/moleculars/cards/CardRoundDoubleImage";
 import CardSideSquareImageButton from "components/moleculars/cards/CardSideSquareImageButton";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import theme from "styles/theme";
 import * as S from "./styles";
 
 function DonationDonePage(): JSX.Element {
+  const { t } = useTranslation("translation", {
+    keyPrefix: "donations.donationDonePage",
+  });
+
   return (
     <S.Container>
       <S.Wrapper>
@@ -13,25 +17,22 @@ function DonationDonePage(): JSX.Element {
           leftImage="https://i.imgur.com/usCwtqX.png"
           rightImage="https://picsum.photos/200/300"
         />
-        <S.Title>{t("donations.donationDonePage.title")}</S.Title>
-        <S.Subtitle>{t("donations.donationDonePage.subtitle")}</S.Subtitle>
+        <S.Title>{t("title")}</S.Title>
+        <S.Subtitle>{t("subtitle")}</S.Subtitle>
 
         <Divider color={theme.colors.lightGray} />
 
         <CardSideSquareImageButton
-          title="About Amor em Patas"
-          text="Amor em Patas is an organization that aims to rescue abandoned, take care of them and seek adoption"
+          title={t("ngoTitle")}
+          text={t("ngoInformation")}
           image="https://i.imgur.com/BwtK2hX.png"
           buttonText="More info"
           onButtonClick={() => {}}
         />
       </S.Wrapper>
-      
+
       <S.ButtonContainer>
-        <S.FinishButton
-          text={t("donations.donationDonePage.button")}
-          onClick={() => {}}
-        />
+        <S.FinishButton text={t("button")} onClick={() => {}} />
       </S.ButtonContainer>
     </S.Container>
   );

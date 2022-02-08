@@ -14,7 +14,9 @@
     "donationDonePage": {
       "title": "Obrigada pela sua doação!",
       "subtitle": "1 dia de ração para animais resgatados",
-      "button": "Terminar"
+      "button": "Terminar",
+      "ngoTitle": "Sobre Amor em Patas",
+      "ngoInformation": "Amor em Patas é uma organização que tem como objetivo resgatar animais abandonados, cuidar deles e buscar adoção."
     },
     "donationInProcess": {
       "animationText": "Doando...",
