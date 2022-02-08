@@ -8,15 +8,15 @@ import * as S from "./styles";
 function DonationDonePage(): JSX.Element {
   return (
     <S.Container>
-      <div>
+      <S.Wrapper>
         <CardRoundDoubleImage
-          leftImage="https://picsum.photos/200/300"
+          leftImage="https://i.imgur.com/usCwtqX.png"
           rightImage="https://picsum.photos/200/300"
         />
         <S.Title>{t("donations.donationDonePage.title")}</S.Title>
-        <S.Subtitle>{t("donations.donationDonePage.subtitle")}</S.Subtitle>      
+        <S.Subtitle>{t("donations.donationDonePage.subtitle")}</S.Subtitle>
 
-        <Divider color={theme.colors.ribonBlue}/>
+        <Divider color={theme.colors.lightGray} />
 
         <CardSideSquareImageButton
           title="About Amor em Patas"
@@ -25,7 +25,14 @@ function DonationDonePage(): JSX.Element {
           buttonText="More info"
           onButtonClick={() => {}}
         />
-      </div>
+      </S.Wrapper>
+      
+      <S.ButtonContainer>
+        <S.FinishButton
+          text={t("donations.donationDonePage.button")}
+          onClick={() => {}}
+        />
+      </S.ButtonContainer>
     </S.Container>
   );
 }

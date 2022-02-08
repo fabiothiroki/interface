@@ -5,7 +5,7 @@ export const Container = styled.div`
   ${({ theme }) => css`
   height: 100%;
   display: flex;
-  margin-top: 40px;
+  margin-top: 24px;
   max-width: 320px;
   
   @media (min-width: ${theme.breakpoints.pad}) {
