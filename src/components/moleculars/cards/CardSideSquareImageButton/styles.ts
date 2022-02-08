@@ -6,8 +6,7 @@ export const Container = styled.div`
   height: 100%;
   display: flex;
   margin-top: 24px;
-  max-width: 320px;
-  
+  padding:20px;
   @media (min-width: ${theme.breakpoints.pad}) {
     max-width: 390px;
   `}

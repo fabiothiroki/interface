@@ -1,4 +1,3 @@
-import Divider from "components/atomics/Divider";
 import CardRoundDoubleImage from "components/moleculars/cards/CardRoundDoubleImage";
 import CardSideSquareImageButton from "components/moleculars/cards/CardSideSquareImageButton";
 import { useTranslation } from "react-i18next";
@@ -20,7 +19,7 @@ function DonationDonePage(): JSX.Element {
         <S.Title>{t("title")}</S.Title>
         <S.Subtitle>{t("subtitle")}</S.Subtitle>
 
-        <Divider color={theme.colors.lightGray} />
+        <S.HrDivider color={theme.colors.lightGray} width="90%" />
 
         <CardSideSquareImageButton
           title={t("ngoTitle")}

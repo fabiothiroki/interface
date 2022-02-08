@@ -1,19 +1,19 @@
 import styled, { css } from "styled-components";
 import Button from "components/atomics/Button";
+import Divider from "components/atomics/Divider";
 
 export const Container = styled.div`
   ${() => css`
     display: grid;
-    grid-template-rows: [line-2] 80px;
+    grid-gap: 0px; // grid-template-rows: [line-2] 80px;
     height: 100vh;
     width: 100%;
-    justify-content: center;
+    align-items: center;
   `}
 `;
 
 export const Wrapper = styled.div`
   ${() => css`
-    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -51,6 +51,11 @@ export const ButtonContainer = styled.div`
   `}
 `;
 
+export const HrDivider = styled(Divider)`
+  padding: 0 100px;
+  width: 50px;
+`;
+
 export const FinishButton = styled(Button)`
-  margin-top: 20px;
+  margin: 0 auto;
 `;
