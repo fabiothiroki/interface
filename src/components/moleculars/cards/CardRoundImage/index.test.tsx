@@ -7,12 +7,7 @@ import CardRoundImage from ".";
 describe("CardRoundImage", () => {
   it("should render without error", () => {
     renderComponent(
-      <CardRoundImage
-        image=""
-        logo=""
-        imageAlt="image"
-        logoAlt="imageLogoAlt"
-      />,
+      <CardRoundImage image="" logo="" imageAlt="image" logoAlt="logoAlt" />,
     );
 
     expectImageToBeInTheDocument("image");
