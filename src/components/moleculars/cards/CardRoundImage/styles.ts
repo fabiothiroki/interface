@@ -26,9 +26,7 @@ export const BoxImage = styled.div`
 export const CenterImage = styled.img`
   ${({ theme }) => css`
     z-index: 2;
-    width: 256px;
-    height: 256px;
-    top: 173px;
+    width: 100%;
     border-radius: 50%;
     border: solid 5px ${theme.colors.ribonWhite};
     filter: drop-shadow(0px 20px 40px ${theme.colors.ribonShadow});
