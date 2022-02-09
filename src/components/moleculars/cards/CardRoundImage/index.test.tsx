@@ -8,15 +8,15 @@ describe("CardRoundImage", () => {
   it("should render without error", () => {
     renderComponent(
       <CardRoundImage
-        centerImage=""
+        logoImage=""
         bottomImage=""
         rightImageAlt="rightImage"
-        centerImageAlt="centerImage"
+        logoImageAlt="logoImage"
         bottomImageAlt="bottomImage"
       />,
     );
 
-    expectImageToBeInTheDocument("centerImage");
+    expectImageToBeInTheDocument("logoImage");
     expectImageToBeInTheDocument("bottomImage");
   });
 });
