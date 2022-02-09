@@ -17,7 +17,7 @@ export const CenterImage = styled.img`
   `}
 `;
 
-export const BottomImageContainer = styled.div`
+export const LogoContainer = styled.div`
   ${({ theme }) => css`
     @media (min-width: ${theme.breakpoints.pad}) {
       display: flex;
@@ -32,7 +32,7 @@ export const BottomImageContainer = styled.div`
   `}
 `;
 
-export const BottomImage = styled.img`
+export const LogoImage = styled.img`
   ${() => css`
     width: 56px;
     height: 48px;

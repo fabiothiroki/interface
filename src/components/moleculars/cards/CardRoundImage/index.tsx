@@ -15,9 +15,9 @@ function CardRoundImage({
   return (
     <S.Container>
       <S.CenterImage src={image} alt={imageAlt} />
-      <S.BottomImageContainer>
-        <S.BottomImage src={logo} alt={logoAlt} />
-      </S.BottomImageContainer>
+      <S.LogoContainer>
+        <S.LogoImage src={logo} alt={logoAlt} />
+      </S.LogoContainer>
     </S.Container>
   );
 }
