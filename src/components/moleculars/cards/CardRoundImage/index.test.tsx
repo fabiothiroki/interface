@@ -10,7 +10,7 @@ describe("CardRoundImage", () => {
       <CardRoundImage
         image=""
         bottomImage=""
-        imageAlt="logoImage"
+        imageAlt="image"
         bottomImageAlt="bottomImage"
       />,
     );

@@ -3,7 +3,6 @@ import * as S from "./styles";
 export type Props = {
   image: string;
   bottomImage: string;
-  rightImageAlt?: string;
   imageAlt?: string;
   bottomImageAlt?: string;
 };
