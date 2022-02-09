@@ -4,25 +4,24 @@ export const Container = styled.div`
   min-height: 640px;
 
   ${({ theme }) => css`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // justify-content: center;
     @media (min-width: ${theme.breakpoints.pad}) {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      // width: 100%;
     }
   `}
 `;
 
-export const BodyContainer = styled.div`
-  width: 100%;
-  padding: 70px;
+export const CardRoundImageContainer = styled.div`
+  //padding: 4px;
+  width: 256px;
+  margin: 20px;
   ${({ theme }) => css`
     @media (min-width: ${theme.breakpoints.pad}) {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 20px 460px 100px 460px;
+      //margin: 20px 460px 100px 460px;
+      // padding: 50px;
     }
   `}
 `;

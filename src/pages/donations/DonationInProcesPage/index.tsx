@@ -12,12 +12,12 @@ function DonationInProcesPage(): JSX.Element {
 
   return (
     <S.Container>
-      <S.BodyContainer>
+      <S.CardRoundImageContainer>
         <CardRoundImage
-          centerImage="https://i.imgur.com/XcuQwoJ.png"
+          image="https://i.imgur.com/XcuQwoJ.png"
           bottomImage="https://i.imgur.com/5oJSpVO.png"
         />
-      </S.BodyContainer>
+      </S.CardRoundImageContainer>
       <S.AnimationContainer>
         <S.LoaderContainer>
           <Loader />
