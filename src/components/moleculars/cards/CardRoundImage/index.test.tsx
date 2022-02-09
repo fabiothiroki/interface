@@ -9,13 +9,13 @@ describe("CardRoundImage", () => {
     renderComponent(
       <CardRoundImage
         image=""
-        bottomImage=""
+        imageLogo=""
         imageAlt="image"
-        bottomImageAlt="bottomImage"
+        imageLogoAlt="imageLogoAlt"
       />,
     );
 
     expectImageToBeInTheDocument("image");
-    expectImageToBeInTheDocument("bottomImage");
+    expectImageToBeInTheDocument("imageLogoAlt");
   });
 });
