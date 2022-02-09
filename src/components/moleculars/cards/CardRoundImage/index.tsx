@@ -1,21 +1,21 @@
 import * as S from "./styles";
 
 export type Props = {
-  logoImage: string;
+  image: string;
   bottomImage: string;
   rightImageAlt?: string;
-  logoImageAlt?: string;
+  imageAlt?: string;
   bottomImageAlt?: string;
 };
 function CardRoundImage({
-  logoImage,
+  image,
   bottomImage,
-  logoImageAlt,
+  imageAlt,
   bottomImageAlt,
 }: Props): JSX.Element {
   return (
     <S.Container>
-      <S.CenterImage src={logoImage} alt={logoImageAlt} />
+      <S.CenterImage src={image} alt={imageAlt} />
       <S.BottomImageContainer>
         <S.BottomImage src={bottomImage} alt={bottomImageAlt} />
       </S.BottomImageContainer>

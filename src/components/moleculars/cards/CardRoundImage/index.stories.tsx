@@ -13,6 +13,6 @@ const Template: ComponentStory<typeof CardRoundImage> = function (args: Props) {
 export const Default = Template.bind({});
 
 Default.args = {
-  logoImage: "https://i.imgur.com/XcuQwoJ.png0",
+  image: "https://i.imgur.com/XcuQwoJ.png0",
   bottomImage: "https://i.imgur.com/5oJSpVO.png",
 };
