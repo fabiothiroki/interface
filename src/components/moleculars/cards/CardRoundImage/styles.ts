@@ -23,45 +23,6 @@ export const BoxImage = styled.div`
   `}
 `;
 
-export const LeftImage = styled.img`
-  ${({ theme }) => css`
-    @media (min-width: ${theme.breakpoints.pad}) {
-      position: absolute;
-      width: 168px;
-      height: 168px;
-      left: 60%;
-      top: 20%;
-      border-radius: 50%;
-      border: solid 5px ${theme.colors.ribonWhite};
-      filter: drop-shadow(0px 20px 40px ${theme.colors.ribonShadow});
-      transform: matrix(-1, 0, 0, 1, 0, 0);
-    }
-    @media (min-width: ${theme.breakpoints.desktop}) {
-      left: 56%;
-      top: 22%;
-    }
-  `}
-`;
-
-export const RightImage = styled.img`
-  ${({ theme }) => css`
-    @media (min-width: ${theme.breakpoints.pad}) {
-      position: absolute;
-      width: 168px;
-      height: 168px;
-      left: 20%;
-      top: 20%;
-      border-radius: 50%;
-      border: solid 5px ${theme.colors.ribonWhite};
-      filter: drop-shadow(0px 20px 40px ${theme.colors.ribonShadow});
-    }
-    @media (min-width: ${theme.breakpoints.desktop}) {
-      left: 35%;
-      top: 22%;
-    }
-  `}
-`;
-
 export const CenterImage = styled.img`
   ${({ theme }) => css`
     z-index: 2;
