@@ -48,6 +48,8 @@ export const ButtonContainer = styled.div`
     width: 100%;
     padding: 12px 16px;
     align-self: end;
+    display: grid;
+    align-items: center;
   `}
 `;
 

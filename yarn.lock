@@ -1812,17 +1812,6 @@
     "@firebase/util" "1.2.0"
     tslib "^2.1.0"
 
-"@firebase/analytics@^0.7.5":
-  version "0.7.5"
-  resolved "https://registry.yarnpkg.com/@firebase/analytics/-/analytics-0.7.5.tgz#c12a2ea10067e8e0947bc54758750c65a700e79f"
-  integrity sha512-vrKDh84hBbKPJaU2oAZDewyC79D8opJOQZ5AU3BXBBwEfRjKt3C3jj/Vl6aJUme+RKXlomTw3xcHIOoPzTgBVA==
-  dependencies:
-    "@firebase/component" "0.5.10"
-    "@firebase/installations" "0.5.5"
-    "@firebase/logger" "0.3.2"
-    "@firebase/util" "1.4.3"
-    tslib "^2.1.0"
-
 "@firebase/app-check-interop-types@0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@firebase/app-check-interop-types/-/app-check-interop-types-0.1.0.tgz#83afd9d41f99166c2bdb2d824e5032e9edd8fe53"
@@ -1863,16 +1852,6 @@
     tslib "^2.1.0"
     xmlhttprequest "1.8.0"
 
-"@firebase/app@^0.7.14":
-  version "0.7.15"
-  resolved "https://registry.yarnpkg.com/@firebase/app/-/app-0.7.15.tgz#b437bc6a0a2f8c592fc40812084df63aa302435f"
-  integrity sha512-jZzopQ5rKC3QcivZ9tBsYjPWB0+d5+lSO4tASIgAia30pyACCFaN2M1PKX/lwoGmB+oklHzSIMu+iNtLUyDl2A==
-  dependencies:
-    "@firebase/component" "0.5.10"
-    "@firebase/logger" "0.3.2"
-    "@firebase/util" "1.4.3"
-    tslib "^2.1.0"
-
 "@firebase/auth-interop-types@0.1.6":
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/@firebase/auth-interop-types/-/auth-interop-types-0.1.6.tgz#5ce13fc1c527ad36f1bb1322c4492680a6cf4964"
@@ -1889,14 +1868,6 @@
   integrity sha512-mR0UXG4LirWIfOiCWxVmvz1o23BuKGxeItQ2cCUgXLTjNtWJXdcky/356iTUsd7ZV5A78s2NHeN5tIDDG6H4rg==
   dependencies:
     "@firebase/auth-types" "0.10.3"
-
-"@firebase/component@0.5.10":
-  version "0.5.10"
-  resolved "https://registry.yarnpkg.com/@firebase/component/-/component-0.5.10.tgz#eab8acfd9b1a2b6534a63cbcd7cbc7660c47663d"
-  integrity sha512-mzUpg6rsBbdQJvAdu1rNWabU3O7qdd+B+/ubE1b+pTbBKfw5ySRpRRE6sKcZ/oQuwLh0HHB6FRJHcylmI7jDzA==
-  dependencies:
-    "@firebase/util" "1.4.3"
-    tslib "^2.1.0"
 
 "@firebase/component@0.5.5":
   version "0.5.5"
@@ -1978,27 +1949,10 @@
     idb "3.0.2"
     tslib "^2.1.0"
 
-"@firebase/installations@0.5.5":
-  version "0.5.5"
-  resolved "https://registry.yarnpkg.com/@firebase/installations/-/installations-0.5.5.tgz#b517e20fe4ce4b9e2f3349596391d54f2294bf7f"
-  integrity sha512-mYWUxYXPlxcR0YOikPw88TjIS2NK35Z0ivkJL0+FevNnVIsqwGSe12AtPlZB/kzjB0RtHoKW+cWC0V9xiTgJ3Q==
-  dependencies:
-    "@firebase/component" "0.5.10"
-    "@firebase/util" "1.4.3"
-    idb "3.0.2"
-    tslib "^2.1.0"
-
 "@firebase/logger@0.2.6":
   version "0.2.6"
   resolved "https://registry.yarnpkg.com/@firebase/logger/-/logger-0.2.6.tgz#3aa2ca4fe10327cabf7808bd3994e88db26d7989"
   integrity sha512-KIxcUvW/cRGWlzK9Vd2KB864HlUnCfdTH0taHE0sXW5Xl7+W68suaeau1oKNEqmc3l45azkd4NzXTCWZRZdXrw==
-
-"@firebase/logger@0.3.2":
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/@firebase/logger/-/logger-0.3.2.tgz#5046ffa8295c577846d54b6ca95645a03809800e"
-  integrity sha512-lzLrcJp9QBWpo40OcOM9B8QEtBw2Fk1zOZQdvv+rWS6gKmhQBCEMc4SMABQfWdjsylBcDfniD1Q+fUX1dcBTXA==
-  dependencies:
-    tslib "^2.1.0"
 
 "@firebase/messaging-types@0.5.0":
   version "0.5.0"
@@ -2080,13 +2034,6 @@
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@firebase/util/-/util-1.2.0.tgz#4d4e419bf8c9bc1bc51308d1953dc2e4353c0770"
   integrity sha512-8W9TTGImXr9cu+oyjBJ7yjoEd/IVAv0pBZA4c1uIuKrpGZi2ee38m+8xlZOBRmsAaOU/tR9DXz1WF/oeM6Fb7Q==
-  dependencies:
-    tslib "^2.1.0"
-
-"@firebase/util@1.4.3":
-  version "1.4.3"
-  resolved "https://registry.yarnpkg.com/@firebase/util/-/util-1.4.3.tgz#4358cf5f18beaa9c8a1e5a5fc4c7c44a4ccd4b7b"
-  integrity sha512-gQJl6r0a+MElLQEyU8Dx0kkC2coPj67f/zKZrGR7z7WpLgVanhaCUqEsptwpwoxi9RMFIaebleG+C9xxoARq+Q==
   dependencies:
     tslib "^2.1.0"
 
@@ -14776,7 +14723,7 @@ react-refresh@^0.11.0:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.11.0.tgz#77198b944733f0f1f1a90e791de4541f9f074046"
   integrity sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A==
 
-react-router-dom@5.3.0:
+react-router-dom@^5.3.0:
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-5.3.0.tgz#da1bfb535a0e89a712a93b97dd76f47ad1f32363"
   integrity sha512-ObVBLjUZsphUUMVycibxgMdh5jJ1e3o+KpAZBVeHcNQZ4W+uUGGWsokurzlF4YOldQYRQL4y6yFRWM4m3svmuQ==
