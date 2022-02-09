@@ -14,5 +14,5 @@ export const Default = Template.bind({});
 
 Default.args = {
   image: "https://i.imgur.com/XcuQwoJ.png0",
-  bottomImage: "https://i.imgur.com/5oJSpVO.png",
+  logoAlt: "https://i.imgur.com/5oJSpVO.png",
 };
