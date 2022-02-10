@@ -14,8 +14,8 @@ function DonationInProcesPage(): JSX.Element {
     <S.Container>
       <S.BodyContainer>
         <CardRoundImage
-          centerImage="https://i.imgur.com/XcuQwoJ.png"
-          bottomImage="https://i.imgur.com/5oJSpVO.png"
+          image="https://i.imgur.com/XcuQwoJ.png"
+          logo="https://i.imgur.com/5oJSpVO.png"
         />
       </S.BodyContainer>
       <S.AnimationContainer>
