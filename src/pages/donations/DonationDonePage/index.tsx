@@ -15,6 +15,8 @@ function DonationDonePage(): JSX.Element {
         <CardRoundDoubleImage
           leftImage="https://i.imgur.com/usCwtqX.png"
           rightImage="https://picsum.photos/200/300"
+          leftImageAlt="dog"
+          rightImageAlt="cat"
         />
         <S.Title>{t("title")}</S.Title>
         <S.Subtitle>{t("subtitle")}</S.Subtitle>
