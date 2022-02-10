@@ -10,7 +10,7 @@ export const Container = styled.div`
     width: 100%;
 
     @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
-      max-width: 360px;
+      max-width: 340px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -36,16 +36,24 @@ export const Title = styled.h5`
     font-weight: bold;
     font-size: 20px;
     line-height: 160%;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
+      font-size: 24px;
+    }
   `}
 `;
 
 export const Subtitle = styled.h6`
   ${() => css`
-    color: ${({ theme }) => theme.colors.darkGray};
+    color: ${({ theme }) => theme.colors.ribonBlue};
     margin-top: 16px;
     font-weight: bold;
     font-size: 16px;
     line-height: 160%;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
+      font-size: 20px;
+    }
   `}
 `;
 
