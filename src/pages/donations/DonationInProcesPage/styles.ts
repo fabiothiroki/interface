@@ -1,50 +1,29 @@
 import styled, { css } from "styled-components";
 
 export const Container = styled.div`
-  min-height: 640px;
-
-  ${({ theme }) => css`
-    @media (min-width: ${theme.breakpoints.pad}) {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-  `}
-`;
-
-export const BodyContainer = styled.div`
-  width: 100%;
-  padding: 70px;
-  ${({ theme }) => css`
-    @media (min-width: ${theme.breakpoints.pad}) {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 20px 460px 100px 460px;
-    }
+  ${() => css`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 360px;
+    height: 100vh;
+    margin: 0 auto;
   `}
 `;
 
 export const AnimationContainer = styled.div`
-  ${({ theme }) => css`
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-    @media (min-width: ${theme.breakpoints.pad}) {
-      flex-grow: 1;
-      height: 52px;
-      width: 320px;
+  ${() => css`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   `}
 `;
 
 export const LoaderContainer = styled.div`
   ${() => css`
     display: flex;
-    margin-right: 7px;
-     {
+    margin: 12px 8px;
   `}
 `;
 
@@ -57,7 +36,7 @@ export const DividerContainer = styled.span`
 
 export const AnimationText = styled.h2`
   ${({ theme }) => css`
-    margin: 6px 0;
+    margin: 8px 0;
     color: ${theme.colors.ribonBlue};
     display: flex;
     flex-direction: column;
