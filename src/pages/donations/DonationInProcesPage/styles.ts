@@ -16,6 +16,7 @@ export const Container = styled.div`
 
 export const BodyContainer = styled.div`
   width: 100%;
+  padding: 70px;
   ${({ theme }) => css`
     @media (min-width: ${theme.breakpoints.pad}) {
       display: flex;
@@ -28,10 +29,11 @@ export const BodyContainer = styled.div`
 
 export const AnimationContainer = styled.div`
   ${({ theme }) => css`
-    @media (min-width: ${theme.breakpoints.pad}) {
       display: flex;
       flex-direction: column;
       align-items: center;
+
+    @media (min-width: ${theme.breakpoints.pad}) {
       flex-grow: 1;
       height: 52px;
       width: 320px;
@@ -39,33 +41,34 @@ export const AnimationContainer = styled.div`
 `;
 
 export const LoaderContainer = styled.div`
-  ${({ theme }) => css`
-    @media (min-width: ${theme.breakpoints.pad}) {
-      display: flex;
+  ${() => css`
+    display: flex;
+    margin-right: 7px;
+     {
   `}
 `;
 
 export const DividerContainer = styled.span`
   ${() => css`
-    margin: 24px 20px;
+    margin: 20px 156px;
     text-align: center;
   `}
 `;
 
 export const AnimationText = styled.h2`
-  margin: 4px 0;
   ${({ theme }) => css`
-    @media (min-width: ${theme.breakpoints.pad}) {
-      color: ${theme.colors.ribonBlue};
-      text-align: center;
-    }
+    margin: 6px 0;
+    color: ${theme.colors.ribonBlue};
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   `}
 `;
 
 export const ImpactText = styled.h3`
   ${({ theme }) => css`
-    color: ${theme.colors.darkGray};
+    color: ${theme.colors.ribonBlack};
     text-align: center;
-    margin-top: 20px;
+    margin: 60px 20px;
   `}
 `;

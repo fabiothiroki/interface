@@ -11,6 +11,13 @@
       "pageTitle": "Causas",
       "pageSubtitle": "Doe de graça para uma causa de sua escolha"
     },
+    "donationDonePage": {
+      "title": "Obrigada pela sua doação!",
+      "subtitle": "1 dia de ração para animais resgatados",
+      "button": "Terminar",
+      "ngoTitle": "Sobre Amor em Patas",
+      "ngoInformation": "Amor em Patas é uma organização que tem como objetivo resgatar animais abandonados, cuidar deles e buscar adoção."
+    },
     "donationInProcess": {
       "animationText": "Doando...",
       "impactText": "Os apoiadores da Ribon são os responsáveis pelo pagamento das doações gratuitas"
