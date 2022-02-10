@@ -71,7 +71,7 @@ export const ButtonContainer = styled.div`
     @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
       box-shadow: none;
       padding: 0;
-      max-width: 360px;
+      max-width: 340px;
     }
   `}
 `;
