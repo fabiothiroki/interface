@@ -1,10 +1,20 @@
-import { expectTextToBeInTheDocument, renderComponent } from "config/testUtils";
+import { expectImageToBeInTheDocument, renderComponent } from "config/testUtils";
 import CardRoundDoubleImage from ".";
 
 describe("CardRoundDoubleImage", () => {
   it("should render without error", () => {
-    renderComponent(<CardRoundDoubleImage />);
+    renderComponent(
+      <CardRoundDoubleImage
+        rightImage=""
+        leftImage=""
+        rightImageAlt="rightImage"
+        leftImageAlt="leftImage"
+      />,
+    );
 
-    expectTextToBeInTheDocument("CardRoundDoubleImage");
+    expectImageToBeInTheDocument("rightImage");
+    expectImageToBeInTheDocument("leftImage");
   });
 });
+
+
