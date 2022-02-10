@@ -8,7 +8,15 @@ export const Container = styled.div`
     grid-gap: 0px; // grid-template-rows: [line-2] 80px;
     height: 100vh;
     width: 100%;
-    align-items: center;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
+      max-width: 340px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+    }
   `}
 `;
 
@@ -17,6 +25,7 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 20px;
   `}
 `;
 
@@ -27,16 +36,24 @@ export const Title = styled.h5`
     font-weight: bold;
     font-size: 20px;
     line-height: 160%;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
+      font-size: 24px;
+    }
   `}
 `;
 
 export const Subtitle = styled.h6`
   ${() => css`
-    color: ${({ theme }) => theme.colors.darkGray};
+    color: ${({ theme }) => theme.colors.ribonBlue};
     margin-top: 16px;
     font-weight: bold;
     font-size: 16px;
     line-height: 160%;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
+      font-size: 20px;
+    }
   `}
 `;
 
@@ -48,6 +65,14 @@ export const ButtonContainer = styled.div`
     width: 100%;
     padding: 12px 16px;
     align-self: end;
+    display: flex;
+    align-items: center;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
+      box-shadow: none;
+      padding: 0;
+      max-width: 360px;
+    }
   `}
 `;
 
@@ -57,5 +82,7 @@ export const HrDivider = styled(Divider)`
 `;
 
 export const FinishButton = styled(Button)`
-  margin: 0 auto;
+  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
+    height: 56px;
+  }
 `;

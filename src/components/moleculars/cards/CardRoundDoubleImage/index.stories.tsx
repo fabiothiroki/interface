@@ -6,7 +6,9 @@ export default {
   component: CardRoundDoubleImage,
 } as ComponentMeta<typeof CardRoundDoubleImage>;
 
-const Template: ComponentStory<typeof CardRoundDoubleImage> = function (args: Props) {
+const Template: ComponentStory<typeof CardRoundDoubleImage> = function (
+  args: Props,
+) {
   return <CardRoundDoubleImage {...args} />;
 };
 
