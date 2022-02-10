@@ -19,7 +19,7 @@ function DonationDonePage(): JSX.Element {
         <S.Title>{t("title")}</S.Title>
         <S.Subtitle>{t("subtitle")}</S.Subtitle>
 
-        <S.HrDivider color={theme.colors.lightGray} width="90%" />
+        <S.HrDivider color={theme.colors.lightGray} width="100%" />
 
         <CardSideSquareImageButton
           title={t("ngoTitle")}
