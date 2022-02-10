@@ -5,31 +5,25 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    margin-top: 8%;
+    justify-content: center;
+    max-width: 360px;
+    height: 100vh;
+    margin: 0 auto;
   `}
 `;
 
 export const AnimationContainer = styled.div`
-  ${({ theme }) => css`
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-    @media (min-width: ${theme.breakpoints.pad}) {
-      flex-grow: 1;
-      width: 60%;
-  }
-      @media (min-width: ${theme.breakpoints.desktop}) {
-      flex-grow: 1;
-      width: 30%;
+  ${() => css`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   `}
 `;
 
 export const LoaderContainer = styled.div`
   ${() => css`
     display: flex;
-    margin: 10px 7px;
+    margin: 12px 8px;
   `}
 `;
 
@@ -42,7 +36,7 @@ export const DividerContainer = styled.span`
 
 export const AnimationText = styled.h2`
   ${({ theme }) => css`
-    margin: 6px 0;
+    margin: 8px 0;
     color: ${theme.colors.ribonBlue};
     display: flex;
     flex-direction: column;

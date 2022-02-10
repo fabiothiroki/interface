@@ -19,16 +19,14 @@ export const CenterImage = styled.img`
 
 export const LogoContainer = styled.div`
   ${({ theme }) => css`
-    @media (min-width: ${theme.breakpoints.pad}) {
-      display: flex;
-      justify-content: center;
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background-color: ${theme.colors.ribonBlue};
-      margin-top: -46px;
-      z-index: 0;
-    }
+    display: flex;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: ${theme.colors.ribonBlue};
+    margin-top: -46px;
+    z-index: 0;
   `}
 `;
 
