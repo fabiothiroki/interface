@@ -5,6 +5,6 @@ describe("DonationDone", () => {
   it("should render without error", () => {
     renderComponent(<DonationDone />);
 
-    expectTextToBeInTheDocument("DonationDone");
+    expectTextToBeInTheDocument("Thank you for your donation!");
   });
 });
