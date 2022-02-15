@@ -2,19 +2,41 @@ import Loader from "components/atomics/Loader";
 import Divider from "components/atomics/Divider";
 import CardRoundImage from "components/moleculars/cards/CardRoundImage";
 import { useTranslation } from "react-i18next";
+import useNavigation from "hooks/useNavigation";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import NonProfit from "types/entities/NonProfit";
 import theme from "styles/theme";
 import * as S from "./styles";
 
-function DonationInProcesPage(): JSX.Element {
+type LocationStateType = {
+  nonProfit: NonProfit;
+};
+
+function DonationInProcessPage(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "donations.donationInProcess",
   });
+  const { navigateTo } = useNavigation();
+  const {
+    state: { nonProfit },
+  } = useLocation<LocationStateType>();
+
+  async function handleDonation() {
+    setTimeout(() => {
+      navigateTo({ pathname: "/donation-done", state: { nonProfit } });
+    }, 2000);
+  }
+
+  useEffect(() => {
+    handleDonation();
+  }, []);
 
   return (
     <S.Container>
       <CardRoundImage
-        image="https://i.imgur.com/XcuQwoJ.png"
-        logo="https://i.imgur.com/5oJSpVO.png"
+        image={nonProfit?.backgroundImage}
+        logo={nonProfit?.logo}
       />
       <S.AnimationContainer>
         <S.LoaderContainer>
@@ -30,4 +52,4 @@ function DonationInProcesPage(): JSX.Element {
   );
 }
 
-export default DonationInProcesPage;
+export default DonationInProcessPage;

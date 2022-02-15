@@ -2,28 +2,34 @@ import CardRoundDoubleImage from "components/moleculars/cards/CardRoundDoubleIma
 import CardSideSquareImageButton from "components/moleculars/cards/CardSideSquareImageButton";
 import useNavigation from "hooks/useNavigation";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 import theme from "styles/theme";
+import NonProfit from "types/entities/NonProfit";
 import * as S from "./styles";
+
+type LocationStateType = {
+  nonProfit: NonProfit;
+};
 
 function DonationDonePage(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "donations.donationDonePage",
   });
-
+  const {
+    state: { nonProfit },
+  } = useLocation<LocationStateType>();
   const { navigateTo } = useNavigation();
 
-  function handleButtonClick() {
+  const handleFinishButtonClick = () => {
     navigateTo("/");
-  }
+  };
 
   return (
     <S.Container>
       <S.Wrapper>
         <CardRoundDoubleImage
-          leftImage="https://i.imgur.com/usCwtqX.png"
-          rightImage="https://picsum.photos/200/300"
-          leftImageAlt="dog"
-          rightImageAlt="cat"
+          leftImage={nonProfit?.backgroundImage}
+          rightImage={nonProfit?.mainImage}
         />
         <S.Title>{t("title")}</S.Title>
         <S.Subtitle>{t("subtitle")}</S.Subtitle>
@@ -33,7 +39,7 @@ function DonationDonePage(): JSX.Element {
         <CardSideSquareImageButton
           title={t("ngoTitle")}
           text={t("ngoInformation")}
-          image="https://i.imgur.com/BwtK2hX.png"
+          image={nonProfit?.backgroundImage}
           buttonText="More info"
           onButtonClick={() => {}}
         />
@@ -42,7 +48,9 @@ function DonationDonePage(): JSX.Element {
       <S.ButtonContainer>
         <S.FinishButton
           text={t("button")}
-          onClick={() => handleButtonClick()}
+          onClick={() => {
+            handleFinishButtonClick();
+          }}
         />
       </S.ButtonContainer>
     </S.Container>
