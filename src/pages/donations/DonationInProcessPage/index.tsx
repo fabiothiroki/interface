@@ -28,7 +28,6 @@ function DonationInProcessPage(): JSX.Element {
   }
 
   useEffect(() => {
-    console.log(nonProfit);
     handleDonation();
   }, []);
 
