@@ -35,12 +35,15 @@ function DonationDonePage(): JSX.Element {
           text={t("ngoInformation")}
           image="https://i.imgur.com/BwtK2hX.png"
           buttonText="More info"
-          onButtonClick={() => { }}
+          onButtonClick={() => {}}
         />
       </S.Wrapper>
 
       <S.ButtonContainer>
-        <S.FinishButton text={t("button")} onClick={() => handleButtonClick()} />
+        <S.FinishButton
+          text={t("button")}
+          onClick={() => handleButtonClick()}
+        />
       </S.ButtonContainer>
     </S.Container>
   );
