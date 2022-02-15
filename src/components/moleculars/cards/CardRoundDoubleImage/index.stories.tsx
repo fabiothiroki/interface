@@ -17,4 +17,6 @@ export const Default = Template.bind({});
 Default.args = {
   leftImage: "https://picsum.photos/200/300",
   rightImage: "https://picsum.photos/200/300",
+  leftImageAlt: "leftImage",
+  rightImageAlt: "rightImage",
 };
