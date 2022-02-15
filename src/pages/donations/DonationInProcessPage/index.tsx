@@ -18,8 +18,9 @@ function DonationInProcessPage(): JSX.Element {
     keyPrefix: "donations.donationInProcess",
   });
   const { navigateTo } = useNavigation();
-  const { state: { nonProfit } } = useLocation<LocationStateType>();
-
+  const {
+    state: { nonProfit },
+  } = useLocation<LocationStateType>();
 
   async function handleDonation() {
     setTimeout(() => {

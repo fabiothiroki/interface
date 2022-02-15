@@ -35,7 +35,10 @@ function CausesPage(): JSX.Element {
   }, []);
 
   const donate = useCallback(() => {
-    navigateTo({ pathname: "/donation-in-process", state: { nonProfit: chosenNonProfit } });
+    navigateTo({
+      pathname: "/donation-in-process",
+      state: { nonProfit: chosenNonProfit },
+    });
     logEvent("donateConfirmDialButton_click", {
       causeId: chosenNonProfit?.id,
     });

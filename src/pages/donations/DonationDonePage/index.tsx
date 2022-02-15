@@ -15,12 +15,14 @@ function DonationDonePage(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "donations.donationDonePage",
   });
-  const { state: { nonProfit } } = useLocation<LocationStateType>();
+  const {
+    state: { nonProfit },
+  } = useLocation<LocationStateType>();
   const { navigateTo } = useNavigation();
 
   const handleFinishButtonClick = () => {
     navigateTo("/");
-  }
+  };
 
   return (
     <S.Container>
@@ -39,12 +41,17 @@ function DonationDonePage(): JSX.Element {
           text={t("ngoInformation")}
           image={nonProfit?.backgroundImage}
           buttonText="More info"
-          onButtonClick={() => { }}
+          onButtonClick={() => {}}
         />
       </S.Wrapper>
 
       <S.ButtonContainer>
-        <S.FinishButton text={t("button")} onClick={() => { handleFinishButtonClick() }} />
+        <S.FinishButton
+          text={t("button")}
+          onClick={() => {
+            handleFinishButtonClick();
+          }}
+        />
       </S.ButtonContainer>
     </S.Container>
   );
