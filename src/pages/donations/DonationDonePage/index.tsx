@@ -10,7 +10,7 @@ function DonationDonePage(): JSX.Element {
     keyPrefix: "donations.donationDonePage",
   });
 
-  const {navigateTo} = useNavigation();
+  const { navigateTo } = useNavigation();
 
   function handleButtonClick() {
     navigateTo("/");
@@ -35,7 +35,7 @@ function DonationDonePage(): JSX.Element {
           text={t("ngoInformation")}
           image="https://i.imgur.com/BwtK2hX.png"
           buttonText="More info"
-          onButtonClick={() => {}}
+          onButtonClick={() => { }}
         />
       </S.Wrapper>
 
