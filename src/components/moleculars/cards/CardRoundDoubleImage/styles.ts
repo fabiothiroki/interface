@@ -27,6 +27,7 @@ export const ImageContainer = styled.div`
 
 export const LeftImage = styled.img`
   ${({ theme }) => css`
+    object-fit: cover;
     position: absolute;
     width: 180px;
     height: 180px;
@@ -44,6 +45,7 @@ export const LeftImage = styled.img`
 
 export const RightImage = styled.img`
   ${({ theme }) => css`
+    object-fit: cover;
     z-index: 1;
     position: absolute;
     width: 180px;

@@ -2,48 +2,52 @@ import CardRoundDoubleImage from "components/moleculars/cards/CardRoundDoubleIma
 import CardSideSquareImageButton from "components/moleculars/cards/CardSideSquareImageButton";
 import useNavigation from "hooks/useNavigation";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 import theme from "styles/theme";
+import NonProfit from "types/entities/NonProfit";
 import * as S from "./styles";
+
+type LocationStateType = {
+  nonProfit: NonProfit;
+};
 
 function DonationDonePage(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "donations.donationDonePage",
   });
-
+  const { state: {nonProfit} } = useLocation<LocationStateType>();
   const { navigateTo } = useNavigation();
 
   const handleFinishButtonClick = () => {
     navigateTo("/");
   }
 
-    return (
-      <S.Container>
-        <S.Wrapper>
-          <CardRoundDoubleImage
-            leftImage="https://i.imgur.com/usCwtqX.png"
-            rightImage="https://picsum.photos/200/300"
-            leftImageAlt="dog"
-            rightImageAlt="cat"
-          />
-          <S.Title>{t("title")}</S.Title>
-          <S.Subtitle>{t("subtitle")}</S.Subtitle>
+  return (
+    <S.Container>
+      <S.Wrapper>
+        <CardRoundDoubleImage
+          leftImage={nonProfit?.backgroundImage}
+          rightImage={nonProfit?.mainImage}
+        />
+        <S.Title>{t("title")}</S.Title>
+        <S.Subtitle>{t("subtitle")}</S.Subtitle>
 
-          <S.HrDivider color={theme.colors.lightGray} width="100%" />
+        <S.HrDivider color={theme.colors.lightGray} width="100%" />
 
-          <CardSideSquareImageButton
-            title={t("ngoTitle")}
-            text={t("ngoInformation")}
-            image="https://i.imgur.com/BwtK2hX.png"
-            buttonText="More info"
-            onButtonClick={() => { }}
-          />
-        </S.Wrapper>
+        <CardSideSquareImageButton
+          title={t("ngoTitle")}
+          text={t("ngoInformation")}
+          image={nonProfit?.backgroundImage}
+          buttonText="More info"
+          onButtonClick={() => { }}
+        />
+      </S.Wrapper>
 
-        <S.ButtonContainer>
-          <S.FinishButton text={t("button")} onClick={() => {handleFinishButtonClick()}} />
-        </S.ButtonContainer>
-      </S.Container>
-    );
-  }
+      <S.ButtonContainer>
+        <S.FinishButton text={t("button")} onClick={() => { handleFinishButtonClick() }} />
+      </S.ButtonContainer>
+    </S.Container>
+  );
+}
 
-  export default DonationDonePage;
+export default DonationDonePage;
