@@ -23,7 +23,7 @@ function DonationInProcessPage(): JSX.Element {
 
   async function handleDonation() {
     setTimeout(() => {
-      navigateTo({pathname: "/donation-done", state: {nonProfit}});
+      navigateTo({ pathname: "/donation-done", state: { nonProfit } });
     }, 2000);
   }
 

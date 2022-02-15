@@ -15,7 +15,7 @@ function DonationDonePage(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "donations.donationDonePage",
   });
-  const { state: {nonProfit} } = useLocation<LocationStateType>();
+  const { state: { nonProfit } } = useLocation<LocationStateType>();
   const { navigateTo } = useNavigation();
 
   const handleFinishButtonClick = () => {
