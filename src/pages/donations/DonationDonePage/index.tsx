@@ -1,5 +1,6 @@
 import CardRoundDoubleImage from "components/moleculars/cards/CardRoundDoubleImage";
 import CardSideSquareImageButton from "components/moleculars/cards/CardSideSquareImageButton";
+import useNavigation from "hooks/useNavigation";
 import { useTranslation } from "react-i18next";
 import theme from "styles/theme";
 import * as S from "./styles";
@@ -8,6 +9,12 @@ function DonationDonePage(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "donations.donationDonePage",
   });
+
+  const { navigateTo } = useNavigation();
+
+  function handleButtonClick() {
+    navigateTo("/");
+  }
 
   return (
     <S.Container>
@@ -33,7 +40,10 @@ function DonationDonePage(): JSX.Element {
       </S.Wrapper>
 
       <S.ButtonContainer>
-        <S.FinishButton text={t("button")} onClick={() => {}} />
+        <S.FinishButton
+          text={t("button")}
+          onClick={() => handleButtonClick()}
+        />
       </S.ButtonContainer>
     </S.Container>
   );
