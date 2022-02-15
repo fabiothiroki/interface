@@ -5,7 +5,7 @@ import CausesPage from "pages/donations/CausesPage";
 import CurrentUserProvider from "contexts/currentUserContext";
 import ConfirmEmailPage from "pages/donations/ConfirmEmailPage";
 import DonationDonePage from "pages/donations/DonationDonePage";
-import DonationInProcesPage from "pages/donations/DonationInProcesPage";
+import DonationInProcessPage from "pages/donations/DonationInProcessPage";
 
 function RoutesComponent(): JSX.Element {
   return (
@@ -39,7 +39,7 @@ function RoutesComponent(): JSX.Element {
       <Route path="/donation-in-process" exact>
         <Suspense fallback={<div />}>
           <CurrentUserProvider>
-            <DonationInProcesPage />
+            <DonationInProcessPage />
           </CurrentUserProvider>
         </Suspense>
       </Route>

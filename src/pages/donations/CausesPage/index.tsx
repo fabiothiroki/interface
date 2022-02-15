@@ -35,14 +35,17 @@ function CausesPage(): JSX.Element {
   }, []);
 
   const donate = useCallback(() => {
-    navigateTo("/donation-in-process");
+    navigateTo({
+      pathname: "/donation-in-process",
+      state: { nonProfit: chosenNonProfit },
+    });
     logEvent("donateConfirmDialButton_click", {
       causeId: chosenNonProfit?.id,
     });
-  }, []);
+  }, [chosenNonProfit]);
+
   const chooseNonProfit = useCallback((nonProfit: NonProfit) => {
     setChosenNonProfit(nonProfit);
-    setConfirmModalVisible(true);
   }, []);
 
   function handleButtonClick(nonProfit: NonProfit) {
