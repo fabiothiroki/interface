@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import NonProfit from "types/entities/NonProfit";
 import theme from "styles/theme";
+import useDonations from "hooks/apiHooks/useDonations";
 import * as S from "./styles";
 
 type LocationStateType = {
@@ -21,8 +22,11 @@ function DonationInProcessPage(): JSX.Element {
   const {
     state: { nonProfit },
   } = useLocation<LocationStateType>();
+  const { donate } = useDonations();
 
   async function handleDonation() {
+    await donate(1, nonProfit.id);
+
     setTimeout(() => {
       navigateTo({ pathname: "/donation-done", state: { nonProfit } });
     }, 2000);
