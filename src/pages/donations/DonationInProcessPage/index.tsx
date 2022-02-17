@@ -9,6 +9,7 @@ import NonProfit from "types/entities/NonProfit";
 import theme from "styles/theme";
 import useDonations from "hooks/apiHooks/useDonations";
 import * as S from "./styles";
+import { logError } from "../../../services/crashReport";
 
 type LocationStateType = {
   nonProfit: NonProfit;
@@ -25,11 +26,12 @@ function DonationInProcessPage(): JSX.Element {
   const { donate } = useDonations();
 
   async function handleDonation() {
-    await donate(1, nonProfit.id);
-
-    setTimeout(() => {
+    try {
+      await donate(1, nonProfit.id);
       navigateTo({ pathname: "/donation-done", state: { nonProfit } });
-    }, 2000);
+    } catch (e) {
+      logError(e);
+    }
   }
 
   useEffect(() => {
