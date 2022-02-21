@@ -9,21 +9,50 @@ import useNavigation from "hooks/useNavigation";
 import NonProfit from "types/entities/NonProfit";
 import useNonProfits from "hooks/apiHooks/useNonProfits";
 import Loader from "components/atomics/Loader";
+import Integration from "types/entities/Integration";
+import integrationsApi from "services/api/integrationsApi";
+import useQueryParams from "hooks/useQueryParams";
 import * as S from "./styles";
+import { logError } from "../../../services/crashReport";
 
 function CausesPage(): JSX.Element {
   const [donationModalVisible, setDonationModalVisible] = useState(true);
   const [confirmModalVisible, setConfirmModalVisible] = useState(false);
   const [chosenNonProfit, setChosenNonProfit] = useState<NonProfit>();
+  const [integration, setIntegration] = useState<Integration>();
+  const queryParams = useQueryParams();
+
   const { t } = useTranslation("translation", {
     keyPrefix: "donations.causesPage",
   });
   const { navigateTo } = useNavigation();
-
   const { nonProfits, isLoading } = useNonProfits();
 
   useEffect(() => {
     logEvent("donateIntroDial_view");
+  }, []);
+
+  useEffect(() => {
+    console.log(integration);
+  }, [integration]);
+
+  useEffect(() => {
+    async function fetchIntegration() {
+      try {
+        const integrationId = queryParams.get("integration_id");
+        if (!integrationId) return;
+
+        const { data } = await integrationsApi.getIntegration(
+          parseInt(integrationId, 10),
+        );
+
+        setIntegration(data);
+      } catch (e) {
+        logError(e);
+      }
+    }
+
+    fetchIntegration();
   }, []);
 
   const closeDonationModal = useCallback(() => {
@@ -80,7 +109,7 @@ function CausesPage(): JSX.Element {
         roundIcon
       />
 
-      <Header sideLogo="https://i.imgur.com/kJA77FC.png" />
+      <Header sideLogo={integration?.logo} />
       <S.BodyContainer>
         <S.Title>{t("pageTitle")}</S.Title>
         <S.Text>{t("pageSubtitle")}</S.Text>
