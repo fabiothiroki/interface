@@ -27,7 +27,9 @@ function CausesPage(): JSX.Element {
 
   const { state } = useLocation<LocationStateType>();
 
-  const [warningModalVisible] = useState(state?.failedDonation);
+  const [warningModalVisible, setWarningModalVisible] = useState(
+    state?.failedDonation,
+  );
 
   const { navigateTo } = useNavigation();
 
@@ -39,6 +41,10 @@ function CausesPage(): JSX.Element {
 
   const closeDonationModal = useCallback(() => {
     setDonationModalVisible(false);
+  }, []);
+
+  const closeWarningModal = useCallback(() => {
+    setWarningModalVisible(false);
   }, []);
 
   const closeConfirmModal = useCallback(() => {
@@ -96,6 +102,7 @@ function CausesPage(): JSX.Element {
         title={t("errorModalTitle")}
         body={t("errorModalText")}
         buttonText={t("errorModalButtonText")}
+        onClose={closeWarningModal}
         warning
       />
 
