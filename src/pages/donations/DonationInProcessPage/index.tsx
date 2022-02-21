@@ -32,6 +32,8 @@ function DonationInProcessPage(): JSX.Element {
       await donate(integration?.id, nonProfit.id);
       navigateTo({ pathname: "/donation-done", state: { nonProfit } });
     } catch (e) {
+      navigateTo({ pathname: "/", state: { failedDonation: true } });
+
       logError(e);
     }
   }

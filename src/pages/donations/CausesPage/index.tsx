@@ -13,7 +13,13 @@ import Integration from "types/entities/Integration";
 import integrationsApi from "services/api/integrationsApi";
 import useQueryParams from "hooks/useQueryParams";
 import { logError } from "services/crashReport";
+import { useLocation } from "react-router-dom";
+import ModalError from "components/moleculars/modals/ModalError";
 import * as S from "./styles";
+
+type LocationStateType = {
+  failedDonation: boolean;
+};
 
 function CausesPage(): JSX.Element {
   const [donationModalVisible, setDonationModalVisible] = useState(true);
@@ -25,6 +31,13 @@ function CausesPage(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "donations.causesPage",
   });
+
+  const { state } = useLocation<LocationStateType>();
+
+  const [warningModalVisible, setWarningModalVisible] = useState(
+    state?.failedDonation,
+  );
+
   const { navigateTo } = useNavigation();
   const { nonProfits, isLoading } = useNonProfits();
 
@@ -53,6 +66,10 @@ function CausesPage(): JSX.Element {
 
   const closeDonationModal = useCallback(() => {
     setDonationModalVisible(false);
+  }, []);
+
+  const closeWarningModal = useCallback(() => {
+    setWarningModalVisible(false);
   }, []);
 
   const closeConfirmModal = useCallback(() => {
@@ -106,6 +123,15 @@ function CausesPage(): JSX.Element {
       />
 
       <Header sideLogo={integration?.logo} />
+      <ModalError
+        visible={warningModalVisible}
+        title={t("errorModalTitle")}
+        body={t("errorModalText")}
+        buttonText={t("errorModalButtonText")}
+        onClose={closeWarningModal}
+        warning
+      />
+
       <S.BodyContainer>
         <S.Title>{t("pageTitle")}</S.Title>
         <S.Text>{t("pageSubtitle")}</S.Text>
