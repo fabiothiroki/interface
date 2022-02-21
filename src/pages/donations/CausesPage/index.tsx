@@ -12,8 +12,8 @@ import Loader from "components/atomics/Loader";
 import Integration from "types/entities/Integration";
 import integrationsApi from "services/api/integrationsApi";
 import useQueryParams from "hooks/useQueryParams";
+import { logError } from "services/crashReport";
 import * as S from "./styles";
-import { logError } from "../../../services/crashReport";
 
 function CausesPage(): JSX.Element {
   const [donationModalVisible, setDonationModalVisible] = useState(true);
@@ -31,10 +31,6 @@ function CausesPage(): JSX.Element {
   useEffect(() => {
     logEvent("donateIntroDial_view");
   }, []);
-
-  useEffect(() => {
-    console.log(integration);
-  }, [integration]);
 
   useEffect(() => {
     async function fetchIntegration() {
@@ -66,7 +62,7 @@ function CausesPage(): JSX.Element {
   const donate = useCallback(() => {
     navigateTo({
       pathname: "/donation-in-process",
-      state: { nonProfit: chosenNonProfit },
+      state: { nonProfit: chosenNonProfit, integration },
     });
     logEvent("donateConfirmDialButton_click", {
       causeId: chosenNonProfit?.id,
