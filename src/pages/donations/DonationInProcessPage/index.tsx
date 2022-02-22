@@ -36,7 +36,7 @@ function DonationInProcessPage(): JSX.Element {
   }
 
   useEffect(() => {
-    logEvent("donateSendingDonation_view", { selected: nonProfit.id });
+    logEvent("donateSendingDonation_view", { selected: nonProfit?.id });
     handleDonation();
   }, []);
 
