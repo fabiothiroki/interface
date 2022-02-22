@@ -12,7 +12,10 @@
       "pageSubtitle": "Doe de graça para uma causa de sua escolha",
       "errorModalTitle": "Falha no processo",
       "errorModalText": "Não foi possível concluir esta ação. Por favor verifique sua conexão com a internet e tente novamente.",
-      "errorModalButtonText": "Ok"
+      "errorModalButtonText": "Ok",
+      "blockedModalTitle": "Doação bloqueada",
+      "blockedModalText": "Essa conta já usou seu ticket de doação diário. Volte amanhã!",
+      "blockedModalButtonText": "Ok"
     },
     "donationDonePage": {
       "title": "Obrigada pela sua doação!",
