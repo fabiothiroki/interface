@@ -47,7 +47,7 @@ function DonationDonePage(): JSX.Element {
           text={t("ngoInformation")}
           image={nonProfit?.backgroundImage}
           buttonText="More info"
-          onButtonClick={() => { }}
+          onButtonClick={() => {}}
         />
       </S.Wrapper>
 
