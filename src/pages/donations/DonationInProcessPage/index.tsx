@@ -30,7 +30,7 @@ function DonationInProcessPage(): JSX.Element {
 
   async function handleDonation() {
     try {
-      await donate(integration?.id, nonProfit.id);
+      await donate(integration?.id, nonProfit.id, "yan@ribon.io");
       navigateTo({ pathname: "/donation-done", state: { nonProfit } });
     } catch (e) {
       navigateTo({ pathname: "/", state: { failedDonation: true } });
