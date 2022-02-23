@@ -1,10 +1,17 @@
-import { expectTextToBeInTheDocument, renderComponent } from "config/testUtils";
+import {
+  expectImageToBeInTheDocument,
+  expectTextToBeInTheDocument,
+  renderComponent,
+} from "config/testUtils";
 import CardSideImage from ".";
 
 describe("CardSideImage", () => {
   it("should render without error", () => {
-    renderComponent(<CardSideImage />);
+    renderComponent(
+      <CardSideImage imageUrl="" imageAlt="image" text="texto" />,
+    );
 
-    expectTextToBeInTheDocument("CardSideImage");
+    expectImageToBeInTheDocument("image");
+    expectTextToBeInTheDocument("texto");
   });
 });
