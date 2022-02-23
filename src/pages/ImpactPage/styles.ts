@@ -1,15 +1,13 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div`
-  ${() => css`
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    padding: 0 16px;
-    justify-content: center;
-    flex-direction: column;
-    text-align: left;
-  `}
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  padding: 0 16px;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
 `;
 
 export const Title = styled.h1`
@@ -27,11 +25,9 @@ export const Subtitle = styled.h2`
 `;
 
 export const Wrapper = styled.div`
-  ${() => css`
-    margin-top: 28px;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    gap: 8px;
-  `}
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 8px;
 `;
