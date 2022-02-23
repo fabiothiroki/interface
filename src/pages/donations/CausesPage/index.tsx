@@ -15,6 +15,7 @@ import useQueryParams from "hooks/useQueryParams";
 import { logError } from "services/crashReport";
 import { useLocation } from "react-router-dom";
 import ModalError from "components/moleculars/modals/ModalError";
+import ModalBlocked from "components/moleculars/modals/ModalBlocked";
 import * as S from "./styles";
 
 type LocationStateType = {
@@ -24,6 +25,7 @@ type LocationStateType = {
 function CausesPage(): JSX.Element {
   const [donationModalVisible, setDonationModalVisible] = useState(true);
   const [confirmModalVisible, setConfirmModalVisible] = useState(false);
+  const [blockedModalVisible, setBlockedModalVisible] = useState(false);
   const [chosenNonProfit, setChosenNonProfit] = useState<NonProfit>();
   const [integration, setIntegration] = useState<Integration>();
   const queryParams = useQueryParams();
@@ -74,6 +76,10 @@ function CausesPage(): JSX.Element {
 
   const closeConfirmModal = useCallback(() => {
     setConfirmModalVisible(false);
+  }, []);
+
+  const closeBlockedModal = useCallback(() => {
+    setBlockedModalVisible(false);
   }, []);
 
   const donate = useCallback(() => {
@@ -130,6 +136,15 @@ function CausesPage(): JSX.Element {
         buttonText={t("errorModalButtonText")}
         onClose={closeWarningModal}
         warning
+      />
+
+      <ModalBlocked
+        visible={blockedModalVisible}
+        title={t("blockedModalTitle")}
+        body={t("blockedModalText")}
+        buttonText={t("blockedModalButtonText")}
+        onClose={closeBlockedModal}
+        blocked
       />
 
       <S.BodyContainer>
