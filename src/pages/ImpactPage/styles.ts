@@ -5,17 +5,33 @@ export const Container = styled.div`
     width: 100%;
     height: 100vh;
     display: flex;
-    align-items: center;
+    padding: 0 16px;
+    justify-content: center;
     flex-direction: column;
+    text-align: left;
   `}
+`;
+
+export const Title = styled.h1`
+  font-size: 24px;
+  color: ${({ theme }) => theme.colors.ribonBlack};
+  font-weight: 900;
+  line-height: 1.6;
+  margin-top: 30px;
+`;
+
+export const Subtitle = styled.h2`
+  font-size: 14px;
+  color: ${({ theme }) => theme.colors.darkGray};
+  line-height: 10px;
 `;
 
 export const Wrapper = styled.div`
   ${() => css`
+    margin-top: 28px;
     display: flex;
     flex-direction: column;
     height: 100%;
-    max-width: 338px;
     gap: 8px;
   `}
 `;

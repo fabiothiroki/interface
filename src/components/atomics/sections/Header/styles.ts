@@ -5,7 +5,7 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     height: 56px;
-    margin-left: 18px;
+    width: 100%;
 
     @media (min-width: ${theme.breakpoints.pad}) {
       justify-content: center;
