@@ -15,7 +15,9 @@ import useQueryParams from "hooks/useQueryParams";
 import { logError } from "services/crashReport";
 import { useLocation } from "react-router-dom";
 import ModalError from "components/moleculars/modals/ModalError";
+import useUsers from "hooks/apiHooks/useUsers";
 import * as S from "./styles";
+import { useCurrentUser } from "../../../contexts/currentUserContext";
 
 type LocationStateType = {
   failedDonation: boolean;
@@ -31,15 +33,14 @@ function CausesPage(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "donations.causesPage",
   });
-
   const { state } = useLocation<LocationStateType>();
-
   const [warningModalVisible, setWarningModalVisible] = useState(
     state?.failedDonation,
   );
-
   const { navigateTo } = useNavigation();
   const { nonProfits, isLoading } = useNonProfits();
+  const { createUser } = useUsers();
+  const { signedIn } = useCurrentUser();
 
   useEffect(() => {
     logEvent("donateIntroDial_view");
@@ -76,11 +77,16 @@ function CausesPage(): JSX.Element {
     setConfirmModalVisible(false);
   }, []);
 
-  const donate = useCallback(() => {
-    navigateTo({
-      pathname: "/donation-in-process",
-      state: { nonProfit: chosenNonProfit, integration },
-    });
+  const donate = useCallback(async () => {
+    try {
+      if (!signedIn) await createUser("nicholas2@ribon.io");
+      navigateTo({
+        pathname: "/donation-in-process",
+        state: { nonProfit: chosenNonProfit, integration },
+      });
+    } catch (e) {
+      logError(e);
+    }
     logEvent("donateConfirmDialButton_click", {
       causeId: chosenNonProfit?.id,
     });
