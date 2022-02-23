@@ -21,6 +21,7 @@ import CurrentUserProvider, {
   CurrentUserContext,
   ICurrentUserContext,
 } from "contexts/currentUserContext";
+import { mockNavigationFunction } from "setupTests";
 
 export function renderWithTheme(children: React.ReactNode): RenderResult {
   return render(<ThemeProvider theme={theme}>{children}</ThemeProvider>);
@@ -110,8 +111,25 @@ export function renderComponent(
 export function expectTextToBeInTheDocument(text: string) {
   return expect(screen.getByText(text)).toBeInTheDocument();
 }
+
 export function expectImageToBeInTheDocument(alt: string) {
   return expect(screen.getByAltText(alt)).toBeInTheDocument();
+}
+
+type expectPageToNavigateToType = {
+  state?: Record<any, any>;
+};
+export function expectPageToNavigateTo(
+  pathname: string,
+  { state }: expectPageToNavigateToType,
+) {
+  if (!state)
+    return expect(mockNavigationFunction).toHaveBeenCalledWith(pathname);
+
+  return expect(mockNavigationFunction).toHaveBeenCalledWith({
+    pathname,
+    state,
+  });
 }
 
 export function clickOn(text: string) {

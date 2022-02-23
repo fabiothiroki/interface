@@ -1,10 +1,10 @@
 import {
+  expectPageToNavigateTo,
   expectTextToBeInTheDocument,
   renderComponent,
   waitForPromises,
 } from "config/testUtils";
 import { mockRequest } from "config/testUtils/test-helper";
-import { mockNavigationFunction } from "setupTests";
 import DonationInProcessPage from ".";
 
 describe("DonationInProcessPage", () => {
@@ -41,8 +41,7 @@ describe("DonationInProcessPage", () => {
       });
       await waitForPromises();
 
-      expect(mockNavigationFunction).toHaveBeenCalledWith({
-        pathname: "/donation-done",
+      expectPageToNavigateTo("/donation-done", {
         state: { nonProfit },
       });
     });
@@ -69,10 +68,7 @@ describe("DonationInProcessPage", () => {
       });
       await waitForPromises();
 
-      expect(mockNavigationFunction).toHaveBeenCalledWith({
-        pathname: "/",
-        state: { failedDonation: true },
-      });
+      expectPageToNavigateTo("/", { state: { failedDonation: true } });
     });
   });
 });
