@@ -2,14 +2,12 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   ${({ theme }) => css`
-    /* remover width antes de mandar */
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     gap: 16px;
 
     width: 100%;
-    max-width: 328px;
     height: 88px;
     padding: 20px 16px;
 
