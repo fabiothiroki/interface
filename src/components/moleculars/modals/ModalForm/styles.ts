@@ -28,8 +28,9 @@ export const ModalWithImage = styled(Modal)`
   overflow: hidden;
 `;
 
-export const Container = styled.div``;
-export const Form = styled.div``;
+export const Container = styled.div`
+  padding: 16px;
+`;
 
 export const Icon = styled.img`
   display: block;
