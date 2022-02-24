@@ -4,7 +4,7 @@ export const Container = styled.div`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     gap: 16px;
 
     width: 100%;
