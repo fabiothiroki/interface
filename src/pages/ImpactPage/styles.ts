@@ -1,3 +1,4 @@
+import ButtonRound from "components/atomics/buttons/ButtonRound";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -30,4 +31,10 @@ export const Wrapper = styled.div`
   flex-direction: column;
   height: 100%;
   gap: 8px;
+`;
+
+export const Button = styled(ButtonRound)`
+  width: 100px;
+  align-self: center;
+  margin-top: 16px;
 `;

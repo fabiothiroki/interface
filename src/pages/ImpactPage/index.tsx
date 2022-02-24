@@ -24,6 +24,7 @@ function ImpactPage(): JSX.Element {
           imageUrl="https://picsum.photos/id/237/200/300"
           imageAlt="test"
         />
+        <S.Button text="Show more" onClick={() => {}} />
       </S.Wrapper>
     </S.Container>
   );
