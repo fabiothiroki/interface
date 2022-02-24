@@ -28,10 +28,6 @@ export const ModalWithImage = styled(Modal)`
   overflow: hidden;
 `;
 
-export const Container = styled.div`
-  padding: 16px;
-`;
-
 export const Icon = styled.img`
   display: block;
   width: 96px;
@@ -42,15 +38,6 @@ export const Icon = styled.img`
 export const BiggerIcon = styled.img`
   display: block;
   margin: -64px auto 16px auto;
-`;
-
-export const RoundIcon = styled.img`
-  display: block;
-  width: 96px;
-  height: 96px;
-  margin: -64px auto 8px auto;
-  border-radius: 70px;
-  object-fit: cover;
 `;
 
 export const Image = styled.img`
@@ -69,23 +56,28 @@ export const Title = styled.h2<TitleProps>`
   `}
 `;
 
-export const Body = styled.h3`
-  color: #82aabe;
-  text-align: center;
-  margin: 8px 0px 20px;
+export const FormContainer = styled.div`
+  ${() => css`
+    padding: 8px 16px;
+  `}
 `;
-
-export const HighlightedText = styled.p`
+export const Input = styled.input`
   ${({ theme }) => css`
-    margin-top: 16px;
-    font-weight: bold;
-    text-align: center;
-    color: ${theme.colors.ribonBlack};
-    font-size: 16px;
+    height: 39px;
+    width: 296px;
+    border-radius: 8px;
+    border: 1px solid ${theme.colors.ribonBlue};
+    padding: 8px;
+    margin-bottom: 8px;
   `}
 `;
 
-export const RowsModalRow = styled.div`
-  display: flex;
-  margin-bottom: 28px;
+export const FooterContainer = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: ${theme.colors.ribonGray};
+  `}
 `;

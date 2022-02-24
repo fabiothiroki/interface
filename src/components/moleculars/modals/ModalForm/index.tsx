@@ -39,6 +39,7 @@ export type Props = {
   formFields: FieldProps[];
   initialState: Record<any, any>;
   onFormSubmit: (values: Record<any, any>) => void;
+  footer?: JSX.Element;
 };
 
 function ModalForm({
@@ -62,6 +63,7 @@ function ModalForm({
   formFields,
   initialState,
   onFormSubmit,
+  footer,
 }: Props): JSX.Element {
   // eslint-disable-next-line no-use-before-define
   const [onChange, onSubmit, values] = useForm(handleOnSubmit, initialState);
@@ -85,9 +87,9 @@ function ModalForm({
       {renderIcon()}
       {title && <S.Title color={titleColor}>{title}</S.Title>}
       <form onSubmit={onSubmit as any}>
-        <div>
+        <S.FormContainer>
           {formFields.map((field) => (
-            <input
+            <S.Input
               name={field.name}
               id={field.id}
               type={field.type}
@@ -107,7 +109,7 @@ function ModalForm({
               type="submit"
             />
           )}
-        </div>
+        </S.FormContainer>
       </form>
 
       {secondaryButtonText && (
@@ -117,8 +119,11 @@ function ModalForm({
           backgroundColor={secondaryButtonColor}
           onClick={secondaryButtonCallback}
           borderColor={secondaryButtonBorderColor}
+          type="submit"
         />
       )}
+
+      <S.FooterContainer>{footer}</S.FooterContainer>
     </S.ModalWithIcon>
   );
 }

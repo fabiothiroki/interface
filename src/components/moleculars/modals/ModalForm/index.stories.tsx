@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import icon from "assets/images/newspaper.svg";
+import icon from "assets/images/ticket.svg";
 import ModalForm, { Props } from ".";
 
 export default {
@@ -24,7 +24,7 @@ Default.args = {
       name: "email",
       id: "email",
       type: "email",
-      placeholder: "email",
+      placeholder: "E-mail",
       required: true,
     },
   ],
