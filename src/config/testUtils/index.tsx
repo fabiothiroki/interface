@@ -21,7 +21,6 @@ import CurrentUserProvider, {
   CurrentUserContext,
   ICurrentUserContext,
 } from "contexts/currentUserContext";
-import { mockNavigationFunction } from "setupTests";
 
 export function renderWithTheme(children: React.ReactNode): RenderResult {
   return render(<ThemeProvider theme={theme}>{children}</ThemeProvider>);
@@ -114,6 +113,17 @@ export function expectTextToBeInTheDocument(text: string) {
 
 export function expectImageToBeInTheDocument(alt: string) {
   return expect(screen.getByAltText(alt)).toBeInTheDocument();
+}
+
+export const mockNavigationFunction = jest.fn();
+export function mockNavigation() {
+  return jest.mock("hooks/useNavigation", () => ({
+    __esModule: true,
+    default: () => ({
+      navigateTo: mockNavigationFunction,
+      history: { location: {}, search: "" },
+    }),
+  }));
 }
 
 type expectPageToNavigateToType = {

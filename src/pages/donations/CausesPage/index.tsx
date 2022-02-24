@@ -16,8 +16,8 @@ import { logError } from "services/crashReport";
 import { useLocation } from "react-router-dom";
 import ModalError from "components/moleculars/modals/ModalError";
 import useUsers from "hooks/apiHooks/useUsers";
+import { useCurrentUser } from "contexts/currentUserContext";
 import * as S from "./styles";
-import { useCurrentUser } from "../../../contexts/currentUserContext";
 
 type LocationStateType = {
   failedDonation: boolean;
@@ -39,8 +39,8 @@ function CausesPage(): JSX.Element {
   );
   const { navigateTo } = useNavigation();
   const { nonProfits, isLoading } = useNonProfits();
-  const { createUser } = useUsers();
-  const { signedIn } = useCurrentUser();
+  const { findOrCreateUser } = useUsers();
+  const { signedIn, setCurrentUser } = useCurrentUser();
 
   useEffect(() => {
     logEvent("donateIntroDial_view");
@@ -79,7 +79,10 @@ function CausesPage(): JSX.Element {
 
   const donate = useCallback(async () => {
     try {
-      if (!signedIn) await createUser("nicholas2@ribon.io");
+      if (!signedIn) {
+        const user = await findOrCreateUser("nicholas3@ribon.io");
+        setCurrentUser(user);
+      }
       navigateTo({
         pathname: "/donation-in-process",
         state: { nonProfit: chosenNonProfit, integration },
