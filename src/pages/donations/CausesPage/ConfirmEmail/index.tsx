@@ -1,6 +1,8 @@
 import ModalForm from "components/moleculars/modals/ModalForm";
 import { useState } from "react";
 import { isValidEmail } from "lib/validators";
+import { useTranslation } from "react-i18next";
+import * as S from "../styles";
 
 type Props = {
   onFormSubmit: (values: Record<any, any>) => void;
@@ -21,6 +23,9 @@ function ConfirmEmail({
   secondaryButtonCallback,
 }: Props): JSX.Element {
   const [primaryButtonDisabled, setPrimaryButtonDisabled] = useState(true);
+  const { t } = useTranslation("translation", {
+    keyPrefix: "donations.causesPage.modalForm",
+  });
 
   const fields = [
     {
@@ -35,14 +40,30 @@ function ConfirmEmail({
     email: "",
   };
 
+  function footer() {
+    return (
+      <div>
+        <S.FooterText>
+          {t("footerStartText")}{" "}
+          <a href={t("useTermsLink")} target="_blank" rel="noreferrer">
+            {t("useTermsText")}
+          </a>{" "}
+          {t("footerAnd")}{" "}
+          <a href={t("privacyPolicyLink")} target="_blank" rel="noreferrer">
+            {t("privacyPolicyText")}
+          </a>
+        </S.FooterText>
+      </div>
+    );
+  }
+
   return (
     <ModalForm
       formFields={fields}
       initialState={initialState}
       onFormSubmit={onFormSubmit}
       visible={visible}
-      title={title}
-      footer={<div>footer</div>}
+      footer={footer()}
       icon={icon}
       primaryButtonText={primaryButtonText}
       secondaryButtonText={secondaryButtonText}
@@ -51,6 +72,7 @@ function ConfirmEmail({
       onValuesChange={(values) => {
         setPrimaryButtonDisabled(!isValidEmail(values.email));
       }}
+      title={title}
     />
   );
 }
