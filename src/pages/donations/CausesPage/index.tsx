@@ -18,6 +18,7 @@ import ModalError from "components/moleculars/modals/ModalError";
 import useUsers from "hooks/apiHooks/useUsers";
 import { useCurrentUser } from "contexts/currentUserContext";
 import * as S from "./styles";
+import ConfirmEmail from "./ConfirmEmail";
 
 type LocationStateType = {
   failedDonation: boolean;
@@ -77,23 +78,26 @@ function CausesPage(): JSX.Element {
     setConfirmModalVisible(false);
   }, []);
 
-  const donate = useCallback(async () => {
-    try {
-      if (!signedIn) {
-        const user = await findOrCreateUser("nicholas3@ribon.io");
-        setCurrentUser(user);
+  const donate = useCallback(
+    async (email: string) => {
+      try {
+        if (!signedIn) {
+          const user = await findOrCreateUser(email);
+          setCurrentUser(user);
+        }
+        navigateTo({
+          pathname: "/donation-in-process",
+          state: { nonProfit: chosenNonProfit, integration },
+        });
+      } catch (e) {
+        logError(e);
       }
-      navigateTo({
-        pathname: "/donation-in-process",
-        state: { nonProfit: chosenNonProfit, integration },
+      logEvent("donateConfirmDialButton_click", {
+        causeId: chosenNonProfit?.id,
       });
-    } catch (e) {
-      logError(e);
-    }
-    logEvent("donateConfirmDialButton_click", {
-      causeId: chosenNonProfit?.id,
-    });
-  }, [chosenNonProfit]);
+    },
+    [chosenNonProfit],
+  );
 
   const chooseNonProfit = useCallback((nonProfit: NonProfit) => {
     setChosenNonProfit(nonProfit);
@@ -118,17 +122,16 @@ function CausesPage(): JSX.Element {
         onClose={closeDonationModal}
         primaryButtonCallback={closeDonationModal}
       />
-      <ModalIcon
+      <ConfirmEmail
+        onFormSubmit={(values) => {
+          donate(values.email);
+        }}
+        visible={confirmModalVisible}
         icon={Ticket}
         title={t("confirmModalTitle")}
-        body={chosenNonProfit?.impactDescription}
         primaryButtonText={t("confirmModalPrimaryButtonText")}
-        primaryButtonCallback={donate}
         secondaryButtonText={t("confirmModalSecondaryButtonText")}
         secondaryButtonCallback={closeConfirmModal}
-        visible={confirmModalVisible}
-        onClose={closeConfirmModal}
-        roundIcon
       />
 
       <Header sideLogo={integration?.logo} />
