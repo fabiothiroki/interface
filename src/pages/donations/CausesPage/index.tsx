@@ -41,7 +41,7 @@ function CausesPage(): JSX.Element {
   const { navigateTo } = useNavigation();
   const { nonProfits, isLoading } = useNonProfits();
   const { findOrCreateUser } = useUsers();
-  const { signedIn, setCurrentUser } = useCurrentUser();
+  const { signedIn, setCurrentUser, currentUser } = useCurrentUser();
 
   useEffect(() => {
     logEvent("donateIntroDial_view");
@@ -122,17 +122,34 @@ function CausesPage(): JSX.Element {
         onClose={closeDonationModal}
         primaryButtonCallback={closeDonationModal}
       />
-      <ConfirmEmail
-        onFormSubmit={(values) => {
-          donate(values.email);
-        }}
-        visible={confirmModalVisible}
-        icon={Ticket}
-        title={t("confirmModalTitle")}
-        primaryButtonText={t("confirmModalPrimaryButtonText")}
-        secondaryButtonText={t("confirmModalSecondaryButtonText")}
-        secondaryButtonCallback={closeConfirmModal}
-      />
+      {signedIn ? (
+        <ModalIcon
+          icon={Ticket}
+          title={t("confirmModalAuthTitle")}
+          body={chosenNonProfit?.impactDescription}
+          primaryButtonText={t("confirmModalPrimaryButtonText")}
+          primaryButtonCallback={() => {
+            if (currentUser) donate(currentUser.email);
+          }}
+          secondaryButtonText={t("confirmModalSecondaryButtonText")}
+          secondaryButtonCallback={closeConfirmModal}
+          visible={confirmModalVisible}
+          onClose={closeConfirmModal}
+          roundIcon
+        />
+      ) : (
+        <ConfirmEmail
+          onFormSubmit={(values) => {
+            donate(values.email);
+          }}
+          visible={confirmModalVisible}
+          icon={Ticket}
+          title={t("confirmModalTitle")}
+          primaryButtonText={t("confirmModalPrimaryButtonText")}
+          secondaryButtonText={t("confirmModalSecondaryButtonText")}
+          secondaryButtonCallback={closeConfirmModal}
+        />
+      )}
 
       <Header sideLogo={integration?.logo} />
       <ModalError
