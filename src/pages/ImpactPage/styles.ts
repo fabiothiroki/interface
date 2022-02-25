@@ -8,14 +8,14 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   padding: 0 16px;
-  justify-content: center;
   flex-direction: column;
   text-align: left;
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
     padding: 0;
     margin-left: 240px;
     margin-right: 170px;
-    margin: 0 10% 0 15%;
+    margin: 0 auto;
+    width: 80%;
   }
 `;
 
@@ -29,10 +29,7 @@ export const Icon = styled(Logo)`
   }
 `;
 
-export const ImpactHeader = styled(Header)`
-  width: 100%;
-  display: none;
-`;
+export const ImpactHeader = styled(Header)``;
 
 export const Title = styled.h1`
   font-size: 24px;
@@ -57,8 +54,7 @@ export const Wrapper = styled.div`
   margin-top: 28px;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  gap: 8px;
+  align-items: center;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
     display: grid;

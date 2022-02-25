@@ -16,7 +16,7 @@ function ImpactPage(): JSX.Element {
           imageAlt="test"
         />
         <CardSideImage
-          text="you donated 99 days of pet food for rescued animals"
+          text="you donated 99 days of pet food for "
           imageUrl="https://picsum.photos/id/237/200/300"
           imageAlt="test"
         />
@@ -30,8 +30,8 @@ function ImpactPage(): JSX.Element {
           imageUrl="https://picsum.photos/id/237/200/300"
           imageAlt="test"
         />
-        <S.Button text="Show more" onClick={() => {}} />
       </S.Wrapper>
+      <S.Button text="Show more" onClick={() => {}} />
     </S.Container>
   );
 }
