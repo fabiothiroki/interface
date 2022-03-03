@@ -28,6 +28,8 @@
   },
   "impactPage": {
     "title": "Impacto",
-    "subtitle": "Você usou {{ticketsUsed}} tickets"
+    "subtitle": "Você usou {{ticketsUsed}} tickets",
+    "impactText": "Você doou {{impact}}",
+    "button": "Ver mais"
   }
 }

@@ -50,7 +50,7 @@ function ImpactPage(): JSX.Element {
             imageAlt="test"
           />
         </S.Wrapper>
-        <S.Button text="Show more" onClick={() => {}} />
+        <S.Button text={t("button")} onClick={() => {}} />
       </S.CardsButtonContainer>
     </S.Container>
   );
