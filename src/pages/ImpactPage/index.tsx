@@ -3,6 +3,9 @@ import { useTranslation } from "react-i18next";
 import * as S from "./styles";
 
 function ImpactPage(): JSX.Element {
+  const ticketsUsed = 99;
+  const impact = "99 days of pet food for rescued animals";
+
   const { t } = useTranslation("translation", {
     keyPrefix: "impactPage",
   });
@@ -12,11 +15,11 @@ function ImpactPage(): JSX.Element {
       <S.ImpactHeader />
       <S.Icon />
       <S.Title>{t("title").toUpperCase()}</S.Title>
-      <S.Subtitle>You used 99 donation tickets</S.Subtitle>
+      <S.Subtitle>{t("subtitle", { ticketsUsed })}</S.Subtitle>
 
       <S.Wrapper>
         <CardSideImage
-          text="you donated 99 days of pet food for rescued animals"
+          text={t("impactText", { impact })}
           imageUrl="https://picsum.photos/id/237/200/300"
           imageAlt="test"
         />

@@ -27,6 +27,8 @@
     }
   },
   "impactPage": {
-    "title": "Impact"
+    "title": "Impact",
+    "subtitle": "You used {{ticketsUsed}} tickets",
+    "impactText": "You donated {{impact}}"
   }
 }

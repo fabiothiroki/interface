@@ -27,6 +27,7 @@
     }
   },
   "impactPage": {
-    "title": "Impacto"
+    "title": "Impacto",
+    "subtitle": "Você usou {{ticketsUsed}} tickets"
   }
 }
