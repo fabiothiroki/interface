@@ -1,12 +1,17 @@
 import CardSideImage from "components/moleculars/cards/CardSideImage";
+import { useTranslation } from "react-i18next";
 import * as S from "./styles";
 
 function ImpactPage(): JSX.Element {
+  const { t } = useTranslation("translation", {
+    keyPrefix: "impactPage",
+  });
+
   return (
     <S.Container>
       <S.ImpactHeader />
       <S.Icon />
-      <S.Title>IMPACT</S.Title>
+      <S.Title>{t("title").toUpperCase()}</S.Title>
       <S.Subtitle>You used 99 donation tickets</S.Subtitle>
 
       <S.Wrapper>
