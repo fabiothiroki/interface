@@ -19,9 +19,10 @@ function Navigation(): JSX.Element {
 
   const location = useLocation();
   const isImpactPage = ["/impact"].includes(location.pathname);
+  const isCausesPage = ["/"].includes(location.pathname);
 
   const iconImpactPage = isImpactPage ? ImpactIconOn : ImpactIconOff;
-  const iconCausesPage = isImpactPage ? CausesIconOff : CausesIconOn;
+  const iconCausesPage = isCausesPage ? CausesIconOn : CausesIconOff;
 
   return isDesktop ? (
     <S.ContainerDesktop>
@@ -31,7 +32,7 @@ function Navigation(): JSX.Element {
       </S.StyledLink>
       <S.StyledLink to="/impact">
         <S.Icon src={iconImpactPage} />
-        <S.Title disabled={!isImpactPage}>{t("impactTitle")}</S.Title>
+        <S.Title disabled={isCausesPage}>{t("impactTitle")}</S.Title>
       </S.StyledLink>
     </S.ContainerDesktop>
   ) : (
@@ -42,7 +43,7 @@ function Navigation(): JSX.Element {
       </S.StyledLink>
       <S.StyledLink to="/impact">
         <S.Icon src={iconImpactPage} />
-        <S.Title disabled={!isImpactPage}>{t("impactTitle")}</S.Title>
+        <S.Title disabled={isCausesPage}>{t("impactTitle")}</S.Title>
       </S.StyledLink>
     </S.ContainerMobile>
   );
