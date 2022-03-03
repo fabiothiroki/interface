@@ -5,7 +5,7 @@ export type Props = {
   imageAlt?: string;
   text?: string;
 };
-function CardSideImage({ imageUrl, imageAlt, text }: Props): JSX.Element {
+function CardTopImage({ imageUrl, imageAlt, text }: Props): JSX.Element {
   return (
     <S.Container>
       <S.Image src={imageUrl} alt={imageAlt} />
@@ -14,4 +14,4 @@ function CardSideImage({ imageUrl, imageAlt, text }: Props): JSX.Element {
   );
 }
 
-export default CardSideImage;
+export default CardTopImage;

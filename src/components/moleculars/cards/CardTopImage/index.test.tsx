@@ -3,13 +3,11 @@ import {
   expectTextToBeInTheDocument,
   renderComponent,
 } from "config/testUtils";
-import CardSideImage from ".";
+import CardTopImage from ".";
 
-describe("CardSideImage", () => {
+describe("CardTopImage", () => {
   it("should render without error", () => {
-    renderComponent(
-      <CardSideImage imageUrl="" imageAlt="image" text="texto" />,
-    );
+    renderComponent(<CardTopImage imageUrl="" imageAlt="image" text="texto" />);
 
     expectImageToBeInTheDocument("image");
     expectTextToBeInTheDocument("texto");

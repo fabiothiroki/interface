@@ -3,8 +3,9 @@ import styled, { css } from "styled-components";
 export const Container = styled.div`
   ${({ theme }) => css`
     display: flex;
+    flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 160px;
     padding: 16px;
     background-color: ${theme.colors.ribonWhite};
     box-shadow: 0px 4px 12px rgba(24, 86, 105, 0.15);
@@ -24,11 +25,9 @@ export const Image = styled.img`
 
 export const Text = styled.p`
   ${({ theme }) => css`
+    margin-top: 16px;
     font-size: 14px;
     color: ${theme.colors.ribonBlack};
     font-weight: ${theme.font.normal};
-    @media (min-width: ${theme.breakpoints.pad}) {
-      width: 224px;
-    }
   `}
 `;

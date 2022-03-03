@@ -1,13 +1,13 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import CardSideImage, { Props } from ".";
+import CardTopImage, { Props } from ".";
 
 export default {
-  title: "CardSideImage",
-  component: CardSideImage,
-} as ComponentMeta<typeof CardSideImage>;
+  title: "CardTopImage",
+  component: CardTopImage,
+} as ComponentMeta<typeof CardTopImage>;
 
-const Template: ComponentStory<typeof CardSideImage> = function (args: Props) {
-  return <CardSideImage {...args} />;
+const Template: ComponentStory<typeof CardTopImage> = function (args: Props) {
+  return <CardTopImage {...args} />;
 };
 
 export const Default = Template.bind({});
