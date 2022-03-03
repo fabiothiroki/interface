@@ -90,6 +90,7 @@ function ModalForm({
         <S.FormContainer>
           {formFields.map((field) => (
             <S.Input
+              key={field.id}
               name={field.name}
               id={field.id}
               type={field.type}
