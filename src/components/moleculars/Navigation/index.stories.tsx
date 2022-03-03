@@ -1,19 +1,19 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { Switch, Route, Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
-import Navigation, { Props } from ".";
+import Navigation from ".";
 
 export default {
   title: "Navigation",
   component: Navigation,
 } as ComponentMeta<typeof Navigation>;
 
-const Template: ComponentStory<typeof Navigation> = function (args: Props) {
+const Template: ComponentStory<typeof Navigation> = function () {
   return (
     <Router history={createMemoryHistory()}>
       <Switch>
         <Route path="/" exact>
-          <Navigation {...args} />
+          <Navigation />
         </Route>
       </Switch>
     </Router>
@@ -22,6 +22,3 @@ const Template: ComponentStory<typeof Navigation> = function (args: Props) {
 
 export const Default = Template.bind({});
 
-Default.args = {
-  isImpactPage: false,
-};

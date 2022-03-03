@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 import useBreakpoint from "hooks/useBreakpoint";
 import CausesIconOn from "./assets/causesIconOn.svg";
 import ImpactIconOn from "./assets/impactIconOn.svg";
@@ -7,46 +8,44 @@ import CausesIconOff from "./assets/causesIconOff.svg";
 import * as S from "./styles";
 
 export type Props = {
-  isImpactPage: boolean
+  isImpactPage: boolean;
 };
-function Navigation({isImpactPage}: Props): JSX.Element {
-
+function Navigation(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "donations.menu",
   });
 
   const { isDesktop } = useBreakpoint();
 
-  return  isDesktop ? (
+  const location = useLocation();
+  const isImpactPage = ["/impact"].includes(location.pathname);
+
+  const iconImpactPage = isImpactPage ? ImpactIconOn : ImpactIconOff;
+  const iconCausesPage = isImpactPage ? CausesIconOff : CausesIconOn;
+
+  return isDesktop ? (
     <S.Container>
-      <S.StyledLink to="/" >
-        <S.Icon src={isImpactPage ? CausesIconOff : CausesIconOn} alt="causes" />
-        <S.Title disabled={isImpactPage}>
-          {t("causesPageTitle")}
-        </S.Title>
+      <S.StyledLink to="/">
+        <S.Icon src={iconCausesPage} />
+        <S.Title disabled={isImpactPage}>{t("causesPageTitle")}</S.Title>
       </S.StyledLink>
-      <S.StyledLink to="/impact" >
-        <S.Icon src={isImpactPage ? ImpactIconOn : ImpactIconOff} alt="impact" />
-        <S.Title disabled={!isImpactPage}>
-          {t("impactTitle")}
-        </S.Title>
+      <S.StyledLink to="/impact">
+        <S.Icon src={iconImpactPage} />
+        <S.Title disabled={!isImpactPage}>{t("impactTitle")}</S.Title>
       </S.StyledLink>
     </S.Container>
-  ) :  (
+  ) : (
     <S.ContainerMobile>
-      <S.StyledLink to="/" >
-        <S.Icon src={isImpactPage ? CausesIconOff : CausesIconOn} alt="causes" />
-        <S.Title disabled={isImpactPage}>
-          {t("causesPageTitle")}
-        </S.Title>
+      <S.StyledLink to="/">
+        <S.Icon src={iconCausesPage} />
+        <S.Title disabled={isImpactPage}>{t("causesPageTitle")}</S.Title>
       </S.StyledLink>
-      <S.StyledLink to="/impact" >
-        <S.Icon src={isImpactPage ? ImpactIconOn : ImpactIconOff} alt="impact" />
-        <S.Title disabled={!isImpactPage}>
-          {t("impactTitle")}
-        </S.Title>
+      <S.StyledLink to="/impact">
+        <S.Icon src={iconImpactPage} />
+        <S.Title disabled={!isImpactPage}>{t("impactTitle")}</S.Title>
       </S.StyledLink>
-    </S.ContainerMobile>);
+    </S.ContainerMobile>
+  );
 }
 
 export default Navigation;
