@@ -7,9 +7,10 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
-  padding: 0 16px;
+  padding: 16px;
   flex-direction: column;
   text-align: left;
+  justify-content: flex-start;
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
     padding: 0;
     margin-left: 240px;
@@ -50,21 +51,20 @@ export const Subtitle = styled.h2`
   }
 `;
 
-export const Wrapper = styled.div`
-  margin-top: 28px;
+export const CardsButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+`;
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
+export const Wrapper = styled.div`
+  margin-top: 28px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 8px;
 `;
 
 export const Button = styled(ButtonRound)`

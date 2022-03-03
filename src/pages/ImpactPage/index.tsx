@@ -17,29 +17,41 @@ function ImpactPage(): JSX.Element {
       <S.Title>{t("title").toUpperCase()}</S.Title>
       <S.Subtitle>{t("subtitle", { ticketsUsed })}</S.Subtitle>
 
-      <S.Wrapper>
-        <CardTopImage
-          text={t("impactText", { impact })}
-          imageUrl="https://picsum.photos/id/237/200/300"
-          imageAlt="test"
-        />
-        <CardTopImage
-          text="you donated 99 days of pet food for "
-          imageUrl="https://picsum.photos/id/237/200/300"
-          imageAlt="test"
-        />
-        <CardTopImage
-          text="you donated 99 days of pet food for rescued animals oauhsiush aiushiuahsi iohasuohs"
-          imageUrl="https://picsum.photos/id/237/200/300"
-          imageAlt="test"
-        />
-        <CardTopImage
-          text="you donated 99 days of pet food for rescued animals"
-          imageUrl="https://picsum.photos/id/237/200/300"
-          imageAlt="test"
-        />
-      </S.Wrapper>
-      <S.Button text="Show more" onClick={() => {}} />
+      <S.CardsButtonContainer>
+        <S.Wrapper>
+          <CardTopImage
+            text={t("impactText", { impact })}
+            imageUrl="https://picsum.photos/id/237/200/300"
+            imageAlt="test"
+          />
+          <CardTopImage
+            text="you donated 99 days of pet food for "
+            imageUrl="https://picsum.photos/id/237/200/300"
+            imageAlt="test"
+          />
+          <CardTopImage
+            text="you donated 99 days of pet food for rescued animals oauhsiush aiushiuahsi iohasuohs"
+            imageUrl="https://picsum.photos/id/237/200/300"
+            imageAlt="test"
+          />
+          <CardTopImage
+            text="you donated 99 days of pet food for rescued animals"
+            imageUrl="https://picsum.photos/id/237/200/300"
+            imageAlt="test"
+          />
+          <CardTopImage
+            text="you donated 99 days of pet food for rescued animals oauhsiush aiushiuahsi iohasuohs"
+            imageUrl="https://picsum.photos/id/237/200/300"
+            imageAlt="test"
+          />
+          <CardTopImage
+            text="you donated 99 days of pet food for rescued animals"
+            imageUrl="https://picsum.photos/id/237/200/300"
+            imageAlt="test"
+          />
+        </S.Wrapper>
+        <S.Button text="Show more" onClick={() => {}} />
+      </S.CardsButtonContainer>
     </S.Container>
   );
 }
