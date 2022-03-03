@@ -24,6 +24,10 @@
     "donationInProcess": {
       "animationText": "Doando...",
       "impactText": "Os apoiadores da Ribon são os responsáveis pelo pagamento das doações gratuitas"
+    },
+    "menu":{
+      "impactTitle": "Impacto",
+      "causesPageTitle": "Causas"
     }
   }
 }

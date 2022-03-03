@@ -24,6 +24,10 @@
     "donationInProcess": {
       "animationText": "Donating...",
       "impactText": "Ribon’s supporters are those responsible for paying for the free donations"
+    },
+    "menu":{
+      "impactTitle": "Impact",
+      "causesPageTitle": "Causes"
     }
   }
 }
