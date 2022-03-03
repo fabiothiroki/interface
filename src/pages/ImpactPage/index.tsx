@@ -21,7 +21,7 @@ function ImpactPage(): JSX.Element {
           imageAlt="test"
         />
         <CardSideImage
-          text="you donated 99 days of pet food for rescued animals"
+          text="you donated 99 days of pet food for rescued animals oauhsiush aiushiuahsi iohasuohs"
           imageUrl="https://picsum.photos/id/237/200/300"
           imageAlt="test"
         />

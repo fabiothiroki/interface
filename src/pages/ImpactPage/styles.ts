@@ -59,7 +59,6 @@ export const Wrapper = styled.div`
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-auto-rows: 88px;
     gap: 24px;
   }
 
