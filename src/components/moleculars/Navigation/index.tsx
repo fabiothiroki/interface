@@ -24,7 +24,7 @@ function Navigation(): JSX.Element {
   const iconCausesPage = isImpactPage ? CausesIconOff : CausesIconOn;
 
   return isDesktop ? (
-    <S.Container>
+    <S.ContainerDesktop>
       <S.StyledLink to="/">
         <S.Icon src={iconCausesPage} />
         <S.Title disabled={isImpactPage}>{t("causesPageTitle")}</S.Title>
@@ -33,7 +33,7 @@ function Navigation(): JSX.Element {
         <S.Icon src={iconImpactPage} />
         <S.Title disabled={!isImpactPage}>{t("impactTitle")}</S.Title>
       </S.StyledLink>
-    </S.Container>
+    </S.ContainerDesktop>
   ) : (
     <S.ContainerMobile>
       <S.StyledLink to="/">

@@ -21,4 +21,3 @@ const Template: ComponentStory<typeof Navigation> = function () {
 };
 
 export const Default = Template.bind({});
-

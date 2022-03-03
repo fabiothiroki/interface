@@ -6,28 +6,28 @@ type Props = {
   disabled: boolean;
 };
 
-export const Container = styled.div`
+export const ContainerDesktop = styled.div`
   ${() => css`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 50px 50px 0px 50px;
-  width: 80px;
-  background: #FFFFFF;
-  box-shadow: 0px 4px 12px rgba(24, 86, 105, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 50px 0px 50px;
+    width: 80px;
+    background: #ffffff;
+    box-shadow: 0px 4px 12px rgba(24, 86, 105, 0.15);
   `}
 `;
 
 export const ContainerMobile = styled.div`
   ${() => css`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  position: absolute;
-  width: 100%;
-  align-self: flex-end;
-  background: #FFFFFF;
-  box-shadow: 0px 4px 12px rgba(24, 86, 105, 0.15);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: absolute;
+    width: 100%;
+    align-self: flex-end;
+    background: #ffffff;
+    box-shadow: 0px 4px 12px rgba(24, 86, 105, 0.15);
   `}
 `;
 
@@ -41,7 +41,7 @@ export const Title = styled.p`
 export const StyledLink = styled(Link)`
   ${() => css`
     text-decoration: none;
-    display:flex;
+    display: flex;
     flex-direction: column;
     padding: 20px;
   `}
