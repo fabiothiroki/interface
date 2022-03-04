@@ -28,22 +28,22 @@ function Navigation(): JSX.Element {
     <S.ContainerDesktop>
       <S.StyledLink to="/">
         <S.Icon src={iconCausesPage} />
-        <S.Title disabled={isImpactPage}>{t("causesPageTitle")}</S.Title>
+        <S.Title enabled={isCausesPage}>{t("causesPageTitle")}</S.Title>
       </S.StyledLink>
       <S.StyledLink to="/impact">
         <S.Icon src={iconImpactPage} />
-        <S.Title disabled={isCausesPage}>{t("impactTitle")}</S.Title>
+        <S.Title enabled={isImpactPage}>{t("impactTitle")}</S.Title>
       </S.StyledLink>
     </S.ContainerDesktop>
   ) : (
     <S.ContainerMobile>
       <S.StyledLink to="/">
         <S.Icon src={iconCausesPage} />
-        <S.Title disabled={isImpactPage}>{t("causesPageTitle")}</S.Title>
+        <S.Title enabled={isCausesPage}>{t("causesPageTitle")}</S.Title>
       </S.StyledLink>
       <S.StyledLink to="/impact">
         <S.Icon src={iconImpactPage} />
-        <S.Title disabled={isCausesPage}>{t("impactTitle")}</S.Title>
+        <S.Title enabled={isImpactPage}>{t("impactTitle")}</S.Title>
       </S.StyledLink>
     </S.ContainerMobile>
   );

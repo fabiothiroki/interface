@@ -3,7 +3,7 @@ import theme from "styles/theme";
 import { Link } from "react-router-dom";
 
 type Props = {
-  disabled: boolean;
+  enabled: boolean;
 };
 
 export const ContainerDesktop = styled.div`
@@ -32,8 +32,8 @@ export const ContainerMobile = styled.div`
 `;
 
 export const Title = styled.p`
-  ${({ disabled }: Props) => css`
-    color: ${disabled ? theme.colors.darkGray : theme.colors.ribonBlack};
+  ${({ enabled }: Props) => css`
+    color: ${enabled ? theme.colors.ribonBlack : theme.colors.darkGray};
     text-decoration: none;
   `}
 `;
