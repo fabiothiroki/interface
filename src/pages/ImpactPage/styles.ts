@@ -65,10 +65,13 @@ export const Wrapper = styled.div`
   justify-content: space-evenly;
   flex-wrap: wrap;
   gap: 8px;
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    justify-content: flex-start;
+  }
 `;
 
 export const Button = styled(ButtonRound)`
   width: 100px;
   align-self: center;
-  margin-top: 16px;
+  margin: 16px 0;
 `;

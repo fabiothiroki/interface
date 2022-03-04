@@ -29,5 +29,6 @@ export const Text = styled.p`
     font-size: 14px;
     color: ${theme.colors.ribonBlack};
     font-weight: ${theme.font.normal};
+    text-align: center;
   `}
 `;
