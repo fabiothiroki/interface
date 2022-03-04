@@ -1,5 +1,7 @@
 import CardTopImage from "components/moleculars/cards/CardTopImage";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { logEvent } from "services/analytics";
 import * as S from "./styles";
 
 function ImpactPage(): JSX.Element {
@@ -9,6 +11,10 @@ function ImpactPage(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "impactPage",
   });
+
+  useEffect(() => {
+    logEvent("profile_view");
+  }, []);
 
   return (
     <S.Container>
