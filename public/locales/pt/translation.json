@@ -4,7 +4,8 @@
       "donationModalTitle": "Doe de graça!",
       "donationModalBody": "Use seus tickets diários para fazer doações a serem patrocinadas pelos apoiadores da Ribon.",
       "donationModalButtonText": "Continuar",
-      "confirmModalTitle": "Confirme sua doação",
+      "confirmModalTitle": "Insira seu e-mail para usar seu vale doação",
+      "confirmModalAuthTitle": "Confirmar doação",
       "confirmModalPrimaryButtonText": "Confirmar",
       "confirmModalSecondaryButtonText": "Cancelar",
       "donateText": "Doar",
@@ -15,7 +16,15 @@
       "errorModalButtonText": "Ok",
       "blockedModalTitle": "Bloqueado",
       "blockedModalText": "Esta conta já usou seu vale doação diário. Volte amanhã para doar novamente!",
-      "blockedModalButtonText": "Ok"
+      "blockedModalButtonText": "Ok",
+      "modalForm": {
+        "footerStartText": "Ao inserir seu e-mail e se inscrever, você aceita os",
+        "footerAnd": "e",
+        "useTermsText": "Termos de Serviço",
+        "privacyPolicyText": "Política de Privacidade",
+        "privacyPolicyLink": "https://blog.ribon.io/2017/12/20/politica-de-privacidade/",
+        "useTermsLink": "https://blog.ribon.io/2021/07/12/termos-e-condicoes-de-uso-da-ribon/"
+      }
     },
     "donationDonePage": {
       "title": "Obrigada pela sua doação!",

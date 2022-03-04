@@ -4,7 +4,8 @@
       "donationModalTitle": "You got a donation ticket",
       "donationModalBody": "Use your daily tickets to make donations to be sponsored by Ribon’s supporters.",
       "donationModalButtonText": "Continue",
-      "confirmModalTitle": "Confirm your donation",
+      "confirmModalTitle": "Enter your e-mail to use your ticket",
+      "confirmModalAuthTitle": "Confirm your donation",
       "confirmModalPrimaryButtonText": "Confirm",
       "confirmModalSecondaryButtonText": "Cancel",
       "donateText": "Donate",
@@ -15,7 +16,15 @@
       "errorModalButtonText": "Ok",
       "blockedModalTitle": "Donation blocked",
       "blockedModalText": "This account has already used it’s daily donation ticket. Come back tomorrow!",
-      "blockedModalButtonText": "Ok"
+      "blockedModalButtonText": "Ok",
+      "modalForm": {
+        "footerStartText": "By signing up you agree to Ribon’s",
+        "footerAnd": "and",
+        "useTermsText": "Terms of Service",
+        "privacyPolicyText": "Privacy Policy",
+        "privacyPolicyLink": "https://blog.ribon.io/2021/09/16/privacy-and-retention-of-personal-data-policy/",
+        "useTermsLink": "https://blog.ribon.io/2021/07/12/termos-e-condicoes-de-uso-da-ribon/"
+      }
     },
     "donationDonePage": {
       "title": "Thank you for your donation!",
