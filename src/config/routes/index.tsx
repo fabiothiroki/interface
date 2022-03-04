@@ -6,7 +6,7 @@ import CurrentUserProvider from "contexts/currentUserContext";
 import ConfirmEmailPage from "pages/donations/ConfirmEmailPage";
 import DonationDonePage from "pages/donations/DonationDonePage";
 import DonationInProcessPage from "pages/donations/DonationInProcessPage";
-import Navigation from "components/moleculars/Navigation";
+import Navigation from "./Navigation";
 
 function RoutesComponent(): JSX.Element {
   return (
