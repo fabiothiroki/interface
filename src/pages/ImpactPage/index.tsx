@@ -16,6 +16,10 @@ function ImpactPage(): JSX.Element {
     logEvent("profile_view");
   }, []);
 
+  const handleClick = () => {
+    logEvent("profileShowAllButton_click");
+  };
+
   return (
     <S.Container>
       <S.ImpactHeader />
@@ -61,7 +65,7 @@ function ImpactPage(): JSX.Element {
             imageAlt="test"
           />
         </S.Wrapper>
-        <S.Button text={t("button")} onClick={() => {}} />
+        <S.Button text={t("button")} onClick={handleClick} />
       </S.CardsButtonContainer>
     </S.Container>
   );
