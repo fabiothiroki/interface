@@ -13,12 +13,15 @@ export const Container = styled.div`
 export const Icon = styled.img`
   ${() => css`
     margin-right: 10px;
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
   `}
 `;
 
-export const Text = styled.h4`
+export const Text = styled.p`
   ${({ theme }) => css`
-    font-weight: 400;
+    font-size: 14px;
     color: ${theme.colors.ribonBlack};
   `}
 `;
