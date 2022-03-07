@@ -20,7 +20,7 @@ describe("ButtonSwitch", () => {
     expectTextToBeInTheDocument("PT");
   });
 
-  it("renders the left text", () => {
+  it("renders the right text", () => {
     expectTextToBeInTheDocument("EN");
   });
 
