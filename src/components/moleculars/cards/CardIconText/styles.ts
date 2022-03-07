@@ -13,6 +13,9 @@ export const Container = styled.div`
 export const Icon = styled.img`
   ${() => css`
     margin-right: 10px;
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
   `}
 `;
 
