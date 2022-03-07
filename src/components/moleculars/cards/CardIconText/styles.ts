@@ -19,9 +19,9 @@ export const Icon = styled.img`
   `}
 `;
 
-export const Text = styled.h4`
+export const Text = styled.p`
   ${({ theme }) => css`
-    font-weight: 400;
+    font-size: 14px;
     color: ${theme.colors.ribonBlack};
   `}
 `;
