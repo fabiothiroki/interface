@@ -26,6 +26,7 @@ function ButtonSwitch({ leftText, rightText, onSwitch }: Props): JSX.Element {
       </S.BoxIcon>
       <S.ContainerSwitch>
         <Switch
+          id="switch"
           onChange={handleChange}
           checked={checked}
           offColor={ribonBlue}

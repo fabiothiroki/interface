@@ -14,7 +14,7 @@ export const BoxIcon = styled.div`
 `;
 
 export const ContainerSwitch = styled.div`
-  margin: 0 8px;
+  margin: 0 4px;
 `;
 
 export const Text = styled.p`
