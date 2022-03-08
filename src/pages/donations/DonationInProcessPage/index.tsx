@@ -30,7 +30,6 @@ function DonationInProcessPage(): JSX.Element {
   const { donate } = useDonations();
   const { currentUser } = useCurrentUser();
 
-  // eslint-disable-next-line no-unused-vars
   async function handleDonation() {
     if (!currentUser) return;
 
@@ -45,7 +44,7 @@ function DonationInProcessPage(): JSX.Element {
 
   useEffect(() => {
     logEvent("donateSendingDonation_view", { selected: nonProfit?.id });
-    // handleDonation();
+    handleDonation();
   }, []);
 
   return (
