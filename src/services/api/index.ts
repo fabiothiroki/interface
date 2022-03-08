@@ -1,7 +1,7 @@
 import Axios, { AxiosRequestConfig } from "axios";
 import camelCaseKeys from "camelcase-keys";
 import snakeCaseKeys from "snakecase-keys";
-import { normalizedLanguage } from "../../lib/currentLanguage";
+import { normalizedLanguage } from "lib/currentLanguage";
 
 const RIBON_API = "https://ribon-core-api-22j7w.ondigitalocean.app/";
 
