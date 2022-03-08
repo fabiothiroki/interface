@@ -43,7 +43,13 @@ function CausesPage(): JSX.Element {
   const { navigateTo } = useNavigation();
   const { nonProfits, isLoading } = useNonProfits();
   const { findOrCreateUser } = useUsers();
-  const { signedIn, setCurrentUser, currentUser } = useCurrentUser();
+  const {
+    signedIn,
+    setCurrentUser,
+    currentUser,
+    setUserLastDonation,
+    userLastDonation,
+  } = useCurrentUser();
 
   useEffect(() => {
     logEvent("donateIntroDial_view");
@@ -91,6 +97,8 @@ function CausesPage(): JSX.Element {
           const user = await findOrCreateUser(email);
           setCurrentUser(user);
         }
+        setUserLastDonation(Date.now.toString);
+        console.log(userLastDonation);
         navigateTo({
           pathname: "/donation-in-process",
           state: { nonProfit: chosenNonProfit, integration },
