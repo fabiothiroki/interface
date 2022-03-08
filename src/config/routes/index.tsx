@@ -54,7 +54,9 @@ function RoutesComponent(): JSX.Element {
       </Route>
 
       <Route path="/impact" exact>
-        <Navigation />
+        <MainLayout>
+          <div />
+        </MainLayout>
       </Route>
     </Switch>
   );
