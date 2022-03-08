@@ -3,12 +3,11 @@ import Header from "components/atomics/sections/Header";
 import useQueryParams from "hooks/useQueryParams";
 import useIntegration from "hooks/apiHooks/useIntegration";
 import cogIcon from "assets/icons/cog-icon.svg";
-import globeIcon from "assets/icons/globe-icon.svg";
 import { useState } from "react";
 import theme from "styles/theme";
-import CardIconText from "components/moleculars/cards/CardIconText";
 import useBreakpoint from "hooks/useBreakpoint";
 import * as S from "./styles";
+import ChangeLanguageItem from "./ChangeLanguageItem";
 
 function LayoutHeader(): JSX.Element {
   const queryParams = useQueryParams();
@@ -50,15 +49,12 @@ function LayoutHeader(): JSX.Element {
           },
         }}
       >
-        <CardIconText text="Change Langugage" icon={globeIcon} />
+        <ChangeLanguageItem />
       </ModalBlank>
       <Header
         sideLogo={integration?.logo}
         rightComponent={<S.Settings onClick={() => openMenu()} src={cogIcon} />}
       />
-      <ModalBlank>
-        <div>oi</div>
-      </ModalBlank>
     </S.Container>
   );
 }
