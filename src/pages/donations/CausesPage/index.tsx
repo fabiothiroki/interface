@@ -15,7 +15,6 @@ import { logError } from "services/crashReport";
 import { useLocation } from "react-router-dom";
 import ModalError from "components/moleculars/modals/ModalError";
 import useUsers from "hooks/apiHooks/useUsers";
-import LayoutHeader from "layouts/LayoutHeader";
 import { useCurrentUser } from "contexts/currentUserContext";
 import * as S from "./styles";
 import ConfirmEmail from "./ConfirmEmail";
@@ -151,7 +150,6 @@ function CausesPage(): JSX.Element {
         />
       )}
 
-      <LayoutHeader />
       <ModalError
         visible={warningModalVisible}
         title={t("errorModalTitle")}
