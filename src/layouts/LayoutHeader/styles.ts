@@ -5,5 +5,7 @@ export const Container = styled.div`
 `;
 
 export const Settings = styled.img`
-  ${() => css``}
+  ${() => css`
+    cursor: pointer;
+  `}
 `;
