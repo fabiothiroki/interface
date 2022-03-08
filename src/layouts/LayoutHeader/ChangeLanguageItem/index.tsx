@@ -2,10 +2,14 @@ import globeIcon from "assets/icons/globe-icon.svg";
 import CardIconText from "components/moleculars/cards/CardIconText";
 import ButtonSwitch from "components/atomics/ButtonSwitch";
 import { useLanguage } from "hooks/useLanguage";
+import { useTranslation } from "react-i18next";
 import * as S from "./styles";
 
 function ChangeLanguageItem(): JSX.Element {
   const { currentLang, handleSwitchLanguage } = useLanguage();
+  const { t } = useTranslation("translation", {
+    keyPrefix: "layouts.layoutHeader.changeLanguageItem",
+  });
 
   function handleSwitch() {
     handleSwitchLanguage();
@@ -14,7 +18,7 @@ function ChangeLanguageItem(): JSX.Element {
   return (
     <S.Container>
       <CardIconText
-        text="Change Langugage"
+        text={t("changeLanguageText")}
         icon={globeIcon}
         rightComponent={
           <ButtonSwitch
