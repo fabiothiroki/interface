@@ -18,8 +18,6 @@ export const BodyContainer = styled.div`
     @media (min-width: ${theme.breakpoints.pad}) {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
     }
   `}
 `;

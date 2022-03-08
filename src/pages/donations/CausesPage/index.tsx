@@ -1,4 +1,3 @@
-import Header from "components/atomics/sections/Header";
 import CardCenterImageButton from "components/moleculars/cards/CardCenterImageButton";
 import { useCallback, useEffect, useState } from "react";
 import Ticket from "assets/images/ticket.svg";
@@ -19,6 +18,7 @@ import useUsers from "hooks/apiHooks/useUsers";
 import { useCurrentUser } from "contexts/currentUserContext";
 import * as S from "./styles";
 import ConfirmEmail from "./ConfirmEmail";
+import LayoutHeader from "../../../layouts/LayoutHeader";
 
 type LocationStateType = {
   failedDonation: boolean;
@@ -151,7 +151,7 @@ function CausesPage(): JSX.Element {
         />
       )}
 
-      <Header sideLogo={integration?.logo} />
+      <LayoutHeader />
       <ModalError
         visible={warningModalVisible}
         title={t("errorModalTitle")}
