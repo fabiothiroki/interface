@@ -57,6 +57,9 @@ export const CardsButtonContainer = styled.div`
   align-items: center;
   justify-content: center;
   align-self: flex-start;
+  /* pra página de sem impacto ficar certa, é melhor com o
+  height 100%, mas a normal não funciona bem com isso :( */
+  /* height: 100%; */
 `;
 
 export const Wrapper = styled.div`

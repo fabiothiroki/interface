@@ -30,6 +30,7 @@
     "title": "Impact",
     "subtitle": "You used {{ticketsUsed}} tickets",
     "impactText": "You donated {{impact}}",
+    "noImpactText": "Your donation impact summary will be shown here",
     "button": "Show more"
   }
 }
