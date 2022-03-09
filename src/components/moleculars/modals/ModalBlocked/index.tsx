@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "components/atomics/Button";
 import ReactModal from "react-modal";
-import blockedIcon from "./assets/il-ticket-gray.png";
+import blockedIcon from "./assets/il-ticket-gray.svg";
 import * as S from "./styles";
 import { defaultCustomStyles } from "../defaultCustomStyles";
 

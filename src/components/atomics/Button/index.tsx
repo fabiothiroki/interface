@@ -72,7 +72,7 @@ export default function Button({
       ribonsColor={ribonsColor}
       onClick={onClick}
       leftIcon={leftIcon}
-      disabled={disabled && !onClick}
+      disabled={disabled}
       borderRadius={borderRadius()}
       {...props}
     >
