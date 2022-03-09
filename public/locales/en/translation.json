@@ -42,5 +42,12 @@
       "impactTitle": "Impact",
       "causesPageTitle": "Causes"
     }
+  },
+  "layouts": {
+    "layoutHeader": {
+      "changeLanguageItem": {
+        "changeLanguageText": "Change language"
+      }
+    }
   }
 }
