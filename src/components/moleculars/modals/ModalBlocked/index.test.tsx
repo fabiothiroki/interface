@@ -5,6 +5,6 @@ describe("ModalBlocked", () => {
   it("should render without error", () => {
     renderComponent(<ModalBlocked title="ModalBlocked" visible />);
 
-    expectTextToBeInTheDocument("");
+    expectTextToBeInTheDocument("ModalBlocked");
   });
 });
