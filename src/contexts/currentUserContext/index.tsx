@@ -28,7 +28,7 @@ export const CurrentUserContext = createContext<ICurrentUserContext>(
 );
 
 export const CURRENT_USER_KEY = "CURRENT_USER_KEY";
-export const CURRENT_USER_LAST_DONATION_KEY = "CURRENT_USER_KEY";
+export const CURRENT_USER_LAST_DONATION_KEY = "CURRENT_USER_LAST_DONATION_KEY";
 
 function CurrentUserProvider({ children }: Props) {
   function getUserFromLocalStorage() {
@@ -38,16 +38,19 @@ function CurrentUserProvider({ children }: Props) {
     return JSON.parse(user);
   }
 
+  const [currentUser, setCurrentUser] = useState<User | undefined>(
+    getUserFromLocalStorage(),
+  );
+
   function getUserLastDonationFromLocalStorage() {
-    const lastDonation = localStorage.getItem(CURRENT_USER_LAST_DONATION_KEY);
+    const lastDonation = localStorage.getItem(
+      `${CURRENT_USER_LAST_DONATION_KEY}_${currentUser?.id}`,
+    );
     if (!lastDonation || lastDonation === "undefined") return undefined;
 
     return JSON.parse(lastDonation);
   }
 
-  const [currentUser, setCurrentUser] = useState<User | undefined>(
-    getUserFromLocalStorage(),
-  );
   const [userLastDonation, setUserLastDonation] = useState<string | "">(
     getUserLastDonationFromLocalStorage(),
   );
@@ -67,8 +70,8 @@ function CurrentUserProvider({ children }: Props) {
 
   function setUserLastDonationInLocalStorage() {
     localStorage.setItem(
-      CURRENT_USER_LAST_DONATION_KEY,
-      JSON.stringify(Date.now.toString),
+      `${CURRENT_USER_LAST_DONATION_KEY}_${currentUser?.id}`,
+      JSON.stringify(userLastDonation),
     );
   }
 
@@ -76,7 +79,7 @@ function CurrentUserProvider({ children }: Props) {
     setSignedIn(!!currentUser);
     setUserInLocalStorage();
     setUserLastDonationInLocalStorage();
-  }, [currentUser]);
+  }, [currentUser, userLastDonation]);
 
   const currentUserObject: ICurrentUserContext = useMemo(
     () => ({

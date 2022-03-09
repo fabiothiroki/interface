@@ -9,6 +9,7 @@
       "confirmModalPrimaryButtonText": "Confirmar",
       "confirmModalSecondaryButtonText": "Cancelar",
       "donateText": "Doar",
+      "donateBlockedText": "Bloqueado",
       "pageTitle": "Causas",
       "pageSubtitle": "Doe de graça para uma causa de sua escolha",
       "errorModalTitle": "Falha no processo",

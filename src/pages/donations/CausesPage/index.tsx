@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import Ticket from "assets/images/ticket.svg";
 import ModalIcon from "components/moleculars/modals/ModalIcon";
 import { useTranslation } from "react-i18next";
+import { today } from "lib/dateTodayFormatter";
 import { logEvent } from "services/analytics";
 import useNavigation from "hooks/useNavigation";
 import NonProfit from "types/entities/NonProfit";
@@ -43,13 +44,8 @@ function CausesPage(): JSX.Element {
   const { navigateTo } = useNavigation();
   const { nonProfits, isLoading } = useNonProfits();
   const { findOrCreateUser } = useUsers();
-  const {
-    signedIn,
-    setCurrentUser,
-    currentUser,
-    setUserLastDonation,
-    userLastDonation,
-  } = useCurrentUser();
+  const { signedIn, setCurrentUser, currentUser, userLastDonation } =
+    useCurrentUser();
 
   useEffect(() => {
     logEvent("donateIntroDial_view");
@@ -90,6 +86,10 @@ function CausesPage(): JSX.Element {
     setBlockedModalVisible(false);
   }, []);
 
+  function hasDonateToday() {
+    return userLastDonation === today();
+  }
+
   const donate = useCallback(
     async (email: string) => {
       try {
@@ -97,8 +97,6 @@ function CausesPage(): JSX.Element {
           const user = await findOrCreateUser(email);
           setCurrentUser(user);
         }
-        setUserLastDonation(Date.now.toString);
-        console.log(userLastDonation);
         navigateTo({
           pathname: "/donation-in-process",
           state: { nonProfit: chosenNonProfit, integration },
@@ -122,7 +120,11 @@ function CausesPage(): JSX.Element {
       causeId: nonProfit.id,
     });
     chooseNonProfit(nonProfit);
-    setConfirmModalVisible(true);
+    if (hasDonateToday()) {
+      setBlockedModalVisible(true);
+    } else {
+      setConfirmModalVisible(true);
+    }
   }
 
   return (
@@ -181,7 +183,6 @@ function CausesPage(): JSX.Element {
         body={t("blockedModalText")}
         buttonText={t("blockedModalButtonText")}
         onClose={closeBlockedModal}
-        blocked
       />
 
       <S.BodyContainer>
@@ -196,8 +197,11 @@ function CausesPage(): JSX.Element {
                 <CardCenterImageButton
                   image={nonProfit.mainImage}
                   title={nonProfit.impactDescription}
-                  buttonText={t("donateText")}
+                  buttonText={
+                    hasDonateToday() ? t("donateBlockedText") : t("donateText")
+                  }
                   onClickButton={() => handleButtonClick(nonProfit)}
+                  softDisabled={hasDonateToday()}
                 />
               </S.CausesCardContainer>
             ))}

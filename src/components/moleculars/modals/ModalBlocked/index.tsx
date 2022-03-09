@@ -14,7 +14,6 @@ export type Props = {
   onClose?: () => void;
   customStyles?: ReactModal.Styles;
   buttonText?: string;
-  blocked?: boolean;
 };
 function ModalBlocked({
   visible = false,
@@ -25,7 +24,6 @@ function ModalBlocked({
   contentLabel,
   customStyles,
   buttonText,
-  blocked,
 }: Props): JSX.Element {
   return (
     <S.ModalWithIcon
@@ -35,7 +33,7 @@ function ModalBlocked({
       contentLabel={contentLabel}
       ariaHideApp={false}
     >
-      <S.Icon src={blocked ? blockedIcon : blockedIcon}/>
+      <S.Icon src={blockedIcon} />
       <S.Title color={titleColor}>{title}</S.Title>
       <S.Body>{body}</S.Body>
       {buttonText && <Button text={buttonText} onClick={onClose} />}
