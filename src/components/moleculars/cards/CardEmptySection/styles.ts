@@ -26,5 +26,6 @@ export const Text = styled.p`
 export const EmptyDonationButton = styled(Button)`
   ${() => css`
     margin-top: 14px;
+    width: 200px;
   `}
 `;

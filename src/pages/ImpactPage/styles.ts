@@ -78,3 +78,13 @@ export const Button = styled(ButtonRound)`
   align-self: center;
   margin: 16px 0;
 `;
+
+export const EmptySectionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  height: 100%;
+  width: 100%;
+`;

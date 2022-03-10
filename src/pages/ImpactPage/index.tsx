@@ -6,7 +6,7 @@ import { logEvent } from "services/analytics";
 import * as S from "./styles";
 
 function ImpactPage(): JSX.Element {
-  const ticketsUsed = 10;
+  const ticketsUsed = 0;
   const impact = "99 days of pet food for rescued animals";
 
   const { t } = useTranslation("translation", {
@@ -30,8 +30,8 @@ function ImpactPage(): JSX.Element {
         <S.Subtitle>{t("subtitle", { ticketsUsed })}</S.Subtitle>
       ) : null}
 
-      <S.CardsButtonContainer>
-        {ticketsUsed ? (
+      {ticketsUsed ? (
+        <S.CardsButtonContainer>
           <S.Wrapper>
             <CardTopImage
               text={t("impactText", { impact })}
@@ -48,15 +48,32 @@ function ImpactPage(): JSX.Element {
               imageUrl="https://picsum.photos/id/237/200/300"
               imageAlt="test"
             />
+            <CardTopImage
+              text={t("impactText", { impact })}
+              imageUrl="https://picsum.photos/id/237/200/300"
+              imageAlt="test"
+            />
+            <CardTopImage
+              text="you donated 99 days of pet food for rescued animals"
+              imageUrl="https://picsum.photos/id/237/200/300"
+              imageAlt="test"
+            />
+            <CardTopImage
+              text="you donated 99 days of pet food for rescued animals oauhsiush aiushiuahsi iohasuohs"
+              imageUrl="https://picsum.photos/id/237/200/300"
+              imageAlt="test"
+            />
           </S.Wrapper>
-        ) : (
-          <CardEmptySection cardText={t("noImpactText")} btnText="doar agora" />
-        )}
-
-        {ticketsUsed ? (
           <S.Button text={t("button")} onClick={handleClick} />
-        ) : null}
-      </S.CardsButtonContainer>
+        </S.CardsButtonContainer>
+      ) : (
+        <S.EmptySectionContainer>
+          <CardEmptySection
+            cardText={t("noImpactText")}
+            btnText={t("noImpactButton")}
+          />
+        </S.EmptySectionContainer>
+      )}
     </S.Container>
   );
 }

@@ -30,7 +30,8 @@
     "title": "Impacto",
     "subtitle": "Você usou {{ticketsUsed}} tickets",
     "impactText": "Você doou {{impact}}",
+    "button": "Ver todos",
     "noImpactText": "O resumo do impacto das suas doações será mostrado aqui",
-    "button": "Ver todos"
+    "noImpactButton": "Doar agora"
   }
 }
