@@ -13,7 +13,7 @@ export interface ICurrentUserContext {
   currentUser: User | undefined;
   userLastDonation: string | undefined;
   setCurrentUser: Dispatch<SetStateAction<User | undefined>>;
-  setUserLastDonation: Dispatch<SetStateAction<string | "">>;
+  setUserLastDonation: Dispatch<SetStateAction<string>>;
   updateCurrentUser: (data: Partial<User>) => void;
   logoutCurrentUser: () => void;
   signedIn: boolean;

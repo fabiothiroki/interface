@@ -7,7 +7,7 @@ export type Props = {
   title?: string;
   buttonText: string;
   onClickButton: () => void;
-  softDisabled: boolean;
+  softDisabled?: boolean;
 };
 function CardCenterImageButton({
   image,

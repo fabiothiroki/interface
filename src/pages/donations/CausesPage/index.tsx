@@ -15,9 +15,9 @@ import useQueryParams from "hooks/useQueryParams";
 import { logError } from "services/crashReport";
 import { useLocation } from "react-router-dom";
 import ModalError from "components/moleculars/modals/ModalError";
-import ModalBlocked from "components/moleculars/modals/ModalBlocked";
 import useUsers from "hooks/apiHooks/useUsers";
 import { useCurrentUser } from "contexts/currentUserContext";
+import blockedIcon from "assets/images/il-ticket-gray.svg";
 import * as S from "./styles";
 import ConfirmEmail from "./ConfirmEmail";
 
@@ -175,12 +175,14 @@ function CausesPage(): JSX.Element {
         warning
       />
 
-      <ModalBlocked
+      <ModalIcon
         visible={blockedModalVisible}
         title={t("blockedModalTitle")}
         body={t("blockedModalText")}
-        buttonText={t("blockedModalButtonText")}
+        primaryButtonText={t("blockedModalButtonText")}
+        primaryButtonCallback={closeBlockedModal}
         onClose={closeBlockedModal}
+        icon={blockedIcon}
       />
 
       <S.BodyContainer>
