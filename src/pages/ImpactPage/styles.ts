@@ -57,9 +57,6 @@ export const CardsButtonContainer = styled.div`
   align-items: center;
   justify-content: center;
   align-self: flex-start;
-  /* pra página de sem impacto ficar certa, é melhor com o
-  height 100%, mas a normal não funciona bem com isso :( */
-  /* height: 100%; */
 `;
 
 export const Wrapper = styled.div`
@@ -87,4 +84,7 @@ export const EmptySectionContainer = styled.div`
   align-self: flex-start;
   height: 100%;
   width: 100%;
+  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
+    height: calc(100% - 300px);
+  }
 `;
