@@ -13,7 +13,7 @@ export const ContainerDesktop = styled.div`
     align-items: center;
     padding: 50px 50px 0px 50px;
     width: 80px;
-    background: #ffffff;
+    background: #fbfbfd;
     box-shadow: 0px 4px 12px rgba(24, 86, 105, 0.15);
   `}
 `;
@@ -26,7 +26,7 @@ export const ContainerMobile = styled.div`
     position: absolute;
     width: 100%;
     align-self: flex-end;
-    background: #ffffff;
+    background: #fbfbfd;
     box-shadow: 0px 4px 12px rgba(24, 86, 105, 0.15);
   `}
 `;
