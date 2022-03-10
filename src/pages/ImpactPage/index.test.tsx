@@ -2,9 +2,11 @@ import { expectTextToBeInTheDocument, renderComponent } from "config/testUtils";
 import Impact from ".";
 
 describe("Impact", () => {
-  it("should render without error", () => {
-    renderComponent(<Impact />);
+  describe("when there are no tickets used", () => {
+    it("should render title", () => {
+      renderComponent(<Impact />);
 
-    expectTextToBeInTheDocument("Impact");
+      expectTextToBeInTheDocument("IMPACT");
+    });
   });
 });

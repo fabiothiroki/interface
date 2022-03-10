@@ -38,31 +38,6 @@ function ImpactPage(): JSX.Element {
               imageUrl="https://picsum.photos/id/237/200/300"
               imageAlt="test"
             />
-            <CardTopImage
-              text="you donated 99 days of pet food for rescued animals"
-              imageUrl="https://picsum.photos/id/237/200/300"
-              imageAlt="test"
-            />
-            <CardTopImage
-              text="you donated 99 days of pet food for rescued animals oauhsiush aiushiuahsi iohasuohs"
-              imageUrl="https://picsum.photos/id/237/200/300"
-              imageAlt="test"
-            />
-            <CardTopImage
-              text={t("impactText", { impact })}
-              imageUrl="https://picsum.photos/id/237/200/300"
-              imageAlt="test"
-            />
-            <CardTopImage
-              text="you donated 99 days of pet food for rescued animals"
-              imageUrl="https://picsum.photos/id/237/200/300"
-              imageAlt="test"
-            />
-            <CardTopImage
-              text="you donated 99 days of pet food for rescued animals oauhsiush aiushiuahsi iohasuohs"
-              imageUrl="https://picsum.photos/id/237/200/300"
-              imageAlt="test"
-            />
           </S.Wrapper>
           <S.Button text={t("button")} onClick={handleClick} />
         </S.CardsButtonContainer>
