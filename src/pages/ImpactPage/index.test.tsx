@@ -8,5 +8,14 @@ describe("Impact", () => {
 
       expectTextToBeInTheDocument("IMPACT");
     });
+
+    it("should render cardEmptySection", () => {
+      renderComponent(<Impact />);
+
+      expectTextToBeInTheDocument("Donate now");
+      expectTextToBeInTheDocument(
+        "Your donation impact summary will be shown here",
+      );
+    });
   });
 });
