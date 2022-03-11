@@ -53,13 +53,11 @@ function RoutesComponent(): JSX.Element {
       <Route path="/impact" exact>
         <Suspense fallback={<div />}>
           <CurrentUserProvider>
-            <ImpactPage />
+            <MainLayout>
+              <ImpactPage />
+            </MainLayout>
           </CurrentUserProvider>
         </Suspense>
-
-        <MainLayout>
-          <div />
-        </MainLayout>
       </Route>
     </Switch>
   );
