@@ -7,6 +7,8 @@ import ConfirmEmailPage from "pages/donations/ConfirmEmailPage";
 import DonationDonePage from "pages/donations/DonationDonePage";
 import DonationInProcessPage from "pages/donations/DonationInProcessPage";
 import ImpactPage from "pages/ImpactPage";
+import MainLayout from "layouts/MainLayout";
+import Navigation from "./Navigation";
 
 function RoutesComponent(): JSX.Element {
   return (
@@ -15,7 +17,9 @@ function RoutesComponent(): JSX.Element {
         <Suspense fallback={<div />}>
           <WalletProvider>
             <CurrentUserProvider>
-              <CausesPage />
+              <MainLayout>
+                <CausesPage />
+              </MainLayout>
             </CurrentUserProvider>
           </WalletProvider>
         </Suspense>
@@ -24,6 +28,7 @@ function RoutesComponent(): JSX.Element {
       <Route path="/confirm-email" exact>
         <Suspense fallback={<div />}>
           <CurrentUserProvider>
+            <Navigation />
             <ConfirmEmailPage />
           </CurrentUserProvider>
         </Suspense>
@@ -32,7 +37,9 @@ function RoutesComponent(): JSX.Element {
       <Route path="/donation-done" exact>
         <Suspense fallback={<div />}>
           <CurrentUserProvider>
-            <DonationDonePage />
+            <MainLayout>
+              <DonationDonePage />
+            </MainLayout>
           </CurrentUserProvider>
         </Suspense>
       </Route>
@@ -51,6 +58,10 @@ function RoutesComponent(): JSX.Element {
             <ImpactPage />
           </CurrentUserProvider>
         </Suspense>
+
+        <MainLayout>
+          <div />
+        </MainLayout>
       </Route>
     </Switch>
   );

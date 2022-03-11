@@ -82,9 +82,9 @@ export const EmptySectionContainer = styled.div`
   align-items: center;
   justify-content: center;
   align-self: flex-start;
-  height: 100%;
+  height: calc(100% - 200px);
   width: 100%;
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
-    height: calc(100% - 300px);
+    height: calc(100% - 400px);
   }
 `;

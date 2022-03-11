@@ -1,14 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const Container = styled.div`
-  width: 100%;
-
-  ${({ theme }) => css`
-    @media (min-width: ${theme.breakpoints.pad}) {
-      margin: 0 14%;
-    }
-  `}
-`;
+export const Container = styled.div``;
 
 export const BodyContainer = styled.div`
   width: 100%;
@@ -18,8 +10,6 @@ export const BodyContainer = styled.div`
     @media (min-width: ${theme.breakpoints.pad}) {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
     }
   `}
 `;
@@ -66,4 +56,18 @@ export const CausesCardContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+export const FooterText = styled.h5`
+  ${({ theme }) => css`
+    line-height: 19px;
+    color: ${theme.colors.darkGray};
+    text-align: center;
+    font-weight: 400;
+
+    a {
+      color: ${theme.colors.ribonBlue};
+      text-decoration: none;
+    }
+  `}
 `;

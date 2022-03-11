@@ -26,7 +26,7 @@ export function renderWithTheme(children: React.ReactNode): RenderResult {
   return render(<ThemeProvider theme={theme}>{children}</ThemeProvider>);
 }
 
-interface RenderWithContextResult {
+export interface RenderWithContextResult {
   component: RenderResult;
   history: MemoryHistory;
   value?: IWalletContext;
@@ -110,8 +110,36 @@ export function renderComponent(
 export function expectTextToBeInTheDocument(text: string) {
   return expect(screen.getByText(text)).toBeInTheDocument();
 }
+
 export function expectImageToBeInTheDocument(alt: string) {
   return expect(screen.getByAltText(alt)).toBeInTheDocument();
+}
+
+export const mockNavigationFunction = jest.fn();
+export function mockNavigation() {
+  return jest.mock("hooks/useNavigation", () => ({
+    __esModule: true,
+    default: () => ({
+      navigateTo: mockNavigationFunction,
+      history: { location: {}, search: "" },
+    }),
+  }));
+}
+
+type expectPageToNavigateToType = {
+  state?: Record<any, any>;
+};
+export function expectPageToNavigateTo(
+  pathname: string,
+  { state }: expectPageToNavigateToType,
+) {
+  if (!state)
+    return expect(mockNavigationFunction).toHaveBeenCalledWith(pathname);
+
+  return expect(mockNavigationFunction).toHaveBeenCalledWith({
+    pathname,
+    state,
+  });
 }
 
 export function clickOn(text: string) {

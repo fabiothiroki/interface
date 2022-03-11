@@ -3,9 +3,12 @@ import CardTopImage from "components/moleculars/cards/CardTopImage";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { logEvent } from "services/analytics";
+import impactApi from "services/api/impactApi";
+import { logError } from "services/crashReport";
 import * as S from "./styles";
 
 function ImpactPage(): JSX.Element {
+  // const [userImpact, setUserImpact] = useState([]);
   const ticketsUsed = 0;
   const impact = "99 days of pet food for rescued animals";
 
@@ -15,6 +18,18 @@ function ImpactPage(): JSX.Element {
 
   useEffect(() => {
     logEvent("profile_view");
+
+    async function fetchImpact() {
+      try {
+        const { data } = await impactApi.getImpact();
+        console.log(data);
+        // setUserImpact(data);
+      } catch (e) {
+        logError(e);
+      }
+    }
+
+    fetchImpact();
   }, []);
 
   const handleClick = () => {
