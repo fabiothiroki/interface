@@ -46,7 +46,7 @@ export const Title = styled.h5`
 export const Subtitle = styled.h6`
   ${() => css`
     color: ${({ theme }) => theme.colors.ribonBlue};
-    margin-top: 16px;
+    margin-top: 4px;
     font-weight: bold;
     font-size: 16px;
     line-height: 160%;
