@@ -49,6 +49,6 @@ export const StyledLink = styled(Link)`
 
 export const Icon = styled.img`
   ${() => css`
-    height: 32px;
+    height: 24px;
   `}
 `;
