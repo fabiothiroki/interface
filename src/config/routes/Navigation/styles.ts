@@ -35,6 +35,7 @@ export const Title = styled.p`
   ${({ enabled }: Props) => css`
     color: ${enabled ? theme.colors.ribonBlack : theme.colors.darkGray};
     text-decoration: none;
+    font-size: 12px;
   `}
 `;
 
