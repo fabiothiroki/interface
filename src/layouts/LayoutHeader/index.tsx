@@ -8,6 +8,7 @@ import theme from "styles/theme";
 import useBreakpoint from "hooks/useBreakpoint";
 import * as S from "./styles";
 import ChangeLanguageItem from "./ChangeLanguageItem";
+import LogoutItem from "./LogoutItem";
 
 function LayoutHeader(): JSX.Element {
   const queryParams = useQueryParams();
@@ -50,6 +51,7 @@ function LayoutHeader(): JSX.Element {
         }}
       >
         <ChangeLanguageItem />
+        <LogoutItem />
       </ModalBlank>
       <Header
         sideLogo={integration?.logo}

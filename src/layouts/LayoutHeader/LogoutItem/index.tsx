@@ -7,7 +7,7 @@ import * as S from "./styles";
 
 function LogoutItem(): JSX.Element {
   const { t } = useTranslation("translation", {
-    keyPrefix: "layouts.layoutHeader.LogoutItem",
+    keyPrefix: "layouts.layoutHeader.logoutItem",
   });
 
   const { logoutCurrentUser } = useCurrentUser();
@@ -26,7 +26,7 @@ function LogoutItem(): JSX.Element {
         rightComponent={
           <Button
             outline
-            text={t("LogoutButton")}
+            text={t("logoutButton")}
             onClick={() => handleLogout()}
           />
         }
