@@ -14,6 +14,7 @@ function LogoutItem(): JSX.Element {
 
   function handleLogout() {
     console.log("logout");
+
     logoutCurrentUser();
   }
 
