@@ -36,7 +36,7 @@ export default function Button({
   ...props
 }: Props): JSX.Element {
   function activeTextColor() {
-    if (outline) return theme.colors.ribonBlue;
+    if (outline && !textColor) return theme.colors.ribonBlue;
     return textColor;
   }
 
@@ -45,6 +45,13 @@ export default function Button({
     if (disabled) return theme.colors.darkGray;
 
     return backgroundColor;
+  }
+
+  function activeBorderColor() {
+    if (outline && !borderColor) return theme.colors.ribonBlue;
+    if (disabled && !borderColor) return theme.colors.darkGray;
+
+    return borderColor;
   }
 
   function borderRadius() {
@@ -57,7 +64,7 @@ export default function Button({
     <S.Container
       textColor={activeTextColor()}
       backgroundColor={activeBackgroundColor()}
-      borderColor={outline ? theme.colors.ribonBlue : borderColor}
+      borderColor={activeBorderColor()}
       ribonsColor={ribonsColor}
       onClick={onClick}
       leftIcon={leftIcon}

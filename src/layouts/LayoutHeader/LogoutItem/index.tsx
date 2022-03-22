@@ -30,6 +30,7 @@ function LogoutItem(): JSX.Element {
             text={t("logoutButton")}
             onClick={() => handleLogout()}
             textColor={theme.colors.lgRed}
+            borderColor={theme.colors.lgRed}
             round
           />
         }
