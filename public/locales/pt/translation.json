@@ -43,6 +43,9 @@
     "layoutHeader": {
       "changeLanguageItem": {
         "changeLanguageText": "Alterar idioma"
+      },
+      "LogOutItem": {
+        "logoutButton": "Sair"
       }
     }
   }

@@ -20,10 +20,14 @@ function LogOutItem(): JSX.Element {
   return (
     <S.Container>
       <CardIconText
-        text={t("changeLanguageText")}
+        text="pegar@email no contexto do usuário"
         icon={letterIcon}
         rightComponent={
-          <Button outline text="email" onClick={() => handleLogout()} />
+          <Button
+            outline
+            text={t("LogoutButton")}
+            onClick={() => handleLogout()}
+          />
         }
       />
     </S.Container>
