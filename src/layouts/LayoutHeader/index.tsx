@@ -17,7 +17,7 @@ function LayoutHeader(): JSX.Element {
   const integrationId = queryParams.get("integration_id");
   const [menuVisible, setMenuVisible] = useState(false);
   const { isMobile } = useBreakpoint();
-  const { currentUser } = useCurrentUser();
+  const { signedIn } = useCurrentUser();
 
   if (!integrationId) return <div />;
 
@@ -55,7 +55,7 @@ function LayoutHeader(): JSX.Element {
       >
         <ChangeLanguageItem />
         <Divider color={theme.colors.lightGray} />
-        {currentUser ? <LogoutItem /> : <div />}
+        {signedIn ? <LogoutItem /> : <div />}
       </ModalBlank>
       <Header
         sideLogo={integration?.logo}
