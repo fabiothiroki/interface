@@ -4,6 +4,7 @@ import useQueryParams from "hooks/useQueryParams";
 import useIntegration from "hooks/apiHooks/useIntegration";
 import cogIcon from "assets/icons/cog-icon.svg";
 import { useState } from "react";
+import { Divider } from "components/atomics/Divider/styles";
 import theme from "styles/theme";
 import useBreakpoint from "hooks/useBreakpoint";
 import * as S from "./styles";
@@ -51,6 +52,7 @@ function LayoutHeader(): JSX.Element {
         }}
       >
         <ChangeLanguageItem />
+        <Divider width="100" color={theme.colors.lightGray} />
         <LogoutItem />
       </ModalBlank>
       <Header

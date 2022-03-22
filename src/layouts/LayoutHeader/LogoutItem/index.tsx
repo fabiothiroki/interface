@@ -3,6 +3,7 @@ import letterIcon from "assets/icons/letter-icon.svg";
 import { useTranslation } from "react-i18next";
 import { useCurrentUser } from "contexts/currentUserContext";
 import Button from "components/atomics/Button";
+import theme from "styles/theme";
 import * as S from "./styles";
 
 function LogoutItem(): JSX.Element {
@@ -28,6 +29,8 @@ function LogoutItem(): JSX.Element {
             outline
             text={t("logoutButton")}
             onClick={() => handleLogout()}
+            textColor={theme.colors.lgRed}
+            round
           />
         }
       />
