@@ -44,7 +44,7 @@
       "changeLanguageItem": {
         "changeLanguageText": "Change language"
       },
-      "LogOutItem": {
+      "LogoutItem": {
         "logoutButton": "Sign Out"
       }
     }

@@ -44,7 +44,7 @@
       "changeLanguageItem": {
         "changeLanguageText": "Alterar idioma"
       },
-      "LogOutItem": {
+      "LogoutItem": {
         "logoutButton": "Sair"
       }
     }

@@ -5,9 +5,9 @@ import { useCurrentUser } from "contexts/currentUserContext";
 import Button from "components/atomics/Button";
 import * as S from "./styles";
 
-function LogOutItem(): JSX.Element {
+function LogoutItem(): JSX.Element {
   const { t } = useTranslation("translation", {
-    keyPrefix: "layouts.layoutHeader.LogOutItem",
+    keyPrefix: "layouts.layoutHeader.LogoutItem",
   });
 
   const { logoutCurrentUser } = useCurrentUser();
@@ -34,4 +34,4 @@ function LogOutItem(): JSX.Element {
   );
 }
 
-export default LogOutItem;
+export default LogoutItem;
