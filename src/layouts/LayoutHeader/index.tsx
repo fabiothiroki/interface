@@ -52,7 +52,7 @@ function LayoutHeader(): JSX.Element {
         }}
       >
         <ChangeLanguageItem />
-        <Divider width="100" color={theme.colors.lightGray} />
+        <Divider color={theme.colors.lightGray} />
         <LogoutItem />
       </ModalBlank>
       <Header
