@@ -9,6 +9,7 @@ export type Props = {
   text: string;
   textColor?: string;
   backgroundColor?: string;
+  softDisabled?: boolean;
   borderColor?: string;
   ribons?: boolean;
   ribonsColor?: string;
@@ -24,6 +25,7 @@ export default function Button({
   text,
   textColor = theme.colors.ribonWhite,
   backgroundColor = theme.colors.ribonBlue,
+  softDisabled = false,
   borderColor = "",
   ribons = false,
   ribonsColor = theme.colors.ribonBlue,
@@ -33,15 +35,17 @@ export default function Button({
   outline = false,
   disabled = false,
   round = false,
+
   ...props
 }: Props): JSX.Element {
   function activeTextColor() {
     if (outline && !textColor) return theme.colors.ribonBlue;
+    if (softDisabled) return theme.colors.darkGray;
     return textColor;
   }
 
   function activeBackgroundColor() {
-    if (outline) return theme.colors.ribonWhite;
+    if (outline || softDisabled) return theme.colors.ribonWhite;
     if (disabled) return theme.colors.darkGray;
 
     return backgroundColor;
@@ -50,6 +54,7 @@ export default function Button({
   function activeBorderColor() {
     if (outline && !borderColor) return theme.colors.ribonBlue;
     if (disabled && !borderColor) return theme.colors.darkGray;
+    if (softDisabled) return theme.colors.lightGray;
 
     return borderColor;
   }
