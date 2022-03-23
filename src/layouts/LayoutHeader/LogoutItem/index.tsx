@@ -18,6 +18,7 @@ function LogoutItem(): JSX.Element {
 
   const { logoutCurrentUser, currentUser } = useCurrentUser();
   const [email, setEmail] = useState("");
+  const [warningModalVisible, setWarningModalVisible] = useState(false);
   const { navigateTo } = useNavigation();
 
   function handleLogout() {
@@ -42,7 +43,7 @@ function LogoutItem(): JSX.Element {
           <Button
             outline
             text={t("logoutButton")}
-            onClick={() => handleLogout()}
+            onClick={() => setWarningModalVisible(true)}
             textColor={theme.colors.lgRed}
             borderColor={theme.colors.lgRed}
             round
@@ -50,12 +51,16 @@ function LogoutItem(): JSX.Element {
         }
       />
       <ModalIcon
-        visible
+        visible={warningModalVisible}
         title={t("logoutModalTitle")}
         body={t("logoutModalSubtitle")}
         primaryButtonText={t("confirmModalButton")}
         secondaryButtonText={t("cancelModalButton")}
         icon={warningIcon}
+        primaryButtonCallback={() => handleLogout()}
+        secondaryButtonCallback={() => {
+          setWarningModalVisible(false);
+        }}
       />
     </S.Container>
   );
