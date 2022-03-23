@@ -4,6 +4,8 @@ import { useCurrentUser } from "contexts/currentUserContext";
 import useNavigation from "hooks/useNavigation";
 
 import CardIconText from "components/moleculars/cards/CardIconText";
+import ModalIcon from "components/moleculars/modals/ModalIcon";
+import warningIcon from "assets/icons/warning-icon.svg";
 import letterIcon from "assets/icons/letter-icon.svg";
 import Button from "components/atomics/Button";
 import theme from "styles/theme";
@@ -46,6 +48,14 @@ function LogoutItem(): JSX.Element {
             round
           />
         }
+      />
+      <ModalIcon
+        visible
+        title={t("logoutModalTitle")}
+        body={t("logoutModalSubtitle")}
+        primaryButtonText={t("confirmModalButton")}
+        secondaryButtonText={t("cancelModalButton")}
+        icon={warningIcon}
       />
     </S.Container>
   );

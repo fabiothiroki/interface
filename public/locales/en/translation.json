@@ -45,7 +45,11 @@
         "changeLanguageText": "Change language"
       },
       "logoutItem": {
-        "logoutButton": "Sign Out"
+        "logoutButton": "Sign Out",
+        "logoutModalTitle": "Do you really want to sign out?", 
+        "logoutModalSubtitle": "You will need to sign in again to make a new donation.",
+        "confirmModalButton": "Sign out",
+        "cancelModalButton": "Cancel"
       }
     }
   }

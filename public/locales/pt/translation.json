@@ -45,7 +45,11 @@
         "changeLanguageText": "Alterar idioma"
       },
       "logoutItem": {
-        "logoutButton": "Sair"
+        "logoutButton": "Sair",
+        "logoutModalTitle": "Quer mesmo sair desta conta?", 
+        "logoutModalSubtitle": "Ao sair, você precisará entrar novamente para fazer uma nova doação.",
+        "confirmModalButton": "Confirmar",
+        "cancelModalButton": "Cancelar"
       }
     }
   }
