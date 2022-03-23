@@ -49,7 +49,9 @@
         "logoutModalTitle": "Do you really want to sign out?", 
         "logoutModalSubtitle": "You will need to sign in again to make a new donation.",
         "confirmModalButton": "Sign out",
-        "cancelModalButton": "Cancel"
+        "cancelModalButton": "Cancel",
+        "successModalTitle": "Signed out successfully",
+        "successModalButton": "Ok"
       }
     }
   }

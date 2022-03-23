@@ -49,7 +49,9 @@
         "logoutModalTitle": "Quer mesmo sair desta conta?", 
         "logoutModalSubtitle": "Ao sair, você precisará entrar novamente para fazer uma nova doação.",
         "confirmModalButton": "Confirmar",
-        "cancelModalButton": "Cancelar"
+        "cancelModalButton": "Cancelar",
+        "successModalTitle": "Você saiu da sua conta",
+        "successModalButton": "Fechar"
       }
     }
   }

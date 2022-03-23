@@ -6,6 +6,7 @@ import useNavigation from "hooks/useNavigation";
 import CardIconText from "components/moleculars/cards/CardIconText";
 import ModalIcon from "components/moleculars/modals/ModalIcon";
 import warningIcon from "assets/icons/warning-icon.svg";
+import successIcon from "assets/icons/success-icon.svg";
 import letterIcon from "assets/icons/letter-icon.svg";
 import Button from "components/atomics/Button";
 import theme from "styles/theme";
@@ -19,13 +20,19 @@ function LogoutItem(): JSX.Element {
   const { logoutCurrentUser, currentUser } = useCurrentUser();
   const [email, setEmail] = useState("");
   const [warningModalVisible, setWarningModalVisible] = useState(false);
+  const [successLogoutModalVisible, setSuccessLogoutModalVisible] =
+    useState(false);
   const { navigateTo } = useNavigation();
 
-  function handleLogout() {
-    console.log("logout");
+  function handleConfirmation() {
+    setSuccessLogoutModalVisible(true);
+    setWarningModalVisible(false);
+  }
 
+  function handleLogout() {
     logoutCurrentUser();
-    navigateTo("/confirm-email");
+    navigateTo("/");
+    setSuccessLogoutModalVisible(false);
   }
 
   useEffect(() => {
@@ -57,10 +64,17 @@ function LogoutItem(): JSX.Element {
         primaryButtonText={t("confirmModalButton")}
         secondaryButtonText={t("cancelModalButton")}
         icon={warningIcon}
-        primaryButtonCallback={() => handleLogout()}
+        primaryButtonCallback={() => handleConfirmation()}
         secondaryButtonCallback={() => {
           setWarningModalVisible(false);
         }}
+      />
+      <ModalIcon
+        visible={successLogoutModalVisible}
+        title={t("successModalTitle")}
+        primaryButtonText={t("successModalButton")}
+        icon={successIcon}
+        primaryButtonCallback={() => handleLogout()}
       />
     </S.Container>
   );
