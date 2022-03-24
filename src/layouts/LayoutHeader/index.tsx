@@ -3,6 +3,7 @@ import Header from "components/atomics/sections/Header";
 import useQueryParams from "hooks/useQueryParams";
 import useIntegration from "hooks/apiHooks/useIntegration";
 import cogIcon from "assets/icons/cog-icon.svg";
+import ticketOn from "assets/icons/ticket-icon-on.svg";
 import { useState } from "react";
 import theme from "styles/theme";
 import useBreakpoint from "hooks/useBreakpoint";
@@ -53,7 +54,12 @@ function LayoutHeader(): JSX.Element {
       </ModalBlank>
       <Header
         sideLogo={integration?.logo}
-        rightComponent={<S.Settings onClick={() => openMenu()} src={cogIcon} />}
+        rightComponent={
+          <div>
+            <S.Counter src={ticketOn} />{" "}
+            <S.Settings onClick={() => openMenu()} src={cogIcon} />
+          </div>
+        }
       />
     </S.Container>
   );

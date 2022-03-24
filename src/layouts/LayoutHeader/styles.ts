@@ -9,3 +9,7 @@ export const Settings = styled.img`
     cursor: pointer;
   `}
 `;
+
+export const Counter = styled.img`
+  ${() => css``}
+`;
