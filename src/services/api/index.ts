@@ -2,6 +2,7 @@ import Axios, { AxiosRequestConfig } from "axios";
 import camelCaseKeys from "camelcase-keys";
 import snakeCaseKeys from "snakecase-keys";
 import { normalizedLanguage } from "lib/currentLanguage";
+import { currentUserFromStorage } from "lib/currentUser";
 
 const RIBON_API = "https://ribon-core-api-22j7w.ondigitalocean.app/";
 
@@ -32,7 +33,8 @@ api.interceptors.response.use(
 
 api.interceptors.request.use((config) => {
   const lang = normalizedLanguage();
-  const authHeaders = { Language: lang };
+  const user = currentUserFromStorage();
+  const authHeaders = { Language: lang, Email: user?.email || "" };
   // eslint-disable-next-line no-param-reassign
   config.headers = { ...authHeaders, ...config.headers };
 
