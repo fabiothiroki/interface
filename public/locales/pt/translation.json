@@ -40,7 +40,8 @@
     },
     "menu":{
       "impactTitle": "Impacto",
-      "causesPageTitle": "Causas"
+      "causesPageTitle": "Causas",
+      "fundPageTitle": "Fundo"
     }
   },
   "layouts": {
@@ -50,7 +51,7 @@
       },
       "logoutItem": {
         "logoutButton": "Sair",
-        "logoutModalTitle": "Quer mesmo sair desta conta?", 
+        "logoutModalTitle": "Quer mesmo sair desta conta?",
         "logoutModalSubtitle": "Ao sair, você precisará entrar novamente para fazer uma nova doação.",
         "confirmModalButton": "Confirmar",
         "cancelModalButton": "Cancelar",

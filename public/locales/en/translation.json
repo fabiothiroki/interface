@@ -40,7 +40,8 @@
     },
     "menu":{
       "impactTitle": "Impact",
-      "causesPageTitle": "Causes"
+      "causesPageTitle": "Causes",
+      "fundPageTitle": "Fund"
     }
   },
   "layouts": {
@@ -50,7 +51,7 @@
       },
       "logoutItem": {
         "logoutButton": "Sign Out",
-        "logoutModalTitle": "Do you really want to sign out?", 
+        "logoutModalTitle": "Do you really want to sign out?",
         "logoutModalSubtitle": "You will need to sign in again to make a new donation.",
         "confirmModalButton": "Sign out",
         "cancelModalButton": "Cancel",
