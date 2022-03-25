@@ -6,6 +6,7 @@ import ImpactIconOn from "./assets/impactIconOn.svg";
 import ImpactIconOff from "./assets/impactIconOff.svg";
 import CausesIconOff from "./assets/causesIconOff.svg";
 import * as S from "./styles";
+import NavigationLink from "./NavigationLink";
 
 export type Props = {
   isImpactPage: boolean;
@@ -27,25 +28,33 @@ function Navigation(): JSX.Element {
 
   return isDesktop ? (
     <S.ContainerDesktop>
-      <S.StyledLink to={{ pathname: "/", search }}>
-        <S.Icon src={iconCausesPage} />
-        <S.Title enabled={isCausesPage}>{t("causesPageTitle")}</S.Title>
-      </S.StyledLink>
-      <S.StyledLink to={{ pathname: "/impact", search }}>
-        <S.Icon src={iconImpactPage} />
-        <S.Title enabled={isImpactPage}>{t("impactTitle")}</S.Title>
-      </S.StyledLink>
+      <NavigationLink
+        to={{ pathname: "/", search }}
+        icon={iconCausesPage}
+        title={t("causesPageTitle")}
+        enabled={isCausesPage}
+      />
+      <NavigationLink
+        to={{ pathname: "/impact", search }}
+        icon={iconImpactPage}
+        title={t("impactTitle")}
+        enabled={isImpactPage}
+      />
     </S.ContainerDesktop>
   ) : (
     <S.ContainerMobile>
-      <S.StyledLink to={{ pathname: "/", search }}>
-        <S.Icon src={iconCausesPage} />
-        <S.Title enabled={isCausesPage}>{t("causesPageTitle")}</S.Title>
-      </S.StyledLink>
-      <S.StyledLink to={{ pathname: "/impact", search }}>
-        <S.Icon src={iconImpactPage} />
-        <S.Title enabled={isImpactPage}>{t("impactTitle")}</S.Title>
-      </S.StyledLink>
+      <NavigationLink
+        to={{ pathname: "/", search }}
+        icon={iconCausesPage}
+        title={t("causesPageTitle")}
+        enabled={isCausesPage}
+      />
+      <NavigationLink
+        to={{ pathname: "/impact", search }}
+        icon={iconImpactPage}
+        title={t("impactTitle")}
+        enabled={isImpactPage}
+      />
     </S.ContainerMobile>
   );
 }
