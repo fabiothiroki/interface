@@ -59,5 +59,10 @@
         "successModalButton": "Fechar"
       }
     }
+  },
+  "promoters": {
+    "fundPage": {
+      "title": "Fundo"
+    }
   }
 }

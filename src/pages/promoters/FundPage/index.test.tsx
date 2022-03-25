@@ -1,9 +1,9 @@
 import { expectTextToBeInTheDocument, renderComponent } from "config/testUtils";
-import Fund from ".";
+import FundPage from ".";
 
-describe("Fund", () => {
+describe("FundPage", () => {
   it("should render without error", () => {
-    renderComponent(<Fund />);
+    renderComponent(<FundPage />);
 
     expectTextToBeInTheDocument("Fund");
   });
