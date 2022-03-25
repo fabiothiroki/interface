@@ -31,16 +31,16 @@ function Navigation(): JSX.Element {
       title: t("causesPageTitle"),
     },
     {
-      path: "/impact",
-      iconOn: ImpactIconOn,
-      iconOff: ImpactIconOff,
-      title: t("impactTitle"),
-    },
-    {
       path: "/promoters/fund",
       iconOn: FundIconOn,
       iconOff: FundIconOff,
       title: t("fundPageTitle"),
+    },
+    {
+      path: "/impact",
+      iconOn: ImpactIconOn,
+      iconOff: ImpactIconOff,
+      title: t("impactTitle"),
     },
   ];
 
