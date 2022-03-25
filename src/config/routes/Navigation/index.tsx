@@ -1,6 +1,5 @@
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
-import useBreakpoint from "hooks/useBreakpoint";
 import CausesIconOn from "./assets/causesIconOn.svg";
 import ImpactIconOn from "./assets/impactIconOn.svg";
 import ImpactIconOff from "./assets/impactIconOff.svg";
@@ -17,19 +16,12 @@ function Navigation(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "donations.menu",
   });
-  const { isDesktop } = useBreakpoint();
   const location = useLocation();
   const { search } = location;
 
   function isInPath(path: string) {
     return [path].includes(location.pathname);
   }
-
-  const isImpactPage = isInPath("/impact");
-  const isCausesPage = isInPath("/");
-
-  const iconImpactPage = isImpactPage ? ImpactIconOn : ImpactIconOff;
-  const iconCausesPage = isCausesPage ? CausesIconOn : CausesIconOff;
 
   const routes = [
     {
@@ -52,8 +44,8 @@ function Navigation(): JSX.Element {
     },
   ];
 
-  return isDesktop ? (
-    <S.ContainerDesktop>
+  return (
+    <S.Container>
       {routes.map((route) => (
         <NavigationLink
           to={{ pathname: route.path, search }}
@@ -62,22 +54,7 @@ function Navigation(): JSX.Element {
           enabled={isInPath(route.path)}
         />
       ))}
-    </S.ContainerDesktop>
-  ) : (
-    <S.ContainerMobile>
-      <NavigationLink
-        to={{ pathname: "/", search }}
-        icon={iconCausesPage}
-        title={t("causesPageTitle")}
-        enabled={isCausesPage}
-      />
-      <NavigationLink
-        to={{ pathname: "/impact", search }}
-        icon={iconImpactPage}
-        title={t("impactTitle")}
-        enabled={isImpactPage}
-      />
-    </S.ContainerMobile>
+    </S.Container>
   );
 }
 
