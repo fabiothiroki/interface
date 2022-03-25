@@ -7,8 +7,8 @@ import ConfirmEmailPage from "pages/donations/ConfirmEmailPage";
 import DonationDonePage from "pages/donations/DonationDonePage";
 import DonationInProcessPage from "pages/donations/DonationInProcessPage";
 import MainLayout from "layouts/MainLayout";
+import FundPage from "pages/promoters/FundPage";
 import Navigation from "./Navigation";
-import FundPage from "../../pages/promoters/FundPage";
 
 function RoutesComponent(): JSX.Element {
   return (
