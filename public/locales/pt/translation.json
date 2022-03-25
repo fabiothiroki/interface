@@ -64,7 +64,8 @@
     "fundPage": {
       "title": "Fundo",
       "subtitle": "Ajuda instituições patrocinando tickets de doação",
-      "fundBalance": "Balanço do Fundo"
+      "fundBalance": "Balanço do Fundo",
+      "fundSupportButtonText": "Ajudar o fundo"
     }
   }
 }
