@@ -18,8 +18,21 @@ export const Title = styled.h1`
 
 export const Subtitle = styled.p`
   ${({ theme }) => css`
-    font-weight: 400;
+    font-weight: 700;
+    font-size: 14px;
     color: ${theme.colors.darkGray};
+    margin-bottom: 28px;
+
+    @media (min-width: ${theme.breakpoints.pad}) {
+      margin: 8px 0 28px 0;
+    }
+  `}
+`;
+
+export const SectionTitle = styled.p`
+  ${({ theme }) => css`
+    font-weight: 700;
+    color: ${theme.colors.ribonBlack};
 
     @media (min-width: ${theme.breakpoints.pad}) {
       margin: 8px 0;

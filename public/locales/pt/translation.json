@@ -63,7 +63,8 @@
   "promoters": {
     "fundPage": {
       "title": "Fundo",
-      "subtitle": "Ajuda instituições patrocinando tickets de doação"
+      "subtitle": "Ajuda instituições patrocinando tickets de doação",
+      "fundBalance": "Balanço do Fundo"
     }
   }
 }

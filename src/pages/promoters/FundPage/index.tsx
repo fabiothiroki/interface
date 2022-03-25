@@ -9,6 +9,8 @@ function FundPage(): JSX.Element {
     <S.Container>
       <S.Title>{t("title")}</S.Title>
       <S.Subtitle>{t("subtitle")}</S.Subtitle>
+
+      <S.SectionTitle>{t("fundBalance")}</S.SectionTitle>
     </S.Container>
   );
 }

@@ -63,7 +63,8 @@
   "promoters": {
     "fundPage": {
       "title": "Fund",
-      "subtitle": "Help charities by funding donation tickets"
+      "subtitle": "Help charities by funding donation tickets",
+      "fundBalance": "Fund balance"
     }
   }
 }
