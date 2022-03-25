@@ -6,18 +6,21 @@ import { useCurrentUser } from "contexts/currentUserContext";
 import { today } from "lib/dateTodayFormatter";
 import cogIcon from "assets/icons/cog-icon.svg";
 import ticketOn from "assets/icons/ticket-icon-on.svg";
+import ticketOff from "assets/icons/ticket-icon-off.svg";
 import { useState } from "react";
+import { Divider } from "components/atomics/Divider/styles";
 import theme from "styles/theme";
 import useBreakpoint from "hooks/useBreakpoint";
-import * as S from "./styles";
 import ChangeLanguageItem from "./ChangeLanguageItem";
+import LogoutItem from "./LogoutItem";
+import * as S from "./styles";
 
 function LayoutHeader(): JSX.Element {
   const queryParams = useQueryParams();
   const integrationId = queryParams.get("integration_id");
   const [menuVisible, setMenuVisible] = useState(false);
   const { isMobile } = useBreakpoint();
-  const { userLastDonation } = useCurrentUser();
+  const { userLastDonation, signedIn } = useCurrentUser();
 
   if (!integrationId) return <div />;
 
@@ -58,14 +61,24 @@ function LayoutHeader(): JSX.Element {
         }}
       >
         <ChangeLanguageItem />
+        <Divider color={theme.colors.lightGray} />
+        {signedIn ? <LogoutItem /> : <div />}
       </ModalBlank>
       <Header
         sideLogo={integration?.logo}
         rightComponent={
           <S.ContainerRight>
             <S.CounterContainer>
-              <S.TicketsAmount>{hasDonateToday() ? 0 : 1}</S.TicketsAmount>
-              <S.CounterImage src={ticketOn} />
+              <S.TicketsAmount
+                color={
+                  hasDonateToday()
+                    ? theme.colors.darkGray
+                    : theme.colors.ribonBlue
+                }
+              >
+                {hasDonateToday() ? 0 : 1}
+              </S.TicketsAmount>
+              <S.CounterImage src={hasDonateToday() ? ticketOff : ticketOn} />
             </S.CounterContainer>
             <S.Settings onClick={() => openMenu()} src={cogIcon} />
           </S.ContainerRight>

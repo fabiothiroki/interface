@@ -24,26 +24,26 @@ export const CounterImage = styled.img`
 `;
 
 export const CounterContainer = styled.div`
-  ${() => css`
+  ${({ theme }) => css`
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 7px;
     margin-right: 5px;
-    background: #ffffff;
-    border: 1px solid #d9e5eb;
+    background: ${theme.colors.ribonWhite};
+    border: 1px solid ${theme.colors.lightGray};
     box-sizing: border-box;
     border-radius: 4px;
   `}
 `;
 
 export const TicketsAmount = styled.p`
-  ${({ theme }) => css`
+  ${({ color }) => css`
     font-size: 14px;
     line-height: 10px;
     font-weight: bold;
     margin-right: 2px;
-    color: ${theme.colors.ribonBlue};
+    color: ${color};
   `}
 `;
