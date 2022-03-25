@@ -48,6 +48,7 @@ function Navigation(): JSX.Element {
     <S.Container>
       {routes.map((route) => (
         <NavigationLink
+          key={route.path}
           to={{ pathname: route.path, search }}
           icon={isInPath(route.path) ? route.iconOn : route.iconOff}
           title={route.title}

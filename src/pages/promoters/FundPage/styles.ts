@@ -15,3 +15,14 @@ export const Title = styled.h1`
     }
   `}
 `;
+
+export const Subtitle = styled.p`
+  ${({ theme }) => css`
+    font-weight: 400;
+    color: ${theme.colors.darkGray};
+
+    @media (min-width: ${theme.breakpoints.pad}) {
+      margin: 8px 0;
+    }
+  `}
+`;

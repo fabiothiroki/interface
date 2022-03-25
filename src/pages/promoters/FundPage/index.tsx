@@ -8,6 +8,7 @@ function FundPage(): JSX.Element {
   return (
     <S.Container>
       <S.Title>{t("title")}</S.Title>
+      <S.Subtitle>{t("subtitle")}</S.Subtitle>
     </S.Container>
   );
 }

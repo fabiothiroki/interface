@@ -62,7 +62,8 @@
   },
   "promoters": {
     "fundPage": {
-      "title": "Fundo"
+      "title": "Fundo",
+      "subtitle": "Ajuda instituições patrocinando tickets de doação"
     }
   }
 }
