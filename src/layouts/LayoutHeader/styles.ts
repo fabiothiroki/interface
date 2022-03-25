@@ -4,12 +4,46 @@ export const Container = styled.div`
   ${() => css``}
 `;
 
+export const ContainerRight = styled.div`
+  ${() => css`
+    display: flex;
+    flex-direction: row;
+  `}
+`;
+
 export const Settings = styled.img`
   ${() => css`
     cursor: pointer;
   `}
 `;
 
-export const Counter = styled.img`
-  ${() => css``}
+export const CounterImage = styled.img`
+  ${() => css`
+    width: 12.5px;
+  `}
+`;
+
+export const CounterContainer = styled.div`
+  ${() => css`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 7px;
+    margin-right: 5px;
+    background: #ffffff;
+    border: 1px solid #d9e5eb;
+    box-sizing: border-box;
+    border-radius: 4px;
+  `}
+`;
+
+export const TicketsAmount = styled.p`
+  ${({ theme }) => css`
+    font-size: 14px;
+    line-height: 10px;
+    font-weight: bold;
+    margin-right: 2px;
+    color: ${theme.colors.ribonBlue};
+  `}
 `;

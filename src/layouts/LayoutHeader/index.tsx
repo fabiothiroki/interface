@@ -2,6 +2,8 @@ import ModalBlank from "components/moleculars/modals/ModalBlank";
 import Header from "components/atomics/sections/Header";
 import useQueryParams from "hooks/useQueryParams";
 import useIntegration from "hooks/apiHooks/useIntegration";
+import { useCurrentUser } from "contexts/currentUserContext";
+import { today } from "lib/dateTodayFormatter";
 import cogIcon from "assets/icons/cog-icon.svg";
 import ticketOn from "assets/icons/ticket-icon-on.svg";
 import { useState } from "react";
@@ -15,6 +17,7 @@ function LayoutHeader(): JSX.Element {
   const integrationId = queryParams.get("integration_id");
   const [menuVisible, setMenuVisible] = useState(false);
   const { isMobile } = useBreakpoint();
+  const { userLastDonation } = useCurrentUser();
 
   if (!integrationId) return <div />;
 
@@ -26,6 +29,10 @@ function LayoutHeader(): JSX.Element {
 
   function closeMenu() {
     setMenuVisible(false);
+  }
+
+  function hasDonateToday() {
+    return userLastDonation === today();
   }
 
   return (
@@ -55,10 +62,13 @@ function LayoutHeader(): JSX.Element {
       <Header
         sideLogo={integration?.logo}
         rightComponent={
-          <div>
-            <S.Counter src={ticketOn} />{" "}
+          <S.ContainerRight>
+            <S.CounterContainer>
+              <S.TicketsAmount>{hasDonateToday() ? 0 : 1}</S.TicketsAmount>
+              <S.CounterImage src={ticketOn} />
+            </S.CounterContainer>
             <S.Settings onClick={() => openMenu()} src={cogIcon} />
-          </div>
+          </S.ContainerRight>
         }
       />
     </S.Container>
