@@ -9,7 +9,7 @@ import * as S from "./styles";
 
 function ImpactPage(): JSX.Element {
   // const [userImpact, setUserImpact] = useState([]);
-  const ticketsUsed = 0;
+  const ticketsUsed = 10;
   const impact = "99 days of pet food for rescued animals";
 
   const { t } = useTranslation("translation", {
@@ -21,7 +21,7 @@ function ImpactPage(): JSX.Element {
 
     async function fetchImpact() {
       try {
-        const { data } = await impactApi.getImpact();
+        const { data } = await impactApi.getImpact(2);
         console.log(data);
         // setUserImpact(data);
       } catch (e) {
