@@ -2,8 +2,9 @@ import LayoutHeader from "layouts/LayoutHeader";
 import Navigation from "config/routes/Navigation";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
+import { useWalletContext } from "contexts/walletContext";
+import { getChain, onAccountChange, validChain } from "lib/walletConnector";
 import * as S from "./styles";
-import { useWalletContext } from "../../contexts/walletContext";
 
 export type Props = {
   children: JSX.Element;
@@ -13,11 +14,21 @@ function WalletLayout({ children }: Props): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "layouts.walletLayout",
   });
-  const { connectWallet, wallet, checkIfWalletIsConnected } =
+  const { connectWallet, wallet, checkIfWalletIsConnected, setWallet } =
     useWalletContext();
+
+  const handleChainChange = (chainId: string) => {
+    console.log(validChain(chainId));
+  };
+
+  const handleAccountChange = (accounts: string[]) => {
+    setWallet(accounts[0]);
+  };
 
   useEffect(() => {
     checkIfWalletIsConnected();
+    getChain(handleChainChange);
+    onAccountChange(handleAccountChange);
   }, []);
 
   const handleWalletButtonClick = () => {
