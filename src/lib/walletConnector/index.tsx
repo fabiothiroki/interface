@@ -68,11 +68,15 @@ export function validChain(chainId: string) {
 }
 
 export function onAccountChange(callback: (accounts: string[]) => void) {
-  const { ethereum } = window;
+  try {
+    const { ethereum } = window;
 
-  if (!ethereum) return;
+    if (!ethereum) return;
 
-  ethereum.on("accountsChanged", (accounts: string[]) => {
-    callback(accounts);
-  });
+    ethereum.on("accountsChanged", (accounts: string[]) => {
+      callback(accounts);
+    });
+  } catch (error) {
+    logError(error);
+  }
 }
