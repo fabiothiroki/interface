@@ -35,13 +35,13 @@ function Navigation(): JSX.Element {
         <S.Icon src={iconCausesPage} />
         <S.Title enabled={isCausesPage}>{t("causesPageTitle")}</S.Title>
       </S.StyledLink>
-      <S.StyledLink to={{ pathname: "/impact", search }}>
-        <S.Icon src={iconImpactPage} />
-        <S.Title enabled={isImpactPage}>{t("impactPageTitle")}</S.Title>
-      </S.StyledLink>
       <S.StyledLink to={{ pathname: "/fund", search }}>
         <S.Icon src={iconFundPage} />
         <S.Title enabled={isFundPage}>{t("fundPageTitle")}</S.Title>
+      </S.StyledLink>
+      <S.StyledLink to={{ pathname: "/impact", search }}>
+        <S.Icon src={iconImpactPage} />
+        <S.Title enabled={isImpactPage}>{t("impactPageTitle")}</S.Title>
       </S.StyledLink>
     </S.ContainerDesktop>
   ) : (
@@ -50,13 +50,13 @@ function Navigation(): JSX.Element {
         <S.Icon src={iconCausesPage} />
         <S.Title enabled={isCausesPage}>{t("causesPageTitle")}</S.Title>
       </S.StyledLink>
-      <S.StyledLink to={{ pathname: "/impact", search }}>
-        <S.Icon src={iconImpactPage} />
-        <S.Title enabled={isImpactPage}>{t("impactPageTitle")}</S.Title>
-      </S.StyledLink>
       <S.StyledLink to={{ pathname: "/fund", search }}>
         <S.Icon src={iconFundPage} />
         <S.Title enabled={isFundPage}>{t("fundPageTitle")}</S.Title>
+      </S.StyledLink>
+      <S.StyledLink to={{ pathname: "/impact", search }}>
+        <S.Icon src={iconImpactPage} />
+        <S.Title enabled={isImpactPage}>{t("impactPageTitle")}</S.Title>
       </S.StyledLink>
     </S.ContainerMobile>
   );
