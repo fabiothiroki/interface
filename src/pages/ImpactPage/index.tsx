@@ -1,5 +1,6 @@
 import CardEmptySection from "components/moleculars/cards/CardEmptySection";
 import CardTopImage from "components/moleculars/cards/CardTopImage";
+import { useCurrentUser } from "contexts/currentUserContext";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { logEvent } from "services/analytics";
@@ -10,6 +11,7 @@ import * as S from "./styles";
 
 function ImpactPage(): JSX.Element {
   const [userImpact, setUserImpact] = useState<Impact[]>();
+  const { currentUser } = useCurrentUser();
   const ticketsUsed = 10;
   const { t } = useTranslation("translation", {
     keyPrefix: "impactPage",
@@ -19,8 +21,10 @@ function ImpactPage(): JSX.Element {
     logEvent("profile_view");
 
     async function fetchImpact() {
+      // TODO improve user id usage
+      const id = currentUser ? currentUser.id : -1;
       try {
-        const { data } = await impactApi.getImpact(2);
+        const { data } = await impactApi.getImpact(id);
         setUserImpact(data);
       } catch (e) {
         logError(e);
