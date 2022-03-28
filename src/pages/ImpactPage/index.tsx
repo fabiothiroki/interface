@@ -49,7 +49,7 @@ function ImpactPage(): JSX.Element {
           <S.Wrapper>
             {userImpact?.map((item) => (
               <CardTopImage
-                key={item.id}
+                key={item.nonProfit.id}
                 text={
                   t("impactText") +
                   item.impact.toString() +
