@@ -1,17 +1,17 @@
 import CardEmptySection from "components/moleculars/cards/CardEmptySection";
 import CardTopImage from "components/moleculars/cards/CardTopImage";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { logEvent } from "services/analytics";
 import impactApi from "services/api/impactApi";
 import { logError } from "services/crashReport";
+import Impact from "types/entities/Impact";
 import * as S from "./styles";
 
 function ImpactPage(): JSX.Element {
-  // const [userImpact, setUserImpact] = useState([]);
+  const [userImpact, setUserImpact] = useState<Impact[]>();
   const ticketsUsed = 10;
-  const impact = "99 days of pet food for rescued animals";
-
+  const space = " ";
   const { t } = useTranslation("translation", {
     keyPrefix: "impactPage",
   });
@@ -22,8 +22,7 @@ function ImpactPage(): JSX.Element {
     async function fetchImpact() {
       try {
         const { data } = await impactApi.getImpact(2);
-        console.log(data);
-        // setUserImpact(data);
+        setUserImpact(data);
       } catch (e) {
         logError(e);
       }
@@ -48,11 +47,19 @@ function ImpactPage(): JSX.Element {
       {ticketsUsed ? (
         <S.CardsButtonContainer>
           <S.Wrapper>
-            <CardTopImage
-              text={t("impactText", { impact })}
-              imageUrl="https://picsum.photos/id/237/200/300"
-              imageAlt="test"
-            />
+            {userImpact?.map((item) => (
+              <CardTopImage
+                key={item.id}
+                text={
+                  t("impactText") +
+                  item.impact.toString() +
+                  space +
+                  item.nonProfit.impactDescription
+                }
+                imageUrl={item.nonProfit.backgroundImage}
+                imageAlt={item.impact}
+              />
+            ))}
           </S.Wrapper>
           <S.Button text={t("button")} onClick={handleClick} />
         </S.CardsButtonContainer>

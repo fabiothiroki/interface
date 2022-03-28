@@ -62,7 +62,7 @@
   "impactPage": {
     "title": "Impacto",
     "subtitle": "Você usou {{ticketsUsed}} tickets",
-    "impactText": "Você doou {{impact}}",
+    "impactText": "Você doou ",
     "button": "Ver todos",
     "noImpactText": "O resumo do impacto das suas doações será mostrado aqui",
     "noImpactButton": "Doar agora"
