@@ -11,7 +11,6 @@ import * as S from "./styles";
 function ImpactPage(): JSX.Element {
   const [userImpact, setUserImpact] = useState<Impact[]>();
   const ticketsUsed = 10;
-  const space = " ";
   const { t } = useTranslation("translation", {
     keyPrefix: "impactPage",
   });
@@ -50,12 +49,9 @@ function ImpactPage(): JSX.Element {
             {userImpact?.map((item) => (
               <CardTopImage
                 key={item.nonProfit.id}
-                text={
-                  t("impactText") +
-                  item.impact.toString() +
-                  space +
+                text={`${t("impactText")} ${item.impact.toString()} ${
                   item.nonProfit.impactDescription
-                }
+                }`}
                 imageUrl={item.nonProfit.backgroundImage}
                 imageAlt={item.impact}
               />
