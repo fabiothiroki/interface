@@ -35,6 +35,7 @@ export const Title = styled.p`
   ${({ enabled }: Props) => css`
     color: ${enabled ? theme.colors.ribonBlack : theme.colors.darkGray};
     text-decoration: none;
+    font-size: 12px;
   `}
 `;
 
@@ -43,12 +44,12 @@ export const StyledLink = styled(Link)`
     text-decoration: none;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 10px;
   `}
 `;
 
 export const Icon = styled.img`
   ${() => css`
-    height: 32px;
+    height: 24px;
   `}
 `;
