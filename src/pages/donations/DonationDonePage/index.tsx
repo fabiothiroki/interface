@@ -28,7 +28,6 @@ function DonationDonePage(): JSX.Element {
 
   useEffect(() => {
     logEvent("donateFinishedDonation_view", { selected: nonProfit?.id });
-    console.log(nonProfit);
   }, []);
 
   return (
