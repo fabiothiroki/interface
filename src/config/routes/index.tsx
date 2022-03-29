@@ -68,6 +68,12 @@ function RoutesComponent(): JSX.Element {
           </WalletProvider>
         </Suspense>
       </Route>
+
+      <Route path="/fund" exact>
+        <MainLayout>
+          <div />
+        </MainLayout>
+      </Route>
     </Switch>
   );
 }

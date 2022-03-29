@@ -39,7 +39,7 @@
       "impactText": "Os apoiadores da Ribon são os responsáveis pelo pagamento das doações gratuitas"
     },
     "menu":{
-      "impactTitle": "Impacto",
+      "impactPageTitle": "Impacto",
       "causesPageTitle": "Causas",
       "fundPageTitle": "Fundo"
     }
