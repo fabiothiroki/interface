@@ -64,6 +64,14 @@
       "connectWallet": "Connect"
     }
   },
+  "impactPage": {
+    "title": "Impact",
+    "subtitle": "You used {{ticketsUsed}} tickets",
+    "impactText": "You donated ",
+    "button": "Show more",
+    "noImpactText": "Your donation impact summary will be shown here",
+    "noImpactButton": "Donate now"
+  },
   "promoters": {
     "fundPage": {
       "title": "Fund",
