@@ -9,20 +9,22 @@ import { logError } from "services/crashReport";
 import Impact from "types/entities/Impact";
 import * as S from "./styles";
 
+const { t } = useTranslation("translation", {
+  keyPrefix: "impactPage",
+});
+
 function ImpactPage(): JSX.Element {
   const [userImpact, setUserImpact] = useState<Impact[]>();
   const { currentUser } = useCurrentUser();
+
   const ticketsUsed = 10;
-  const { t } = useTranslation("translation", {
-    keyPrefix: "impactPage",
-  });
+  const userHasDonated = ticketsUsed && currentUser;
 
   useEffect(() => {
     logEvent("profile_view");
 
     async function fetchImpact() {
-      // TODO improve user id usage
-      const id = currentUser ? currentUser.id : -1;
+      const id = currentUser ? currentUser.id : null;
       try {
         const { data } = await impactApi.getImpact(id);
         setUserImpact(data);
@@ -43,11 +45,11 @@ function ImpactPage(): JSX.Element {
       <S.ImpactHeader />
       <S.Icon />
       <S.Title>{t("title").toUpperCase()}</S.Title>
-      {ticketsUsed ? (
+      {userHasDonated ? (
         <S.Subtitle>{t("subtitle", { ticketsUsed })}</S.Subtitle>
       ) : null}
 
-      {ticketsUsed ? (
+      {userHasDonated ? (
         <S.CardsButtonContainer>
           <S.Wrapper>
             {userImpact?.map((item) => (
