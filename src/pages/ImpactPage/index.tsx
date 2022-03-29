@@ -41,8 +41,6 @@ function ImpactPage(): JSX.Element {
 
   return (
     <S.Container>
-      <S.ImpactHeader />
-      <S.Icon />
       <S.Title>{t("title").toUpperCase()}</S.Title>
       {userHasDonated ? (
         <S.Subtitle>{t("subtitle", { ticketsUsed })}</S.Subtitle>

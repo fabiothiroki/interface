@@ -11,7 +11,6 @@ export const Container = styled.div`
     @media (min-width: ${theme.breakpoints.pad}) {
       height: 128px;
       margin-left: 0;
-      display: none;
     }
   `}
 `;

@@ -1,7 +1,5 @@
 import ButtonRound from "components/atomics/buttons/ButtonRound";
-import Header from "components/atomics/sections/Header";
 import styled from "styled-components";
-import { ReactComponent as Logo } from "assets/icons/logo.svg";
 
 export const Container = styled.div`
   width: 100%;
@@ -19,18 +17,6 @@ export const Container = styled.div`
     width: 80%;
   }
 `;
-
-export const Icon = styled(Logo)`
-  display: none;
-  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
-    display: flex;
-    margin-top: 50px;
-    width: 53px;
-    height: 53px;
-  }
-`;
-
-export const ImpactHeader = styled(Header)``;
 
 export const Title = styled.h1`
   font-size: 24px;
