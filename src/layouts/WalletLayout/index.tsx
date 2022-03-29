@@ -18,7 +18,7 @@ function WalletLayout({ children }: Props): JSX.Element {
     useWalletContext();
 
   const handleChainChange = (chainId: string) => {
-    console.log(validChain(chainId));
+    validChain(chainId);
   };
 
   const handleAccountChange = (accounts: string[]) => {
