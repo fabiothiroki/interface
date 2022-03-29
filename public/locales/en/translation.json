@@ -40,6 +40,7 @@
     },
     "menu":{
       "impactTitle": "Impact",
+      "impactPageTitle": "Impact",
       "causesPageTitle": "Causes",
       "fundPageTitle": "Fund"
     }

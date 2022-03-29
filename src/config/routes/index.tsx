@@ -65,6 +65,12 @@ function RoutesComponent(): JSX.Element {
           </MainLayout>
         </Suspense>
       </Route>
+
+      <Route path="/fund" exact>
+        <MainLayout>
+          <div />
+        </MainLayout>
+      </Route>
     </Switch>
   );
 }

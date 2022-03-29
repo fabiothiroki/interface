@@ -6,15 +6,17 @@ export type Props = {
   icon: string;
   enabled?: boolean;
   title: string;
+  onClick: () => void;
 };
 function NavigationLink({
   to,
   icon,
   title,
   enabled = false,
+  onClick,
 }: Props): JSX.Element {
   return (
-    <S.StyledLink to={to}>
+    <S.StyledLink to={to} onClick={onClick}>
       <S.Icon src={icon} />
       <S.Title enabled={enabled}>{title}</S.Title>
     </S.StyledLink>
