@@ -12,7 +12,7 @@ function MainLayout({ children, hideHeader = false }: Props): JSX.Element {
       <Navigation />
       <S.Container>
         {!hideHeader && <LayoutHeader />}
-        {children}
+        <S.BodyContainer>{children}</S.BodyContainer>
       </S.Container>
     </>
   );

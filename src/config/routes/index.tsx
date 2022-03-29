@@ -8,6 +8,7 @@ import DonationDonePage from "pages/donations/DonationDonePage";
 import DonationInProcessPage from "pages/donations/DonationInProcessPage";
 import ImpactPage from "pages/ImpactPage";
 import MainLayout from "layouts/MainLayout";
+import FundPage from "pages/promoters/FundPage";
 import Navigation from "./Navigation";
 
 function RoutesComponent(): JSX.Element {
@@ -58,6 +59,20 @@ function RoutesComponent(): JSX.Element {
             </MainLayout>
           </CurrentUserProvider>
         </Suspense>
+      </Route>
+
+      <Route path="/promoters/fund" exact>
+        <Suspense fallback={<div />}>
+          <MainLayout>
+            <FundPage />
+          </MainLayout>
+        </Suspense>
+      </Route>
+
+      <Route path="/fund" exact>
+        <MainLayout>
+          <div />
+        </MainLayout>
       </Route>
     </Switch>
   );
