@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import useBreakpoint from "hooks/useBreakpoint";
+import { logEvent } from "services/analytics";
 import CausesIconOn from "./assets/causesIconOn.svg";
 import CausesIconOff from "./assets/causesIconOff.svg";
 import ImpactIconOn from "./assets/impactIconOn.svg";
@@ -29,13 +30,17 @@ function Navigation(): JSX.Element {
   const iconCausesPage = isCausesPage ? CausesIconOn : CausesIconOff;
   const iconFundPage = isFundPage ? FundIconOn : FundIconOff;
 
+  const handleEvent = () => {
+    logEvent("fundNavBtn_click");
+  };
+
   return isDesktop ? (
     <S.ContainerDesktop>
       <S.StyledLink to={{ pathname: "/", search }}>
         <S.Icon src={iconCausesPage} />
         <S.Title enabled={isCausesPage}>{t("causesPageTitle")}</S.Title>
       </S.StyledLink>
-      <S.StyledLink to={{ pathname: "/fund", search }}>
+      <S.StyledLink onClick={handleEvent} to={{ pathname: "/fund", search }}>
         <S.Icon src={iconFundPage} />
         <S.Title enabled={isFundPage}>{t("fundPageTitle")}</S.Title>
       </S.StyledLink>
@@ -50,7 +55,7 @@ function Navigation(): JSX.Element {
         <S.Icon src={iconCausesPage} />
         <S.Title enabled={isCausesPage}>{t("causesPageTitle")}</S.Title>
       </S.StyledLink>
-      <S.StyledLink to={{ pathname: "/fund", search }}>
+      <S.StyledLink onClick={handleEvent} to={{ pathname: "/fund", search }}>
         <S.Icon src={iconFundPage} />
         <S.Title enabled={isFundPage}>{t("fundPageTitle")}</S.Title>
       </S.StyledLink>
