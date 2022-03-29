@@ -28,6 +28,7 @@ function DonationDonePage(): JSX.Element {
 
   useEffect(() => {
     logEvent("donateFinishedDonation_view", { selected: nonProfit?.id });
+    console.log(nonProfit);
   }, []);
 
   return (
@@ -38,12 +39,12 @@ function DonationDonePage(): JSX.Element {
           rightImage={nonProfit?.mainImage}
         />
         <S.Title>{t("title")}</S.Title>
-        <S.Subtitle>{t("subtitle")}</S.Subtitle>
+        <S.Subtitle>{nonProfit?.impactDescription}</S.Subtitle>
 
         <S.HrDivider color={theme.colors.lightGray} width="100%" />
 
         <CardSideSquareImageButton
-          title={t("ngoTitle")}
+          title={`${t("ngoTitle")} ${nonProfit?.name}`}
           text={t("ngoInformation")}
           image={nonProfit?.backgroundImage}
           buttonText="More info"
