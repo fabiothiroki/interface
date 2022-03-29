@@ -39,8 +39,9 @@
       "impactText": "Os apoiadores da Ribon são os responsáveis pelo pagamento das doações gratuitas"
     },
     "menu":{
-      "impactTitle": "Impacto",
-      "causesPageTitle": "Causas"
+      "impactPageTitle": "Impacto",
+      "causesPageTitle": "Causas",
+      "fundPageTitle": "Fundo"
     }
   },
   "layouts": {
@@ -50,13 +51,32 @@
       },
       "logoutItem": {
         "logoutButton": "Sair",
-        "logoutModalTitle": "Quer mesmo sair desta conta?", 
+        "logoutModalTitle": "Quer mesmo sair desta conta?",
         "logoutModalSubtitle": "Ao sair, você precisará entrar novamente para fazer uma nova doação.",
         "confirmModalButton": "Confirmar",
         "cancelModalButton": "Cancelar",
         "successModalTitle": "Você saiu da sua conta",
         "successModalButton": "Fechar"
       }
+    },
+    "walletLayout": {
+      "connectWallet": "Conectar"
+    }
+  },
+  "impactPage": {
+    "title": "Impacto",
+    "subtitle": "Você usou {{ticketsUsed}} tickets",
+    "impactText": "Você doou ",
+    "button": "Ver todos",
+    "noImpactText": "O resumo do impacto das suas doações será mostrado aqui",
+    "noImpactButton": "Doar agora"
+  },
+  "promoters": {
+    "fundPage": {
+      "title": "Fundo",
+      "subtitle": "Ajuda instituições patrocinando tickets de doação",
+      "fundBalance": "Balanço do Fundo",
+      "fundSupportButtonText": "Ajudar o fundo"
     }
   }
 }

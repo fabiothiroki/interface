@@ -40,7 +40,9 @@
     },
     "menu":{
       "impactTitle": "Impact",
-      "causesPageTitle": "Causes"
+      "impactPageTitle": "Impact",
+      "causesPageTitle": "Causes",
+      "fundPageTitle": "Fund"
     }
   },
   "layouts": {
@@ -50,13 +52,32 @@
       },
       "logoutItem": {
         "logoutButton": "Sign Out",
-        "logoutModalTitle": "Do you really want to sign out?", 
+        "logoutModalTitle": "Do you really want to sign out?",
         "logoutModalSubtitle": "You will need to sign in again to make a new donation.",
         "confirmModalButton": "Sign out",
         "cancelModalButton": "Cancel",
         "successModalTitle": "Signed out successfully",
         "successModalButton": "Ok"
       }
+    },
+    "walletLayout": {
+      "connectWallet": "Connect"
+    }
+  },
+  "impactPage": {
+    "title": "Impact",
+    "subtitle": "You used {{ticketsUsed}} tickets",
+    "impactText": "You donated ",
+    "button": "Show more",
+    "noImpactText": "Your donation impact summary will be shown here",
+    "noImpactButton": "Donate now"
+  },
+  "promoters": {
+    "fundPage": {
+      "title": "Fund",
+      "subtitle": "Help charities by funding donation tickets",
+      "fundBalance": "Fund balance",
+      "fundSupportButtonText": "Support the fund"
     }
   }
 }
