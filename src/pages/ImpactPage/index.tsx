@@ -9,11 +9,10 @@ import { logError } from "services/crashReport";
 import Impact from "types/entities/Impact";
 import * as S from "./styles";
 
-const { t } = useTranslation("translation", {
-  keyPrefix: "impactPage",
-});
-
 function ImpactPage(): JSX.Element {
+  const { t } = useTranslation("translation", {
+    keyPrefix: "impactPage",
+  });
   const [userImpact, setUserImpact] = useState<Impact[]>();
   const { currentUser } = useCurrentUser();
 
