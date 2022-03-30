@@ -3,21 +3,31 @@ import CardBlank from "components/moleculars/cards/CardBlank";
 import Button from "components/atomics/Button";
 import { useEffect, useState } from "react";
 import { balanceOf, RIBON_CONTRACT_ADDRESS } from "utils/contractUtils";
+import { useWalletContext } from "contexts/walletContext";
 import * as S from "./styles";
 
 function FundPage(): JSX.Element {
   const [donationPoolBalance, setDonationPoolBalance] = useState<number | null>(
     null,
   );
-
   const { t } = useTranslation("translation", {
     keyPrefix: "promoters.fundPage",
   });
+  const { wallet, connectWallet } = useWalletContext();
 
   async function fetchContractBalance() {
     const balance = await balanceOf(RIBON_CONTRACT_ADDRESS);
     setDonationPoolBalance(Number(balance));
   }
+
+  const handleSupportButtonClick = () => {
+    if (wallet) {
+      // navigate to form page
+      return;
+    }
+
+    connectWallet();
+  };
 
   useEffect(() => {
     fetchContractBalance();
@@ -34,7 +44,10 @@ function FundPage(): JSX.Element {
           <S.FundText>
             {donationPoolBalance} <S.FundTextCoin>USDC</S.FundTextCoin>
           </S.FundText>
-          <Button text={t("fundSupportButtonText")} onClick={() => {}} />
+          <Button
+            text={t("fundSupportButtonText")}
+            onClick={handleSupportButtonClick}
+          />
         </CardBlank>
       </S.CardContainer>
     </S.Container>
