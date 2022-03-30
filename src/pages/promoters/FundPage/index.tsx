@@ -1,12 +1,28 @@
 import { useTranslation } from "react-i18next";
 import CardBlank from "components/moleculars/cards/CardBlank";
 import Button from "components/atomics/Button";
+import { useEffect, useState } from "react";
+import { balanceOf, RIBON_CONTRACT_ADDRESS } from "utils/contractUtils";
 import * as S from "./styles";
 
 function FundPage(): JSX.Element {
+  const [donationPoolBalance, setDonationPoolBalance] = useState<number | null>(
+    null,
+  );
+
   const { t } = useTranslation("translation", {
     keyPrefix: "promoters.fundPage",
   });
+
+  async function fetchContractBalance() {
+    const balance = await balanceOf(RIBON_CONTRACT_ADDRESS);
+    setDonationPoolBalance(Number(balance));
+  }
+
+  useEffect(() => {
+    fetchContractBalance();
+  }, []);
+
   return (
     <S.Container>
       <S.Title>{t("title")}</S.Title>
@@ -16,7 +32,7 @@ function FundPage(): JSX.Element {
       <S.CardContainer>
         <CardBlank>
           <S.FundText>
-            191,759.76 <S.FundTextCoin>USDC</S.FundTextCoin>
+            {donationPoolBalance} <S.FundTextCoin>USDC</S.FundTextCoin>
           </S.FundText>
           <Button text={t("fundSupportButtonText")} onClick={() => {}} />
         </CardBlank>
