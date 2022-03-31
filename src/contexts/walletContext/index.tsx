@@ -41,7 +41,14 @@ function WalletProvider({ children }: Props) {
   }, [checkIfWalletIsConnected]);
 
   const connectWallet = useCallback(async () => {
-    const connectWalletResponse = await connectWalletRequest();
+    const connectWalletResponse = await connectWalletRequest({
+      onEthereumNotFound: () => {
+        console.log("install metamask");
+      },
+      onUserRejectedConnection: () => {
+        console.log("user reject");
+      },
+    });
     setWallet(connectWalletResponse);
   }, []);
 
