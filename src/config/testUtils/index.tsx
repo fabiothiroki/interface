@@ -126,7 +126,7 @@ export function mockNavigation() {
   }));
 }
 
-const mockLogErrorFunction = jest.fn();
+export const mockLogErrorFunction = jest.fn();
 export function mockLogError() {
   return jest.mock("services/crashReport", () => ({
     __esModule: true,
