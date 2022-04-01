@@ -27,7 +27,7 @@ type ConnectWalletRequestProps = {
   onError?: () => void;
   onUserRejectedConnection?: () => void;
 };
-const USER_REJECTED_CONNECTION_ERROR_CODE = 4001;
+export const USER_REJECTED_CONNECTION_ERROR_CODE = 4001;
 
 export async function connectWalletRequest({
   onEthereumNotFound,
