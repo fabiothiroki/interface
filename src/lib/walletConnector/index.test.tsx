@@ -4,6 +4,19 @@ describe("#walletConnector", () => {
   describe("#connectWalletRequest", () => {
     const mockFunction = jest.fn();
 
+    describe("when there is an ethereum object", () => {
+      beforeEach(() => {
+        window.ethereum = {
+          request: mockFunction,
+        };
+      });
+      it("calls the ethereum.request method", () => {
+        connectWalletRequest({});
+
+        expect(mockFunction).toHaveBeenCalled();
+      });
+    });
+
     describe("when there is no ethereum object", () => {
       beforeEach(() => {
         window.ethereum = null;
