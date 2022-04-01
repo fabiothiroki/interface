@@ -1,3 +1,4 @@
+import { expectLogErrorToHaveBeenCalled } from "config/testUtils";
 import {
   checkConnectionRequest,
   connectWalletRequest,
@@ -72,14 +73,52 @@ describe("#walletConnector", () => {
 
   describe("checkConnectionRequest", () => {
     const mockFunction = jest.fn();
-    beforeEach(() => {
-      window.ethereum.request = mockFunction;
+    const firstAccountAddress = "0x001";
+
+    describe("when there are accounts", () => {
+      beforeEach(() => {
+        window.ethereum.request = mockFunction.mockReturnValue([
+          firstAccountAddress,
+        ]);
+      });
+
+      it("calls the ethereum.request method with right params", () => {
+        checkConnectionRequest();
+
+        expect(mockFunction).toHaveBeenCalledWith({ method: "eth_accounts" });
+      });
+
+      it("returns the first account", async () => {
+        const result = await checkConnectionRequest();
+
+        expect(result).toEqual(firstAccountAddress);
+      });
     });
 
-    it("calls the ethereum.request method with right params", () => {
-      checkConnectionRequest();
+    describe("when there are no accounts", () => {
+      beforeEach(() => {
+        window.ethereum.request = mockFunction.mockReturnValue(null);
+      });
 
-      expect(mockFunction).toHaveBeenCalledWith({ method: "eth_accounts" });
+      it("returns null", async () => {
+        const result = await checkConnectionRequest();
+
+        expect(result).toBeNull();
+      });
+    });
+
+    describe("when an error occurs with the request", () => {
+      beforeEach(() => {
+        window.ethereum.request = () => {
+          throw new Error();
+        };
+      });
+
+      xit("returns null", async () => {
+        await checkConnectionRequest();
+
+        expectLogErrorToHaveBeenCalled();
+      });
     });
   });
 });
