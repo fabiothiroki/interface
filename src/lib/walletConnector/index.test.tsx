@@ -3,6 +3,7 @@ import {
   checkConnectionRequest,
   connectWalletRequest,
   getChain,
+  onAccountChange,
   USER_REJECTED_CONNECTION_ERROR_CODE,
   validChain,
 } from ".";
@@ -199,6 +200,36 @@ describe("#walletConnector", () => {
 
       it("returns true", () => {
         expect(validChain(INVALID_CHAIN_ID)).toBeFalsy();
+      });
+    });
+  });
+
+  describe("#onAccountChanged", () => {
+    const mockCallbackFunction = jest.fn();
+    const mockOnFunction = jest.fn();
+
+    describe("when there is no ethereum object", () => {
+      beforeEach(() => {
+        window.ethereum = null;
+      });
+
+      it("returns undefined", () => {
+        expect(onAccountChange(mockCallbackFunction)).toBeUndefined();
+      });
+    });
+
+    describe("when there is an ethereum object", () => {
+      beforeEach(() => {
+        window.ethereum = { on: mockOnFunction };
+      });
+
+      it("calls the ethereum.on with correct params", () => {
+        onAccountChange(mockCallbackFunction);
+
+        expect(mockOnFunction).toHaveBeenCalledWith(
+          "accountsChanged",
+          mockCallbackFunction,
+        );
       });
     });
   });
