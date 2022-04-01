@@ -1,4 +1,8 @@
-import { connectWalletRequest, USER_REJECTED_CONNECTION_ERROR_CODE } from ".";
+import {
+  checkConnectionRequest,
+  connectWalletRequest,
+  USER_REJECTED_CONNECTION_ERROR_CODE,
+} from ".";
 
 describe("#walletConnector", () => {
   describe("#connectWalletRequest", () => {
@@ -10,10 +14,12 @@ describe("#walletConnector", () => {
           request: mockFunction,
         };
       });
-      it("calls the ethereum.request method", () => {
+      it("calls the ethereum.request method with right params", () => {
         connectWalletRequest({});
 
-        expect(mockFunction).toHaveBeenCalled();
+        expect(mockFunction).toHaveBeenCalledWith({
+          method: "eth_requestAccounts",
+        });
       });
     });
 
@@ -61,6 +67,19 @@ describe("#walletConnector", () => {
 
         expect(mockFunction).toHaveBeenCalled();
       });
+    });
+  });
+
+  describe("checkConnectionRequest", () => {
+    const mockFunction = jest.fn();
+    beforeEach(() => {
+      window.ethereum.request = mockFunction;
+    });
+
+    it("calls the ethereum.request method with right params", () => {
+      checkConnectionRequest();
+
+      expect(mockFunction).toHaveBeenCalledWith({ method: "eth_accounts" });
     });
   });
 });
