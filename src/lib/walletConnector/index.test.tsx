@@ -2,13 +2,14 @@ import { connectWalletRequest, USER_REJECTED_CONNECTION_ERROR_CODE } from ".";
 
 describe("#walletConnector", () => {
   describe("#connectWalletRequest", () => {
+    const mockFunction = jest.fn();
+
     describe("when there is no ethereum object", () => {
       beforeEach(() => {
         window.ethereum = null;
       });
 
       it("calls the #onEthereumNotFound callback", () => {
-        const mockFunction = jest.fn();
         connectWalletRequest({ onEthereumNotFound: mockFunction });
 
         expect(mockFunction).toHaveBeenCalled();
@@ -27,7 +28,6 @@ describe("#walletConnector", () => {
       });
 
       it("calls the #onEthereumNotFound callback", () => {
-        const mockFunction = jest.fn();
         connectWalletRequest({ onUserRejectedConnection: mockFunction });
 
         expect(mockFunction).toHaveBeenCalled();
@@ -44,7 +44,6 @@ describe("#walletConnector", () => {
       });
 
       it("calls the #onEthereumNotFound callback", () => {
-        const mockFunction = jest.fn();
         connectWalletRequest({ onError: mockFunction });
 
         expect(mockFunction).toHaveBeenCalled();
