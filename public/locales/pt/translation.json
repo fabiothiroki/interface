@@ -31,7 +31,7 @@
       "title": "Obrigada pela sua doação!",
       "subtitle": "1 dia de ração para animais resgatados",
       "button": "Terminar",
-      "ngoTitle": "Sobre Amor em Patas",
+      "ngoTitle": "Sobre ",
       "ngoInformation": "Amor em Patas é uma organização que tem como objetivo resgatar animais abandonados, cuidar deles e buscar adoção."
     },
     "donationInProcess": {
@@ -51,13 +51,32 @@
       },
       "logoutItem": {
         "logoutButton": "Sair",
-        "logoutModalTitle": "Quer mesmo sair desta conta?", 
+        "logoutModalTitle": "Quer mesmo sair desta conta?",
         "logoutModalSubtitle": "Ao sair, você precisará entrar novamente para fazer uma nova doação.",
         "confirmModalButton": "Confirmar",
         "cancelModalButton": "Cancelar",
         "successModalTitle": "Você saiu da sua conta",
         "successModalButton": "Fechar"
       }
+    },
+    "walletLayout": {
+      "connectWallet": "Conectar"
+    }
+  },
+  "impactPage": {
+    "title": "Impacto",
+    "subtitle": "Você usou {{ticketsUsed}} tickets",
+    "impactText": "Você doou ",
+    "button": "Ver todos",
+    "noImpactText": "O resumo do impacto das suas doações será mostrado aqui",
+    "noImpactButton": "Doar agora"
+  },
+  "promoters": {
+    "fundPage": {
+      "title": "Fundo",
+      "subtitle": "Ajuda instituições patrocinando tickets de doação",
+      "fundBalance": "Balanço do Fundo",
+      "fundSupportButtonText": "Ajudar o fundo"
     }
   }
 }
