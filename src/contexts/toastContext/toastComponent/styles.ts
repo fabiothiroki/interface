@@ -28,7 +28,7 @@ export const NotificationToast = styled.div`
   padding: 20px;
   margin: 0 0 6px;
   margin-bottom: 15px;
-  width: 300px;
+  width: 336px;
   color: #000;
   opacity: 0.9;
   box-shadow: 0px 4px 12px rgba(24, 86, 105, 0.15);
