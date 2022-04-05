@@ -2,6 +2,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ToastContextProvider } from "contexts/toastContext";
+import Toast from "contexts/toastContext/toastComponent";
 import RoutesComponent from "./config/routes";
 import GlobalStyle from "./styles/globalStyle";
 import theme from "./styles/theme";
@@ -16,6 +17,7 @@ function App() {
         <BrowserRouter>
           <ToastContextProvider>
             <RoutesComponent />
+            <Toast />
           </ToastContextProvider>
         </BrowserRouter>
       </ThemeProvider>
