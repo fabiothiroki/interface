@@ -1,6 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ToastContextProvider } from "contexts/toastContext";
 import RoutesComponent from "./config/routes";
 import GlobalStyle from "./styles/globalStyle";
 import theme from "./styles/theme";
@@ -13,7 +14,9 @@ function App() {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <BrowserRouter>
-          <RoutesComponent />
+          <ToastContextProvider>
+            <RoutesComponent />
+          </ToastContextProvider>
         </BrowserRouter>
       </ThemeProvider>
     </QueryClientProvider>
