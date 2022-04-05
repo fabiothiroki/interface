@@ -8,9 +8,13 @@ import * as S from "./styles";
 
 export type Props = {
   children: JSX.Element;
+  hideNavigation?: boolean;
 };
 
-function WalletLayout({ children }: Props): JSX.Element {
+function WalletLayout({
+  children,
+  hideNavigation = false,
+}: Props): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "layouts.walletLayout",
   });
@@ -46,7 +50,8 @@ function WalletLayout({ children }: Props): JSX.Element {
 
   return (
     <>
-      <Navigation />
+      {!hideNavigation && <Navigation />}
+
       <S.Container>
         <LayoutHeader
           rightComponent={

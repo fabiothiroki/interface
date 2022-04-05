@@ -4,12 +4,14 @@ import Button from "components/atomics/Button";
 import { useEffect, useState } from "react";
 import { balanceOf, RIBON_CONTRACT_ADDRESS } from "utils/contractUtils";
 import { useWalletContext } from "contexts/walletContext";
+import useNavigation from "hooks/useNavigation";
 import * as S from "./styles";
 
 function FundPage(): JSX.Element {
   const [donationPoolBalance, setDonationPoolBalance] = useState<number | null>(
     null,
   );
+  const { navigateTo } = useNavigation();
   const { t } = useTranslation("translation", {
     keyPrefix: "promoters.fundPage",
   });
@@ -22,7 +24,7 @@ function FundPage(): JSX.Element {
 
   const handleSupportButtonClick = () => {
     if (wallet) {
-      // navigate to form page
+      navigateTo("/promoters/support-fund");
       return;
     }
 
