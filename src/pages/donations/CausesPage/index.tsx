@@ -11,27 +11,26 @@ import useNonProfits from "hooks/apiHooks/useNonProfits";
 import Loader from "components/atomics/Loader";
 import Integration from "types/entities/Integration";
 import integrationsApi from "services/api/integrationsApi";
-import useQueryParams from "hooks/useQueryParams";
 import { logError } from "services/crashReport";
 import { useLocation } from "react-router-dom";
 import ModalError from "components/moleculars/modals/ModalError";
 import useUsers from "hooks/apiHooks/useUsers";
 import { useCurrentUser } from "contexts/currentUserContext";
 import blockedIcon from "assets/images/il-ticket-gray.svg";
+import { useIntegrationId } from "hooks/useIntegrationId";
 import * as S from "./styles";
 import ConfirmEmail from "./ConfirmEmail";
 
 type LocationStateType = {
   failedDonation: boolean;
+  blockedDonation: boolean;
 };
 
 function CausesPage(): JSX.Element {
-  const [donationModalVisible, setDonationModalVisible] = useState(true);
   const [confirmModalVisible, setConfirmModalVisible] = useState(false);
-  const [blockedModalVisible, setBlockedModalVisible] = useState(false);
   const [chosenNonProfit, setChosenNonProfit] = useState<NonProfit>();
   const [integration, setIntegration] = useState<Integration>();
-  const queryParams = useQueryParams();
+  const integrationId = useIntegrationId();
 
   const { t } = useTranslation("translation", {
     keyPrefix: "donations.causesPage",
@@ -40,6 +39,13 @@ function CausesPage(): JSX.Element {
   const [warningModalVisible, setWarningModalVisible] = useState(
     state?.failedDonation,
   );
+  const [blockedModalVisible, setBlockedModalVisible] = useState(
+    state?.blockedDonation,
+  );
+  const [donationModalVisible, setDonationModalVisible] = useState(
+    !state?.blockedDonation,
+  );
+
   const { navigateTo } = useNavigation();
   const { nonProfits, isLoading } = useNonProfits();
   const { findOrCreateUser } = useUsers();
@@ -53,12 +59,9 @@ function CausesPage(): JSX.Element {
   useEffect(() => {
     async function fetchIntegration() {
       try {
-        const integrationId = queryParams.get("integration_id");
         if (!integrationId) return;
 
-        const { data } = await integrationsApi.getIntegration(
-          parseInt(integrationId, 10),
-        );
+        const { data } = await integrationsApi.getIntegration(integrationId);
 
         setIntegration(data);
       } catch (e) {
@@ -135,7 +138,7 @@ function CausesPage(): JSX.Element {
         title={t("donationModalTitle")}
         body={t("donationModalBody")}
         primaryButtonText={t("donationModalButtonText")}
-        visible={donationModalVisible}
+        visible={donationModalVisible && !hasDonateToday()}
         onClose={closeDonationModal}
         primaryButtonCallback={closeDonationModal}
       />
