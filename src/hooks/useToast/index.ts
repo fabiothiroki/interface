@@ -1,5 +1,6 @@
 import { ToastContext } from "contexts/toastContext";
 import { useContext } from "react";
+import theme from "styles/theme";
 
 type Props = {
   message: string;
@@ -19,7 +20,8 @@ const useToast = () => {
         message,
         link,
         linkMessage: "Learn more",
-        color: type === "success" ? "#4BB543" : "#EF5350",
+        color:
+          type === "success" ? theme.colors.successGreen : theme.colors.lgRed,
       },
     });
     setTimeout(() => {
