@@ -2,7 +2,7 @@ import { createContext, useMemo, useReducer } from "react";
 import Notification from "types/entities/Notification";
 
 export interface IToastContext {
-  notifications: any;
+  notifications: Notification[];
   dispatch: any;
 }
 
