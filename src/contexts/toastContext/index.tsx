@@ -12,10 +12,11 @@ export type Props = {
 
 export const ToastContext = createContext<IToastContext>({} as IToastContext);
 
+export const ADD_NOTIFICATION = "ADD_NOTIFICATION";
+export const DELETE_NOTIFICATION = "DELETE_NOTIFICATION";
+
 export function ToastContextProvider({ children }: Props) {
   const notificationsArray: Notification[] = [];
-  const ADD_NOTIFICATION = "ADD_NOTIFICATION";
-  const DELETE_NOTIFICATION = "DELETE_NOTIFICATION";
 
   const [notifications, dispatch] = useReducer((toasts: any, action: any) => {
     switch (action.type) {

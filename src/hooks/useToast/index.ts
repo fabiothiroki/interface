@@ -1,4 +1,8 @@
-import { ToastContext } from "contexts/toastContext";
+import {
+  ADD_NOTIFICATION,
+  DELETE_NOTIFICATION,
+  ToastContext,
+} from "contexts/toastContext";
 import { useContext } from "react";
 import theme from "styles/theme";
 
@@ -13,7 +17,7 @@ const useToast = () => {
   function toast({ type = "success", message, link }: Props) {
     const id = Math.random();
     dispatch({
-      type: "ADD_NOTIFICATION",
+      type: ADD_NOTIFICATION,
       payload: {
         id,
         type,
@@ -26,7 +30,7 @@ const useToast = () => {
     });
     setTimeout(() => {
       dispatch({
-        type: "DELETE_NOTIFICATION",
+        type: DELETE_NOTIFICATION,
         payload: id,
       });
     }, 4000);
