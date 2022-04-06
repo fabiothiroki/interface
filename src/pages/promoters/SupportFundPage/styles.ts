@@ -67,3 +67,15 @@ export const FinishButton = styled(Button)`
     height: 56px;
   }
 `;
+
+export const Input = styled.input`
+  ${({ theme }) => css`
+    height: 39px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid ${theme.colors.ribonBlue};
+    padding: 8px;
+    margin-top: 12px;
+    margin-bottom: 8px;
+  `}
+`;
