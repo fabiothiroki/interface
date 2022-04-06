@@ -14,12 +14,14 @@ export const ToastContext = createContext<IToastContext>({} as IToastContext);
 
 export function ToastContextProvider({ children }: Props) {
   const notificationsArray: Notification[] = [];
+  const ADD_NOTIFICATION = "ADD_NOTIFICATION";
+  const DELETE_NOTIFICATION = "DELETE_NOTIFICATION";
 
   const [notifications, dispatch] = useReducer((toasts: any, action: any) => {
     switch (action.type) {
-      case "ADD_NOTIFICATION":
+      case ADD_NOTIFICATION:
         return [...toasts, action.payload];
-      case "DELETE_NOTIFICATION":
+      case DELETE_NOTIFICATION:
         return toasts.filter(
           (notification: Notification) => notification.id !== action.payload,
         );
