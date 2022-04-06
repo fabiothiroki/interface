@@ -3,8 +3,6 @@ import Button from "components/atomics/Button";
 
 export const Container = styled.div`
   ${() => css`
-    display: grid;
-    grid-gap: 0px; // grid-template-rows: [line-2] 80px;
     height: 100vh;
     width: 100%;
 
@@ -27,6 +25,17 @@ export const Title = styled.h1`
   ${({ theme }) => css`
     @media (min-width: ${theme.breakpoints.pad}) {
       font-size: 24px;
+    }
+  `}
+`;
+
+export const Subtitle = styled.p`
+  margin-top: 16px;
+  font-weight: 700;
+
+  ${({ theme }) => css`
+    @media (min-width: ${theme.breakpoints.pad}) {
+      font-size: 18px;
     }
   `}
 `;

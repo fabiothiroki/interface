@@ -9,6 +9,7 @@ function SupportFundPage(): JSX.Element {
   return (
     <S.Container>
       <S.Title>{t("title")}</S.Title>
+      <S.Subtitle>{t("subtitle")}</S.Subtitle>
 
       <S.ButtonContainer>
         <S.FinishButton text={t("button")} onClick={() => {}} />
