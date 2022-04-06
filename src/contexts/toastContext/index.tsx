@@ -2,7 +2,7 @@ import { createContext, useMemo, useReducer } from "react";
 import Notification from "types/entities/Notification";
 
 export interface IToastContext {
-  notificationsState: any;
+  notifications: any;
   dispatch: any;
 }
 
@@ -13,30 +13,27 @@ export type Props = {
 export const ToastContext = createContext<IToastContext>({} as IToastContext);
 
 export function ToastContextProvider({ children }: Props) {
-  const notifications: Notification[] = [];
+  const notificationsArray: Notification[] = [];
 
-  const [notificationsState, dispatch] = useReducer(
-    (toasts: any, action: any) => {
-      switch (action.type) {
-        case "ADD_NOTIFICATION":
-          return [...toasts, action.payload];
-        case "DELETE_NOTIFICATION":
-          return toasts.filter(
-            (notification: Notification) => notification.id !== action.payload,
-          );
-        default:
-          return toasts;
-      }
-    },
-    notifications,
-  );
+  const [notifications, dispatch] = useReducer((toasts: any, action: any) => {
+    switch (action.type) {
+      case "ADD_NOTIFICATION":
+        return [...toasts, action.payload];
+      case "DELETE_NOTIFICATION":
+        return toasts.filter(
+          (notification: Notification) => notification.id !== action.payload,
+        );
+      default:
+        return toasts;
+    }
+  }, notificationsArray);
 
   const toastObject: IToastContext = useMemo(
     () => ({
-      notificationsState,
+      notifications,
       dispatch,
     }),
-    [notificationsState, dispatch],
+    [notifications, dispatch],
   );
 
   return (
