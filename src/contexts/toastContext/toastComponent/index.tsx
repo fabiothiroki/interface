@@ -4,16 +4,16 @@ import { ToastContext } from "..";
 import * as S from "./styles";
 
 function Toast() {
-  const { state } = useContext(ToastContext);
+  const { notificationsState } = useContext(ToastContext);
 
   return (
     <S.NotificationContainer>
-      {state.map((notification: Notification) => {
-        const index = state.indexOf(notification);
+      {notificationsState.map((notification: Notification) => {
+        const index = notificationsState.indexOf(notification);
         return (
           <S.NotificationToast
             style={{
-              backgroundColor: state[index].color,
+              backgroundColor: notificationsState[index].color,
             }}
             key={index}
           >
