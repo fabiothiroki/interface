@@ -13,7 +13,7 @@ import {
   connectWalletRequest,
 } from "lib/walletConnector";
 import { useTranslation } from "react-i18next";
-import useToast from "../../hooks/useToast";
+import useToast from "hooks/useToast";
 
 export interface IWalletContext {
   wallet: string | null;
