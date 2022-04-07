@@ -46,7 +46,7 @@ function SupportFundPage(): JSX.Element {
   const approveAmount = async () => {
     await donationTokenContract?.functions.approve(
       RIBON_CONTRACT_ADDRESS,
-      utils.parseEther("10000000000"),
+      utils.parseEther(amount),
       {
         from: wallet,
       },
