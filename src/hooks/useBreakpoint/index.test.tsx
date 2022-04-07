@@ -6,7 +6,7 @@ const PAD_SIZE = 700;
 const DESKTOP_SIZE = 1200;
 
 describe("useBreakpoint", () => {
-  let current: any;
+  let current: ReturnType<typeof useBreakpoint>;
 
   describe("when the screen is on mobile size", () => {
     beforeEach(() => {
