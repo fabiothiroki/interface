@@ -84,5 +84,12 @@
       "subtitle": "How much do you want to give?",
       "button": "Confirm giving"
     }
+  },
+  "contexts": {
+    "walletContext": {
+      "ethereumNotFoundMessage": "Install Metamask to continue",
+      "userRejectedConnectionMessage": "Wallet connection rejected",
+      "onErrorMessage": "Wallet connection failed"
+    }
   }
 }

@@ -83,5 +83,12 @@
       "subtitle": "Quanto você quer contribuir?",
       "button": "Confirmar doação"
     }
+  },
+  "contexts": {
+    "walletContext": {
+      "ethereumNotFoundMessage": "Instale a Metamask para continuar",
+      "userRejectedConnectionMessage": "Conexão com a carteira negada",
+      "onErrorMessage": "Falha na conexão da carteira"
+    }
   }
 }
