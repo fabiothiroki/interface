@@ -5,6 +5,6 @@ describe("FundPage", () => {
   it("should render without error", () => {
     renderComponent(<FundPage />);
 
-    expectTextToBeInTheDocument("Fund");
+    expectTextToBeInTheDocument("Support the Fund");
   });
 });
