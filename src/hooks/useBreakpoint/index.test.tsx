@@ -6,75 +6,65 @@ const PAD_SIZE = 700;
 const DESKTOP_SIZE = 1200;
 
 describe("useBreakpoint", () => {
+  let current: any;
+
   describe("when the screen is on mobile size", () => {
     beforeEach(() => {
       Object.assign(global, { innerWidth: MOBILE_SIZE });
+      const { result } = renderHook(() => useBreakpoint());
+      current = result.current;
     });
 
     it("returns isMobile true", () => {
-      const { result } = renderHook(() => useBreakpoint());
-
-      expect(result.current.isMobile).toBeTruthy();
+      expect(current.isMobile).toBeTruthy();
     });
 
     it("returns isPad false", () => {
-      const { result } = renderHook(() => useBreakpoint());
-
-      expect(result.current.isPad).toBeFalsy();
+      expect(current.isPad).toBeFalsy();
     });
 
     it("returns isDesktop false", () => {
-      const { result } = renderHook(() => useBreakpoint());
-
-      expect(result.current.isDesktop).toBeFalsy();
+      expect(current.isDesktop).toBeFalsy();
     });
   });
 
   describe("when the screen is on pad size", () => {
     beforeEach(() => {
       Object.assign(global, { innerWidth: PAD_SIZE });
+      const { result } = renderHook(() => useBreakpoint());
+      current = result.current;
     });
 
     it("returns isMobile false", () => {
-      const { result } = renderHook(() => useBreakpoint());
-
-      expect(result.current.isMobile).toBeFalsy();
+      expect(current.isMobile).toBeFalsy();
     });
 
     it("returns isPad true", () => {
-      const { result } = renderHook(() => useBreakpoint());
-
-      expect(result.current.isPad).toBeTruthy();
+      expect(current.isPad).toBeTruthy();
     });
 
     it("returns isDesktop false", () => {
-      const { result } = renderHook(() => useBreakpoint());
-
-      expect(result.current.isDesktop).toBeFalsy();
+      expect(current.isDesktop).toBeFalsy();
     });
   });
 
   describe("when the screen is on desktop size", () => {
     beforeEach(() => {
       Object.assign(global, { innerWidth: DESKTOP_SIZE });
+      const { result } = renderHook(() => useBreakpoint());
+      current = result.current;
     });
 
     it("returns isMobile false", () => {
-      const { result } = renderHook(() => useBreakpoint());
-
-      expect(result.current.isMobile).toBeFalsy();
+      expect(current.isMobile).toBeFalsy();
     });
 
     it("returns isPad false", () => {
-      const { result } = renderHook(() => useBreakpoint());
-
-      expect(result.current.isPad).toBeFalsy();
+      expect(current.isPad).toBeFalsy();
     });
 
     it("returns isDesktop true", () => {
-      const { result } = renderHook(() => useBreakpoint());
-
-      expect(result.current.isDesktop).toBeTruthy();
+      expect(current.isDesktop).toBeTruthy();
     });
   });
 });
