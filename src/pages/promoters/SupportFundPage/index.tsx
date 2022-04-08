@@ -93,7 +93,7 @@ function SupportFundPage(): JSX.Element {
 
       <S.ButtonContainer>
         <S.FinishButton
-          text={t("button")}
+          text={disableButton() ? t("disabledButtonText") : t("buttonText")}
           onClick={handleFinishButtonClick}
           disabled={disableButton()}
         />
