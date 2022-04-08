@@ -55,11 +55,23 @@ export async function changeNetwork() {
   }
 }
 
-export async function connectWalletRequest(): Promise<string | null> {
+type ConnectWalletRequestProps = {
+  onEthereumNotFound?: () => void;
+  onError?: () => void;
+  onUserRejectedConnection?: () => void;
+};
+export const USER_REJECTED_CONNECTION_ERROR_CODE = 4001;
+
+export async function connectWalletRequest({
+  onEthereumNotFound,
+  onError,
+  onUserRejectedConnection,
+}: ConnectWalletRequestProps): Promise<string | null> {
   try {
     const { ethereum } = window;
 
     if (!ethereum) {
+      if (onEthereumNotFound) onEthereumNotFound();
       return null;
     }
 
@@ -70,7 +82,11 @@ export async function connectWalletRequest(): Promise<string | null> {
     changeNetwork();
 
     return accounts[0];
-  } catch (error) {
+  } catch (error: any) {
+    if (error.code === USER_REJECTED_CONNECTION_ERROR_CODE) {
+      if (onUserRejectedConnection) onUserRejectedConnection();
+    } else if (onError) onError();
+
     logError(error);
   }
 
@@ -108,9 +124,7 @@ export function onAccountChange(callback: (accounts: string[]) => void) {
 
     if (!ethereum) return;
 
-    ethereum.on("accountsChanged", (accounts: string[]) => {
-      callback(accounts);
-    });
+    ethereum.on("accountsChanged", callback);
   } catch (error) {
     logError(error);
   }
