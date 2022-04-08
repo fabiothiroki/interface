@@ -32,7 +32,6 @@ export async function changeNetwork() {
     const symbolName = "MATIC";
 
     if (ethereum) {
-      ethereum.request({ method: "eth_requestAccounts" });
       ethereum.request({
         method: "wallet_addEthereumChain",
         params: [
