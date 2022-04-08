@@ -64,7 +64,7 @@ function SupportFundPage(): JSX.Element {
     SimpleMaskMoney.setMask("#amount", args);
   }, []);
 
-  const disableButton = () => (amount === "0.00" || loading) ;
+  const disableButton = () => amount === "0.00" || loading;
 
   const handleFinishButtonClick = async () => {
     setLoading(true);
@@ -73,7 +73,11 @@ function SupportFundPage(): JSX.Element {
       const response = await contract?.functions.addDonationPoolBalance(
         utils.parseEther(amount),
       );
-      toast({message: t("transactionSuccessText"), type: "success", link: `https://mumbai.polygonscan.com/tx/${response.hash}`})
+      toast({
+        message: t("transactionSuccessText"),
+        type: "success",
+        link: `https://mumbai.polygonscan.com/tx/${response.hash}`,
+      });
       navigateBack();
     } catch (error) {
       logError(error);

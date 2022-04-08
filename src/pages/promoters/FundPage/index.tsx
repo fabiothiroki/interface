@@ -33,7 +33,6 @@ function FundPage(): JSX.Element {
     ABI: RibonAbi.abi,
   });
 
-
   async function fetchContractBalance() {
     try {
       const balance = await donationTokenContract?.balanceOf(
@@ -65,7 +64,7 @@ function FundPage(): JSX.Element {
   useEffect(() => {
     contract?.on("PoolBalanceIncreased", () => {
       fetchContractBalance();
-    })
+    });
   }, []);
 
   return (
