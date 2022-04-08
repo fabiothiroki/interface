@@ -65,6 +65,12 @@ function SupportFundPage(): JSX.Element {
   }, []);
 
   const disableButton = () => amount === "0.00" || loading;
+  const finishButtonText = () => {
+    if (loading) return "...";
+    if (disableButton()) return t("disabledButtonText");
+
+    return t("buttonText");
+  };
 
   const handleFinishButtonClick = async () => {
     setLoading(true);
@@ -108,7 +114,7 @@ function SupportFundPage(): JSX.Element {
 
       <S.ButtonContainer>
         <S.FinishButton
-          text={disableButton() ? t("disabledButtonText") : t("buttonText")}
+          text={finishButtonText()}
           onClick={handleFinishButtonClick}
           disabled={disableButton()}
         />
