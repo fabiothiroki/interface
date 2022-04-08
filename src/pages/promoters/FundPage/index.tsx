@@ -11,6 +11,7 @@ import { useWalletContext } from "contexts/walletContext";
 import useNavigation from "hooks/useNavigation";
 import { useContract } from "hooks/useContract";
 import DonationTokenAbi from "utils/abis/DonationToken.json";
+import RibonAbi from "utils/abis/RibonAbi.json";
 import { logError } from "services/crashReport";
 import * as S from "./styles";
 
@@ -27,6 +28,11 @@ function FundPage(): JSX.Element {
     address: DONATION_TOKEN_CONTRACT_ADDRESS,
     ABI: DonationTokenAbi.abi,
   });
+  const contract = useContract({
+    address: RIBON_CONTRACT_ADDRESS,
+    ABI: RibonAbi.abi,
+  });
+
 
   async function fetchContractBalance() {
     try {
@@ -54,6 +60,12 @@ function FundPage(): JSX.Element {
 
   useEffect(() => {
     fetchContractBalance();
+  }, []);
+
+  useEffect(() => {
+    contract?.on("PoolBalanceIncreased", () => {
+      fetchContractBalance();
+    })
   }, []);
 
   return (

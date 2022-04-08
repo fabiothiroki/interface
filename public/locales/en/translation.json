@@ -84,7 +84,8 @@
       "subtitle": "How much do you want to give?",
       "buttonText": "Confirm giving",
       "disabledButtonText": "Enter any USDC amount",
-      "networkText": "*Make sure your wallet is set up to the Polygon network."
+      "networkText": "*Make sure your wallet is set up to the Polygon network.",
+      "transactionSuccessText": "Transaction successful"
     }
   },
   "contexts": {

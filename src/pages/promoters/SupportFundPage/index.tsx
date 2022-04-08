@@ -12,13 +12,17 @@ import { useWalletContext } from "contexts/walletContext";
 import { utils } from "ethers";
 import { logError } from "services/crashReport";
 import UsdcIcon from "assets/icons/usdc-icon.svg";
+import useToast from "hooks/useToast";
+import useNavigation from "hooks/useNavigation";
 import * as S from "./styles";
 
 function SupportFundPage(): JSX.Element {
+  const [amount, setAmount] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const { t } = useTranslation("translation", {
     keyPrefix: "promoters.supportFundPage",
   });
-  const [amount, setAmount] = useState("");
   const contract = useContract({
     address: RIBON_CONTRACT_ADDRESS,
     ABI: RibonAbi.abi,
@@ -28,6 +32,8 @@ function SupportFundPage(): JSX.Element {
     ABI: DonationTokenAbi.abi,
   });
   const { wallet } = useWalletContext();
+  const toast = useToast();
+  const { navigateBack } = useNavigation();
 
   const args = {
     afterFormat(e: string) {
@@ -58,16 +64,21 @@ function SupportFundPage(): JSX.Element {
     SimpleMaskMoney.setMask("#amount", args);
   }, []);
 
-  const disableButton = () => amount === "0.00";
+  const disableButton = () => (amount === "0.00" || loading) ;
 
   const handleFinishButtonClick = async () => {
+    setLoading(true);
     try {
       await approveAmount();
-      await contract?.functions.addDonationPoolBalance(
+      const response = await contract?.functions.addDonationPoolBalance(
         utils.parseEther(amount),
       );
+      toast({message: t("transactionSuccessText"), type: "success", link: `https://mumbai.polygonscan.com/tx/${response.hash}`})
+      navigateBack();
     } catch (error) {
       logError(error);
+    } finally {
+      setLoading(false);
     }
   };
 
