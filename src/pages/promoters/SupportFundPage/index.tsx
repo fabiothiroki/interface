@@ -11,6 +11,7 @@ import DonationTokenAbi from "utils/abis/DonationToken.json";
 import { useWalletContext } from "contexts/walletContext";
 import { utils } from "ethers";
 import { logError } from "services/crashReport";
+import UsdcIcon from "assets/icons/usdc-icon.svg";
 import * as S from "./styles";
 
 function SupportFundPage(): JSX.Element {
@@ -75,13 +76,20 @@ function SupportFundPage(): JSX.Element {
       <S.Title>{t("title")}</S.Title>
       <S.Subtitle>{t("subtitle")}</S.Subtitle>
 
-      <S.Input
-        name="amount"
-        id="amount"
-        type="text"
-        placeholder="0.00"
-        inputMode="numeric"
-      />
+      <S.InputContainer>
+        <S.Input
+          name="amount"
+          id="amount"
+          type="text"
+          placeholder="0.00"
+          inputMode="numeric"
+        />
+        <S.UsdcContainer>
+          <S.UsdcIcon src={UsdcIcon} />
+          <S.UsdcText>USDC</S.UsdcText>
+        </S.UsdcContainer>
+      </S.InputContainer>
+      <S.Text>{t("networkText")}</S.Text>
 
       <S.ButtonContainer>
         <S.FinishButton

@@ -7,12 +7,9 @@ export const Container = styled.div`
     width: 100%;
 
     @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
-      max-width: 340px;
+      max-width: 378px;
       display: flex;
       flex-direction: column;
-
-      align-items: center;
-      margin: 0 auto;
     }
   `}
 `;
@@ -30,12 +27,25 @@ export const Title = styled.h1`
 `;
 
 export const Subtitle = styled.p`
-  margin-top: 16px;
+  margin-top: 20px;
   font-weight: 700;
 
   ${({ theme }) => css`
     @media (min-width: ${theme.breakpoints.pad}) {
       font-size: 18px;
+    }
+  `}
+`;
+
+export const Text = styled.p`
+  ${({ theme }) => css`
+    margin-top: 8px;
+    font-weight: 500;
+    font-size: 12px;
+    color: ${theme.colors.darkGray};
+
+    @media (min-width: ${theme.breakpoints.pad}) {
+      font-size: 14px;
     }
   `}
 `;
@@ -57,7 +67,12 @@ export const ButtonContainer = styled.div`
     @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
       box-shadow: none;
       padding: 0;
-      max-width: 340px;
+      position: static;
+      height: 60px;
+
+      button {
+        height: 40px;
+      }
     }
   `}
 `;
@@ -77,5 +92,40 @@ export const Input = styled.input`
     padding: 8px;
     margin-top: 12px;
     margin-bottom: 8px;
+  `}
+`;
+
+export const InputContainer = styled.div`
+  ${() => css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
+    }
+  `}
+`;
+
+export const UsdcIcon = styled.img`
+  ${() => css`
+    height: 24px;
+    width: 24px;
+  `}
+`;
+
+export const UsdcContainer = styled.div`
+  ${() => css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;
+  `}
+`;
+
+export const UsdcText = styled.p`
+  ${({ theme }) => css`
+    margin-left: 4px;
+    color: ${theme.colors.ribonBlack};
+    font-size: 14px;
   `}
 `;

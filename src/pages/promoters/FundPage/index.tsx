@@ -11,8 +11,8 @@ import { useWalletContext } from "contexts/walletContext";
 import useNavigation from "hooks/useNavigation";
 import { useContract } from "hooks/useContract";
 import DonationTokenAbi from "utils/abis/DonationToken.json";
+import { logError } from "services/crashReport";
 import * as S from "./styles";
-import { logError } from "../../../services/crashReport";
 
 function FundPage(): JSX.Element {
   const [donationPoolBalance, setDonationPoolBalance] = useState<string | null>(
