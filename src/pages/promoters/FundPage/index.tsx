@@ -12,6 +12,7 @@ import useNavigation from "hooks/useNavigation";
 import { useContract } from "hooks/useContract";
 import DonationTokenAbi from "utils/abis/DonationToken.json";
 import * as S from "./styles";
+import { logError } from "../../../services/crashReport";
 
 function FundPage(): JSX.Element {
   const [donationPoolBalance, setDonationPoolBalance] = useState<string | null>(
@@ -28,12 +29,18 @@ function FundPage(): JSX.Element {
   });
 
   async function fetchContractBalance() {
-    const balance = await donationTokenContract?.balanceOf(
-      RIBON_CONTRACT_ADDRESS,
-    );
-    const formattedBalance = parseFloat(utils.formatEther(balance)).toFixed(2);
+    try {
+      const balance = await donationTokenContract?.balanceOf(
+        RIBON_CONTRACT_ADDRESS,
+      );
+      const formattedBalance = parseFloat(utils.formatEther(balance)).toFixed(
+        2,
+      );
 
-    setDonationPoolBalance(formattedBalance);
+      setDonationPoolBalance(formattedBalance);
+    } catch (e) {
+      logError(e);
+    }
   }
 
   const handleSupportButtonClick = () => {
