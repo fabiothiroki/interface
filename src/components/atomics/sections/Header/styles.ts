@@ -51,3 +51,8 @@ export const LeftContainer = styled.div`
     }
   `}
 `;
+
+export const BackButtonImage = styled.img`
+  
+
+`
