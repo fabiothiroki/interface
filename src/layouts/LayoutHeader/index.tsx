@@ -11,10 +11,10 @@ import { Divider } from "components/atomics/Divider/styles";
 import theme from "styles/theme";
 import useBreakpoint from "hooks/useBreakpoint";
 import { useIntegrationId } from "hooks/useIntegrationId";
+import useNavigation from "hooks/useNavigation";
 import ChangeLanguageItem from "./ChangeLanguageItem";
 import LogoutItem from "./LogoutItem";
 import * as S from "./styles";
-import useNavigation from "../../hooks/useNavigation";
 
 export type Props = {
   rightComponent?: JSX.Element;

@@ -52,4 +52,6 @@ export const LeftContainer = styled.div`
   `}
 `;
 
-export const BackButtonImage = styled.img``;
+export const BackButtonImage = styled.img`
+  cursor: pointer;
+`;
