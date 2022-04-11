@@ -90,8 +90,14 @@ function SupportFundPage(): JSX.Element {
         type: "success",
         link: `https://mumbai.polygonscan.com/tx/${response.hash}`,
       });
+      logEvent("toastNotification_view", {
+        status: "transactionProcessed",
+      });
       navigateBack();
     } catch (error) {
+      logEvent("toastNotification_view", {
+        status: "transactionFailed",
+      });
       logError(error);
     } finally {
       setLoading(false);
