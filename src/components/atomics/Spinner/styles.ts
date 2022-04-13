@@ -6,6 +6,7 @@ type Props = {
 
 export const Container = styled.div`
   ${() => css`
+    display: inline-block;
     svg {
       circle {
         stroke: ${(props: Props) => props.color};
