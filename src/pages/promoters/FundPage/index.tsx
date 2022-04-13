@@ -13,6 +13,8 @@ import { useContract } from "hooks/useContract";
 import DonationTokenAbi from "utils/abis/DonationToken.json";
 import RibonAbi from "utils/abis/RibonAbi.json";
 import { logError } from "services/crashReport";
+import { Divider } from "components/atomics/Divider/styles";
+import theme from "styles/theme";
 import * as S from "./styles";
 
 function FundPage(): JSX.Element {
@@ -84,6 +86,30 @@ function FundPage(): JSX.Element {
           />
         </CardBlank>
       </S.CardContainer>
+
+      <S.GivingsContainer>
+        <S.SectionTitle>{t("givingsTitle")}</S.SectionTitle>
+        <S.GivingsCardContainer>
+          <S.GivingsCard>
+            <S.GivingDate>22/02/2022</S.GivingDate>
+            <S.GivingText>
+              12.00 <S.GivingTextCoin>USDC</S.GivingTextCoin>
+            </S.GivingText>
+            <Divider color={theme.colors.lightGray} />
+          </S.GivingsCard>
+
+          <S.GivingsCard>
+            <S.GivingDate>22/02/2022</S.GivingDate>
+            <S.GivingText>
+              12.00 <S.GivingTextCoin>USDC</S.GivingTextCoin>
+            </S.GivingText>
+            <Button
+              text={t("fundSupportButtonText")}
+              onClick={handleSupportButtonClick}
+            />
+          </S.GivingsCard>
+        </S.GivingsCardContainer>
+      </S.GivingsContainer>
     </S.Container>
   );
 }

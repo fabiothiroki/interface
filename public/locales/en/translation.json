@@ -77,7 +77,8 @@
       "title": "Fund",
       "subtitle": "Help charities by funding donation tickets",
       "fundBalance": "Fund balance",
-      "fundSupportButtonText": "Support the fund"
+      "fundSupportButtonText": "Support the fund",
+      "givingsTitle": "Your givings"
     },
     "supportFundPage": {
       "title": "Support the Fund",
