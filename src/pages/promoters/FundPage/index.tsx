@@ -15,6 +15,7 @@ import RibonAbi from "utils/abis/RibonAbi.json";
 import { logError } from "services/crashReport";
 import { Divider } from "components/atomics/Divider/styles";
 import theme from "styles/theme";
+import Spinner from "components/atomics/Spinner";
 import * as S from "./styles";
 
 function FundPage(): JSX.Element {
@@ -96,6 +97,10 @@ function FundPage(): JSX.Element {
               12.00 <S.GivingTextCoin>USDC</S.GivingTextCoin>
             </S.GivingText>
             <Divider color={theme.colors.lightGray} />
+            <S.ProcessingContainer>
+              <Spinner />
+              <S.ProcessingText>Processing Transaction</S.ProcessingText>
+            </S.ProcessingContainer>
           </S.GivingsCard>
 
           <S.GivingsCard>
@@ -103,10 +108,15 @@ function FundPage(): JSX.Element {
             <S.GivingText>
               12.00 <S.GivingTextCoin>USDC</S.GivingTextCoin>
             </S.GivingText>
-            <Button
-              text={t("fundSupportButtonText")}
-              onClick={handleSupportButtonClick}
-            />
+            <Divider color={theme.colors.lightGray} />
+          </S.GivingsCard>
+
+          <S.GivingsCard>
+            <S.GivingDate>22/02/2022</S.GivingDate>
+            <S.GivingText>
+              12.00 <S.GivingTextCoin>USDC</S.GivingTextCoin>
+            </S.GivingText>
+            <Divider color={theme.colors.lightGray} />
           </S.GivingsCard>
         </S.GivingsCardContainer>
       </S.GivingsContainer>

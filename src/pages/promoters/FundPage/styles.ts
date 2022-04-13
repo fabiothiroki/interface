@@ -88,6 +88,7 @@ export const GivingsCard = styled.div`
   box-shadow: 0px 4px 12px rgba(24, 86, 105, 0.15);
   border-radius: 16px;
   width: 206px;
+  display: inline-block;
 `;
 
 export const GivingDate = styled.p`
@@ -110,6 +111,26 @@ export const GivingTextCoin = styled.span`
   ${({ theme }) => css`
     color: ${theme.colors.ribonBlue};
     font-size: 14px;
+    font-weight: 400;
+  `}
+`;
+
+export const ProcessingContainer = styled.div`
+  ${({ theme }) => css`
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    @media (min-width: ${theme.breakpoints.pad}) {
+    }
+  `}
+`;
+
+export const ProcessingText = styled.span`
+  ${({ theme }) => css`
+    color: ${theme.colors.ribonBlue};
+    font-size: 12px;
     font-weight: 400;
   `}
 `;
