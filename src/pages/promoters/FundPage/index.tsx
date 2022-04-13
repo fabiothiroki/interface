@@ -97,10 +97,10 @@ function FundPage(): JSX.Element {
               12.00 <S.GivingTextCoin>USDC</S.GivingTextCoin>
             </S.GivingText>
             <Divider color={theme.colors.lightGray} />
-            <S.ProcessingContainer>
+            <S.StatusContainer>
               <Spinner />
-              <S.ProcessingText>Processing Transaction</S.ProcessingText>
-            </S.ProcessingContainer>
+              <S.ProcessingText>Processing Transaction...</S.ProcessingText>
+            </S.StatusContainer>
           </S.GivingsCard>
 
           <S.GivingsCard>
@@ -109,6 +109,9 @@ function FundPage(): JSX.Element {
               12.00 <S.GivingTextCoin>USDC</S.GivingTextCoin>
             </S.GivingText>
             <Divider color={theme.colors.lightGray} />
+            <S.StatusContainer>
+              <S.TransactionLink>See Transaction</S.TransactionLink>
+            </S.StatusContainer>
           </S.GivingsCard>
 
           <S.GivingsCard>

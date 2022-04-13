@@ -115,21 +115,25 @@ export const GivingTextCoin = styled.span`
   `}
 `;
 
-export const ProcessingContainer = styled.div`
-  ${({ theme }) => css`
-    margin-top: 10px;
-    width: 100%;
-    display: flex;
-    gap: 6px;
-    align-items: center;
-    @media (min-width: ${theme.breakpoints.pad}) {
-    }
-  `}
+export const StatusContainer = styled.div`
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  gap: 6px;
+  align-items: center;
 `;
 
 export const ProcessingText = styled.span`
   ${({ theme }) => css`
     color: ${theme.colors.ribonBlue};
+    font-size: 12px;
+    font-weight: 400;
+  `}
+`;
+
+export const TransactionLink = styled.a`
+  ${({ theme }) => css`
+    color: ${theme.colors.ribonBlack};
     font-size: 12px;
     font-weight: 400;
   `}
