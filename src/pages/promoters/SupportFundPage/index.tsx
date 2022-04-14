@@ -15,6 +15,7 @@ import UsdcIcon from "assets/icons/usdc-icon.svg";
 import useToast from "hooks/useToast";
 import useNavigation from "hooks/useNavigation";
 import { logEvent } from "services/analytics";
+import { formatFromWei } from "lib/web3Helpers/etherFormatters";
 import * as S from "./styles";
 
 function SupportFundPage(): JSX.Element {
@@ -64,7 +65,7 @@ function SupportFundPage(): JSX.Element {
 
   const fetchUsdcUserBalance = useCallback(async () => {
     const balance = await donationTokenContract?.balanceOf(wallet);
-    const formattedBalance = parseFloat(utils.formatEther(balance)).toFixed(2);
+    const formattedBalance = formatFromWei(balance);
 
     setUserBalance(formattedBalance);
   }, [wallet]);
