@@ -1,7 +1,7 @@
 import { Contract } from "@ethersproject/contracts";
 import { useMemo } from "react";
-import { getContract } from "utils/contractUtils";
-import { Web3Provider } from "@ethersproject/providers";
+import { ALCHEMY_URL, getContract } from "utils/contractUtils";
+import { Web3Provider, JsonRpcProvider } from "@ethersproject/providers";
 import { logError } from "services/crashReport";
 
 type Props = {
@@ -23,7 +23,9 @@ export function useContract<T extends Contract = Contract>({
         return getContract(address, ABI, signer);
       }
 
-      return null;
+      const provider = new JsonRpcProvider(ALCHEMY_URL);
+
+      return getContract(address, ABI, provider);
     } catch (error) {
       logError(error);
       return null;
