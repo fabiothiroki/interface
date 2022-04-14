@@ -64,10 +64,14 @@ function SupportFundPage(): JSX.Element {
   };
 
   const fetchUsdcUserBalance = useCallback(async () => {
-    const balance = await donationTokenContract?.balanceOf(wallet);
-    const formattedBalance = formatFromWei(balance);
+    try {
+      const balance = await donationTokenContract?.balanceOf(wallet);
+      const formattedBalance = formatFromWei(balance);
 
-    setUserBalance(formattedBalance);
+      setUserBalance(formattedBalance);
+    } catch (error) {
+      logError(error);
+    }
   }, [wallet]);
 
   useEffect(() => {
