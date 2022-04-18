@@ -86,7 +86,13 @@ function SupportFundPage(): JSX.Element {
     logEvent("fundSupportScreen_view");
   }, []);
 
-  const disableButton = () => amount === "0.00" || loading;
+  const disableButton = () => {
+    const amountNumber = parseFloat(amount.replace(/,/g, ""));
+    const userBalanceNumber = parseFloat(userBalance.replace(/,/g, ""));
+    console.log(amountNumber, userBalanceNumber);
+    return amount === "0.00" || amountNumber > userBalanceNumber || loading;
+  };
+
   const finishButtonText = () => {
     if (loading) return "...";
     if (disableButton()) return t("disabledButtonText");
