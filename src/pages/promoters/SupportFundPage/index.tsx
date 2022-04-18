@@ -16,6 +16,7 @@ import useToast from "hooks/useToast";
 import useNavigation from "hooks/useNavigation";
 import { logEvent } from "services/analytics";
 import { formatFromWei } from "lib/web3Helpers/etherFormatters";
+import { stringToNumber } from "lib/formatters/stringToNumberFormatter";
 import * as S from "./styles";
 
 function SupportFundPage(): JSX.Element {
@@ -87,9 +88,9 @@ function SupportFundPage(): JSX.Element {
   }, []);
 
   const disableButton = () => {
-    const amountNumber = parseFloat(amount.replace(/,/g, ""));
-    const userBalanceNumber = parseFloat(userBalance.replace(/,/g, ""));
-    console.log(amountNumber, userBalanceNumber);
+    const amountNumber = stringToNumber(amount);
+    const userBalanceNumber = stringToNumber(userBalance);
+
     return amount === "0.00" || amountNumber > userBalanceNumber || loading;
   };
 
