@@ -15,6 +15,7 @@ import RibonAbi from "utils/abis/RibonAbi.json";
 import { logError } from "services/crashReport";
 import { logEvent } from "services/analytics";
 import * as S from "./styles";
+import GivingsCarousel from "./GivingsCarrousel";
 
 function FundPage(): JSX.Element {
   const [donationPoolBalance, setDonationPoolBalance] = useState<string | null>(
@@ -82,7 +83,6 @@ function FundPage(): JSX.Element {
     <S.Container>
       <S.Title>{t("title")}</S.Title>
       <S.Subtitle>{t("subtitle")}</S.Subtitle>
-
       <S.SectionTitle>{t("fundBalance")}</S.SectionTitle>
       <S.CardContainer>
         <CardBlank>
@@ -95,6 +95,20 @@ function FundPage(): JSX.Element {
           />
         </CardBlank>
       </S.CardContainer>
+      <S.SectionTitle>{t("subtitleGivings")}</S.SectionTitle>
+      {donationPoolBalance ? (
+        <S.CarouselCardContainer>
+          <CardBlank>
+            <S.GivingText>{t("firstGivingText")}</S.GivingText>
+            <Button
+              text={t("firstGivingButtonText")}
+              onClick={handleSupportButtonClick}
+            />
+          </CardBlank>
+        </S.CarouselCardContainer>
+      ) : (
+        <GivingsCarousel />
+      )}
     </S.Container>
   );
 }
