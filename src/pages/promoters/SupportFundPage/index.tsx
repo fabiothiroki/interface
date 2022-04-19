@@ -87,15 +87,19 @@ function SupportFundPage(): JSX.Element {
     logEvent("fundSupportScreen_view");
   }, []);
 
-  const disableButton = () => {
+  const insufficientBalance = () => {
     const amountNumber = stringToNumber(amount);
     const userBalanceNumber = stringToNumber(userBalance);
 
-    return amount === "0.00" || amountNumber > userBalanceNumber || loading;
+    return amountNumber > userBalanceNumber;
   };
+
+  const disableButton = () =>
+    amount === "0.00" || insufficientBalance() || loading;
 
   const finishButtonText = () => {
     if (loading) return "...";
+    if (insufficientBalance()) return t("insufficientBalanceText");
     if (disableButton()) return t("disabledButtonText");
 
     return t("buttonText");
