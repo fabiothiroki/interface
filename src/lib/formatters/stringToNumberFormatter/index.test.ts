@@ -1,4 +1,4 @@
-import { stringToNumber } from "./index";
+import { stringToNumber } from ".";
 
 describe("#stringToNumber", () => {
   describe("when the locale is en", () => {
