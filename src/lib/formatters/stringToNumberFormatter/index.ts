@@ -3,5 +3,5 @@ export function stringToNumber(value: string, localeString = "en"): number {
     return parseFloat(value.replace(/,/g, ""));
   }
 
-  return parseFloat(value.replace(/./g, "").replace(",", "."));
+  return parseFloat(value.replace(/\./g, "").replace(",", "."));
 }
