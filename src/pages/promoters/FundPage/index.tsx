@@ -17,12 +17,19 @@ import { Divider } from "components/atomics/Divider/styles";
 import theme from "styles/theme";
 import Spinner from "components/atomics/Spinner";
 import { logEvent } from "services/analytics";
+import { useLocation } from "react-router-dom";
 import * as S from "./styles";
+
+type LocationStateType = {
+  transHash: string;
+};
 
 function FundPage(): JSX.Element {
   const [donationPoolBalance, setDonationPoolBalance] = useState<string | null>(
     null,
   );
+  const { state } = useLocation<LocationStateType>();
+  const transactionHash = useState(state?.transHash);
   const { navigateTo } = useNavigation();
   const { t } = useTranslation("translation", {
     keyPrefix: "promoters.fundPage",
@@ -69,6 +76,7 @@ function FundPage(): JSX.Element {
 
   useEffect(() => {
     fetchContractBalance();
+    console.log(transactionHash);
   }, []);
 
   useEffect(() => {

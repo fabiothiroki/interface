@@ -34,7 +34,7 @@ function SupportFundPage(): JSX.Element {
   });
   const { wallet } = useWalletContext();
   const toast = useToast();
-  const { navigateBack } = useNavigation();
+  const { navigateTo } = useNavigation();
 
   const args = {
     afterFormat(e: string) {
@@ -85,15 +85,16 @@ function SupportFundPage(): JSX.Element {
       const response = await contract?.functions.addDonationPoolBalance(
         utils.parseEther(amount),
       );
+      const transHash = response.hash;
       toast({
         message: t("transactionSuccessText"),
         type: "success",
-        link: `https://mumbai.polygonscan.com/tx/${response.hash}`,
+        link: `https://mumbai.polygonscan.com/tx/${transHash}`,
       });
       logEvent("toastNotification_view", {
         status: "transactionProcessed",
       });
-      navigateBack();
+      navigateTo({ pathname: "/promoters/fund", state: { transHash } });
     } catch (error) {
       logEvent("toastNotification_view", {
         status: "transactionFailed",
