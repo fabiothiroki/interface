@@ -15,9 +15,10 @@ import RibonAbi from "utils/abis/RibonAbi.json";
 import { logError } from "services/crashReport";
 import { logEvent } from "services/analytics";
 import * as S from "./styles";
-import GivingsCarousel from "./GivingsCarrousel";
+import GivingsCarousel from "./GivingsCarousel";
 
 function FundPage(): JSX.Element {
+  const coin = "USDC";
   const [donationPoolBalance, setDonationPoolBalance] = useState<string | null>(
     null,
   );
@@ -50,6 +51,13 @@ function FundPage(): JSX.Element {
     }
   }
 
+  const testEventFilter = async () => {
+    console.log(contract);
+    const events = await contract?.filters.PoolBalanceIncreased(wallet);
+    console.log(events);
+    if (events) console.log(await contract?.queryFilter(events));
+  };
+
   const handleSupportButtonClick = () => {
     logEvent("fundConWalletBtn_click", {
       from: "supportButton",
@@ -67,6 +75,7 @@ function FundPage(): JSX.Element {
 
   useEffect(() => {
     fetchContractBalance();
+    testEventFilter();
   }, []);
 
   useEffect(() => {
@@ -87,7 +96,7 @@ function FundPage(): JSX.Element {
       <S.CardContainer>
         <CardBlank>
           <S.FundText>
-            {donationPoolBalance} <S.FundTextCoin>USDC</S.FundTextCoin>
+            {donationPoolBalance} <S.FundTextCoin>{coin}</S.FundTextCoin>
           </S.FundText>
           <Button
             text={t("fundSupportButtonText")}
@@ -96,19 +105,19 @@ function FundPage(): JSX.Element {
         </CardBlank>
       </S.CardContainer>
       <S.SectionTitle>{t("subtitleGivings")}</S.SectionTitle>
-      {donationPoolBalance ? (
-        <S.CarouselCardContainer>
-          <CardBlank>
+      <S.CarouselContainer>
+        {wallet ? (
+          <GivingsCarousel />
+        ) : (
+          <S.CardBlank>
             <S.GivingText>{t("firstGivingText")}</S.GivingText>
             <Button
               text={t("firstGivingButtonText")}
               onClick={handleSupportButtonClick}
             />
-          </CardBlank>
-        </S.CarouselCardContainer>
-      ) : (
-        <GivingsCarousel />
-      )}
+          </S.CardBlank>
+        )}
+      </S.CarouselContainer>
     </S.Container>
   );
 }

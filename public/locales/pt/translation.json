@@ -81,7 +81,8 @@
       "firstGivingButtonText": "Contribua agora",
       "firstGivingText": "Faça sua primeira doação",
       "givingsCarousel": {
-        "linkTransactionText": "Ver transação"
+        "linkTransactionText": "Ver transação",
+        "textLastCard": "Suas contribuições"
       }
     },
     "supportFundPage": {
@@ -91,6 +92,9 @@
       "disabledButtonText": "Insira uma quantidade de USDC",
       "networkText": "*Certifique-se de conectar sua carteira à rede da Polygon.",
       "transactionSuccessText": "Transação processada"
+    },
+    "givingsPage": {
+      "title": "Suas contribuições"
     }
   },
   "contexts": {

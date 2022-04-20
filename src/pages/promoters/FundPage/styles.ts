@@ -8,24 +8,27 @@ export const CardContainer = styled.div`
   ${({ theme }) => css`
     @media (min-width: ${theme.breakpoints.pad}) {
       max-width: 328px;
-      margin-bottom: 30px;
+    }
+    margin-bottom: 30px;
+  `}
+`;
+
+export const CarouselContainer = styled.div`
+  ${({ theme }) => css`
+    @media (min-width: ${theme.breakpoints.pad}) {
+      max-width: 848px;
     }
   `}
 `;
 
-export const CarouselCardContainer = styled.div`
-  ${({ theme }) => css`
-    @media (min-width: ${theme.breakpoints.pad}) {
-      max-width: 206px;
-    }
-  `}
-`;
-
-export const CardCarousel = styled.div`
-  ${({ theme }) => css`
-    @media (min-width: ${theme.breakpoints.pad}) {
-      max-width: 206px;
-    }
+export const CardBlank = styled.div`
+  ${() => css`
+    padding: 12px 16px;
+    background: #ffffff;
+    box-shadow: 0px 4px 12px rgba(24, 86, 105, 0.15);
+    border-radius: 16px;
+    height: 123px;
+    width: 206px;
   `}
 `;
 
@@ -47,8 +50,8 @@ export const GivingText = styled.p`
     font-weight: 400;
     font-size: 14px;
     text-align: center;
-    margin-bottom: 14px;
-    margin-top: 4px;
+    margin-bottom: 18px;
+    margin-top: 14px;
   `}
 `;
 

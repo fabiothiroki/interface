@@ -82,7 +82,8 @@
       "firstGivingButtonText": "Give now",
       "firstGivingText": "Make your first giving",
       "givingsCarousel": {
-         "linkTransactionText": "See transaction"
+         "linkTransactionText": "See transaction",
+         "textLastCard": "Show your givings"
       }
     },
     "supportFundPage": {
@@ -92,6 +93,9 @@
       "disabledButtonText": "Enter any USDC amount",
       "networkText": "*Make sure your wallet is set up to the Polygon network.",
       "transactionSuccessText": "Transaction successful"
+    },
+    "givingsPage": {
+      "title": "Your Givings"
     }
   },
   "contexts": {
