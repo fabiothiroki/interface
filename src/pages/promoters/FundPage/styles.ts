@@ -107,6 +107,23 @@ export const GivingText = styled.p`
   `}
 `;
 
+export const ProcessingGivingText = styled.p`
+  ${({ theme }) => css`
+    color: ${theme.colors.darkGray};
+    font-size: 36px;
+    font-weight: 900;
+    margin-bottom: 8px;
+  `}
+`;
+
+export const ProcessingGivingTextCoin = styled.span`
+  ${({ theme }) => css`
+    color: ${theme.colors.darkGray};
+    font-size: 14px;
+    font-weight: 400;
+  `}
+`;
+
 export const GivingTextCoin = styled.span`
   ${({ theme }) => css`
     color: ${theme.colors.ribonBlue};

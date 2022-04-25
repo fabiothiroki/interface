@@ -144,9 +144,10 @@ function FundPage(): JSX.Element {
           ) : (
             <S.GivingsCard>
               <S.GivingDate>22/02/2022</S.GivingDate>
-              <S.GivingText>
-                12.00 <S.GivingTextCoin>USDC</S.GivingTextCoin>
-              </S.GivingText>
+              <S.ProcessingGivingText>
+                12.00{" "}
+                <S.ProcessingGivingTextCoin>USDC</S.ProcessingGivingTextCoin>
+              </S.ProcessingGivingText>
               <Divider color={theme.colors.lightGray} />
               <S.StatusContainer>
                 <Spinner />
