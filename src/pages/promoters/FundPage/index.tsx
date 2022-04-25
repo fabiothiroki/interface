@@ -31,6 +31,9 @@ function FundPage(): JSX.Element {
   );
   const { state } = useLocation<LocationStateType>();
   const transactionHash = useState(state?.transHash);
+  const [transactionResponse, setTransactionResponse] = useState<string | null>(
+    null,
+  );
   const { navigateTo } = useNavigation();
   const { t } = useTranslation("translation", {
     keyPrefix: "promoters.fundPage",
@@ -79,8 +82,9 @@ function FundPage(): JSX.Element {
   async function getReceipt() {
     try {
       const receipt = await provider?.getTransactionReceipt(transactionHash[0]);
+      const response = receipt && receipt !== null ? "success" : null;
       console.log(receipt);
-      return receipt && receipt !== null ? "success" : null;
+      setTransactionResponse(response);
     } catch (e) {
       console.log(e);
     }
@@ -90,6 +94,7 @@ function FundPage(): JSX.Element {
   useEffect(() => {
     fetchContractBalance();
     console.log(transactionHash);
+    console.log(transactionResponse, "oi");
     getReceipt();
   }, []);
 
@@ -124,36 +129,30 @@ function FundPage(): JSX.Element {
       <S.GivingsContainer>
         <S.SectionTitle>{t("givingsTitle")}</S.SectionTitle>
         <S.GivingsCardContainer>
-          <S.GivingsCard>
-            <S.GivingDate>22/02/2022</S.GivingDate>
-            <S.GivingText>
-              12.00 <S.GivingTextCoin>USDC</S.GivingTextCoin>
-            </S.GivingText>
-            <Divider color={theme.colors.lightGray} />
-            <S.StatusContainer>
-              <Spinner />
-              <S.ProcessingText>Processing Transaction...</S.ProcessingText>
-            </S.StatusContainer>
-          </S.GivingsCard>
-
-          <S.GivingsCard>
-            <S.GivingDate>22/02/2022</S.GivingDate>
-            <S.GivingText>
-              12.00 <S.GivingTextCoin>USDC</S.GivingTextCoin>
-            </S.GivingText>
-            <Divider color={theme.colors.lightGray} />
-            <S.StatusContainer>
-              <S.TransactionLink>See Transaction</S.TransactionLink>
-            </S.StatusContainer>
-          </S.GivingsCard>
-
-          <S.GivingsCard>
-            <S.GivingDate>22/02/2022</S.GivingDate>
-            <S.GivingText>
-              12.00 <S.GivingTextCoin>USDC</S.GivingTextCoin>
-            </S.GivingText>
-            <Divider color={theme.colors.lightGray} />
-          </S.GivingsCard>
+          {transactionResponse === "success" ? (
+            <S.GivingsCard>
+              <S.GivingDate>22/02/2022</S.GivingDate>
+              <S.GivingText>
+                12.00 <S.GivingTextCoin>USDC</S.GivingTextCoin>
+              </S.GivingText>
+              <Divider color={theme.colors.lightGray} />
+              <S.StatusContainer>
+                <S.TransactionLink>See Transaction</S.TransactionLink>
+              </S.StatusContainer>
+            </S.GivingsCard>
+          ) : (
+            <S.GivingsCard>
+              <S.GivingDate>22/02/2022</S.GivingDate>
+              <S.GivingText>
+                12.00 <S.GivingTextCoin>USDC</S.GivingTextCoin>
+              </S.GivingText>
+              <Divider color={theme.colors.lightGray} />
+              <S.StatusContainer>
+                <Spinner />
+                <S.ProcessingText>Processing Transaction...</S.ProcessingText>
+              </S.StatusContainer>
+            </S.GivingsCard>
+          )}
         </S.GivingsCardContainer>
       </S.GivingsContainer>
     </S.Container>
