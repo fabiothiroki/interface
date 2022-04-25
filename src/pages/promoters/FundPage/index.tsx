@@ -83,7 +83,6 @@ function FundPage(): JSX.Element {
     try {
       const receipt = await provider?.getTransactionReceipt(transactionHash[0]);
       const response = receipt && receipt !== null ? "success" : null;
-      console.log(receipt);
       setTransactionResponse(response);
     } catch (e) {
       console.log(e);
@@ -93,9 +92,6 @@ function FundPage(): JSX.Element {
 
   useEffect(() => {
     fetchContractBalance();
-    console.log(transactionHash);
-    console.log(transactionResponse, "oi");
-    getReceipt();
   }, []);
 
   useEffect(() => {
@@ -107,6 +103,11 @@ function FundPage(): JSX.Element {
       fetchContractBalance();
     });
   }, []);
+
+  useEffect(() => {
+    console.log(transactionResponse, "---");
+    getReceipt();
+  }, [transactionResponse]);
 
   return (
     <S.Container>
