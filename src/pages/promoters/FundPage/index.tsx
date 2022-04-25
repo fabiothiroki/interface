@@ -18,6 +18,7 @@ import theme from "styles/theme";
 import Spinner from "components/atomics/Spinner";
 import { logEvent } from "services/analytics";
 import { useLocation } from "react-router-dom";
+import { useProvider } from "hooks/useProvider";
 import * as S from "./styles";
 
 type LocationStateType = {
@@ -43,6 +44,7 @@ function FundPage(): JSX.Element {
     address: RIBON_CONTRACT_ADDRESS,
     ABI: RibonAbi.abi,
   });
+  const provider = useProvider();
 
   async function fetchContractBalance() {
     try {
@@ -74,9 +76,21 @@ function FundPage(): JSX.Element {
     connectWallet();
   };
 
+  async function getReceipt() {
+    try {
+      const receipt = await provider?.getTransactionReceipt(transactionHash[0]);
+      console.log(receipt);
+      return receipt && receipt !== null ? "success" : null;
+    } catch (e) {
+      console.log(e);
+    }
+    return null;
+  }
+
   useEffect(() => {
     fetchContractBalance();
     console.log(transactionHash);
+    getReceipt();
   }, []);
 
   useEffect(() => {
