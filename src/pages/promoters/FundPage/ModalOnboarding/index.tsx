@@ -5,8 +5,10 @@ import { useEffect, useState } from "react";
 import { getLocalStorageItem, setLocalStorageItem } from "lib/localStorage";
 import * as S from "./styles";
 
+export const FUND_MODAL_ONBOARDING_VIEWED_KEY =
+  "FUND_MODAL_ONBOARDING_VIEWED_KEY";
+
 function ModalOnboarding(): JSX.Element {
-  const FUND_MODAL_ONBOARDING_VIEWED_KEY = "FUND_MODAL_ONBOARDING_VIEWED_KEY";
   const [visible, setVisible] = useState(
     getLocalStorageItem(FUND_MODAL_ONBOARDING_VIEWED_KEY) !== "true",
   );
