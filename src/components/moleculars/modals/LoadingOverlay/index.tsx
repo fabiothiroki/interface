@@ -5,11 +5,12 @@ import ModalBlank from "../ModalBlank";
 
 export type Props = {
   text?: string;
+  visible?: boolean;
 };
-function LoadingOverlay({ text }: Props): JSX.Element {
+function LoadingOverlay({ text, visible = false }: Props): JSX.Element {
   return (
     <S.Container>
-      <ModalBlank visible>
+      <ModalBlank visible={visible}>
         <S.CenterDiv>
           <Loader />
           {text && <S.Message>{text}</S.Message>}

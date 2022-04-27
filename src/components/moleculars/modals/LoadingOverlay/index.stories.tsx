@@ -12,3 +12,7 @@ const Template: Story<Props> = function (args: Props) {
 };
 
 export const Default = Template.bind({});
+Default.args = {
+  visible: true,
+  text: "text",
+};

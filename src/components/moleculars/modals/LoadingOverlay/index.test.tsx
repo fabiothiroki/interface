@@ -5,7 +5,7 @@ import LoadingOverlay from ".";
 
 describe("LoadingOverlay", () => {
   it("should render without error", () => {
-    renderComponent(<LoadingOverlay text="carregando..." />);
+    renderComponent(<LoadingOverlay text="carregando..." visible />);
     expect(screen.getByText("carregando...")).toBeInTheDocument();
   });
 });
