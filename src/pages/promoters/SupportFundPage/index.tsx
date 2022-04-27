@@ -54,15 +54,17 @@ function SupportFundPage(): JSX.Element {
     cursor: "end",
   };
 
-  const approveAmount = async () => {
-    await donationTokenContract?.functions.approve(
+  const approveAmount = async () =>
+    donationTokenContract?.functions.approve(
       RIBON_CONTRACT_ADDRESS,
       utils.parseEther(amount),
       {
         from: wallet,
       },
     );
-  };
+
+  const donateToContract = async () =>
+    contract?.functions.addDonationPoolBalance(utils.parseEther(amount));
 
   const fetchUsdcUserBalance = useCallback(async () => {
     try {
@@ -109,10 +111,9 @@ function SupportFundPage(): JSX.Element {
     logEvent("fundSupportConfirmBtn_click");
     setLoading(true);
     try {
-      await approveAmount();
-      const response = await contract?.functions.addDonationPoolBalance(
-        utils.parseEther(amount),
-      );
+      const approval = await approveAmount();
+      await approval.wait();
+      const response = await donateToContract();
       toast({
         message: t("transactionSuccessText"),
         type: "success",
