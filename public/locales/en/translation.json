@@ -38,7 +38,7 @@
       "animationText": "Donating...",
       "impactText": "Ribon’s supporters are those responsible for paying for the free donations"
     },
-    "menu":{
+    "menu": {
       "impactTitle": "Impact",
       "impactPageTitle": "Impact",
       "causesPageTitle": "Causes",
@@ -78,7 +78,8 @@
       "subtitle": "Help charities by funding donation tickets",
       "fundBalance": "Fund balance",
       "fundSupportButtonText": "Support the fund",
-      "givingsTitle": "Your givings"
+      "givingsTitle": "Your givings",
+      "transactionSuccessText": "Transaction successful"
     },
     "supportFundPage": {
       "title": "Support the Fund",
@@ -86,7 +87,7 @@
       "buttonText": "Confirm giving",
       "disabledButtonText": "Enter any USDC amount",
       "networkText": "*Make sure your wallet is set up to the Polygon network.",
-      "transactionSuccessText": "Transaction successful"
+      "transactionOnBlockchainText": "Your transaction is being processed"
     }
   },
   "contexts": {

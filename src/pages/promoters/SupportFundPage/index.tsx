@@ -87,7 +87,7 @@ function SupportFundPage(): JSX.Element {
       );
       const transHash = response.hash;
       toast({
-        message: t("transactionSuccessText"),
+        message: t("transactionOnBlockchainText"),
         type: "success",
         link: `https://mumbai.polygonscan.com/tx/${transHash}`,
       });
