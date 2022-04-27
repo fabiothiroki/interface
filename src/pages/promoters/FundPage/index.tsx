@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import CardBlank from "components/moleculars/cards/CardBlank";
 import Button from "components/atomics/Button";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   DONATION_TOKEN_CONTRACT_ADDRESS,
   RIBON_CONTRACT_ADDRESS,
@@ -19,6 +19,7 @@ import Spinner from "components/atomics/Spinner";
 import { logEvent } from "services/analytics";
 import { useLocation } from "react-router-dom";
 import { useProvider } from "hooks/useProvider";
+import useToast from "hooks/useToast";
 import * as S from "./styles";
 
 type LocationStateType = {
@@ -48,6 +49,7 @@ function FundPage(): JSX.Element {
     ABI: RibonAbi.abi,
   });
   const provider = useProvider();
+  const toast = useToast();
 
   async function fetchContractBalance() {
     try {
@@ -79,16 +81,23 @@ function FundPage(): JSX.Element {
     connectWallet();
   };
 
-  async function getReceipt() {
+  const getReceipt = useCallback(async () => {
     try {
       const receipt = await provider?.getTransactionReceipt(transactionHash[0]);
       const response = receipt && receipt !== null ? "success" : null;
       setTransactionResponse(response);
+      if (response === "success") {
+        toast({
+          message: t("transactionSuccessText"),
+          type: "success",
+          link: `https://mumbai.polygonscan.com/tx/${transactionHash[0]}`,
+        });
+      }
     } catch (e) {
       console.log(e);
     }
     return null;
-  }
+  }, [transactionResponse]);
 
   useEffect(() => {
     fetchContractBalance();
@@ -101,13 +110,10 @@ function FundPage(): JSX.Element {
   useEffect(() => {
     contract?.on("PoolBalanceIncreased", () => {
       fetchContractBalance();
+      getReceipt();
+      console.log(transactionResponse, "---");
     });
   }, []);
-
-  useEffect(() => {
-    console.log(transactionResponse, "---");
-    getReceipt();
-  }, [transactionResponse]);
 
   return (
     <S.Container>
