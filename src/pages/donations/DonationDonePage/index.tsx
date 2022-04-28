@@ -35,7 +35,7 @@ function DonationDonePage(): JSX.Element {
       <S.Wrapper>
         <CardRoundDoubleImage
           leftImage={nonProfit?.backgroundImage}
-          rightImage={nonProfit?.mainImage}
+          rightImage={nonProfit?.logo}
         />
         <S.Title>{t("title")}</S.Title>
         <S.Subtitle>{nonProfit?.impactDescription}</S.Subtitle>
