@@ -1,38 +1,25 @@
 import CardEmptySection from "pages/ImpactPage/CardEmptySection";
 import CardTopImage from "components/moleculars/cards/CardTopImage";
 import { useCurrentUser } from "contexts/currentUserContext";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { logEvent } from "services/analytics";
-import impactApi from "services/api/impactApi";
-import { logError } from "services/crashReport";
-import Impact from "types/entities/Impact";
 import useDonations from "hooks/apiHooks/useDonations";
+import useImpact from "hooks/apiHooks/useImpact";
 import * as S from "./styles";
 
 function ImpactPage(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "impactPage",
   });
-  const [userImpact, setUserImpact] = useState<Impact[]>();
   const { currentUser } = useCurrentUser();
   const { donationsCount: ticketsUsed } = useDonations();
+  const { userImpact } = useImpact();
 
   const userHasDonated = ticketsUsed && currentUser;
 
-  async function fetchImpact() {
-    const id = currentUser ? currentUser.id : null;
-    try {
-      const { data } = await impactApi.getImpact(id);
-      setUserImpact(data);
-    } catch (e) {
-      logError(e);
-    }
-  }
-
   useEffect(() => {
     logEvent("profile_view");
-    fetchImpact();
   }, []);
 
   const handleClick = () => {
