@@ -1,5 +1,5 @@
 import { expectTextToBeInTheDocument, renderComponent } from "config/testUtils";
-import CardEmptySection from ".";
+import CardEmptySection from "./index";
 
 describe("CardEmptySection", () => {
   it("should render card text", () => {

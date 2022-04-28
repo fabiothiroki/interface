@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import CardEmptySection, { Props } from ".";
+import CardEmptySection, { Props } from "./index";
 
 export default {
   title: "CardEmptySection",

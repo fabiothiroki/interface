@@ -1,4 +1,4 @@
-import CardEmptySection from "pages/ImpactPage/CardEmptySection";
+import CardEmptySection from "pages/users/ImpactPage/CardEmptySection";
 import CardTopImage from "components/moleculars/cards/CardTopImage";
 import { useCurrentUser } from "contexts/currentUserContext";
 import { useEffect } from "react";
