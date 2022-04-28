@@ -7,6 +7,7 @@ import { logEvent } from "services/analytics";
 import impactApi from "services/api/impactApi";
 import { logError } from "services/crashReport";
 import Impact from "types/entities/Impact";
+import useDonations from "hooks/apiHooks/useDonations";
 import * as S from "./styles";
 
 function ImpactPage(): JSX.Element {
@@ -15,23 +16,22 @@ function ImpactPage(): JSX.Element {
   });
   const [userImpact, setUserImpact] = useState<Impact[]>();
   const { currentUser } = useCurrentUser();
+  const { donationsCount: ticketsUsed } = useDonations();
 
-  const ticketsUsed = 10;
   const userHasDonated = ticketsUsed && currentUser;
+
+  async function fetchImpact() {
+    const id = currentUser ? currentUser.id : null;
+    try {
+      const { data } = await impactApi.getImpact(id);
+      setUserImpact(data);
+    } catch (e) {
+      logError(e);
+    }
+  }
 
   useEffect(() => {
     logEvent("profile_view");
-
-    async function fetchImpact() {
-      const id = currentUser ? currentUser.id : null;
-      try {
-        const { data } = await impactApi.getImpact(id);
-        setUserImpact(data);
-      } catch (e) {
-        logError(e);
-      }
-    }
-
     fetchImpact();
   }, []);
 
