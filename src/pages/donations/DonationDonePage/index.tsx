@@ -44,10 +44,12 @@ function DonationDonePage(): JSX.Element {
 
         <CardSideSquareImageButton
           title={`${t("ngoTitle")} ${nonProfit?.name}`}
-          text={t("ngoInformation")}
+          text={nonProfit?.description}
           image={nonProfit?.backgroundImage}
-          buttonText="More info"
-          onButtonClick={() => {}}
+          buttonText={t("moreInfoButtonText")}
+          onButtonClick={() => {
+            window.open(nonProfit?.link, "_blank");
+          }}
         />
       </S.Wrapper>
 
