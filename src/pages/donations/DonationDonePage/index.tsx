@@ -40,17 +40,19 @@ function DonationDonePage(): JSX.Element {
         <S.Title>{t("title")}</S.Title>
         <S.Subtitle>{nonProfit?.impactDescription}</S.Subtitle>
 
-        <S.HrDivider color={theme.colors.lightGray} width="100%" />
+        <S.InnerContainer>
+          <S.HrDivider color={theme.colors.lightGray} width="100%" />
 
-        <CardSideSquareImageButton
-          title={`${t("ngoTitle")} ${nonProfit?.name}`}
-          text={nonProfit?.description}
-          image={nonProfit?.backgroundImage}
-          buttonText={t("moreInfoButtonText")}
-          onButtonClick={() => {
-            window.open(nonProfit?.link, "_blank");
-          }}
-        />
+          <CardSideSquareImageButton
+            title={`${t("ngoTitle")} ${nonProfit?.name}`}
+            text={nonProfit?.description}
+            image={nonProfit?.backgroundImage}
+            buttonText={t("moreInfoButtonText")}
+            onButtonClick={() => {
+              window.open(nonProfit?.link, "_blank");
+            }}
+          />
+        </S.InnerContainer>
       </S.Wrapper>
 
       <S.ButtonContainer>
