@@ -1,5 +1,5 @@
 import { expectTextToBeInTheDocument, renderComponent } from "config/testUtils";
-import Impact from "./index";
+import Impact from ".";
 
 describe("Impact", () => {
   describe("when there are no tickets used", () => {
