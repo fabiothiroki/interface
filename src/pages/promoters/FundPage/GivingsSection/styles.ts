@@ -29,12 +29,6 @@ export const LastCardCarousel = styled.a`
   `}
 `;
 
-export const Card = styled.div`
-  ${() => css`
-    margin: 5px;
-  `}
-`;
-
 export const GivingText = styled.p`
   ${({ theme }) => css`
     color: ${theme.colors.ribonBlack};
