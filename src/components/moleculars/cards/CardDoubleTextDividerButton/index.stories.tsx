@@ -1,5 +1,4 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import BlackRightArrow from "assets/icons/right-arrow-black.svg";
 import CardDoubleTextDividerButton, { Props } from "./index";
 
 export default {
@@ -20,5 +19,5 @@ Default.args = {
   mainText: "12.00",
   rightComplementText: "USDC",
   buttonText: "see transaction",
-  rightComponentButton: BlackRightArrow,
+  rightComponentButton: "icon",
 };
