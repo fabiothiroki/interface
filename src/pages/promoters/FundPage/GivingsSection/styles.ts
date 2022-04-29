@@ -56,3 +56,15 @@ export const CardBlank = styled.div`
     width: 206px;
   `}
 `;
+
+export const SectionTitle = styled.p`
+  ${({ theme }) => css`
+    font-weight: 700;
+    color: ${theme.colors.ribonBlack};
+    margin-bottom: 8px;
+
+    @media (min-width: ${theme.breakpoints.pad}) {
+      margin: 8px 0;
+    }
+  `}
+`;

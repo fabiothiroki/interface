@@ -78,12 +78,12 @@
       "subtitle": "Help charities by funding donation tickets",
       "fundBalance": "Fund balance",
       "fundSupportButtonText": "Support the fund",
-      "subtitleGivings": "Your givings",
-      "givingsCarousel": {
+      "givingsSection": {
         "linkTransactionText": "See transaction",
         "textLastCard": "Show your givings",
         "firstGivingButtonText": "Give now",
-        "firstGivingText": "Make your first giving"
+        "firstGivingText": "Make your first giving",
+         "subtitleGivings": "Your givings"
       },
       "modalOnboarding": {
         "title": "Ribon’s Donation Fund",

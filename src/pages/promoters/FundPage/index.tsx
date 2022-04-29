@@ -97,7 +97,6 @@ function FundPage(): JSX.Element {
           />
         </CardBlank>
       </S.CardContainer>
-      <S.SectionTitle>{t("subtitleGivings")}</S.SectionTitle>
       <S.CarouselContainer>
         <GivingsSection />
       </S.CarouselContainer>

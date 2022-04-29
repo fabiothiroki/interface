@@ -3,7 +3,7 @@ import * as S from "./styles";
 
 function GivingsPage(): JSX.Element {
   const { t } = useTranslation("translation", {
-    keyPrefix: "promoters.givingsPage",
+    keyPrefix: "promoters.supportFundPage.givingsPage",
   });
   return (
     <S.BodyContainer>

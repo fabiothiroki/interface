@@ -77,12 +77,12 @@
       "subtitle": "Ajuda instituições patrocinando tickets de doação",
       "fundBalance": "Balanço do Fundo",
       "fundSupportButtonText": "Ajudar o fundo",
-      "subtitleGivings": "Suas contribuições",
-      "givingsCarousel": {
+      "givingsSection": {
         "linkTransactionText": "Ver transação",
         "textLastCard": "Suas contribuições",
         "firstGivingButtonText": "Contribua agora",
-        "firstGivingText": "Faça sua primeira doação"
+        "firstGivingText": "Faça sua primeira doação",
+        "subtitleGivings": "Suas contribuições"
       },
       "modalOnboarding": {
         "title": "Fundo de doação da Ribon",

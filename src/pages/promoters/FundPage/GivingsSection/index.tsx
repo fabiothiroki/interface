@@ -4,11 +4,12 @@ import CardDoubleTextDividerButton from "components/moleculars/cards/CardDoubleT
 import useBreakpoint from "hooks/useBreakpoint";
 import Button from "components/atomics/Button";
 import { logError } from "services/crashReport";
+import { formatFromWei } from "lib/web3Helpers/etherFormatters";
+import { formatDate } from "lib/web3Helpers/timeStampFormatters";
 import { useEffect, useState, useCallback } from "react";
 import { logEvent } from "services/analytics";
-import { utils } from "ethers";
 import useNavigation from "hooks/useNavigation";
-import usePromoterDonations from "hooks/apiHooks/usePromoterDonations";
+import usePromoterDonations from "hooks/apiTheGraphHooks/usePromoterDonations";
 import { useWalletContext } from "contexts/walletContext";
 import RightArrowBlack from "./assets/right-arrow-black.svg";
 import { ReactComponent as BlueRightArrow } from "./assets/right-arrow-blue.svg";
@@ -20,7 +21,7 @@ function GivingsSection(): JSX.Element {
   const [loading, setLoading] = useState<boolean>(false);
   const { navigateTo } = useNavigation();
   const { t } = useTranslation("translation", {
-    keyPrefix: "promoters.fundPage.givingsCarousel",
+    keyPrefix: "promoters.fundPage.givingsSection",
   });
   const { wallet, connectWallet } = useWalletContext();
   const { getPromoterDonations } = usePromoterDonations();
@@ -42,7 +43,7 @@ function GivingsSection(): JSX.Element {
     async (user: string) => {
       setLoading(true);
       try {
-        const donations = await getPromoterDonations(user);
+        const donations = await getPromoterDonations(user, isMobile ? 2 : 3);
         setPromoterDonations(donations);
       } catch (e) {
         logError(e);
@@ -71,14 +72,6 @@ function GivingsSection(): JSX.Element {
     }
   }, [wallet]);
 
-  function formattedAmount(amount: number) {
-    return parseFloat(utils.formatEther(amount)).toFixed(2);
-  }
-
-  function formattedDate(timestamp: number) {
-    return new Date(timestamp * 1000).toLocaleDateString().toString();
-  }
-
   function concatLinkHash(hash: string) {
     return `https://mumbai.polygonscan.com/tx/${hash}`;
   }
@@ -89,11 +82,11 @@ function GivingsSection(): JSX.Element {
 
   function renderCardsCarousel() {
     return promoterDonations?.promoterDonations.map((item: any) => (
-      <div className="keen-slider__slide">
+      <div className="keen-slider__slide" key={item.id}>
         <CardDoubleTextDividerButton
           key={item.id}
-          firstText={formattedDate(item.timestamp).toString()}
-          mainText={formattedAmount(item.amountDonated)}
+          firstText={formatDate(item.timestamp).toString()}
+          mainText={formatFromWei(item.amountDonated)}
           rightComplementText={coin}
           buttonText={t("linkTransactionText")}
           rightComponentButton={RightArrowBlack}
@@ -104,9 +97,10 @@ function GivingsSection(): JSX.Element {
   }
   return (
     <S.Container>
+      <S.SectionTitle>{t("subtitleGivings")}</S.SectionTitle>
       {renderCarousel() ? (
         !loading && (
-          <Carousel sliderPerView={isMobile ? 1.6 : 4} spacing={-10}>
+          <Carousel sliderPerView={isMobile ? 1.8 : 4} spacing={-10}>
             {renderCardsCarousel()}
             <div className="keen-slider__slide">
               <S.LastCardCarousel
