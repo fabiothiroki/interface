@@ -44,40 +44,12 @@ export const Title = styled.h1`
   `}
 `;
 
-export const GivingText = styled.p`
-  ${({ theme }) => css`
-    color: ${theme.colors.ribonBlack};
-    font-weight: 400;
-    font-size: 14px;
-    text-align: center;
-    margin-bottom: 18px;
-    margin-top: 14px;
-  `}
-`;
-
 export const FundText = styled.p`
   ${({ theme }) => css`
     color: ${theme.colors.ribonBlue};
     font-size: 36px;
     font-weight: 900;
     margin-bottom: 8px;
-  `}
-`;
-
-export const ValueGivingText = styled.p`
-  ${({ theme }) => css`
-    color: ${theme.colors.ribonBlue};
-    font-size: 24px;
-    font-weight: 900;
-    margin-bottom: 8px;
-  `}
-`;
-
-export const DateGivingText = styled.p`
-  ${({ theme }) => css`
-    font-style: italic;
-    font-size: 12px;
-    color: ${theme.colors.darkGray};
   `}
 `;
 
