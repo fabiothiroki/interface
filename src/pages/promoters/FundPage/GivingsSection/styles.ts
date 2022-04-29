@@ -34,3 +34,25 @@ export const Card = styled.div`
     margin: 5px;
   `}
 `;
+
+export const GivingText = styled.p`
+  ${({ theme }) => css`
+    color: ${theme.colors.ribonBlack};
+    font-weight: 400;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 18px;
+    margin-top: 14px;
+  `}
+`;
+
+export const CardBlank = styled.div`
+  ${() => css`
+    padding: 12px 16px;
+    background: #ffffff;
+    box-shadow: 0px 4px 12px rgba(24, 86, 105, 0.15);
+    border-radius: 16px;
+    height: 123px;
+    width: 206px;
+  `}
+`;

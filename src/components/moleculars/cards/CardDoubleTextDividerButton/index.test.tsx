@@ -9,8 +9,14 @@ describe("CardDoubleTextDividerButton", () => {
         mainText="12.00"
         rightComplementText="USDC"
         buttonText="see transaction"
+        rightComponentButton="test"
+        link=""
       />,
     );
     expectTextToBeInTheDocument("22/02/2022");
+    expectTextToBeInTheDocument("12.00");
+    expectTextToBeInTheDocument("USDC");
+    expectTextToBeInTheDocument("seeTransaction");
+    expectTextToBeInTheDocument("test");
   });
 });

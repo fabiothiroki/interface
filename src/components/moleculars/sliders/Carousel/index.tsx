@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useKeenSlider } from "keen-slider/react";
 import * as S from "./styles";
 import "keen-slider/keen-slider.min.css";
@@ -26,9 +26,8 @@ function Carousel({
     <S.Container>
       <div ref={ref} className="keen-slider">
         {children.map((component, idx) => (
-          <div className="keen-slider__slide" key={idx.toString()}>
-            {component}
-          </div>
+          // eslint-disable-next-line react/jsx-no-useless-fragment
+          <Fragment key={idx.toString()}>{component}</Fragment>
         ))}
       </div>
     </S.Container>

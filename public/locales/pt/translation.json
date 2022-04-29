@@ -78,11 +78,11 @@
       "fundBalance": "Balanço do Fundo",
       "fundSupportButtonText": "Ajudar o fundo",
       "subtitleGivings": "Suas contribuições",
-      "firstGivingButtonText": "Contribua agora",
-      "firstGivingText": "Faça sua primeira doação",
       "givingsCarousel": {
         "linkTransactionText": "Ver transação",
-        "textLastCard": "Suas contribuições"
+        "textLastCard": "Suas contribuições",
+        "firstGivingButtonText": "Contribua agora",
+        "firstGivingText": "Faça sua primeira doação"
       }
     },
     "supportFundPage": {

@@ -7,7 +7,8 @@ export type Props = {
   mainText: string;
   rightComplementText: string;
   buttonText: string;
-  rightComponentButton?: string;
+  rightComponentButton: string;
+  link: string;
 };
 
 const { colors } = theme;
@@ -19,6 +20,7 @@ function CardDoubleTextDividerButton({
   rightComplementText,
   buttonText,
   rightComponentButton,
+  link,
 }: Props): JSX.Element {
   return (
     <S.Container>
@@ -28,7 +30,7 @@ function CardDoubleTextDividerButton({
         <S.RightMainContent>{rightComplementText}</S.RightMainContent>
       </S.MainContent>
       <Divider color={lightGray} />
-      <S.LinkSection href="">
+      <S.LinkSection href={link}>
         {buttonText} <S.Image src={rightComponentButton} />
       </S.LinkSection>
     </S.Container>

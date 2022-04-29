@@ -79,11 +79,11 @@
       "fundBalance": "Fund balance",
       "fundSupportButtonText": "Support the fund",
       "subtitleGivings": "Your givings",
-      "firstGivingButtonText": "Give now",
-      "firstGivingText": "Make your first giving",
       "givingsCarousel": {
-         "linkTransactionText": "See transaction",
-         "textLastCard": "Show your givings"
+        "linkTransactionText": "See transaction",
+        "textLastCard": "Show your givings",
+        "firstGivingButtonText": "Give now",
+        "firstGivingText": "Make your first giving"
       }
     },
     "supportFundPage": {
