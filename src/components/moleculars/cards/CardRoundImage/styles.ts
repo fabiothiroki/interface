@@ -1,11 +1,9 @@
 import styled, { css } from "styled-components";
 
 export const Container = styled.div`
-  ${() => css`
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  `}
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 `;
 
 type CenterImageContainerProps = {
@@ -28,23 +26,19 @@ export const CenterImageContainer = styled.div<CenterImageContainerProps>`
 `;
 
 export const LogoContainer = styled.div`
-  ${() => css`
-    display: flex;
-    justify-content: center;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin-top: -46px;
-    z-index: 0;
-  `}
+  display: flex;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-top: -46px;
+  z-index: 0;
 `;
 
 export const LogoImage = styled.img`
-  ${() => css`
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    margin: 16px 12px;
-    object-fit: contain;
-  `}
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  margin: 16px 12px;
+  object-fit: contain;
 `;
