@@ -8,23 +8,32 @@ export const Container = styled.div`
   `}
 `;
 
-export const CenterImage = styled.img`
-  ${({ theme }) => css`
+type CenterImageContainerProps = {
+  backgroundImage: string;
+};
+export const CenterImageContainer = styled.div<CenterImageContainerProps>`
+  ${({ backgroundImage }) => css`
+    float: left;
+    position: relative;
     width: 100%;
+    padding-bottom: 100%; /* = width for a 1:1 aspect ratio */
     border-radius: 50%;
-    border: solid 5px ${theme.colors.ribonWhite};
-    filter: drop-shadow(0px 20px 40px ${theme.colors.ribonShadow});
+    min-width: 256px;
+    margin: 1.66%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(${backgroundImage});
   `}
 `;
 
 export const LogoContainer = styled.div`
-  ${({ theme }) => css`
+  ${() => css`
     display: flex;
     justify-content: center;
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background-color: ${theme.colors.ribonBlue};
     margin-top: -46px;
     z-index: 0;
   `}
@@ -32,8 +41,10 @@ export const LogoContainer = styled.div`
 
 export const LogoImage = styled.img`
   ${() => css`
-    width: 56px;
-    height: 48px;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
     margin: 16px 12px;
+    object-fit: contain;
   `}
 `;
