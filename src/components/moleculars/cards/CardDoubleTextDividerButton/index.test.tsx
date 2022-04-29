@@ -16,7 +16,5 @@ describe("CardDoubleTextDividerButton", () => {
     expectTextToBeInTheDocument("22/02/2022");
     expectTextToBeInTheDocument("12.00");
     expectTextToBeInTheDocument("USDC");
-    expectTextToBeInTheDocument("seeTransaction");
-    expectTextToBeInTheDocument("test");
   });
 });
