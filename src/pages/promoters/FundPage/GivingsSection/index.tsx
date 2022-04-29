@@ -3,6 +3,7 @@ import Carousel from "components/moleculars/sliders/Carousel";
 import CardDoubleTextDividerButton from "components/moleculars/cards/CardDoubleTextDividerButton";
 import useBreakpoint from "hooks/useBreakpoint";
 import Button from "components/atomics/Button";
+import { logError } from "services/crashReport";
 import { useEffect, useState, useCallback } from "react";
 import { logEvent } from "services/analytics";
 import { utils } from "ethers";
@@ -43,9 +44,8 @@ function GivingsSection(): JSX.Element {
       try {
         const donations = await getPromoterDonations(user);
         setPromoterDonations(donations);
-        console.log(donations);
       } catch (e) {
-        console.log(e);
+        logError(e);
       } finally {
         setLoading(false);
       }
@@ -67,7 +67,6 @@ function GivingsSection(): JSX.Element {
 
   useEffect(() => {
     if (wallet) {
-      console.log(wallet);
       fetchPromoterDonations(wallet);
     }
   }, [wallet]);
