@@ -83,6 +83,11 @@
         "textLastCard": "Suas contribuições",
         "firstGivingButtonText": "Contribua agora",
         "firstGivingText": "Faça sua primeira doação"
+      },
+      "modalOnboarding": {
+        "title": "Fundo de doação da Ribon",
+        "subtitle": "O fundo é usado para pagar as doações gratuitas realizadas usando os vales diários",
+        "button": "Ok"
       }
     },
     "supportFundPage": {
@@ -90,11 +95,15 @@
       "subtitle": "Quanto você quer contribuir?",
       "buttonText": "Confirmar doação",
       "disabledButtonText": "Insira uma quantidade de USDC",
+      "insufficientBalanceText": "Saldo de USDC insuficiente",
       "networkText": "*Certifique-se de conectar sua carteira à rede da Polygon.",
-      "transactionSuccessText": "Transação processada"
-    },
-    "givingsPage": {
-      "title": "Suas contribuições"
+      "usdcBalanceText": "Saldo de USDC: {{balance}}",
+      "transactionSuccessText": "Transação processada",
+      "tokenAmountTransferMessage": "Aprovando quantidade de tokens pra transação...",
+      "contractTransferMessage": "Transferindo pro contrato...",
+      "givingsPage": {
+        "title": "Suas contribuições"
+      }
     }
   },
   "contexts": {

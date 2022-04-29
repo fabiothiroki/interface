@@ -84,6 +84,11 @@
         "textLastCard": "Show your givings",
         "firstGivingButtonText": "Give now",
         "firstGivingText": "Make your first giving"
+      },
+      "modalOnboarding": {
+        "title": "Ribon’s Donation Fund",
+        "subtitle": "The fund is used to pay the free donations made using daily tickets",
+        "button": "Ok"
       }
     },
     "supportFundPage": {
@@ -91,11 +96,15 @@
       "subtitle": "How much do you want to give?",
       "buttonText": "Confirm giving",
       "disabledButtonText": "Enter any USDC amount",
+      "insufficientBalanceText": "Insufficient USDC balance",
       "networkText": "*Make sure your wallet is set up to the Polygon network.",
-      "transactionSuccessText": "Transaction successful"
-    },
-    "givingsPage": {
-      "title": "Your Givings"
+      "usdcBalanceText": "USDC balance: {{balance}}",
+      "transactionSuccessText": "Transaction successful",
+      "tokenAmountTransferMessage": "Approving token amount transfer...",
+      "contractTransferMessage": "Transferring to contract...",
+      "givingsPage": {
+        "title": "Your Givings"
+      }
     }
   },
   "contexts": {

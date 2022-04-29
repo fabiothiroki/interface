@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const {scopes, directoriesInPath} = require("./helpers");
+
 module.exports = function (plop) {
   plop.setGenerator("component", {
     description: "application component",
@@ -61,19 +64,18 @@ module.exports = function (plop) {
     // inquirer prompts
     prompts: [
       {
-        type: "input",
-        name: "name",
-        message: "page name?",
+        type: "list",
+        choices: scopes(),
+        name: "scope",
+        message: "scope?",
+        filter(val) {
+          return `${val.toLowerCase()}`
+        },
       },
       {
         type: "input",
-        name: "scope",
-        message: "scope? (empty for no scope)",
-        filter(val) {
-          if(!val) return null;
-
-          return `/${val.toLowerCase()}`
-        },
+        name: "name",
+        message: "page name?",
       },
     ],
 
@@ -81,18 +83,18 @@ module.exports = function (plop) {
     actions: [
       {
         type: "add",
-        path: "../src/pages{{scope}}/{{pascalCase name}}Page/index.tsx",
+        path: "../src/pages/{{scope}}/{{pascalCase name}}Page/index.tsx",
         templateFile: "templates/page.tsx.hbs",
       },
       {
         type: "add",
-        path: "../src/pages{{scope}}/{{pascalCase name}}Page/styles.ts",
+        path: "../src/pages/{{scope}}/{{pascalCase name}}Page/styles.ts",
         templateFile: "templates/styles.ts.hbs",
       },
       {
         type: "add",
-        path: "../src/pages{{scope}}/{{pascalCase name}}Page/index.test.tsx",
-        templateFile: "templates/index.test.tsx.hbs",
+        path: "../src/pages/{{scope}}/{{pascalCase name}}Page/index.test.tsx",
+        templateFile: "templates/pageTest.test.tsx.hbs",
       },
     ],
   });
@@ -103,11 +105,22 @@ module.exports = function (plop) {
     // inquirer prompts
     prompts: [
       {
-        type: "input",
+        type: "list",
+        choices: scopes(),
+        name: "pageScope",
+        message: "page scope?",
+
+      },
+      {
+        type: "list",
+        choices: (answers) => {
+          const pathToSearch = `../src/pages/${answers.pageScope}/`;
+          return directoriesInPath(pathToSearch);
+        },
         name: "page",
         message: "page name?",
-      },
 
+      },
       {
         type: "input",
         name: "name",
@@ -119,18 +132,18 @@ module.exports = function (plop) {
     actions: [
       {
         type: "add",
-        path: "../src/pages/{{pascalCase page}}/{{pascalCase name}}/index.tsx",
+        path: "../src/pages/{{pageScope}}/{{pascalCase page}}/{{pascalCase name}}/index.tsx",
         templateFile: "templates/index.tsx.hbs",
       },
       {
         type: "add",
-        path: "../src/pages/{{pascalCase page}}/{{pascalCase name}}/styles.ts",
+        path: "../src/pages/{{pageScope}}/{{pascalCase page}}/{{pascalCase name}}/styles.ts",
         templateFile: "templates/styles.ts.hbs",
       },
       {
         type: "add",
         path:
-          "../src/pages/{{pascalCase page}}/{{pascalCase name}}/index.test.tsx",
+          "../src/pages/{{pageScope}}/{{pascalCase page}}/{{pascalCase name}}/index.test.tsx",
         templateFile: "templates/index.test.tsx.hbs",
       },
     ],
