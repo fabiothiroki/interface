@@ -76,7 +76,7 @@ function GivingsSection(): JSX.Element {
     return `https://mumbai.polygonscan.com/tx/${hash}`;
   }
 
-  function renderCarousel() {
+  function shouldRenderCarousel() {
     return promoterDonations?.promoterDonations.length !== 0 && wallet;
   }
 
@@ -98,7 +98,7 @@ function GivingsSection(): JSX.Element {
   return (
     <S.Container>
       <S.SectionTitle>{t("subtitleGivings")}</S.SectionTitle>
-      {renderCarousel() ? (
+      {shouldRenderCarousel() ? (
         !loading && (
           <Carousel sliderPerView={isMobile ? 1.8 : 4} spacing={-10}>
             {renderCardsCarousel()}

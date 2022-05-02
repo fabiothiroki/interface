@@ -26,7 +26,6 @@ function Carousel({
     <S.Container>
       <div ref={ref} className="keen-slider">
         {children.map((component, idx) => (
-          // eslint-disable-next-line react/jsx-no-useless-fragment
           <Fragment key={idx.toString()}>{component}</Fragment>
         ))}
       </div>
