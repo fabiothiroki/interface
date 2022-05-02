@@ -102,16 +102,18 @@ function GivingsSection(): JSX.Element {
         !loading && (
           <Carousel sliderPerView={isMobile ? 1.8 : 4} spacing={-10}>
             {renderCardsCarousel()}
-            <div className="keen-slider__slide">
-              <S.LastCardCarousel
-                onClick={() => {
-                  handleShowGivingsButtonClick();
-                }}
-              >
-                <BlueRightArrow />
-                <S.TextLastCard>{t("textLastCard")}</S.TextLastCard>
-              </S.LastCardCarousel>
-            </div>
+            {false && (
+              <div className="keen-slider__slide">
+                <S.LastCardCarousel
+                  onClick={() => {
+                    handleShowGivingsButtonClick();
+                  }}
+                >
+                  <BlueRightArrow />
+                  <S.TextLastCard>{t("textLastCard")}</S.TextLastCard>
+                </S.LastCardCarousel>
+              </div>
+            )}
           </Carousel>
         )
       ) : (
