@@ -14,10 +14,13 @@ import RibonAbi from "utils/abis/RibonAbi.json";
 import { logEvent } from "services/analytics";
 import useContractBalance from "hooks/apiHooks/useContractBalance";
 import * as S from "./styles";
+import GivingsSection from "./GivingsSection";
 import ModalOnboarding from "./ModalOnboarding";
 
 function FundPage(): JSX.Element {
+  const coin = "USDC";
   const { navigateTo } = useNavigation();
+
   const { t } = useTranslation("translation", {
     keyPrefix: "promoters.fundPage",
   });
@@ -65,13 +68,12 @@ function FundPage(): JSX.Element {
       <ModalOnboarding />
       <S.Title>{t("title")}</S.Title>
       <S.Subtitle>{t("subtitle")}</S.Subtitle>
-
       <S.SectionTitle>{t("fundBalance")}</S.SectionTitle>
       <S.CardContainer>
         <CardBlank>
           <S.FundText>
             {contractBalance}
-            <S.FundTextCoin>USDC</S.FundTextCoin>
+            <S.FundTextCoin>{coin}</S.FundTextCoin>
           </S.FundText>
           <Button
             text={t("fundSupportButtonText")}
@@ -79,6 +81,9 @@ function FundPage(): JSX.Element {
           />
         </CardBlank>
       </S.CardContainer>
+      <S.CarouselContainer>
+        <GivingsSection />
+      </S.CarouselContainer>
     </S.Container>
   );
 }
