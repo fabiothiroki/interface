@@ -80,6 +80,24 @@ function GivingsSection(): JSX.Element {
     return promoterDonations?.promoterDonations.length !== 0 && wallet;
   }
 
+  // const getReceipt = useCallback(async () => {
+  //   try {
+  //     const receipt = await provider?.getTransactionReceipt(transactionHash[0]);
+  //     const response = receipt && receipt !== null ? "success" : null;
+  //     setTransactionResponse(response);
+  //     if (response === "success") {
+  //       toast({
+  //         message: t("transactionSuccessText"),
+  //         type: "success",
+  //         link: `https://mumbai.polygonscan.com/tx/${transactionHash[0]}`,
+  //       });
+  //     }
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  //   return null;
+  // }, [transactionResponse]);
+
   function renderCardsCarousel() {
     return promoterDonations?.promoterDonations.map((item: any) => (
       <div className="keen-slider__slide" key={item.id}>

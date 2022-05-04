@@ -9,6 +9,7 @@ export type Props = {
   buttonText: string;
   rightComponentButton: string;
   link: string;
+  processing?: boolean;
 };
 
 const { colors } = theme;
@@ -21,13 +22,16 @@ function CardDoubleTextDividerButton({
   buttonText,
   rightComponentButton,
   link,
+  processing = false,
 }: Props): JSX.Element {
   return (
     <S.Container>
       <S.FirstText>{firstText}</S.FirstText>
-      <S.MainContent>
+      <S.MainContent processing={processing}>
         {mainText}{" "}
-        <S.RightMainContent>{rightComplementText}</S.RightMainContent>
+        <S.RightMainContent processing={processing}>
+          {rightComplementText}
+        </S.RightMainContent>
       </S.MainContent>
       <Divider color={lightGray} />
       <S.LinkSection href={link}>

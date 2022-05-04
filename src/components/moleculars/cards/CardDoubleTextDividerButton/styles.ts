@@ -1,5 +1,9 @@
 import styled, { css } from "styled-components";
 
+type Props = {
+  processing?: boolean;
+};
+
 export const Container = styled.div`
   ${() => css`
     max-width: 206px;
@@ -22,7 +26,8 @@ export const FirstText = styled.p`
 
 export const MainContent = styled.p`
   ${({ theme }) => css`
-    color: ${theme.colors.ribonBlue};
+    color: ${(props: Props) =>
+      props.processing ? theme.colors.darkGray : theme.colors.ribonBlue};
     font-size: 24px;
     font-weight: 900;
   `}
@@ -30,7 +35,8 @@ export const MainContent = styled.p`
 
 export const RightMainContent = styled.span`
   ${({ theme }) => css`
-    color: ${theme.colors.ribonBlue};
+    color: ${(props: Props) =>
+      props.processing ? theme.colors.darkGray : theme.colors.ribonBlue};
     font-size: 14px;
     font-weight: 400;
   `}
