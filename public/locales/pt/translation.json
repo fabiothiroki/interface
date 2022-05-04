@@ -102,6 +102,7 @@
       "transactionSuccessText": "Transação processada",
       "tokenAmountTransferMessage": "Aprovando quantidade de tokens pra transação...",
       "contractTransferMessage": "Transferindo pro contrato...",
+      "transactionOnBlockchainText": "Sua transação está sendo processada",
       "givingsPage": {
         "title": "Suas contribuições"
       }
