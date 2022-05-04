@@ -52,4 +52,15 @@ export const LinkSection = styled.a`
   `}
 `;
 
+export const SpinnerSection = styled.a`
+  ${({ theme }) => css`
+    color: ${theme.colors.ribonBlue};
+    font-size: 12px;
+    display: flex;
+    text-decoration: none;
+    gap: 6px;
+    margin-top: 8px;
+  `}
+`;
+
 export const Image = styled.img``;
