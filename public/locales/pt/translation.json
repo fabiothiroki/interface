@@ -32,7 +32,8 @@
       "subtitle": "1 dia de ração para animais resgatados",
       "button": "Terminar",
       "ngoTitle": "Sobre ",
-      "ngoInformation": "Amor em Patas é uma organização que tem como objetivo resgatar animais abandonados, cuidar deles e buscar adoção."
+      "ngoInformation": "Amor em Patas é uma organização que tem como objetivo resgatar animais abandonados, cuidar deles e buscar adoção.",
+      "moreInfoButtonText": "Mais informações"
     },
     "donationInProcess": {
       "animationText": "Doando...",
@@ -77,17 +78,33 @@
       "subtitle": "Ajuda instituições patrocinando tickets de doação",
       "fundBalance": "Balanço do Fundo",
       "fundSupportButtonText": "Ajudar o fundo",
-      "givingsTitle": "Suas contribuições",
-      "transactionSuccessText": "Transação processada"
+      "givingsSection": {
+        "linkTransactionText": "Ver transação",
+        "textLastCard": "Suas contribuições",
+        "firstGivingButtonText": "Contribua agora",
+        "firstGivingText": "Faça sua primeira doação",
+        "subtitleGivings": "Suas contribuições"
+      },
+      "modalOnboarding": {
+        "title": "Fundo de doação da Ribon",
+        "subtitle": "O fundo é usado para pagar as doações gratuitas realizadas usando os vales diários",
+        "button": "Ok"
+      }
     },
     "supportFundPage": {
       "title": "Ajude o Fundo",
       "subtitle": "Quanto você quer contribuir?",
       "buttonText": "Confirmar doação",
       "disabledButtonText": "Insira uma quantidade de USDC",
+      "insufficientBalanceText": "Saldo de USDC insuficiente",
       "networkText": "*Certifique-se de conectar sua carteira à rede da Polygon.",
+      "usdcBalanceText": "Saldo de USDC: {{balance}}",
       "transactionSuccessText": "Transação processada",
-      "transactionOnBlockchainText": "A transação está sendo processada"
+      "tokenAmountTransferMessage": "Aprovando quantidade de tokens pra transação...",
+      "contractTransferMessage": "Transferindo pro contrato...",
+      "givingsPage": {
+        "title": "Suas contribuições"
+      }
     }
   },
   "contexts": {

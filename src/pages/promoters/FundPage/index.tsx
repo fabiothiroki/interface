@@ -1,41 +1,26 @@
 import { useTranslation } from "react-i18next";
 import CardBlank from "components/moleculars/cards/CardBlank";
 import Button from "components/atomics/Button";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect } from "react";
 import {
   DONATION_TOKEN_CONTRACT_ADDRESS,
   RIBON_CONTRACT_ADDRESS,
 } from "utils/contractUtils";
-import { utils } from "ethers";
 import { useWalletContext } from "contexts/walletContext";
 import useNavigation from "hooks/useNavigation";
 import { useContract } from "hooks/useContract";
 import DonationTokenAbi from "utils/abis/DonationToken.json";
 import RibonAbi from "utils/abis/RibonAbi.json";
-import { logError } from "services/crashReport";
-import { Divider } from "components/atomics/Divider/styles";
-import theme from "styles/theme";
-import Spinner from "components/atomics/Spinner";
 import { logEvent } from "services/analytics";
-import { useLocation } from "react-router-dom";
-import { useProvider } from "hooks/useProvider";
-import useToast from "hooks/useToast";
+import useContractBalance from "hooks/apiHooks/useContractBalance";
 import * as S from "./styles";
-
-type LocationStateType = {
-  transHash: string;
-};
+import GivingsSection from "./GivingsSection";
+import ModalOnboarding from "./ModalOnboarding";
 
 function FundPage(): JSX.Element {
-  const [donationPoolBalance, setDonationPoolBalance] = useState<string | null>(
-    null,
-  );
-  const { state } = useLocation<LocationStateType>();
-  const transactionHash = useState(state?.transHash);
-  const [transactionResponse, setTransactionResponse] = useState<string | null>(
-    null,
-  );
+  const coin = "USDC";
   const { navigateTo } = useNavigation();
+
   const { t } = useTranslation("translation", {
     keyPrefix: "promoters.fundPage",
   });
@@ -48,23 +33,11 @@ function FundPage(): JSX.Element {
     address: RIBON_CONTRACT_ADDRESS,
     ABI: RibonAbi.abi,
   });
-  const provider = useProvider();
-  const toast = useToast();
 
-  async function fetchContractBalance() {
-    try {
-      const balance = await donationTokenContract?.balanceOf(
-        RIBON_CONTRACT_ADDRESS,
-      );
-      const formattedBalance = parseFloat(utils.formatEther(balance)).toFixed(
-        2,
-      );
-
-      setDonationPoolBalance(formattedBalance);
-    } catch (e) {
-      logError(e);
-    }
-  }
+  const { contractBalance, refetch: fetchContractBalance } = useContractBalance(
+    donationTokenContract,
+    RIBON_CONTRACT_ADDRESS,
+  );
 
   const handleSupportButtonClick = () => {
     logEvent("fundConWalletBtn_click", {
@@ -81,28 +54,6 @@ function FundPage(): JSX.Element {
     connectWallet();
   };
 
-  const getReceipt = useCallback(async () => {
-    try {
-      const receipt = await provider?.getTransactionReceipt(transactionHash[0]);
-      const response = receipt && receipt !== null ? "success" : null;
-      setTransactionResponse(response);
-      if (response === "success") {
-        toast({
-          message: t("transactionSuccessText"),
-          type: "success",
-          link: `https://mumbai.polygonscan.com/tx/${transactionHash[0]}`,
-        });
-      }
-    } catch (e) {
-      console.log(e);
-    }
-    return null;
-  }, [transactionResponse]);
-
-  useEffect(() => {
-    fetchContractBalance();
-  }, []);
-
   useEffect(() => {
     logEvent("fundScreen_view");
   }, []);
@@ -110,21 +61,19 @@ function FundPage(): JSX.Element {
   useEffect(() => {
     contract?.on("PoolBalanceIncreased", () => {
       fetchContractBalance();
-      getReceipt();
-      console.log(transactionResponse, "---");
     });
   }, []);
 
   return (
     <S.Container>
+      <ModalOnboarding />
       <S.Title>{t("title")}</S.Title>
       <S.Subtitle>{t("subtitle")}</S.Subtitle>
-
       <S.SectionTitle>{t("fundBalance")}</S.SectionTitle>
       <S.CardContainer>
         <CardBlank>
           <S.FundText>
-            {donationPoolBalance} <S.FundTextCoin>USDC</S.FundTextCoin>
+            {contractBalance} <S.FundTextCoin>{coin}</S.FundTextCoin>
           </S.FundText>
           <Button
             text={t("fundSupportButtonText")}
@@ -132,37 +81,9 @@ function FundPage(): JSX.Element {
           />
         </CardBlank>
       </S.CardContainer>
-
-      <S.GivingsContainer>
-        <S.SectionTitle>{t("givingsTitle")}</S.SectionTitle>
-        <S.GivingsCardContainer>
-          {transactionResponse === "success" ? (
-            <S.GivingsCard>
-              <S.GivingDate>22/02/2022</S.GivingDate>
-              <S.GivingText>
-                12.00 <S.GivingTextCoin>USDC</S.GivingTextCoin>
-              </S.GivingText>
-              <Divider color={theme.colors.lightGray} />
-              <S.StatusContainer>
-                <S.TransactionLink>See Transaction</S.TransactionLink>
-              </S.StatusContainer>
-            </S.GivingsCard>
-          ) : (
-            <S.GivingsCard>
-              <S.GivingDate>22/02/2022</S.GivingDate>
-              <S.ProcessingGivingText>
-                12.00{" "}
-                <S.ProcessingGivingTextCoin>USDC</S.ProcessingGivingTextCoin>
-              </S.ProcessingGivingText>
-              <Divider color={theme.colors.lightGray} />
-              <S.StatusContainer>
-                <Spinner />
-                <S.ProcessingText>Processing Transaction...</S.ProcessingText>
-              </S.StatusContainer>
-            </S.GivingsCard>
-          )}
-        </S.GivingsCardContainer>
-      </S.GivingsContainer>
+      <S.CarouselContainer>
+        <GivingsSection />
+      </S.CarouselContainer>
     </S.Container>
   );
 }
