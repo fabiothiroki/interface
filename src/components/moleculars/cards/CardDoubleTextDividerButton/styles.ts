@@ -58,8 +58,8 @@ export const SpinnerSection = styled.a`
     font-size: 12px;
     display: flex;
     text-decoration: none;
-    gap: 6px;
-    margin-top: 8px;
+    gap: 10px;
+    margin-top: 10px;
   `}
 `;
 
