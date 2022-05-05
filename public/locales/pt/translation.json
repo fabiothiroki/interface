@@ -83,7 +83,8 @@
         "textLastCard": "Suas contribuições",
         "firstGivingButtonText": "Contribua agora",
         "firstGivingText": "Faça sua primeira doação",
-        "subtitleGivings": "Suas contribuições"
+        "subtitleGivings": "Suas contribuições",
+        "processingText": "Processando transação..."
       },
       "modalOnboarding": {
         "title": "Fundo de doação da Ribon",

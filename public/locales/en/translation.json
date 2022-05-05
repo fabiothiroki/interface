@@ -84,7 +84,8 @@
         "textLastCard": "Show your givings",
         "firstGivingButtonText": "Give now",
         "firstGivingText": "Make your first giving",
-        "subtitleGivings": "Your givings"
+        "subtitleGivings": "Your givings",
+        "processingText": "Processing transaction..."
       },
       "modalOnboarding": {
         "title": "Ribon’s Donation Fund",
