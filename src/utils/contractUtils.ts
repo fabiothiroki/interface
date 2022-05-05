@@ -45,18 +45,3 @@ export async function balanceOf(address: string) {
 
   return null;
 }
-
-// talvez getTransactionReceipt
-export async function getTransactionResult(transactionHash: string) {
-  const { ethereum } = window;
-  if (ethereum) {
-    const provider = new Web3Provider(ethereum);
-    const trx = await provider.getTransaction(transactionHash);
-    const currentBlock = await provider.getBlockNumber();
-    const response = trx.blockNumber ? currentBlock - trx.blockNumber : 0;
-
-    return response;
-  }
-
-  return null;
-}
