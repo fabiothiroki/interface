@@ -38,7 +38,7 @@ function SupportFundPage(): JSX.Element {
   });
   const { wallet } = useWalletContext();
   const toast = useToast();
-  const { navigateBack } = useNavigation();
+  const { navigateTo } = useNavigation();
   const { showLoadingOverlay, hideLoadingOverlay } = useLoadingOverlay();
 
   const args = {
@@ -118,15 +118,23 @@ function SupportFundPage(): JSX.Element {
       await approval.wait();
       showLoadingOverlay(t("contractTransferMessage"));
       const response = await donateToContract();
+
+      const transactionHash = response.hash;
+      const date = new Date();
+      const timestamp = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
+
       toast({
         message: t("transactionOnBlockchainText"),
         type: "success",
-        link: `https://mumbai.polygonscan.com/tx/${response.hash}`,
+        link: `https://mumbai.polygonscan.com/tx/${transactionHash}`,
       });
       logEvent("toastNotification_view", {
         status: "transactionProcessed",
       });
-      navigateBack();
+      navigateTo({
+        pathname: "/promoters/fund",
+        state: { transactionHash, timestamp, amount },
+      });
     } catch (error) {
       logEvent("toastNotification_view", {
         status: "transactionFailed",
