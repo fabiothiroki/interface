@@ -133,7 +133,7 @@ function SupportFundPage(): JSX.Element {
       });
       navigateTo({
         pathname: "/promoters/fund",
-        state: { transactionHash, timestamp, amount },
+        state: { transactionHash, timestamp, amount, processing: true },
       });
     } catch (error) {
       logEvent("toastNotification_view", {

@@ -24,7 +24,7 @@ function CardDoubleTextDividerButton({
   buttonText,
   rightComponentButton,
   link,
-  processing = true,
+  processing = false,
   processingText = "Processing...",
 }: Props): JSX.Element {
   return (
