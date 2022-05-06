@@ -141,29 +141,6 @@ function GivingsSection(): JSX.Element {
     return null;
   }
 
-  // pegar transações que estão no cache (ou navigation)
-  // passar pra função transactionsisbeingprocessed
-  // se retornar true, add num array
-  // se retornar false, remove do array
-  // seguir estrutura do console.log
-
-  // promoterDonations: Array(2)
-  // 0:
-  // amountDonated: "120000000000000000"
-  // id: "0xab711d2b54163a645527d8e3dc26fb3f93243dedbd4f02859728e0c6edab4ea9"
-  // timestamp: "1651670985"
-  // user: "0x026b2ed6b34c98f6624b448865642056d04d730c"
-  // 1:
-  // amountDonated: "110000000000000000"
-  // id: "0x6a0f0bd64718123702ac7fb2d586b23c1a74094d89122166fd6b4271dea00ce4"
-  // timestamp: "1651670234"
-  // user: "0x026b2ed6b34c98f6624b448865642056d04d730c"
-  // __typename: "PromoterDonation"
-  //
-
-  // nessa lista, passar pro carrossel com status processando
-  // a lista do contrato: passar com status sucesso
-
   function renderCardsCarousel() {
     return promoterDonations?.promoterDonations.map((item: any) => (
       <div className="keen-slider__slide" key={item.id}>
