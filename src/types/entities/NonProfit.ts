@@ -9,6 +9,7 @@ export default interface NonProfit {
   coverImage: string;
   mainImage: string;
   logo: string;
+  impactByTicket: number;
   created_at?: string;
   updated_at?: string;
 }
