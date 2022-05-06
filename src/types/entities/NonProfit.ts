@@ -10,6 +10,6 @@ export default interface NonProfit {
   mainImage: string;
   logo: string;
   impactByTicket: number;
-  created_at?: string;
-  updated_at?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
