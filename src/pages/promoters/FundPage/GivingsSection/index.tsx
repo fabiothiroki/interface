@@ -41,6 +41,9 @@ function GivingsSection(): JSX.Element {
   const coin = "USDC";
 
   const { state } = useLocation<LocationStateType>();
+  const [processingTransaction, setProcessingTransaction] = useState<boolean>(
+    state?.processing,
+  );
 
   const handleShowGivingsButtonClick = () => {
     logEvent("fundShowGivingsListBtn_click", {
@@ -51,6 +54,24 @@ function GivingsSection(): JSX.Element {
       return;
     }
     connectWallet();
+  };
+
+  const transactionIsBeingProcessed = async (hash: string) => {
+    try {
+      const receipt = await provider?.getTransactionReceipt(hash);
+      const response = receipt && receipt !== null ? "success" : null;
+      if (response === "success") {
+        setProcessingTransaction(false);
+        toast({
+          message: t("transactionSuccessText"),
+          type: "success",
+          link: `https://mumbai.polygonscan.com/tx/${hash}`,
+        });
+        console.log("transaction success");
+      }
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const fetchPromoterDonations = useCallback(
@@ -86,6 +107,13 @@ function GivingsSection(): JSX.Element {
     }
   }, [wallet]);
 
+  useEffect(() => {
+    if (processingTransaction) {
+      transactionIsBeingProcessed(state?.transactionHash);
+    }
+    console.log("useeffect");
+  }, [state]);
+
   function concatLinkHash(hash: string) {
     return `https://mumbai.polygonscan.com/tx/${hash}`;
   }
@@ -94,30 +122,8 @@ function GivingsSection(): JSX.Element {
     return promoterDonations?.promoterDonations.length !== 0 && wallet;
   }
 
-  const transactionIsBeingProcessed = useCallback(async (hash: string) => {
-    try {
-      const receipt = await provider?.getTransactionReceipt(hash);
-      const response = receipt && receipt !== null;
-      if (response) {
-        toast({
-          message: t("transactionSuccessText"),
-          type: "success",
-          link: `https://mumbai.polygonscan.com/tx/${hash}`,
-        });
-        console.log("transaction success");
-        return false;
-      }
-    } catch (e) {
-      console.log(e);
-    }
-    return true;
-  }, []);
-
   function shouldRenderProcessingTransaction() {
-    if (
-      state?.processing &&
-      transactionIsBeingProcessed(state?.transactionHash)
-    ) {
+    if (processingTransaction) {
       return (
         <CardDoubleTextDividerButton
           key={state.transactionHash}
@@ -128,7 +134,7 @@ function GivingsSection(): JSX.Element {
           rightComponentButton={RightArrowBlack}
           link={concatLinkHash(state.transactionHash)}
           processingText={t("processingText")}
-          processing={state.processing}
+          processing={processingTransaction}
         />
       );
     }
@@ -161,7 +167,6 @@ function GivingsSection(): JSX.Element {
   function renderCardsCarousel() {
     return promoterDonations?.promoterDonations.map((item: any) => (
       <div className="keen-slider__slide" key={item.id}>
-        {shouldRenderProcessingTransaction()}
         <CardDoubleTextDividerButton
           key={item.id}
           firstText={formatDate(item.timestamp).toString()}
@@ -177,6 +182,7 @@ function GivingsSection(): JSX.Element {
   return (
     <S.Container>
       <S.SectionTitle>{t("subtitleGivings")}</S.SectionTitle>
+      {shouldRenderProcessingTransaction()}
       {shouldRenderCarousel() ? (
         !loading && (
           <Carousel sliderPerView={isMobile ? 1.8 : 4} spacing={-10}>

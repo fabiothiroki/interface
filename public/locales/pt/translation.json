@@ -84,7 +84,8 @@
         "firstGivingButtonText": "Contribua agora",
         "firstGivingText": "Faça sua primeira doação",
         "subtitleGivings": "Suas contribuições",
-        "processingText": "Processando transação..."
+        "processingText": "Processando transação...",
+        "transactionSuccessText": "Transação processada"
       },
       "modalOnboarding": {
         "title": "Fundo de doação da Ribon",
@@ -100,7 +101,6 @@
       "insufficientBalanceText": "Saldo de USDC insuficiente",
       "networkText": "*Certifique-se de conectar sua carteira à rede da Polygon.",
       "usdcBalanceText": "Saldo de USDC: {{balance}}",
-      "transactionSuccessText": "Transação processada",
       "tokenAmountTransferMessage": "Aprovando quantidade de tokens pra transação...",
       "contractTransferMessage": "Transferindo pro contrato...",
       "transactionOnBlockchainText": "Sua transação está sendo processada",

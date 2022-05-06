@@ -85,7 +85,8 @@
         "firstGivingButtonText": "Give now",
         "firstGivingText": "Make your first giving",
         "subtitleGivings": "Your givings",
-        "processingText": "Processing transaction..."
+        "processingText": "Processing transaction...",
+        "transactionSuccessText": "Transaction successful"
       },
       "modalOnboarding": {
         "title": "Ribon’s Donation Fund",
@@ -101,7 +102,6 @@
       "insufficientBalanceText": "Insufficient USDC balance",
       "networkText": "*Make sure your wallet is set up to the Polygon network.",
       "usdcBalanceText": "USDC balance: {{balance}}",
-      "transactionSuccessText": "Transaction successful",
       "tokenAmountTransferMessage": "Approving token amount transfer...",
       "contractTransferMessage": "Transferring to contract...",
       "transactionOnBlockchainText": "Your transaction is being processed",
