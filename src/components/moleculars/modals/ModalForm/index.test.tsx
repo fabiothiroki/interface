@@ -54,14 +54,16 @@ describe("ModalForm", () => {
     expect(handleOnSubmitMock).toHaveBeenCalled();
   });
 
-  it("component is not visible and don't have title", () => {
-    renderComponent(
-      <ModalForm
-        formFields={[]}
-        onFormSubmit={() => {}}
-        initialState={{ email: "email" }}
-      />,
-    );
-    expectTextNotToBeInTheDocument("ModalForm");
+  describe("when the component is not visible and don't have title", () => {
+    it("does not show", () => {
+      renderComponent(
+        <ModalForm
+          formFields={[]}
+          onFormSubmit={() => {}}
+          initialState={{ email: "email" }}
+        />,
+      );
+      expectTextNotToBeInTheDocument("ModalForm");
+    });
   });
 });
