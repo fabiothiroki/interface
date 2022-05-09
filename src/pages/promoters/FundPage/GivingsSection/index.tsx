@@ -13,6 +13,9 @@ import usePromoterDonations from "hooks/apiTheGraphHooks/usePromoterDonations";
 import { useWalletContext } from "contexts/walletContext";
 import { useLocation } from "react-router-dom";
 import { useProvider } from "hooks/useProvider";
+import { useContract } from "hooks/useContract";
+import { RIBON_CONTRACT_ADDRESS } from "utils/contractUtils";
+import RibonAbi from "utils/abis/RibonAbi.json";
 import useToast from "hooks/useToast";
 import RightArrowBlack from "./assets/right-arrow-black.svg";
 import { ReactComponent as BlueRightArrow } from "./assets/right-arrow-blue.svg";
@@ -39,7 +42,10 @@ function GivingsSection(): JSX.Element {
   const { getPromoterDonations } = usePromoterDonations();
   const { isMobile } = useBreakpoint();
   const coin = "USDC";
-
+  const contract = useContract({
+    address: RIBON_CONTRACT_ADDRESS,
+    ABI: RibonAbi.abi,
+  });
   const { state } = useLocation<LocationStateType>();
   const [processingTransaction, setProcessingTransaction] = useState<boolean>(
     state?.processing,
@@ -56,7 +62,7 @@ function GivingsSection(): JSX.Element {
     connectWallet();
   };
 
-  const transactionIsBeingProcessed = async (hash: string) => {
+  const transactionIsBeingProcessed = useCallback(async (hash: string) => {
     try {
       const receipt = await provider?.getTransactionReceipt(hash);
       const response = receipt && receipt !== null ? "success" : null;
@@ -67,12 +73,12 @@ function GivingsSection(): JSX.Element {
           type: "success",
           link: `https://mumbai.polygonscan.com/tx/${hash}`,
         });
-        console.log("transaction success");
+        console.log("transaction success", state?.amount);
       }
     } catch (e) {
       console.log(e);
     }
-  };
+  }, []);
 
   const fetchPromoterDonations = useCallback(
     async (user: string) => {
@@ -108,11 +114,11 @@ function GivingsSection(): JSX.Element {
   }, [wallet]);
 
   useEffect(() => {
-    if (processingTransaction) {
+    contract?.on("PoolBalanceIncreased", () => {
       transactionIsBeingProcessed(state?.transactionHash);
-    }
-    console.log("useeffect");
-  }, [state]);
+    });
+    transactionIsBeingProcessed(state?.transactionHash);
+  }, []);
 
   function concatLinkHash(hash: string) {
     return `https://mumbai.polygonscan.com/tx/${hash}`;
