@@ -24,14 +24,13 @@ export const Selected = styled.a`
     align-items: center;
     position: static;
     width: 236px;
-    height: 32px;
+    height: 30px;
     color: ${theme.colors.ribonWhite};
     font-weight: 700;
     font-size: 16px;
     line-height: 160%;
     background: ${theme.colors.ribonBlue};
     border-radius: 16px;
-    flex-grow: 1;
   `}
 `;
 
@@ -48,6 +47,5 @@ export const Unselected = styled.a`
     align-items: center;
     text-align: center;
     color: ${theme.colors.ribonBlue};
-    flex-grow: 1;
   `}
 `;
