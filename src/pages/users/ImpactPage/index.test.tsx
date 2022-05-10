@@ -2,7 +2,6 @@ import {
   expectTextNotToBeInTheDocument,
   expectTextToBeInTheDocument,
   renderComponent,
-  waitForPromises,
 } from "config/testUtils";
 import impactFactory from "config/testUtils/factories/impactFactory";
 import { mockRequest } from "config/testUtils/test-helper";
@@ -29,9 +28,13 @@ describe("Impact", () => {
   });
 
   const user = userFactory({ id: 1 });
+  const impacts = [
+    impactFactory({ nonProfit: nonProfitFactory({ id: 1 }) }),
+    impactFactory({ nonProfit: nonProfitFactory({ id: 2 }) }),
+  ];
 
   describe("when there are more cards to show", () => {
-    beforeEach(async () => {
+    beforeEach(() => {
       renderComponent(<Impact />, {
         currentUserProviderValue: {
           currentUser: user,
@@ -39,36 +42,30 @@ describe("Impact", () => {
       });
       mockRequest(`api/v1/users/${user.id}/impacts`, {
         payload: [
-          impactFactory({ nonProfit: nonProfitFactory({ id: 1 }) }),
-          impactFactory({ nonProfit: nonProfitFactory({ id: 2 }) }),
+          ...impacts,
           impactFactory({ nonProfit: nonProfitFactory({ id: 3 }) }),
         ],
       });
-      await waitForPromises();
     });
 
-    it("shows the show more button", async () => {
+    it("shows the show more button", () => {
       expectTextToBeInTheDocument("Show more");
     });
   });
 
   describe("when there are no more cards to show", () => {
-    beforeEach(async () => {
+    beforeEach(() => {
       renderComponent(<Impact />, {
         currentUserProviderValue: {
           currentUser: user,
         },
       });
       mockRequest(`api/v1/users/${user.id}/impacts`, {
-        payload: [
-          impactFactory({ nonProfit: nonProfitFactory({ id: 1 }) }),
-          impactFactory({ nonProfit: nonProfitFactory({ id: 2 }) }),
-        ],
+        payload: impacts,
       });
-      await waitForPromises();
     });
 
-    it("shows the show more button", async () => {
+    it("shows the show more button", () => {
       expectTextNotToBeInTheDocument("Show more");
     });
   });
