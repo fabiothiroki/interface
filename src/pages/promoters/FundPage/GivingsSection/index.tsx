@@ -24,7 +24,7 @@ import "keen-slider/keen-slider.min.css";
 
 type LocationStateType = {
   transactionHash: string;
-  time: string;
+  timestamp: string;
   amount: number;
   processing: boolean;
 };
@@ -62,24 +62,6 @@ function GivingsSection(): JSX.Element {
     connectWallet();
   };
 
-  const transactionIsBeingProcessed = useCallback(async (hash: string) => {
-    try {
-      const receipt = await provider?.getTransactionReceipt(hash);
-      const response = receipt && receipt !== null ? "success" : null;
-      if (response === "success") {
-        setProcessingTransaction(false);
-        toast({
-          message: t("transactionSuccessText"),
-          type: "success",
-          link: `https://mumbai.polygonscan.com/tx/${hash}`,
-        });
-        console.log("transaction success", state?.amount);
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  }, []);
-
   const fetchPromoterDonations = useCallback(
     async (user: string) => {
       setLoading(true);
@@ -93,6 +75,27 @@ function GivingsSection(): JSX.Element {
       }
     },
     [wallet],
+  );
+
+  const transactionIsBeingProcessed = useCallback(
+    async (hash: string) => {
+      try {
+        const receipt = await provider?.getTransactionReceipt(hash);
+        const response = receipt && receipt !== null ? "success" : null;
+        if (response === "success") {
+          setProcessingTransaction(false);
+          if (wallet) fetchPromoterDonations(wallet);
+          toast({
+            message: t("transactionSuccessText"),
+            type: "success",
+            link: `https://mumbai.polygonscan.com/tx/${hash}`,
+          });
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    [promoterDonations],
   );
 
   const handleSupportButtonClick = () => {
@@ -117,8 +120,10 @@ function GivingsSection(): JSX.Element {
     contract?.on("PoolBalanceIncreased", () => {
       transactionIsBeingProcessed(state?.transactionHash);
     });
-    transactionIsBeingProcessed(state?.transactionHash);
-  }, []);
+    if (processingTransaction) {
+      transactionIsBeingProcessed(state?.transactionHash);
+    }
+  }, [promoterDonations]);
 
   function concatLinkHash(hash: string) {
     return `https://mumbai.polygonscan.com/tx/${hash}`;
@@ -133,7 +138,7 @@ function GivingsSection(): JSX.Element {
       return (
         <CardDoubleTextDividerButton
           key={state.transactionHash}
-          firstText={state.time}
+          firstText={state.timestamp}
           mainText={state.amount.toString()}
           rightComplementText={coin}
           buttonText={t("linkTransactionText")}
@@ -165,10 +170,10 @@ function GivingsSection(): JSX.Element {
   return (
     <S.Container>
       <S.SectionTitle>{t("subtitleGivings")}</S.SectionTitle>
-      {shouldRenderProcessingTransaction()}
       {shouldRenderCarousel() ? (
         !loading && (
           <Carousel sliderPerView={isMobile ? 1.8 : 4} spacing={-10}>
+            {shouldRenderProcessingTransaction()}
             {renderCardsCarousel()}
             {false && (
               <div className="keen-slider__slide">
