@@ -40,7 +40,6 @@
       "impactText": "Ribon’s supporters are those responsible for paying for the free donations"
     },
     "menu":{
-      "impactTitle": "Impact",
       "impactPageTitle": "Impact",
       "causesPageTitle": "Causes",
       "fundPageTitle": "Fund"
@@ -103,6 +102,8 @@
       "transactionSuccessText": "Transaction successful",
       "tokenAmountTransferMessage": "Approving token amount transfer...",
       "contractTransferMessage": "Transferring to contract...",
+      "card": "Card",
+      "cryptocurrency": "Cryptocurrency",
       "givingsPage": {
         "title": "Your Givings"
       }

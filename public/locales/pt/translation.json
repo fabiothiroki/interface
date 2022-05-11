@@ -102,6 +102,8 @@
       "transactionSuccessText": "Transação processada",
       "tokenAmountTransferMessage": "Aprovando quantidade de tokens pra transação...",
       "contractTransferMessage": "Transferindo pro contrato...",
+      "card": "Cartão",
+      "cryptocurrency": "Criptomoeda",
       "givingsPage": {
         "title": "Suas contribuições"
       }

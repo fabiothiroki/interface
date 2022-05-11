@@ -10,6 +10,7 @@ import RibonAbi from "utils/abis/RibonAbi.json";
 import DonationTokenAbi from "utils/abis/DonationToken.json";
 import { useWalletContext } from "contexts/walletContext";
 import { utils } from "ethers";
+import ToggleSwitchText from "components/atomics/ToggleSwitchText";
 import { logError } from "services/crashReport";
 import UsdcIcon from "assets/icons/usdc-icon.svg";
 import useToast from "hooks/useToast";
@@ -141,6 +142,29 @@ function SupportFundPage(): JSX.Element {
   return (
     <S.Container>
       <S.Title>{t("title")}</S.Title>
+      <ToggleSwitchText
+        leftText={t("card")}
+        rightText={t("cryptocurrency")}
+        onClick={() => {}}
+      />
+
+      <S.Subtitle>Choose your giving</S.Subtitle>
+
+      <S.ValuesContainer>
+        <S.CardValueButton text="$5" onClick={() => {}} />
+        <S.CardValueButton text="$5" outline onClick={() => {}} />
+        <S.CardValueButton text="$5" outline onClick={() => {}} />
+        <S.CardValueButton text="$5" outline onClick={() => {}} />
+        <S.CardValueButton text="$5" outline onClick={() => {}} />
+        <S.CardValueButton text="$5" outline onClick={() => {}} />
+        <S.CardValueButton text="$5" outline onClick={() => {}} />
+        <S.CardValueButton text="$5" outline onClick={() => {}} />
+      </S.ValuesContainer>
+
+      <S.ButtonContainer>
+        <S.FinishButton text="Next" onClick={handleFinishButtonClick} />
+      </S.ButtonContainer>
+
       <S.Subtitle>{t("subtitle")}</S.Subtitle>
 
       <S.InputContainer>
