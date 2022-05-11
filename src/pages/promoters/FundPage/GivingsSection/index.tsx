@@ -80,6 +80,7 @@ function GivingsSection(): JSX.Element {
 
   const transactionIsBeingProcessed = useCallback(
     async (hash: string) => {
+      if (!hash) return;
       try {
         const receipt = await provider?.getTransactionReceipt(hash);
         if (receipt) {
