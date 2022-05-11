@@ -146,7 +146,7 @@ function CausesPage(): JSX.Element {
         <ModalIcon
           icon={Ticket}
           title={t("confirmModalAuthTitle")}
-          body={chosenNonProfit?.impactDescription}
+          body={`${chosenNonProfit?.impactByTicket} ${chosenNonProfit?.impactDescription}`}
           primaryButtonText={t("confirmModalPrimaryButtonText")}
           primaryButtonCallback={() => {
             if (currentUser) donate(currentUser.email);
@@ -201,7 +201,7 @@ function CausesPage(): JSX.Element {
               <S.CausesCardContainer key={idx.toString()}>
                 <CardCenterImageButton
                   image={nonProfit.mainImage}
-                  title={nonProfit.impactDescription}
+                  title={`${nonProfit.impactByTicket} ${nonProfit.impactDescription}`}
                   buttonText={
                     hasDonateToday() ? t("donateBlockedText") : t("donateText")
                   }

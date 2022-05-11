@@ -34,11 +34,11 @@ function DonationDonePage(): JSX.Element {
     <S.Container>
       <S.Wrapper>
         <CardRoundDoubleImage
-          leftImage={nonProfit?.backgroundImage}
+          leftImage={nonProfit?.mainImage}
           rightImage={nonProfit?.logo}
         />
         <S.Title>{t("title")}</S.Title>
-        <S.Subtitle>{nonProfit?.impactDescription}</S.Subtitle>
+        <S.Subtitle>{`${nonProfit?.impactByTicket} ${nonProfit?.impactDescription}`}</S.Subtitle>
 
         <S.InnerContainer>
           <S.HrDivider color={theme.colors.lightGray} width="100%" />
