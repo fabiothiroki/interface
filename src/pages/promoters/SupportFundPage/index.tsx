@@ -120,7 +120,7 @@ function SupportFundPage(): JSX.Element {
       const response = await donateToContract();
 
       const id = response.hash;
-      const timestamp = Date.now();
+      const timestamp = Math.floor(new Date().getTime() / 1000);
 
       toast({
         message: t("transactionOnBlockchainText"),
