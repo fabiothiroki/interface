@@ -97,7 +97,7 @@ function GivingsSection(): JSX.Element {
           });
         }
       } catch (e) {
-        console.log(e);
+        logError(e);
       }
     },
     [promoterDonations],
