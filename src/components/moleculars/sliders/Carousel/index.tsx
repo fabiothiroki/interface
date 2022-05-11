@@ -22,7 +22,6 @@ function Carousel({
   useEffect(() => {
     setSlides(children.flat());
     slider.current?.update();
-    console.log(sliderPerView);
     setOptions({
       mode,
       slides: {
