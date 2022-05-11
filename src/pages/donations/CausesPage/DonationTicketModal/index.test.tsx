@@ -1,4 +1,5 @@
 import {
+  clickOn,
   expectTextNotToBeInTheDocument,
   expectTextToBeInTheDocument,
   renderComponent,
@@ -19,6 +20,12 @@ describe("DonationTicketModal", () => {
 
     it("sets the localStorage key correctly", () => {
       expect(localStorage.getItem(DONATION_MODAL_SEEN_AT_KEY)).toBeTruthy();
+    });
+
+    it("closes the modal when clicked outside", () => {
+      clickOn("Continue");
+
+      expectTextNotToBeInTheDocument("You got a donation ticket");
     });
   });
 
