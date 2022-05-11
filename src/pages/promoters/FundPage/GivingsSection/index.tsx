@@ -154,6 +154,7 @@ function GivingsSection(): JSX.Element {
   }
 
   function renderCardsCarousel() {
+    console.log(promoterDonations);
     return promoterDonations?.map((item: any) => (
       <div className="keen-slider__slide" key={item.id}>
         <CardDoubleTextDividerButton
