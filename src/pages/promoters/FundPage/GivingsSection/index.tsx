@@ -138,17 +138,19 @@ function GivingsSection(): JSX.Element {
   function shouldRenderProcessingTransaction() {
     if (processingTransaction) {
       return (
-        <CardDoubleTextDividerButton
-          key={state.id}
-          firstText={formatDate(state.timestamp).toString()}
-          mainText={formatFromWei(state.amountDonated)}
-          rightComplementText={coin}
-          buttonText={t("linkTransactionText")}
-          rightComponentButton={RightArrowBlack}
-          link={concatLinkHash(state.id)}
-          processingText={t("processingText")}
-          processing={processingTransaction}
-        />
+        <div className="keen-slider__slide" key={state.id}>
+          <CardDoubleTextDividerButton
+            key={state.id}
+            firstText={formatDate(state.timestamp).toString()}
+            mainText={formatFromWei(state.amountDonated)}
+            rightComplementText={coin}
+            buttonText={t("linkTransactionText")}
+            rightComponentButton={RightArrowBlack}
+            link={concatLinkHash(state.id)}
+            processingText={t("processingText")}
+            processing={processingTransaction}
+          />
+        </div>
       );
     }
     return null;
