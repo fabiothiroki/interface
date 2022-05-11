@@ -18,10 +18,9 @@ import useUsers from "hooks/apiHooks/useUsers";
 import { useCurrentUser } from "contexts/currentUserContext";
 import blockedIcon from "assets/images/il-ticket-gray.svg";
 import { useIntegrationId } from "hooks/useIntegrationId";
-import { getLocalStorageItem, setLocalStorageItem } from "lib/localStorage";
-import { DONATION_MODAL_SEEN_AT_KEY } from "lib/localStorage/constants";
 import * as S from "./styles";
 import ConfirmEmail from "./ConfirmEmail";
+import DonationTicketModal from "./DonationTicketModal";
 
 type LocationStateType = {
   failedDonation: boolean;
@@ -33,9 +32,6 @@ function CausesPage(): JSX.Element {
   const [chosenNonProfit, setChosenNonProfit] = useState<NonProfit>();
   const [integration, setIntegration] = useState<Integration>();
   const integrationId = useIntegrationId();
-  const hasNotSeenDonationModal = !getLocalStorageItem(
-    DONATION_MODAL_SEEN_AT_KEY,
-  );
 
   const { t } = useTranslation("translation", {
     keyPrefix: "donations.causesPage",
@@ -47,9 +43,6 @@ function CausesPage(): JSX.Element {
   const [blockedModalVisible, setBlockedModalVisible] = useState(
     state?.blockedDonation,
   );
-  const [donationModalVisible, setDonationModalVisible] = useState(
-    !state?.blockedDonation && hasNotSeenDonationModal,
-  );
 
   const { navigateTo } = useNavigation();
   const { nonProfits, isLoading } = useNonProfits();
@@ -59,7 +52,6 @@ function CausesPage(): JSX.Element {
 
   useEffect(() => {
     logEvent("donateIntroDial_view");
-    setLocalStorageItem(DONATION_MODAL_SEEN_AT_KEY, Date.now().toString());
   }, []);
 
   useEffect(() => {
@@ -76,10 +68,6 @@ function CausesPage(): JSX.Element {
     }
 
     fetchIntegration();
-  }, []);
-
-  const closeDonationModal = useCallback(() => {
-    setDonationModalVisible(false);
   }, []);
 
   const closeWarningModal = useCallback(() => {
@@ -139,15 +127,7 @@ function CausesPage(): JSX.Element {
 
   return (
     <S.Container>
-      <ModalIcon
-        icon={Ticket}
-        title={t("donationModalTitle")}
-        body={t("donationModalBody")}
-        primaryButtonText={t("donationModalButtonText")}
-        visible={donationModalVisible && !hasDonateToday()}
-        onClose={closeDonationModal}
-        primaryButtonCallback={closeDonationModal}
-      />
+      <DonationTicketModal />
       {signedIn ? (
         <ModalIcon
           icon={Ticket}
