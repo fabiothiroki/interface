@@ -15,6 +15,7 @@ import { useLocation } from "react-router-dom";
 import { useProvider } from "hooks/useProvider";
 import { useContract } from "hooks/useContract";
 import { RIBON_CONTRACT_ADDRESS } from "utils/contractUtils";
+import { BigNumber } from "ethers";
 import RibonAbi from "utils/abis/RibonAbi.json";
 import useToast from "hooks/useToast";
 import RightArrowBlack from "./assets/right-arrow-black.svg";
@@ -23,9 +24,9 @@ import * as S from "./styles";
 import "keen-slider/keen-slider.min.css";
 
 type LocationStateType = {
-  transactionHash: string;
-  timestamp: string;
-  amount: number;
+  id: string;
+  timestamp: number;
+  amountDonated: BigNumber;
   processing: boolean;
 };
 
@@ -67,7 +68,7 @@ function GivingsSection(): JSX.Element {
       setLoading(true);
       try {
         const donations = await getPromoterDonations(user, isMobile ? 2 : 3);
-        setPromoterDonations(donations);
+        setPromoterDonations(donations.promoterDonations);
       } catch (e) {
         logError(e);
       } finally {
@@ -81,10 +82,13 @@ function GivingsSection(): JSX.Element {
     async (hash: string) => {
       try {
         const receipt = await provider?.getTransactionReceipt(hash);
-        const response = receipt && receipt !== null ? "success" : null;
-        if (response === "success") {
+        if (receipt) {
           setProcessingTransaction(false);
-          if (wallet) fetchPromoterDonations(wallet);
+          setPromoterDonations((prevState: any) => {
+            console.log([state, ...prevState]);
+            return [{ ...state, processing: false }, ...prevState];
+          });
+          window.history.replaceState({}, "");
           toast({
             message: t("transactionSuccessText"),
             type: "success",
@@ -118,32 +122,29 @@ function GivingsSection(): JSX.Element {
 
   useEffect(() => {
     contract?.on("PoolBalanceIncreased", () => {
-      transactionIsBeingProcessed(state?.transactionHash);
+      transactionIsBeingProcessed(state?.id);
     });
-    if (processingTransaction) {
-      transactionIsBeingProcessed(state?.transactionHash);
-    }
-  }, [promoterDonations]);
+  }, []);
 
   function concatLinkHash(hash: string) {
     return `https://mumbai.polygonscan.com/tx/${hash}`;
   }
 
   function shouldRenderCarousel() {
-    return promoterDonations?.promoterDonations.length !== 0 && wallet;
+    return promoterDonations?.length !== 0 && wallet;
   }
 
   function shouldRenderProcessingTransaction() {
     if (processingTransaction) {
       return (
         <CardDoubleTextDividerButton
-          key={state.transactionHash}
-          firstText={state.timestamp}
-          mainText={state.amount.toString()}
+          key={state.id}
+          firstText={formatDate(state.timestamp).toString()}
+          mainText={formatFromWei(state.amountDonated)}
           rightComplementText={coin}
           buttonText={t("linkTransactionText")}
           rightComponentButton={RightArrowBlack}
-          link={concatLinkHash(state.transactionHash)}
+          link={concatLinkHash(state.id)}
           processingText={t("processingText")}
           processing={processingTransaction}
         />
@@ -153,7 +154,7 @@ function GivingsSection(): JSX.Element {
   }
 
   function renderCardsCarousel() {
-    return promoterDonations?.promoterDonations.map((item: any) => (
+    return promoterDonations?.map((item: any) => (
       <div className="keen-slider__slide" key={item.id}>
         <CardDoubleTextDividerButton
           key={item.id}

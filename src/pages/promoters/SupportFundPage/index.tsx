@@ -119,21 +119,25 @@ function SupportFundPage(): JSX.Element {
       showLoadingOverlay(t("contractTransferMessage"));
       const response = await donateToContract();
 
-      const transactionHash = response.hash;
-      const date = new Date();
-      const timestamp = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
+      const id = response.hash;
+      const timestamp = Date.now();
 
       toast({
         message: t("transactionOnBlockchainText"),
         type: "success",
-        link: `https://mumbai.polygonscan.com/tx/${transactionHash}`,
+        link: `https://mumbai.polygonscan.com/tx/${id}`,
       });
       logEvent("toastNotification_view", {
         status: "transactionProcessed",
       });
       navigateTo({
         pathname: "/promoters/fund",
-        state: { transactionHash, timestamp, amount, processing: true },
+        state: {
+          id,
+          timestamp,
+          amountDonated: utils.parseEther(amount),
+          processing: true,
+        },
       });
     } catch (error) {
       logEvent("toastNotification_view", {
