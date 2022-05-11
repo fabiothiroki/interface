@@ -18,6 +18,8 @@ import useUsers from "hooks/apiHooks/useUsers";
 import { useCurrentUser } from "contexts/currentUserContext";
 import blockedIcon from "assets/images/il-ticket-gray.svg";
 import { useIntegrationId } from "hooks/useIntegrationId";
+import { getLocalStorageItem, setLocalStorageItem } from "lib/localStorage";
+import { DONATION_MODAL_SEEN_AT_KEY } from "lib/localStorage/constants";
 import * as S from "./styles";
 import ConfirmEmail from "./ConfirmEmail";
 
@@ -31,6 +33,9 @@ function CausesPage(): JSX.Element {
   const [chosenNonProfit, setChosenNonProfit] = useState<NonProfit>();
   const [integration, setIntegration] = useState<Integration>();
   const integrationId = useIntegrationId();
+  const hasNotSeenDonationModal = !getLocalStorageItem(
+    DONATION_MODAL_SEEN_AT_KEY,
+  );
 
   const { t } = useTranslation("translation", {
     keyPrefix: "donations.causesPage",
@@ -43,7 +48,7 @@ function CausesPage(): JSX.Element {
     state?.blockedDonation,
   );
   const [donationModalVisible, setDonationModalVisible] = useState(
-    !state?.blockedDonation,
+    !state?.blockedDonation && hasNotSeenDonationModal,
   );
 
   const { navigateTo } = useNavigation();
@@ -54,6 +59,7 @@ function CausesPage(): JSX.Element {
 
   useEffect(() => {
     logEvent("donateIntroDial_view");
+    setLocalStorageItem(DONATION_MODAL_SEEN_AT_KEY, Date.now().toString());
   }, []);
 
   useEffect(() => {
