@@ -85,10 +85,10 @@ function GivingsSection(): JSX.Element {
         const receipt = await provider?.getTransactionReceipt(hash);
         if (receipt) {
           setProcessingTransaction(false);
-          setPromoterDonations((prevState: any) => {
-            console.log([state, ...prevState]);
-            return [{ ...state, processing: false }, ...prevState];
-          });
+          setPromoterDonations((prevState: any) => [
+            { ...state, processing: false },
+            ...prevState,
+          ]);
           window.history.replaceState({}, "");
           toast({
             message: t("transactionSuccessText"),
@@ -157,7 +157,6 @@ function GivingsSection(): JSX.Element {
   }
 
   function renderCardsCarousel() {
-    console.log(promoterDonations);
     return promoterDonations?.map((item: any) => (
       <div className="keen-slider__slide" key={item.id}>
         <CardDoubleTextDividerButton
