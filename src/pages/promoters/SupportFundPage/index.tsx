@@ -25,6 +25,7 @@ function SupportFundPage(): JSX.Element {
   const [amount, setAmount] = useState("");
   const [loading, setLoading] = useState(false);
   const [userBalance, setUserBalance] = useState("");
+  const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
 
   const { t } = useTranslation("translation", {
     keyPrefix: "promoters.supportFundPage",
@@ -139,6 +140,12 @@ function SupportFundPage(): JSX.Element {
     }
   };
 
+  const valueButton = [
+    { value: 5, text: "$5" },
+    { value: 10, text: "$10" },
+    { value: 11, text: "$11" },
+    { value: 12, text: "$12" },
+  ];
   return (
     <S.Container>
       <S.Title>{t("title")}</S.Title>
@@ -148,17 +155,18 @@ function SupportFundPage(): JSX.Element {
         onClick={() => {}}
       />
 
-      <S.Subtitle>Choose your giving</S.Subtitle>
+      <S.Subtitle>{t("subtitleCard")}</S.Subtitle>
 
       <S.ValuesContainer>
-        <S.CardValueButton text="$5" onClick={() => {}} />
-        <S.CardValueButton text="$5" outline onClick={() => {}} />
-        <S.CardValueButton text="$5" outline onClick={() => {}} />
-        <S.CardValueButton text="$5" outline onClick={() => {}} />
-        <S.CardValueButton text="$5" outline onClick={() => {}} />
-        <S.CardValueButton text="$5" outline onClick={() => {}} />
-        <S.CardValueButton text="$5" outline onClick={() => {}} />
-        <S.CardValueButton text="$5" outline onClick={() => {}} />
+        {valueButton.map((item, index) => (
+          <S.CardValueButton
+            text={item.text}
+            onClick={() => {
+              setSelectedButtonIndex(index);
+            }}
+            outline={index !== selectedButtonIndex}
+          />
+        ))}
       </S.ValuesContainer>
 
       <S.ButtonContainer>
