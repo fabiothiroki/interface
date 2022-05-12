@@ -94,6 +94,7 @@
     "supportFundPage": {
       "title": "Support the Fund",
       "subtitle": "How much do you want to give?",
+      "subtitleCard": "Choose your giving",
       "buttonText": "Confirm giving",
       "disabledButtonText": "Enter any USDC amount",
       "insufficientBalanceText": "Insufficient USDC balance",
