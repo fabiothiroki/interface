@@ -90,7 +90,7 @@ function SupportFundPage(): JSX.Element {
     if (!isCard) {
       SimpleMaskMoney.setMask("#amount", args);
     }
-  }, []);
+  }, [isCard]);
 
   useEffect(() => {
     logEvent("fundSupportScreen_view");
@@ -146,6 +146,9 @@ function SupportFundPage(): JSX.Element {
   const handleChange = async () => {
     try {
       setIsCard(!isCard);
+      logEvent("fundSupportGivingTogBtn_click", {
+        option: isCard ? "card" : "cryptocurrency",
+      });
     } catch (error) {
       logError(error);
     }
