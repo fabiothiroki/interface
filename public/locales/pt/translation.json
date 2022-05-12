@@ -107,7 +107,8 @@
       "cryptocurrency": "Criptomoeda",
       "givingsPage": {
         "title": "Suas contribuições"
-      }
+      },
+      "buttonTextCard": "Próximo"
     }
   },
   "contexts": {

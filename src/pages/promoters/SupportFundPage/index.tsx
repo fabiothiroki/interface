@@ -26,6 +26,7 @@ function SupportFundPage(): JSX.Element {
   const [loading, setLoading] = useState(false);
   const [userBalance, setUserBalance] = useState("");
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
+  const [isCard, setIsCard] = useState(false);
 
   const { t } = useTranslation("translation", {
     keyPrefix: "promoters.supportFundPage",
@@ -86,7 +87,9 @@ function SupportFundPage(): JSX.Element {
   }, [fetchUsdcUserBalance]);
 
   useEffect(() => {
-    SimpleMaskMoney.setMask("#amount", args);
+    if (!isCard) {
+      SimpleMaskMoney.setMask("#amount", args);
+    }
   }, []);
 
   useEffect(() => {
@@ -140,11 +143,23 @@ function SupportFundPage(): JSX.Element {
     }
   };
 
+  const handleChange = async () => {
+    try {
+      setIsCard(!isCard);
+    } catch (error) {
+      logError(error);
+    }
+  };
+
   const valueButton = [
     { value: 5, text: "$5" },
     { value: 10, text: "$10" },
     { value: 11, text: "$11" },
     { value: 12, text: "$12" },
+    { value: 25, text: "$25" },
+    { value: 26, text: "$26" },
+    { value: 27, text: "$27" },
+    { value: 28, text: "$28" },
   ];
   return (
     <S.Container>
@@ -152,51 +167,58 @@ function SupportFundPage(): JSX.Element {
       <ToggleSwitchText
         leftText={t("card")}
         rightText={t("cryptocurrency")}
-        onClick={() => {}}
+        onClick={handleChange}
       />
 
-      <S.Subtitle>{t("subtitleCard")}</S.Subtitle>
+      {isCard ? (
+        <div>
+          <S.Subtitle>{t("subtitleCard")}</S.Subtitle>
 
-      <S.ValuesContainer>
-        {valueButton.map((item, index) => (
-          <S.CardValueButton
-            text={item.text}
-            onClick={() => {
-              setSelectedButtonIndex(index);
-            }}
-            outline={index !== selectedButtonIndex}
-          />
-        ))}
-      </S.ValuesContainer>
+          <S.ValuesContainer>
+            {valueButton.map((item, index) => (
+              <S.CardValueButton
+                text={item.text}
+                onClick={() => {
+                  setSelectedButtonIndex(index);
+                }}
+                outline={index !== selectedButtonIndex}
+                key={item.value}
+              />
+            ))}
+          </S.ValuesContainer>
 
-      <S.ButtonContainer>
-        <S.FinishButton text="Next" onClick={handleFinishButtonClick} />
-      </S.ButtonContainer>
+          <S.ButtonContainer>
+            <S.FinishButton text={t("buttonTextCard")} onClick={() => {}} />
+          </S.ButtonContainer>
+        </div>
+      ) : (
+        <div>
+          <S.Subtitle>{t("subtitle")}</S.Subtitle>
 
-      <S.Subtitle>{t("subtitle")}</S.Subtitle>
+          <S.InputContainer>
+            <S.Input
+              name="amount"
+              id="amount"
+              type="text"
+              placeholder="0.00"
+              inputMode="numeric"
+            />
+            <S.UsdcContainer>
+              <S.UsdcIcon src={UsdcIcon} />
+              <S.UsdcText>USDC</S.UsdcText>
+            </S.UsdcContainer>
+          </S.InputContainer>
+          <S.Text>{t("usdcBalanceText", { balance: userBalance })}</S.Text>
 
-      <S.InputContainer>
-        <S.Input
-          name="amount"
-          id="amount"
-          type="text"
-          placeholder="0.00"
-          inputMode="numeric"
-        />
-        <S.UsdcContainer>
-          <S.UsdcIcon src={UsdcIcon} />
-          <S.UsdcText>USDC</S.UsdcText>
-        </S.UsdcContainer>
-      </S.InputContainer>
-      <S.Text>{t("usdcBalanceText", { balance: userBalance })}</S.Text>
-
-      <S.ButtonContainer>
-        <S.FinishButton
-          text={finishButtonText()}
-          onClick={handleFinishButtonClick}
-          disabled={disableButton()}
-        />
-      </S.ButtonContainer>
+          <S.ButtonContainer>
+            <S.FinishButton
+              text={finishButtonText()}
+              onClick={handleFinishButtonClick}
+              disabled={disableButton()}
+            />
+          </S.ButtonContainer>
+        </div>
+      )}
     </S.Container>
   );
 }

@@ -4,7 +4,7 @@ import * as S from "./styles";
 export type Props = {
   leftText: string;
   rightText: string;
-  onClick: (...args: any[]) => void;
+  onClick: () => void;
   isRightSelected?: boolean;
 };
 function ToggleSwitchText({

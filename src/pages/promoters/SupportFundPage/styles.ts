@@ -100,6 +100,8 @@ export const ValuesContainer = styled.div`
     display: grid;
     grid-gap: 8px;
     width: 100%;
+    margin-top: 12px;
+    margin-bottom: 36px;
   `}
 `;
 

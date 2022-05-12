@@ -107,7 +107,8 @@
       "cryptocurrency": "Cryptocurrency",
       "givingsPage": {
         "title": "Your Givings"
-      }
+      },
+      "buttonTextCard": "Next"
     }
   },
   "contexts": {
