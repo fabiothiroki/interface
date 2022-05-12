@@ -36,12 +36,14 @@ describe("#logError", () => {
 
   it("expects not to call setContext", () => {
     logError(error, { customMessage });
+
     expect(Sentry.setContext).not.toHaveBeenCalled();
   });
 
   describe("when sending a customMessage", () => {
     it("expects to set a tag with that custom message", () => {
       logError(error, { customMessage });
+
       expect(Sentry.setTags).toHaveBeenCalledWith({
         errorMessage: error.message,
         customMessage,
@@ -53,6 +55,7 @@ describe("#logError", () => {
     it("expects to call captureException with the context", () => {
       const context = { message: "context" };
       logError(error, { customMessage, context });
+
       expect(Sentry.captureException).toHaveBeenCalledWith(error, {
         contexts: {
           contextParams: context,
@@ -68,6 +71,7 @@ describe("#logError", () => {
         contextParams: {},
       };
       logError(error, { level: ErrorLevel.Fatal });
+
       expect(Sentry.captureException).toHaveBeenCalledWith(error, {
         level: ErrorLevel.Fatal,
         contexts,
