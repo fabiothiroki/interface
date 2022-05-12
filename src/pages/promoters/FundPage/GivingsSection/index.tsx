@@ -135,7 +135,7 @@ function GivingsSection(): JSX.Element {
     return promoterDonations?.length !== 0 && wallet;
   }
 
-  function shouldRenderProcessingTransaction() {
+  function renderProcessingTransaction() {
     if (processingTransaction) {
       return (
         <div className="keen-slider__slide" key={state.id}>
@@ -177,7 +177,7 @@ function GivingsSection(): JSX.Element {
       {shouldRenderCarousel() ? (
         !loading && (
           <Carousel sliderPerView={isMobile ? 1.8 : 4} spacing={-10}>
-            {shouldRenderProcessingTransaction()}
+            {renderProcessingTransaction()}
             {renderCardsCarousel()}
             {false && (
               <div className="keen-slider__slide">
