@@ -26,8 +26,8 @@ export const FirstText = styled.p`
 
 export const MainContent = styled.p`
   ${({ theme }) => css`
-    color: ${(props: Props) =>
-      props.processing ? theme.colors.darkGray : theme.colors.ribonBlue};
+    color: ${({ processing }: Props) =>
+      processing ? theme.colors.darkGray : theme.colors.ribonBlue};
     font-size: 24px;
     font-weight: 900;
   `}
@@ -35,8 +35,8 @@ export const MainContent = styled.p`
 
 export const RightMainContent = styled.span`
   ${({ theme }) => css`
-    color: ${(props: Props) =>
-      props.processing ? theme.colors.darkGray : theme.colors.ribonBlue};
+    color: ${({ processing }: Props) =>
+      processing ? theme.colors.darkGray : theme.colors.ribonBlue};
     font-size: 14px;
     font-weight: 400;
   `}
