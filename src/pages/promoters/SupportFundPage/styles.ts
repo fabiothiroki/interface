@@ -85,7 +85,7 @@ export const FinishButton = styled(Button)`
 `;
 
 export const CardValueButton = styled(Button)`
-  ${({ theme }) => css`
+  ${() => css`
     border-radius: 66px;
     height: 30px;
     max-width: 112px;
