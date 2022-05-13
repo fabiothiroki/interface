@@ -39,7 +39,7 @@
       "animationText": "Donating...",
       "impactText": "Ribon’s supporters are those responsible for paying for the free donations"
     },
-    "menu":{
+    "menu": {
       "impactPageTitle": "Impact",
       "causesPageTitle": "Causes",
       "fundPageTitle": "Fund"
@@ -83,7 +83,10 @@
         "textLastCard": "Show your givings",
         "firstGivingButtonText": "Give now",
         "firstGivingText": "Make your first giving",
-         "subtitleGivings": "Your givings"
+        "subtitleGivings": "Your givings",
+        "processingText": "Processing transaction...",
+        "transactionSuccessText": "Transaction successful",
+        "transactionFailedText": "Transaction failed"
       },
       "modalOnboarding": {
         "title": "Ribon’s Donation Fund",
@@ -100,11 +103,11 @@
       "insufficientBalanceText": "Insufficient USDC balance",
       "networkText": "*Make sure your wallet is set up to the Polygon network.",
       "usdcBalanceText": "USDC balance: {{balance}}",
-      "transactionSuccessText": "Transaction successful",
       "tokenAmountTransferMessage": "Approving token amount transfer...",
       "contractTransferMessage": "Transferring to contract...",
       "card": "Card",
       "cryptocurrency": "Cryptocurrency",
+      "transactionOnBlockchainText": "Your transaction is being processed",
       "givingsPage": {
         "title": "Your Givings"
       },

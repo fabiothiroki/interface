@@ -31,6 +31,7 @@ function FundPage(): JSX.Element {
     address: RIBON_CONTRACT_ADDRESS,
     ABI: RibonAbi.abi,
   });
+
   const { contractBalance, refetch: fetchContractBalance } = useContractBalance(
     donationTokenContract,
     RIBON_CONTRACT_ADDRESS,

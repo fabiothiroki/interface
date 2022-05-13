@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import SimpleMaskMoney from "simple-mask-money";
 import { useContract } from "hooks/useContract";
 import useGivingValues from "hooks/apiHooks/useGivingValues";
@@ -42,7 +42,7 @@ function SupportFundPage(): JSX.Element {
     ABI: DonationTokenAbi.abi,
   });
   const toast = useToast();
-  const { navigateBack } = useNavigation();
+  const { navigateTo } = useNavigation();
   const { showLoadingOverlay, hideLoadingOverlay } = useLoadingOverlay();
   const { wallet, connectWallet } = useWalletContext();
   const { currentLang } = useLanguage();
@@ -138,15 +138,27 @@ function SupportFundPage(): JSX.Element {
       await approval.wait();
       showLoadingOverlay(t("contractTransferMessage"));
       const response = await donateToContract();
+
+      const id = response.hash;
+      const timestamp = Math.floor(new Date().getTime() / 1000);
+
       toast({
-        message: t("transactionSuccessText"),
+        message: t("transactionOnBlockchainText"),
         type: "success",
-        link: `https://mumbai.polygonscan.com/tx/${response.hash}`,
+        link: `https://mumbai.polygonscan.com/tx/${id}`,
       });
       logEvent("toastNotification_view", {
         status: "transactionProcessed",
       });
-      navigateBack();
+      navigateTo({
+        pathname: "/promoters/fund",
+        state: {
+          id,
+          timestamp,
+          amountDonated: utils.parseEther(amount),
+          processing: true,
+        },
+      });
     } catch (error) {
       logEvent("toastNotification_view", {
         status: "transactionFailed",
