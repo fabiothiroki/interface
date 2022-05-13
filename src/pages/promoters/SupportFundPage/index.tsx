@@ -39,10 +39,10 @@ function SupportFundPage(): JSX.Element {
     address: DONATION_TOKEN_CONTRACT_ADDRESS,
     ABI: DonationTokenAbi.abi,
   });
-  const { wallet } = useWalletContext();
   const toast = useToast();
   const { navigateBack } = useNavigation();
   const { showLoadingOverlay, hideLoadingOverlay } = useLoadingOverlay();
+  const { wallet, connectWallet } = useWalletContext();
 
   const args = {
     afterFormat(e: string) {
@@ -115,6 +115,9 @@ function SupportFundPage(): JSX.Element {
   };
 
   const handleFinishButtonClick = async () => {
+    if (!wallet) {
+      connectWallet();
+    }
     logEvent("fundSupportConfirmBtn_click");
     setLoading(true);
     showLoadingOverlay(t("tokenAmountTransferMessage"));

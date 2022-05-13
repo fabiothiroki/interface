@@ -6,7 +6,6 @@ import {
   DONATION_TOKEN_CONTRACT_ADDRESS,
   RIBON_CONTRACT_ADDRESS,
 } from "utils/contractUtils";
-import { useWalletContext } from "contexts/walletContext";
 import useNavigation from "hooks/useNavigation";
 import { useContract } from "hooks/useContract";
 import DonationTokenAbi from "utils/abis/DonationToken.json";
@@ -24,7 +23,6 @@ function FundPage(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "promoters.fundPage",
   });
-  const { wallet, connectWallet } = useWalletContext();
   const donationTokenContract = useContract({
     address: DONATION_TOKEN_CONTRACT_ADDRESS,
     ABI: DonationTokenAbi.abi,
@@ -42,15 +40,10 @@ function FundPage(): JSX.Element {
     logEvent("fundConWalletBtn_click", {
       from: "supportButton",
     });
-    if (wallet) {
-      logEvent("fundSupportBtn_click", {
-        from: "fundBalance",
-      });
-      navigateTo("/promoters/support-fund");
-      return;
-    }
-
-    connectWallet();
+    logEvent("fundSupportBtn_click", {
+      from: "fundBalance",
+    });
+    navigateTo("/promoters/support-fund");
   };
 
   useEffect(() => {
