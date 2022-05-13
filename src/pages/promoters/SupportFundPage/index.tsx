@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import React, { useCallback, useEffect, useState } from "react";
 import SimpleMaskMoney from "simple-mask-money";
 import { useContract } from "hooks/useContract";
+import useGivingValues from "hooks/apiHooks/useGivingValues";
 import {
   DONATION_TOKEN_CONTRACT_ADDRESS,
   RIBON_CONTRACT_ADDRESS,
@@ -45,6 +46,15 @@ function SupportFundPage(): JSX.Element {
   const { showLoadingOverlay, hideLoadingOverlay } = useLoadingOverlay();
   const { wallet, connectWallet } = useWalletContext();
   const { currentLang } = useLanguage();
+
+  function currentCoin() {
+    if (currentLang === "pt-BR") {
+      return "brl";
+    }
+    return "usd";
+  }
+
+  const { givingValues } = useGivingValues(currentCoin());
 
   const args = {
     afterFormat(e: string) {
@@ -159,24 +169,6 @@ function SupportFundPage(): JSX.Element {
     }
   };
 
-  const valueButton = [
-    { value: 5, text: "$5" },
-    { value: 10, text: "$10" },
-    { value: 11, text: "$11" },
-    { value: 12, text: "$12" },
-    { value: 25, text: "$25" },
-    { value: 26, text: "$26" },
-    { value: 27, text: "$27" },
-    { value: 28, text: "$28" },
-  ];
-
-  function formattedTextValue(value: number) {
-    if (currentLang === "pt-BR") {
-      return `R$${value}`;
-    }
-    return `$${value}`;
-  }
-
   return (
     <S.Container>
       <S.Title>{t("title")}</S.Title>
@@ -191,9 +183,9 @@ function SupportFundPage(): JSX.Element {
           <S.Subtitle>{t("subtitleCard")}</S.Subtitle>
 
           <S.ValuesContainer>
-            {valueButton.map((item, index) => (
+            {givingValues?.map((item, index) => (
               <S.CardValueButton
-                text={formattedTextValue(item.value)}
+                text={item.valueText}
                 onClick={() => {
                   setSelectedButtonIndex(index);
                 }}

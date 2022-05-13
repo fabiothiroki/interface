@@ -96,7 +96,7 @@ export const ValuesContainer = styled.div`
   ${() => css`
     @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
     }
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     display: grid;
     grid-gap: 8px;
     width: 100%;
