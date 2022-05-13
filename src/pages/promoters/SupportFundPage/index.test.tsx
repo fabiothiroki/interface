@@ -4,6 +4,9 @@ import {
   expectTextToBeInTheDocument,
   renderComponent,
 } from "config/testUtils";
+import { LANGUAGE_KEY } from "hooks/useLanguage";
+import { setLocalStorageItem } from "lib/localStorage";
+
 import FundPage from ".";
 
 describe("FundPage", () => {
@@ -19,7 +22,7 @@ describe("FundPage", () => {
     expectLogEventToHaveBeenCalledWith("fundSupportScreen_view");
   });
 
-  describe("when the option toggle has changed", () => {
+  describe("when the option toggle is changed", () => {
     it("logs the fundSupportGivingTogBtn_click event", () => {
       renderComponent(<FundPage />);
       clickOn("Cryptocurrency");
@@ -42,6 +45,20 @@ describe("FundPage", () => {
 
       expectTextToBeInTheDocument("How much do you want to give?");
       expectTextToBeInTheDocument("Enter any USDC amount");
+    });
+  });
+
+  describe("when the language is changed", () => {
+    it("uses the dollar simbol", () => {
+      setLocalStorageItem(LANGUAGE_KEY, "en-US");
+      renderComponent(<FundPage />);
+      expectTextToBeInTheDocument("$5");
+    });
+
+    it("uses the real simbol", () => {
+      setLocalStorageItem(LANGUAGE_KEY, "pt-BR");
+      renderComponent(<FundPage />);
+      expectTextToBeInTheDocument("R$5");
     });
   });
 });

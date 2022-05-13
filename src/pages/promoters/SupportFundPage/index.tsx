@@ -15,6 +15,7 @@ import { logError } from "services/crashReport";
 import UsdcIcon from "assets/icons/usdc-icon.svg";
 import useToast from "hooks/useToast";
 import useNavigation from "hooks/useNavigation";
+import { useLanguage } from "hooks/useLanguage";
 import { logEvent } from "services/analytics";
 import { formatFromWei } from "lib/web3Helpers/etherFormatters";
 import { stringToNumber } from "lib/formatters/stringToNumberFormatter";
@@ -43,6 +44,7 @@ function SupportFundPage(): JSX.Element {
   const { navigateBack } = useNavigation();
   const { showLoadingOverlay, hideLoadingOverlay } = useLoadingOverlay();
   const { wallet, connectWallet } = useWalletContext();
+  const { currentLang } = useLanguage();
 
   const args = {
     afterFormat(e: string) {
@@ -167,6 +169,14 @@ function SupportFundPage(): JSX.Element {
     { value: 27, text: "$27" },
     { value: 28, text: "$28" },
   ];
+
+  function formattedTextValue(value: number) {
+    if (currentLang === "pt-BR") {
+      return `R$${value}`;
+    }
+    return `$${value}`;
+  }
+
   return (
     <S.Container>
       <S.Title>{t("title")}</S.Title>
@@ -183,7 +193,7 @@ function SupportFundPage(): JSX.Element {
           <S.ValuesContainer>
             {valueButton.map((item, index) => (
               <S.CardValueButton
-                text={item.text}
+                text={formattedTextValue(item.value)}
                 onClick={() => {
                   setSelectedButtonIndex(index);
                 }}

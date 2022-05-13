@@ -37,9 +37,6 @@ function FundPage(): JSX.Element {
   );
 
   const handleSupportButtonClick = () => {
-    logEvent("fundConWalletBtn_click", {
-      from: "supportButton",
-    });
     logEvent("fundSupportBtn_click", {
       from: "fundBalance",
     });
