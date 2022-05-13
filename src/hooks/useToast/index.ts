@@ -10,11 +10,12 @@ type Props = {
   message: string;
   type?: "success" | "error";
   link?: string;
+  timeout?: number;
 };
 
 const useToast = () => {
   const { dispatch } = useContext(ToastContext);
-  function toast({ type = "success", message, link }: Props) {
+  function toast({ type = "success", message, link, timeout = 10000 }: Props) {
     const id = Math.random();
     dispatch({
       type: ADD_NOTIFICATION,
@@ -25,7 +26,7 @@ const useToast = () => {
         link,
         linkMessage: "Learn more",
         color:
-          type === "success" ? theme.colors.successGreen : theme.colors.lgRed,
+          type === "success" ? theme.colors.ribonBlack : theme.colors.lgRed,
       },
     });
     setTimeout(() => {
@@ -33,7 +34,7 @@ const useToast = () => {
         type: DELETE_NOTIFICATION,
         payload: id,
       });
-    }, 4000);
+    }, timeout);
   }
 
   return toast;
