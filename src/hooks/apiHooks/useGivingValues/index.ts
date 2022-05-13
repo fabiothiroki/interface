@@ -2,7 +2,7 @@ import { useApi } from "hooks/useApi";
 import givingValuesApi from "services/api/givingValuesApi";
 import GivingValue from "types/entities/GivingValue";
 
-function useGivingValues(coin: string) {
+function useGivingValues(coin: "usd" | "brl") {
   const {
     data: givingValues,
     isLoading,
