@@ -30,7 +30,7 @@ function Dropdown({
   };
 
   return (
-    <S.Container>
+    <S.Container id="dropdown-container">
       <ModalBlank
         visible={optionsVisible}
         onClose={() => setOptionsVisible(false)}
@@ -40,17 +40,24 @@ function Dropdown({
             display: "flex",
             alignItems: "flex-start",
             justifyContent: "flex-end",
-            width: "calc(100% - 32px)",
+            position: "relative",
           },
           content: {
             paddingTop: 8,
             paddingBottom: 8,
             position: "absolute",
-            top: "50px",
+            top: "0",
             left: "0",
             boxShadow: "0px 4px 12px 0px rgba(24, 86, 105, 0.15)",
+            zIndex: 1,
+            margin: 0,
+            width: "100%",
+            maxWidth: "472px",
           },
         }}
+        parentSelector={() =>
+          document.querySelector("#dropdown-container") || document.body
+        }
       >
         {values.map((value, index) => (
           <S.OptionContainer

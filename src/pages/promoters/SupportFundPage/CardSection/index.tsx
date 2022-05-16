@@ -12,19 +12,17 @@ function CardSection(): JSX.Element {
     keyPrefix: "promoters.supportFundPage.cardSection",
   });
   const { currentLang } = useLanguage();
-
   function defaultCoin() {
-    if (currentLang === "pt-BR") {
-      return Currencies.BRL;
-    }
+    if (currentLang === "pt-BR") return Currencies.BRL;
+
     return Currencies.USD;
   }
   const [currentCoin, setCurrentCoin] = useState<Currencies>(defaultCoin());
-
-  const { givingValues, refetch } = useGivingValues(currentCoin);
+  const { givingValues, refetch: refetchGivingValues } =
+    useGivingValues(currentCoin);
 
   useEffect(() => {
-    refetch();
+    refetchGivingValues();
   }, [currentCoin]);
 
   return (
