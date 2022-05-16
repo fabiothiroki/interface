@@ -6,8 +6,8 @@ import * as S from "./styles";
 export type Props = {
   name: string;
   label: string;
-  values: string[];
-  onOptionChanged?: (value: string) => void;
+  values: any[];
+  onOptionChanged?: (value: any) => void;
 };
 
 function Dropdown({
@@ -23,8 +23,14 @@ function Dropdown({
     setOptionsVisible(!optionsVisible);
   };
 
+  const handleOptionClick = (value: string) => {
+    setDropdownValue(value);
+    setOptionsVisible(false);
+    if (onOptionChanged) onOptionChanged(value);
+  };
+
   return (
-    <S.Input onClick={handleInputClick}>
+    <S.Container>
       <ModalBlank
         visible={optionsVisible}
         onClose={() => setOptionsVisible(false)}
@@ -38,6 +44,7 @@ function Dropdown({
           },
           content: {
             paddingTop: 8,
+            paddingBottom: 8,
             position: "absolute",
             top: "50px",
             left: "0",
@@ -47,26 +54,25 @@ function Dropdown({
       >
         {values.map((value, index) => (
           <S.OptionContainer
-            onClick={() => {
-              setDropdownValue(value);
-              if (onOptionChanged) onOptionChanged(value);
-            }}
+            onClick={() => handleOptionClick(value)}
             key={index.toString(10)}
           >
             <S.OptionText>{value}</S.OptionText>
           </S.OptionContainer>
         ))}
       </ModalBlank>
-      {label && <label htmlFor={name}>{label}</label>}
-      <input
-        type="text"
-        name={name}
-        aria-label={name}
-        value={dropdownValue}
-        readOnly
-      />
-      <img src={ArrowDownIcon} alt="arrow-down" />
-    </S.Input>
+      <S.Input onClick={handleInputClick}>
+        {label && <label htmlFor={name}>{label}</label>}
+        <input
+          type="text"
+          name={name}
+          aria-label={name}
+          value={dropdownValue}
+          readOnly
+        />
+        <img src={ArrowDownIcon} alt="arrow-down" />
+      </S.Input>
+    </S.Container>
   );
 }
 

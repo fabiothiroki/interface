@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useGivingValues from "hooks/apiHooks/useGivingValues";
 import { useLanguage } from "hooks/useLanguage";
 import Dropdown from "components/atomics/Dropdown";
@@ -8,28 +8,32 @@ import * as S from "../styles";
 
 function CardSection(): JSX.Element {
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
-
   const { t } = useTranslation("translation", {
     keyPrefix: "promoters.supportFundPage.cardSection",
   });
-
   const { currentLang } = useLanguage();
 
-  function currentCoin() {
+  function defaultCoin() {
     if (currentLang === "pt-BR") {
       return Currencies.BRL;
     }
     return Currencies.USD;
   }
+  const [currentCoin, setCurrentCoin] = useState<Currencies>(defaultCoin());
 
-  const { givingValues } = useGivingValues(currentCoin());
+  const { givingValues, refetch } = useGivingValues(currentCoin);
+
+  useEffect(() => {
+    refetch();
+  }, [currentCoin]);
 
   return (
-    <div>
+    <S.CardSectionContainer>
       <Dropdown
         name="currency"
         label={t("currency")}
         values={[Currencies.USD, Currencies.BRL]}
+        onOptionChanged={(value) => setCurrentCoin(value)}
       />
       <S.Subtitle>{t("subtitleCard")}</S.Subtitle>
 
@@ -49,7 +53,7 @@ function CardSection(): JSX.Element {
       <S.ButtonContainer>
         <S.FinishButton text={t("buttonTextCard")} onClick={() => {}} />
       </S.ButtonContainer>
-    </div>
+    </S.CardSectionContainer>
   );
 }
 
