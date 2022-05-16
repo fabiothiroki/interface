@@ -46,8 +46,6 @@ function Dropdown({
             paddingTop: 8,
             paddingBottom: 8,
             position: "absolute",
-            top: "0",
-            left: "0",
             boxShadow: "0px 4px 12px 0px rgba(24, 86, 105, 0.15)",
             zIndex: 1,
             margin: 0,
