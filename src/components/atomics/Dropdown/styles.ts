@@ -5,6 +5,7 @@ export const Input = styled.div`
     box-sizing: border-box;
     border-radius: 5px;
     width: 100%;
+    max-width: 472px;
     height: 40px;
     margin-bottom: 12px;
     display: inline-block;
@@ -30,7 +31,6 @@ export const Input = styled.div`
 
     input {
       padding: 0 10px;
-      background-color: ${theme.colors.bgGray};
       color: ${theme.colors.ribonBlack};
       border: none;
       position: relative;
@@ -46,6 +46,10 @@ export const Input = styled.div`
       @media (min-width: ${theme.breakpoints.desktop}) {
         top: -8px;
       }
+
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     img {
@@ -56,5 +60,25 @@ export const Input = styled.div`
       align-self: center;
       justify-self: center;
     }
+
+    &:hover {
+      cursor: pointer;
+    }
   `}
+`;
+
+export const OptionContainer = styled.div`
+  ${({ theme }) => css`
+    padding: 8px 16px;
+
+    &:hover {
+      background-color: ${theme.colors.hoverGray};
+      cursor: pointer;
+    }
+  `}
+`;
+
+export const OptionText = styled.h4`
+  font-weight: bold;
+  line-height: 22px;
 `;
