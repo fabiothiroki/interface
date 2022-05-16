@@ -1,23 +1,26 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { useState } from "react";
 import ArrowDownIcon from "assets/icons/arrow-down-icon.svg";
 import ModalBlank from "components/moleculars/modals/ModalBlank";
 import * as S from "./styles";
-
-export type ValueDispatcher = Dispatch<SetStateAction<string>>;
 
 export type Props = {
   name: string;
   label: string;
   values: string[];
+  onOptionChanged?: (value: string) => void;
 };
 
-function Dropdown({ name, label, values }: Props): JSX.Element {
+function Dropdown({
+  name,
+  label,
+  values,
+  onOptionChanged,
+}: Props): JSX.Element {
   const [dropdownValue, setDropdownValue] = useState(values[0]);
   const [optionsVisible, setOptionsVisible] = useState(false);
 
   const handleInputClick = () => {
     setOptionsVisible(!optionsVisible);
-    console.log("clicked");
   };
 
   return (
@@ -44,7 +47,10 @@ function Dropdown({ name, label, values }: Props): JSX.Element {
       >
         {values.map((value, index) => (
           <S.OptionContainer
-            onClick={() => setDropdownValue(value)}
+            onClick={() => {
+              setDropdownValue(value);
+              if (onOptionChanged) onOptionChanged(value);
+            }}
             key={index.toString(10)}
           >
             <S.OptionText>{value}</S.OptionText>

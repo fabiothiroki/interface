@@ -16,4 +16,7 @@ Default.args = {
   name: "Dropdown",
   values: ["value1", "value2", "value3"],
   label: "dropdown",
+  onOptionChanged: (value) => {
+    console.log(value);
+  },
 };
