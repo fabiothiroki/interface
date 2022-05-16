@@ -5,7 +5,7 @@ import { apiGet } from "..";
 
 const givingValuesApi = {
   getGivingValues: (coin: Currencies): Promise<AxiosResponse<GivingValue[]>> =>
-    apiGet(`giving_values?currency=${coin.toLocaleLowerCase()}`),
+    apiGet(`giving_values?currency=${coin.toLowerCase()}`),
 };
 
 export default givingValuesApi;
