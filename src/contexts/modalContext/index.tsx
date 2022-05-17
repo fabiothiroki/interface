@@ -72,7 +72,7 @@ function ModalProvider({ children }: Props) {
 
 export default ModalProvider;
 
-export const useModal = () => {
+export const useModalContext = () => {
   const context = useContext(ModalContext);
 
   if (!context) {

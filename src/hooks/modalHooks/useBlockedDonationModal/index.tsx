@@ -1,11 +1,11 @@
-import { useModal } from "contexts/modalContext";
+import { useModalContext } from "contexts/modalContext";
 import { useTranslation } from "react-i18next";
 import { MODAL_TYPES } from "contexts/modalContext/helpers";
 import blockedIcon from "assets/images/il-ticket-gray.svg";
 import { useEffect } from "react";
 
 export function useBlockedDonationModal(initialState?: boolean) {
-  const { showModal, hideModal } = useModal();
+  const { showModal, hideModal } = useModalContext();
   const { t } = useTranslation("translation", {
     keyPrefix: "donations.causesPage",
   });

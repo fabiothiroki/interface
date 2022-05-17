@@ -1,13 +1,13 @@
 import { renderComponent } from "config/testUtils";
 import { expectTextToBeInTheDocument } from "config/testUtils/expects";
-import { useModal } from ".";
+import { useModalContext } from ".";
 
 function ModalTestPage() {
-  useModal();
+  useModalContext();
   return <div>Modal</div>;
 }
 
-describe("useModal", () => {
+describe("useModalContext", () => {
   it("renders without error", () => {
     renderComponent(<ModalTestPage />);
     expectTextToBeInTheDocument("Modal");
