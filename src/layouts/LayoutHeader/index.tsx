@@ -50,7 +50,7 @@ function LayoutHeader({
   }
 
   function handleCounterClick() {
-    showBlockedDonationModal();
+    if (hasDonateToday()) showBlockedDonationModal();
   }
 
   return (
