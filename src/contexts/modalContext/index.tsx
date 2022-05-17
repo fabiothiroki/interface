@@ -20,7 +20,6 @@ function ModalProvider({ children }: Props) {
   const { modalType, modalProps } = store || {};
 
   const showModal = ({ type, props }: ShowModalProps) => {
-    console.log(modalProps);
     setVisible(true);
     setStore({
       ...store,
