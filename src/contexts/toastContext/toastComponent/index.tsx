@@ -19,7 +19,7 @@ function Toast() {
           >
             <S.Message>{notification.message}</S.Message>
             {notification.link && (
-              <S.Link href={notification.link}>
+              <S.Link href={notification.link} target="_blank">
                 {notification.linkMessage}
               </S.Link>
             )}
