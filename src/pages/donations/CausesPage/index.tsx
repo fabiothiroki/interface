@@ -16,11 +16,11 @@ import { useLocation } from "react-router-dom";
 import ModalError from "components/moleculars/modals/ModalError";
 import useUsers from "hooks/apiHooks/useUsers";
 import { useCurrentUser } from "contexts/currentUserContext";
-import blockedIcon from "assets/images/il-ticket-gray.svg";
 import { useIntegrationId } from "hooks/useIntegrationId";
 import * as S from "./styles";
 import ConfirmEmail from "./ConfirmEmail";
 import DonationTicketModal from "./DonationTicketModal";
+import BlockedDonationModal from "./BlockedDonationModal";
 
 type LocationStateType = {
   failedDonation: boolean;
@@ -128,6 +128,10 @@ function CausesPage(): JSX.Element {
   return (
     <S.Container>
       <DonationTicketModal />
+      <BlockedDonationModal
+        blockedModalVisible={blockedModalVisible}
+        closeBlockedModal={closeBlockedModal}
+      />
       {signedIn ? (
         <ModalIcon
           icon={Ticket}
@@ -164,16 +168,6 @@ function CausesPage(): JSX.Element {
         buttonText={t("errorModalButtonText")}
         onClose={closeWarningModal}
         warning
-      />
-
-      <ModalIcon
-        visible={blockedModalVisible}
-        title={t("blockedModalTitle")}
-        body={t("blockedModalText")}
-        primaryButtonText={t("blockedModalButtonText")}
-        primaryButtonCallback={closeBlockedModal}
-        onClose={closeBlockedModal}
-        icon={blockedIcon}
       />
 
       <S.BodyContainer>
