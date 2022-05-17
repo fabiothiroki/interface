@@ -134,6 +134,7 @@ function SupportFundPage(): JSX.Element {
         message: t("transactionOnBlockchainText"),
         type: "success",
         link: `https://mumbai.polygonscan.com/tx/${id}`,
+        linkMessage: t("linkMessageToast"),
       });
       logEvent("toastNotification_view", {
         status: "transactionProcessed",
