@@ -15,6 +15,7 @@ import useNavigation from "hooks/useNavigation";
 import ChangeLanguageItem from "./ChangeLanguageItem";
 import LogoutItem from "./LogoutItem";
 import * as S from "./styles";
+import { useBlockedDonationModal } from "../../hooks/modalHooks/useBlockedDonationModal";
 
 export type Props = {
   rightComponent?: JSX.Element;
@@ -30,6 +31,7 @@ function LayoutHeader({
   const { isMobile } = useBreakpoint();
   const { userLastDonation, signedIn } = useCurrentUser();
   const { navigateBack } = useNavigation();
+  const { showBlockedDonationModal } = useBlockedDonationModal();
 
   if (!integrationId) return <div />;
 
@@ -45,6 +47,10 @@ function LayoutHeader({
 
   function hasDonateToday() {
     return userLastDonation === today();
+  }
+
+  function handleCounterClick() {
+    showBlockedDonationModal();
   }
 
   return (
@@ -80,7 +86,7 @@ function LayoutHeader({
         rightComponent={
           <S.ContainerRight>
             {rightComponent}
-            <S.CounterContainer>
+            <S.CounterContainer onClick={() => handleCounterClick()}>
               <S.TicketsAmount
                 color={
                   hasDonateToday()
