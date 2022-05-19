@@ -5,7 +5,8 @@ import {
   expectTextToBeInTheDocument,
 } from "config/testUtils/expects";
 import promoterDonationFactory from "config/testUtils/factories/promoterDonationFactory";
-import { mockGraphlRequest } from "config/testUtils/test-helper";
+import { mockGraphqlRequest } from "config/testUtils/test-helper";
+import { PROMOTER_DONATIONS_QUERY_NAME } from "services/apiTheGraph/promoterDonationsApi";
 import GivingsSection from ".";
 
 describe("GivingsSection", () => {
@@ -67,7 +68,7 @@ describe("GivingsSection", () => {
     describe("when the promoter has givings", () => {
       beforeEach(async () => {
         const fiftyCentInWei = "500000000000000000";
-        mockGraphlRequest({
+        mockGraphqlRequest(PROMOTER_DONATIONS_QUERY_NAME, {
           promoterDonations: [
             promoterDonationFactory({
               amountDonated: fiftyCentInWei,

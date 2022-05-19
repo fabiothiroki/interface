@@ -44,15 +44,25 @@ type MockGraphlOptions = {
   loading?: boolean;
   networkStatus?: number;
 };
-export const mockGraphlRequest = (
-  data: any,
+export const mockGraphqlRequest = (
+  queryName: string,
+  responseData: any,
   { loading = false, networkStatus = 1 }: MockGraphlOptions = {},
 ) => {
   const querySpy = jest.spyOn(client, "query");
 
-  return querySpy.mockResolvedValue({
-    data,
-    loading,
-    networkStatus,
+  return querySpy.mockImplementationOnce((queryArg): any => {
+    const queryNameFromArgs = (queryArg.query.definitions[0] as any).name
+      ?.value;
+
+    if (queryNameFromArgs === queryName) {
+      return Promise.resolve({
+        loading,
+        networkStatus,
+        data: responseData,
+      });
+    }
+
+    return null;
   });
 };
