@@ -40,14 +40,14 @@ export const changeInputValue = (element: any, value: any) => {
   TestUtils.Simulate.change(element);
 };
 
-type MockGraphlOptions = {
+type MockGraphqlOptions = {
   loading?: boolean;
   networkStatus?: number;
 };
 export const mockGraphqlRequest = (
   queryName: string,
   responseData: any,
-  { loading = false, networkStatus = 1 }: MockGraphlOptions = {},
+  { loading = false, networkStatus = 1 }: MockGraphqlOptions = {},
 ) => {
   const querySpy = jest.spyOn(client, "query");
 
