@@ -4,10 +4,12 @@ import {
   expectPageToNavigateTo,
   expectTextToBeInTheDocument,
 } from "config/testUtils/expects";
-import { mockRequest } from "config/testUtils/test-helper";
-import { THE_GRAPH_API } from "services/apiTheGraph";
+import { client } from "services/apiTheGraph";
+import { act } from "@testing-library/react";
 import promoterDonationFactory from "config/testUtils/factories/promoterDonationFactory";
 import GivingsSection from ".";
+
+const querySpy = jest.spyOn(client, "query");
 
 describe("GivingsSection", () => {
   it("should render without error", () => {
@@ -65,21 +67,34 @@ describe("GivingsSection", () => {
 
     describe("when the promoter has givings", () => {
       beforeEach(async () => {
-        mockRequest(THE_GRAPH_API, {
-          method: "POST",
-          payload: [promoterDonationFactory()],
+        const fiftyCent = "500000000000000000";
+
+        querySpy.mockResolvedValue({
+          data: {
+            promoterDonations: [
+              promoterDonationFactory({
+                amountDonated: fiftyCent,
+              }),
+            ],
+          },
+          loading: false,
+          networkStatus: 1,
+        });
+
+        act(() => {
+          renderComponent(<GivingsSection />, {
+            walletProviderValue: {
+              wallet: "0xFFFF",
+            },
+          });
         });
         await waitForPromises();
-
-        renderComponent(<GivingsSection />, {
-          walletProviderValue: {
-            wallet: "0xFFFF",
-          },
-        });
       });
 
-      fit("shows the user givings", () => {
-        expectTextToBeInTheDocument("See transactio");
+      it("shows the user givings", () => {
+        expectTextToBeInTheDocument("See transaction");
+        expectTextToBeInTheDocument("5/18/2022");
+        expectTextToBeInTheDocument("0.50");
       });
     });
   });
