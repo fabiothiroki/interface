@@ -67,6 +67,7 @@ function GivingsSection(): JSX.Element {
       setLoading(true);
       try {
         const donations = await getPromoterDonations(user, isMobile ? 2 : 3);
+        console.log(donations);
         setPromoterDonations(donations.promoterDonations);
       } catch (e) {
         logError(e);

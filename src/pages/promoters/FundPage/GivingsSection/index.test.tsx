@@ -1,9 +1,12 @@
-import { clickOn, renderComponent } from "config/testUtils";
+import { clickOn, renderComponent, waitForPromises } from "config/testUtils";
 import {
   expectLogEventToHaveBeenCalledWith,
   expectPageToNavigateTo,
   expectTextToBeInTheDocument,
 } from "config/testUtils/expects";
+import { mockRequest } from "config/testUtils/test-helper";
+import { THE_GRAPH_API } from "services/apiTheGraph";
+import promoterDonationFactory from "config/testUtils/factories/promoterDonationFactory";
 import GivingsSection from ".";
 
 describe("GivingsSection", () => {
@@ -14,15 +17,15 @@ describe("GivingsSection", () => {
   });
 
   describe("when there is a wallet connected", () => {
-    beforeEach(() => {
-      renderComponent(<GivingsSection />, {
-        walletProviderValue: {
-          wallet: "0xFFFF",
-        },
+    describe("when the promoter has no givings", () => {
+      beforeEach(() => {
+        renderComponent(<GivingsSection />, {
+          walletProviderValue: {
+            wallet: "0xFFFF",
+          },
+        });
       });
-    });
 
-    describe("when the promoter hasn't givings", () => {
       it("render give now card", () => {
         expectTextToBeInTheDocument("Give now");
       });
@@ -42,9 +45,7 @@ describe("GivingsSection", () => {
           expectPageToNavigateTo("/promoters/support-fund");
         });
       });
-    });
 
-    describe("when the promoter hasn't givings", () => {
       describe.skip("when the show your givings card is clicked", () => {
         beforeEach(() => {
           clickOn("Show your givings");
@@ -59,6 +60,26 @@ describe("GivingsSection", () => {
         it("navigates to the you givings page", () => {
           expectPageToNavigateTo("/promoters/show-givings");
         });
+      });
+    });
+
+    describe("when the promoter has givings", () => {
+      beforeEach(async () => {
+        mockRequest(THE_GRAPH_API, {
+          method: "POST",
+          payload: [promoterDonationFactory()],
+        });
+        await waitForPromises();
+
+        renderComponent(<GivingsSection />, {
+          walletProviderValue: {
+            wallet: "0xFFFF",
+          },
+        });
+      });
+
+      fit("shows the user givings", () => {
+        expectTextToBeInTheDocument("See transactio");
       });
     });
   });
