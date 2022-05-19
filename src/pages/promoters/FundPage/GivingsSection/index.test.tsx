@@ -13,7 +13,7 @@ describe("GivingsSection", () => {
     expectTextToBeInTheDocument("Your givings");
   });
 
-  describe.skip("when there is a wallet connected", () => {
+  describe("when there is a wallet connected", () => {
     beforeEach(() => {
       renderComponent(<GivingsSection />, {
         walletProviderValue: {
@@ -43,8 +43,9 @@ describe("GivingsSection", () => {
         });
       });
     });
+
     describe("when the promoter hasn't givings", () => {
-      describe("when the show your givings card is clicked", () => {
+      describe.skip("when the show your givings card is clicked", () => {
         beforeEach(() => {
           clickOn("Show your givings");
         });
@@ -62,7 +63,7 @@ describe("GivingsSection", () => {
     });
   });
 
-  describe.skip("when there is no wallet connected", () => {
+  describe("when there is no wallet connected", () => {
     const connectWalletMock = jest.fn();
 
     beforeEach(() => {
