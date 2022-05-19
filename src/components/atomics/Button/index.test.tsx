@@ -6,6 +6,7 @@ import {
 } from "config/testUtils/expects";
 import { screen } from "@testing-library/react";
 import ribon from "assets/icons/ribon.svg";
+import theme from "styles/theme";
 import Button from ".";
 
 describe("<Button />", () => {
@@ -49,12 +50,16 @@ describe("<Button />", () => {
   describe("when has a specific style", () => {
     it("renders outline button", () => {
       renderComponent(<Button text="button" onClick={() => {}} outline />);
-      expect(screen.getByText("button")).toHaveStyle("color: #00CDB4;");
+      expect(screen.getByText("button")).toHaveStyle(
+        `color: ${theme.colors.ribonBlue};`,
+      );
     });
 
     it("renders softDisabled button", () => {
       renderComponent(<Button text="button" onClick={() => {}} softDisabled />);
-      expect(screen.getByText("button")).toHaveStyle("color: #82AABE");
+      expect(screen.getByText("button")).toHaveStyle(
+        `color: ${theme.colors.darkGray};`,
+      );
     });
 
     it("renders button with border radius when round is true", () => {
