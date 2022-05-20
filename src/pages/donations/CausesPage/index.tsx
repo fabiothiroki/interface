@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 import Ticket from "assets/images/ticket.svg";
-import ModalIcon from "components/moleculars/modals/ModalIcon";
 import { useTranslation } from "react-i18next";
 import { logEvent } from "services/analytics";
 import useNavigation from "hooks/useNavigation";
@@ -19,6 +18,7 @@ import * as S from "./styles";
 import ConfirmEmail from "./ConfirmEmail";
 import DonationTicketModal from "./DonationTicketModal";
 import NonProfitsList from "./NonProfitsList";
+import ConfirmDonationModal from "./ConfirmDonationModal";
 
 type LocationStateType = {
   failedDonation: boolean;
@@ -53,7 +53,7 @@ function CausesPage(): JSX.Element {
   const { navigateTo } = useNavigation();
   const { nonProfits, isLoading } = useNonProfits();
   const { findOrCreateUser } = useUsers();
-  const { signedIn, setCurrentUser, currentUser } = useCurrentUser();
+  const { signedIn, setCurrentUser } = useCurrentUser();
 
   useEffect(() => {
     logEvent("donateIntroDial_view");
@@ -88,20 +88,14 @@ function CausesPage(): JSX.Element {
     <S.Container>
       <DonationTicketModal />
       {signedIn ? (
-        <ModalIcon
-          icon={Ticket}
-          title={t("confirmModalAuthTitle")}
-          body={`${chosenNonProfit?.impactByTicket} ${chosenNonProfit?.impactDescription}`}
-          primaryButtonText={t("confirmModalPrimaryButtonText")}
-          primaryButtonCallback={() => {
-            if (currentUser) donate(currentUser.email);
-          }}
-          secondaryButtonText={t("confirmModalSecondaryButtonText")}
-          secondaryButtonCallback={closeConfirmModal}
-          visible={confirmModalVisible}
-          onClose={closeConfirmModal}
-          roundIcon
-        />
+        chosenNonProfit && (
+          <ConfirmDonationModal
+            donate={donate}
+            chosenNonProfit={chosenNonProfit}
+            confirmModalVisible={confirmModalVisible}
+            setConfirmModalVisible={setConfirmModalVisible}
+          />
+        )
       ) : (
         <ConfirmEmail
           onFormSubmit={(values) => {
