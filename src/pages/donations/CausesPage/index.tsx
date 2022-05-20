@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from "react";
-import Ticket from "assets/images/ticket.svg";
 import { useTranslation } from "react-i18next";
 import { logEvent } from "services/analytics";
 import useNavigation from "hooks/useNavigation";
@@ -15,15 +14,10 @@ import useIntegration from "hooks/apiHooks/useIntegration";
 import { useModal } from "hooks/modalHooks/useModal";
 import { MODAL_TYPES } from "contexts/modalContext/helpers";
 import * as S from "./styles";
-import ConfirmEmail from "./ConfirmEmail";
 import DonationTicketModal from "./DonationTicketModal";
 import NonProfitsList from "./NonProfitsList";
-import ConfirmDonationModal from "./ConfirmDonationModal";
-
-type LocationStateType = {
-  failedDonation: boolean;
-  blockedDonation: boolean;
-};
+import { LocationStateType } from "./LocationStateType";
+import ConfirmSection from "./ConfirmSection";
 
 function CausesPage(): JSX.Element {
   const [confirmModalVisible, setConfirmModalVisible] = useState(false);
@@ -87,26 +81,13 @@ function CausesPage(): JSX.Element {
   return (
     <S.Container>
       <DonationTicketModal />
-      {signedIn ? (
-        chosenNonProfit && (
-          <ConfirmDonationModal
-            donate={donate}
-            chosenNonProfit={chosenNonProfit}
-            confirmModalVisible={confirmModalVisible}
-            setConfirmModalVisible={setConfirmModalVisible}
-          />
-        )
-      ) : (
-        <ConfirmEmail
-          onFormSubmit={(values) => {
-            donate(values.email);
-          }}
-          visible={confirmModalVisible}
-          icon={Ticket}
-          title={t("confirmModalTitle")}
-          primaryButtonText={t("confirmModalPrimaryButtonText")}
-          secondaryButtonText={t("confirmModalSecondaryButtonText")}
-          secondaryButtonCallback={closeConfirmModal}
+      {chosenNonProfit && (
+        <ConfirmSection
+          chosenNonProfit={chosenNonProfit}
+          donate={donate}
+          confirmModalVisible={confirmModalVisible}
+          setConfirmModalVisible={setConfirmModalVisible}
+          closeConfirmModal={closeConfirmModal}
         />
       )}
 
