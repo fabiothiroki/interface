@@ -1,23 +1,23 @@
 {
   "donations": {
     "causesPage": {
-      "donationModalTitle": "Doe de graça!",
-      "donationModalBody": "Use seus tickets diários para fazer doações a serem patrocinadas pelos apoiadores da Ribon.",
+      "donationModalTitle": "Você recebeu um ticket doação",
+      "donationModalBody": "Use seu ticket gratuito para fazer uma doação",
       "donationModalButtonText": "Continuar",
-      "confirmModalTitle": "Insira seu e-mail para usar seu vale doação",
+      "confirmModalTitle": "Entre ou registre-se para usar seu ticket doação",
       "confirmModalAuthTitle": "Confirmar doação",
       "confirmModalPrimaryButtonText": "Confirmar",
       "confirmModalSecondaryButtonText": "Cancelar",
-      "donateText": "Doar",
+      "donateText": "Usar ticket",
       "donateBlockedText": "Bloqueado",
       "pageTitle": "Causas",
-      "pageSubtitle": "Doe de graça para uma causa de sua escolha",
       "errorModalTitle": "Falha no processo",
       "errorModalText": "Não foi possível concluir esta ação. Por favor verifique sua conexão com a internet e tente novamente.",
       "errorModalButtonText": "Ok",
-      "blockedModalTitle": "Bloqueado",
-      "blockedModalText": "Esta conta já usou seu vale doação diário. Volte amanhã para doar novamente!",
-      "blockedModalButtonText": "Ok",
+      "blockedModalTitle": "Você não tem tickets doação",
+      "blockedModalText": "Contribua para o Tesouro de Doação da Ribon e promova novas doações.",
+      "blockedModalFirstButtonText": "Contribuir agora",
+      "blockedModalSecondButtonText": "Talvez depois",
       "modalForm": {
         "footerStartText": "Ao inserir seu e-mail e se inscrever, você aceita os",
         "footerAnd": "e",
@@ -37,7 +37,7 @@
     },
     "donationInProcess": {
       "animationText": "Doando...",
-      "impactText": "Os apoiadores da Ribon são os responsáveis pelo pagamento das doações gratuitas"
+      "impactText": "Essa doação é financiada pelo Tesouro de Doação da Ribon"
     },
     "menu": {
       "impactPageTitle": "Impacto",
@@ -82,7 +82,7 @@
         "linkTransactionText": "Ver transação",
         "textLastCard": "Suas contribuições",
         "firstGivingButtonText": "Contribua agora",
-        "firstGivingText": "Faça sua primeira doação",
+        "firstGivingText": "Faça uma contribuição e veja ela aqui",
         "subtitleGivings": "Suas contribuições",
         "processingText": "Processando transação...",
         "transactionSuccessText": "Transação processada",

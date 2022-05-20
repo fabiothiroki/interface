@@ -2,22 +2,22 @@
   "donations": {
     "causesPage": {
       "donationModalTitle": "You got a donation ticket",
-      "donationModalBody": "Use your daily tickets to make donations to be sponsored by Ribon’s supporters.",
+      "donationModalBody": "Use your free ticket to make a donation",
       "donationModalButtonText": "Continue",
-      "confirmModalTitle": "Enter your e-mail to use your ticket",
+      "confirmModalTitle": "Log in or sign up to use your donation ticket",
       "confirmModalAuthTitle": "Confirm your donation",
       "confirmModalPrimaryButtonText": "Confirm",
       "confirmModalSecondaryButtonText": "Cancel",
-      "donateText": "Donate",
+      "donateText": "Use ticket",
       "donateBlockedText": "Blocked",
       "pageTitle": "Causes",
-      "pageSubtitle": "Donate for free for a cause of your choice",
       "errorModalTitle": "Process failed",
       "errorModalText": "It was not possible to finish this action. Please, check your internet connection and try again.",
       "errorModalButtonText": "Ok",
-      "blockedModalTitle": "Donation blocked",
-      "blockedModalText": "This account has already used it’s daily donation ticket. Come back tomorrow!",
-      "blockedModalButtonText": "Ok",
+      "blockedModalTitle": "You don't have donation tickets",
+      "blockedModalText": "Make a giving to Ribon's Donation Treasure to promote new donations",
+      "blockedModalFirstButtonText": "Give now",
+      "blockedModalSecondButtonText": "Maybe later",
       "modalForm": {
         "footerStartText": "By signing up you agree to Ribon’s",
         "footerAnd": "and",
@@ -37,7 +37,7 @@
     },
     "donationInProcess": {
       "animationText": "Donating...",
-      "impactText": "Ribon’s supporters are those responsible for paying for the free donations"
+      "impactText": "This donation is funded by Ribon’s Donation Treasure"
     },
     "menu": {
       "impactPageTitle": "Impact",
@@ -82,7 +82,7 @@
         "linkTransactionText": "See transaction",
         "textLastCard": "Show your givings",
         "firstGivingButtonText": "Give now",
-        "firstGivingText": "Make your first giving",
+        "firstGivingText": "Make a giving and you’ll see it here",
         "subtitleGivings": "Your givings",
         "processingText": "Processing transaction...",
         "transactionSuccessText": "Transaction successful",
