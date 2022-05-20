@@ -1,9 +1,7 @@
-import CardCenterImageButton from "components/moleculars/cards/CardCenterImageButton";
 import { useCallback, useEffect, useState } from "react";
 import Ticket from "assets/images/ticket.svg";
 import ModalIcon from "components/moleculars/modals/ModalIcon";
 import { useTranslation } from "react-i18next";
-import { today } from "lib/dateTodayFormatter";
 import { logEvent } from "services/analytics";
 import useNavigation from "hooks/useNavigation";
 import NonProfit from "types/entities/NonProfit";
@@ -14,13 +12,13 @@ import { useLocation } from "react-router-dom";
 import useUsers from "hooks/apiHooks/useUsers";
 import { useCurrentUser } from "contexts/currentUserContext";
 import { useIntegrationId } from "hooks/useIntegrationId";
-import { useBlockedDonationModal } from "hooks/modalHooks/useBlockedDonationModal";
 import useIntegration from "hooks/apiHooks/useIntegration";
 import { useModal } from "hooks/modalHooks/useModal";
 import { MODAL_TYPES } from "contexts/modalContext/helpers";
 import * as S from "./styles";
 import ConfirmEmail from "./ConfirmEmail";
 import DonationTicketModal from "./DonationTicketModal";
+import NonProfitsList from "./NonProfitsList";
 
 type LocationStateType = {
   failedDonation: boolean;
@@ -31,6 +29,7 @@ function CausesPage(): JSX.Element {
   const [confirmModalVisible, setConfirmModalVisible] = useState(false);
   const [chosenNonProfit, setChosenNonProfit] = useState<NonProfit>();
   const integrationId = useIntegrationId();
+  const { integration } = useIntegration(integrationId);
 
   const { t } = useTranslation("translation", {
     keyPrefix: "donations.causesPage",
@@ -51,29 +50,18 @@ function CausesPage(): JSX.Element {
     state?.failedDonation,
   );
 
-  const { showBlockedDonationModal } = useBlockedDonationModal(
-    state?.blockedDonation,
-  );
-
   const { navigateTo } = useNavigation();
   const { nonProfits, isLoading } = useNonProfits();
   const { findOrCreateUser } = useUsers();
-  const { signedIn, setCurrentUser, currentUser, userLastDonation } =
-    useCurrentUser();
+  const { signedIn, setCurrentUser, currentUser } = useCurrentUser();
 
   useEffect(() => {
     logEvent("donateIntroDial_view");
   }, []);
 
-  const { integration } = useIntegration(integrationId);
-
   const closeConfirmModal = useCallback(() => {
     setConfirmModalVisible(false);
   }, []);
-
-  function hasDonateToday() {
-    return userLastDonation === today();
-  }
 
   const donate = useCallback(
     async (email: string) => {
@@ -95,24 +83,6 @@ function CausesPage(): JSX.Element {
     },
     [chosenNonProfit],
   );
-
-  const chooseNonProfit = useCallback((nonProfit: NonProfit) => {
-    setChosenNonProfit(nonProfit);
-  }, []);
-
-  function handleButtonClick(nonProfit: NonProfit) {
-    logEvent("donateCardButton_click", {
-      causeId: nonProfit.id,
-    });
-    chooseNonProfit(nonProfit);
-    if (hasDonateToday()) {
-      logEvent("donateFinishedDonation_view");
-      showBlockedDonationModal();
-      logEvent("donateBlockedDonation_view");
-    } else {
-      setConfirmModalVisible(true);
-    }
-  }
 
   return (
     <S.Container>
@@ -152,19 +122,13 @@ function CausesPage(): JSX.Element {
           <Loader />
         ) : (
           <S.CausesContainer>
-            {nonProfits?.map((nonProfit, idx) => (
-              <S.CausesCardContainer key={idx.toString()}>
-                <CardCenterImageButton
-                  image={nonProfit.mainImage}
-                  title={`${nonProfit.impactByTicket} ${nonProfit.impactDescription}`}
-                  buttonText={
-                    hasDonateToday() ? t("donateBlockedText") : t("donateText")
-                  }
-                  onClickButton={() => handleButtonClick(nonProfit)}
-                  softDisabled={hasDonateToday()}
-                />
-              </S.CausesCardContainer>
-            ))}
+            {nonProfits && (
+              <NonProfitsList
+                nonProfits={nonProfits}
+                setChosenNonProfit={setChosenNonProfit}
+                setConfirmModalVisible={setConfirmModalVisible}
+              />
+            )}
           </S.CausesContainer>
         )}
       </S.BodyContainer>
