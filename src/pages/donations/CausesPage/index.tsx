@@ -9,8 +9,6 @@ import useNavigation from "hooks/useNavigation";
 import NonProfit from "types/entities/NonProfit";
 import useNonProfits from "hooks/apiHooks/useNonProfits";
 import Loader from "components/atomics/Loader";
-import Integration from "types/entities/Integration";
-import integrationsApi from "services/api/integrationsApi";
 import { logError } from "services/crashReport";
 import { useLocation } from "react-router-dom";
 import ModalError from "components/moleculars/modals/ModalError";
@@ -18,6 +16,7 @@ import useUsers from "hooks/apiHooks/useUsers";
 import { useCurrentUser } from "contexts/currentUserContext";
 import { useIntegrationId } from "hooks/useIntegrationId";
 import { useBlockedDonationModal } from "hooks/modalHooks/useBlockedDonationModal";
+import useIntegration from "hooks/apiHooks/useIntegration";
 import * as S from "./styles";
 import ConfirmEmail from "./ConfirmEmail";
 import DonationTicketModal from "./DonationTicketModal";
@@ -30,7 +29,6 @@ type LocationStateType = {
 function CausesPage(): JSX.Element {
   const [confirmModalVisible, setConfirmModalVisible] = useState(false);
   const [chosenNonProfit, setChosenNonProfit] = useState<NonProfit>();
-  const [integration, setIntegration] = useState<Integration>();
   const integrationId = useIntegrationId();
 
   const { t } = useTranslation("translation", {
@@ -54,21 +52,7 @@ function CausesPage(): JSX.Element {
     logEvent("donateIntroDial_view");
   }, []);
 
-  useEffect(() => {
-    async function fetchIntegration() {
-      try {
-        if (!integrationId) return;
-
-        const { data } = await integrationsApi.getIntegration(integrationId);
-
-        setIntegration(data);
-      } catch (e) {
-        logError(e);
-      }
-    }
-
-    fetchIntegration();
-  }, []);
+  const { integration } = useIntegration(integrationId);
 
   const closeWarningModal = useCallback(() => {
     setWarningModalVisible(false);
