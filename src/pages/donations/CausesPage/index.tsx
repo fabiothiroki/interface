@@ -11,12 +11,13 @@ import useNonProfits from "hooks/apiHooks/useNonProfits";
 import Loader from "components/atomics/Loader";
 import { logError } from "services/crashReport";
 import { useLocation } from "react-router-dom";
-import ModalError from "components/moleculars/modals/ModalError";
 import useUsers from "hooks/apiHooks/useUsers";
 import { useCurrentUser } from "contexts/currentUserContext";
 import { useIntegrationId } from "hooks/useIntegrationId";
 import { useBlockedDonationModal } from "hooks/modalHooks/useBlockedDonationModal";
 import useIntegration from "hooks/apiHooks/useIntegration";
+import { useModal } from "hooks/modalHooks/useModal";
+import { MODAL_TYPES } from "contexts/modalContext/helpers";
 import * as S from "./styles";
 import ConfirmEmail from "./ConfirmEmail";
 import DonationTicketModal from "./DonationTicketModal";
@@ -35,9 +36,21 @@ function CausesPage(): JSX.Element {
     keyPrefix: "donations.causesPage",
   });
   const { state } = useLocation<LocationStateType>();
-  const [warningModalVisible, setWarningModalVisible] = useState(
+
+  const { hide: closeWarningModal } = useModal(
+    {
+      type: MODAL_TYPES.MODAL_ERROR,
+      props: {
+        title: t("errorModalTitle"),
+        body: t("errorModalText"),
+        buttonText: t("errorModalButtonText"),
+        onClose: () => closeWarningModal(),
+        warning: true,
+      },
+    },
     state?.failedDonation,
   );
+
   const { showBlockedDonationModal } = useBlockedDonationModal(
     state?.blockedDonation,
   );
@@ -53,10 +66,6 @@ function CausesPage(): JSX.Element {
   }, []);
 
   const { integration } = useIntegration(integrationId);
-
-  const closeWarningModal = useCallback(() => {
-    setWarningModalVisible(false);
-  }, []);
 
   const closeConfirmModal = useCallback(() => {
     setConfirmModalVisible(false);
@@ -136,15 +145,6 @@ function CausesPage(): JSX.Element {
           secondaryButtonCallback={closeConfirmModal}
         />
       )}
-
-      <ModalError
-        visible={warningModalVisible}
-        title={t("errorModalTitle")}
-        body={t("errorModalText")}
-        buttonText={t("errorModalButtonText")}
-        onClose={closeWarningModal}
-        warning
-      />
 
       <S.BodyContainer>
         <S.Title>{t("pageTitle")}</S.Title>
