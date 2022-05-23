@@ -58,8 +58,7 @@ function FundPage(): JSX.Element {
     <S.Container>
       <ModalOnboarding />
       <S.Title>{t("title")}</S.Title>
-      <S.Subtitle>{t("subtitle")}</S.Subtitle>
-      <S.SectionTitle>{t("fundBalance")}</S.SectionTitle>
+      <S.SectionTitle>{t("treasureBalance")}</S.SectionTitle>
       <S.CardContainer>
         <CardBlank>
           <S.FundText>
