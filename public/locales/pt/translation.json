@@ -76,7 +76,7 @@
     "fundPage": {
       "title": "Tesouro de doação",
       "treasureBalance": "Saldo do tesouro",
-      "fundSupportButtonText": "Ajudar o fundo",
+      "treasureSupportButtonText": "Fazer uma contribuição",
       "givingsSection": {
         "linkTransactionText": "Ver transação",
         "textLastCard": "Suas contribuições",

@@ -65,7 +65,7 @@ function FundPage(): JSX.Element {
             {contractBalance} <S.FundTextCoin>{coin}</S.FundTextCoin>
           </S.FundText>
           <Button
-            text={t("fundSupportButtonText")}
+            text={t("treasureSupportButtonText")}
             onClick={handleSupportButtonClick}
           />
         </CardBlank>

@@ -76,7 +76,7 @@
     "fundPage": {
       "title": "Donation treasure",
       "treasureBalance": "Treasure balance",
-      "fundSupportButtonText": "Support the fund",
+      "treasureSupportButtonText": "Support the treasure",
       "givingsSection": {
         "linkTransactionText": "See transaction",
         "textLastCard": "Show your givings",
