@@ -42,7 +42,7 @@
     "menu": {
       "impactPageTitle": "Impact",
       "causesPageTitle": "Causes",
-      "fundPageTitle": "Fund"
+      "treasurePageTitle": "Treasure"
     }
   },
   "layouts": {
@@ -66,7 +66,7 @@
   },
   "impactPage": {
     "title": "Impact",
-    "subtitle": "You used {{ticketsUsed}} tickets",
+    "subtitle": "You used {{ticketsUsed}} donation tickets",
     "impactText": "You donated ",
     "button": "Show more",
     "noImpactText": "Your donation impact summary will be shown here",
@@ -74,10 +74,9 @@
   },
   "promoters": {
     "fundPage": {
-      "title": "Fund",
-      "subtitle": "Help charities by funding donation tickets",
-      "fundBalance": "Fund balance",
-      "fundSupportButtonText": "Support the fund",
+      "title": "Donation treasure",
+      "treasureBalance": "Treasure balance",
+      "treasureSupportButtonText": "Support the treasure",
       "givingsSection": {
         "linkTransactionText": "See transaction",
         "textLastCard": "Show your givings",
@@ -90,8 +89,8 @@
         "linkMessageToast": "Learn more"
       },
       "modalOnboarding": {
-        "title": "Ribon’s Donation Fund",
-        "subtitle": "The fund is used to pay the free donations made using daily tickets",
+        "title": "Ribon’s Donation Treasure",
+        "subtitle": "The free donation tickets you get are funded by this treasure",
         "button": "Ok"
       }
     },

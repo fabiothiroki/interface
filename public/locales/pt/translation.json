@@ -42,7 +42,7 @@
     "menu": {
       "impactPageTitle": "Impacto",
       "causesPageTitle": "Causas",
-      "fundPageTitle": "Fundo"
+      "treasurePageTitle": "Tesouro"
     }
   },
   "layouts": {
@@ -66,7 +66,7 @@
   },
   "impactPage": {
     "title": "Impacto",
-    "subtitle": "Você usou {{ticketsUsed}} tickets",
+    "subtitle": "Você usou {{ticketsUsed}} tickets doação",
     "impactText": "Você doou ",
     "button": "Ver todos",
     "noImpactText": "O resumo do impacto das suas doações será mostrado aqui",
@@ -74,10 +74,9 @@
   },
   "promoters": {
     "fundPage": {
-      "title": "Fundo",
-      "subtitle": "Ajuda instituições patrocinando tickets de doação",
-      "fundBalance": "Balanço do Fundo",
-      "fundSupportButtonText": "Ajudar o fundo",
+      "title": "Tesouro de doação",
+      "treasureBalance": "Saldo do tesouro",
+      "treasureSupportButtonText": "Fazer uma contribuição",
       "givingsSection": {
         "linkTransactionText": "Ver transação",
         "textLastCard": "Suas contribuições",
@@ -90,9 +89,9 @@
         "linkMessageToast": "Saiba mais"
       },
       "modalOnboarding": {
-        "title": "Fundo de doação da Ribon",
-        "subtitle": "O fundo é usado para pagar as doações gratuitas realizadas usando os vales diários",
-        "button": "Ok"
+        "title": "Tesouro de Doação da Ribon",
+        "subtitle": "Os tickets gratuitos que você recebe são financiados por este tesouro",
+        "button": "Continuar"
       }
     },
     "supportFundPage": {
