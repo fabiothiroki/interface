@@ -188,7 +188,7 @@ export const CryptoGivingValue = styled.p`
   ${({ theme }) => css`
     color: ${theme.colors.darkGray};
     font-size: 12px;
-    line-height: 23.8px;
+    line-height: 19.2px;
     font-style: italic;
     margin-bottom: 32px;
   `}
