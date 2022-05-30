@@ -80,7 +80,6 @@ function CardSection(): JSX.Element {
       <S.CryptoGivingValue>
         {t("cryptoValueText", { cryptoGivings })}
       </S.CryptoGivingValue>
-      {console.log(netGiving, serviceFees, cryptoGivings)}
 
       <S.ButtonContainer>
         <S.FinishButton text={t("buttonTextCard")} onClick={() => {}} />
