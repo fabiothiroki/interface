@@ -187,7 +187,7 @@ export const ServiceFeesValue = styled.p`
 export const CryptoGivingValue = styled.p`
   ${({ theme }) => css`
     color: ${theme.colors.darkGray};
-    font-size: 14px;
+    font-size: 12px;
     line-height: 23.8px;
     font-style: italic;
     margin-bottom: 32px;
