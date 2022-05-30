@@ -3,11 +3,32 @@ import { useEffect, useState } from "react";
 import useGivingValues from "hooks/apiHooks/useGivingValues";
 import { useLanguage } from "hooks/useLanguage";
 import Dropdown from "components/atomics/Dropdown";
+import Divider from "components/atomics/Divider";
+import theme from "styles/theme";
 import { Currencies } from "types/enums/Currencies";
 import * as S from "../styles";
 
+const { lightGray } = theme.colors;
+
+const givingsDetails = [
+  {
+    givingTotal: "R$5.00",
+    netGiving: "R$9.00",
+    serviceFees: "R$1.00",
+    cryptoGivings: "10 USDC",
+  },
+  {
+    givingTotal: "R$11.00",
+    netGiving: "R$9.00",
+    serviceFees: "R$1.00",
+    cryptoGivings: "10 USDC",
+  },
+];
+
 function CardSection(): JSX.Element {
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
+  const { givingTotal, netGiving, serviceFees, cryptoGivings } =
+    givingsDetails[selectedButtonIndex];
   const { t } = useTranslation("translation", {
     keyPrefix: "promoters.supportFundPage.cardSection",
   });
@@ -48,6 +69,18 @@ function CardSection(): JSX.Element {
           />
         ))}
       </S.ValuesContainer>
+
+      <Divider color={lightGray} />
+      <S.Subtitle>{t("detailsSubtitle")}</S.Subtitle>
+      <S.GivingValue>{givingTotal}</S.GivingValue>
+      <S.NetGivingValue>{t("netGivingText", { netGiving })}</S.NetGivingValue>
+      <S.ServiceFeesValue>
+        {t("serviceFeesText", { serviceFees })}
+      </S.ServiceFeesValue>
+      <S.CryptoGivingValue>
+        {t("cryptoValueText", { cryptoGivings })}
+      </S.CryptoGivingValue>
+      {console.log(netGiving, serviceFees, cryptoGivings)}
 
       <S.ButtonContainer>
         <S.FinishButton text={t("buttonTextCard")} onClick={() => {}} />
