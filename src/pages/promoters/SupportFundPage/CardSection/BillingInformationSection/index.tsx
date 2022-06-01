@@ -17,6 +17,13 @@ function BillingInformationSection(): JSX.Element {
     <S.BillingInformationSectionContainer>
       <Divider color={lightGray} />
       <S.Title>{t("title")}</S.Title>
+
+      <S.Form>
+        <S.Input placeholder="First Name" />
+        <S.HalfInput placeholder="State" />
+        <S.HalfInput placeholder="City" />
+        <S.Input placeholder="Last Name" />
+      </S.Form>
     </S.BillingInformationSectionContainer>
   );
 }
