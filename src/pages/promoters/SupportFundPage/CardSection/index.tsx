@@ -18,16 +18,22 @@ const givingsDetails = [
     cryptoGivings: "10 USDC",
   },
   {
-    givingTotal: "R$11.00",
+    givingTotal: "R$10.00",
     netGiving: "R$9.00",
     serviceFees: "R$1.00",
     cryptoGivings: "10 USDC",
+  },
+  {
+    givingTotal: "R$20.00",
+    netGiving: "R$19.00",
+    serviceFees: "R$1.00",
+    cryptoGivings: "20 USDC",
   },
 ];
 
 function CardSection(): JSX.Element {
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
-  const { givingTotal, netGiving, serviceFees, cryptoGivings } =
+  const { netGiving, serviceFees, cryptoGivings } =
     givingsDetails[selectedButtonIndex];
   const { t } = useTranslation("translation", {
     keyPrefix: "promoters.supportFundPage.cardSection",
@@ -41,6 +47,12 @@ function CardSection(): JSX.Element {
   const [currentCoin, setCurrentCoin] = useState<Currencies>(defaultCoin());
   const { givingValues, refetch: refetchGivingValues } =
     useGivingValues(currentCoin);
+
+  function givingTotal() {
+    if (!givingValues) return "";
+
+    return givingValues[selectedButtonIndex].valueText;
+  }
 
   useEffect(() => {
     refetchGivingValues();
@@ -72,7 +84,7 @@ function CardSection(): JSX.Element {
 
       <Divider color={lightGray} />
       <S.Subtitle>{t("detailsSubtitle")}</S.Subtitle>
-      <S.GivingValue>{givingTotal}</S.GivingValue>
+      <S.GivingValue>{givingTotal()}</S.GivingValue>
       <S.NetGivingValue>{t("netGivingText", { netGiving })}</S.NetGivingValue>
       <S.ServiceFeesValue>
         {t("serviceFeesText", { serviceFees })}
