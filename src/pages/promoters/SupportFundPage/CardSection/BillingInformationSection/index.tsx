@@ -16,7 +16,7 @@ function BillingInformationSection(): JSX.Element {
   return (
     <S.BillingInformationSectionContainer>
       <Divider color={lightGray} />
-      {t("title")}
+      <S.Title>{t("title")}</S.Title>
     </S.BillingInformationSectionContainer>
   );
 }
