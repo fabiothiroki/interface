@@ -5,6 +5,7 @@ import { useLanguage } from "hooks/useLanguage";
 import Dropdown from "components/atomics/Dropdown";
 import { Currencies } from "types/enums/Currencies";
 import * as S from "../styles";
+import BillingInformationSection from "./BillingInformationSection";
 
 function CardSection(): JSX.Element {
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
@@ -48,6 +49,8 @@ function CardSection(): JSX.Element {
           />
         ))}
       </S.ValuesContainer>
+
+      <BillingInformationSection />
 
       <S.ButtonContainer>
         <S.FinishButton text={t("buttonTextCard")} onClick={() => {}} />
