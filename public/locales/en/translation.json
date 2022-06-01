@@ -113,7 +113,10 @@
       "cardSection": {
         "currency": "Currency",
         "subtitleCard": "Choose your giving",
-        "buttonTextCard": "Next"
+        "buttonTextCard": "Next",
+        "billingInformationSection": {
+          "title": "Billing information"
+        }
       },
       "linkMessageToast": "Learn more"
     }

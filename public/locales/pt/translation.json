@@ -113,7 +113,10 @@
       "cardSection": {
         "currency": "Moeda",
         "subtitleCard": "Escolha sua contribuição",
-        "buttonTextCard": "Próximo"
+        "buttonTextCard": "Próximo",
+        "billingInformationSection": {
+          "title": "Informações de cobrança"
+        }
       },
       "linkMessageToast": "Saiba mais"
     }
