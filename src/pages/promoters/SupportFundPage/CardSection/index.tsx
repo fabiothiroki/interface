@@ -32,7 +32,10 @@ function CardSection(): JSX.Element {
     return 0;
   }, [selectedButtonIndex]);
 
-  const { cardGivingFees } = useCardGivingFees(givingValue(), currentCoin);
+  const { cardGivingFees, isLoading: loadingFees } = useCardGivingFees(
+    givingValue(),
+    currentCoin,
+  );
 
   function givingTotal() {
     if (!givingValues) return "";
@@ -72,13 +75,19 @@ function CardSection(): JSX.Element {
       <S.Subtitle>{t("detailsSubtitle")}</S.Subtitle>
       <S.GivingValue>{givingTotal()}</S.GivingValue>
       <S.NetGivingValue>
-        {t("netGivingText", { netGiving: cardGivingFees?.netGiving })}
+        {t("netGivingText", {
+          netGiving: loadingFees ? "..." : cardGivingFees?.netGiving,
+        })}
       </S.NetGivingValue>
       <S.ServiceFeesValue>
-        {t("serviceFeesText", { serviceFees: cardGivingFees?.serviceFees })}
+        {t("serviceFeesText", {
+          serviceFees: loadingFees ? "..." : cardGivingFees?.serviceFees,
+        })}
       </S.ServiceFeesValue>
       <S.CryptoGivingValue>
-        {t("cryptoValueText", { cryptoGivings: cardGivingFees?.cryptoGiving })}
+        {t("cryptoValueText", {
+          cryptoGivings: loadingFees ? "..." : cardGivingFees?.cryptoGiving,
+        })}
       </S.CryptoGivingValue>
 
       <S.ButtonContainer>
