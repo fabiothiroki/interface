@@ -1,40 +1,18 @@
 import { useTranslation } from "react-i18next";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import useGivingValues from "hooks/apiHooks/useGivingValues";
 import { useLanguage } from "hooks/useLanguage";
 import Dropdown from "components/atomics/Dropdown";
 import Divider from "components/atomics/Divider";
 import theme from "styles/theme";
 import { Currencies } from "types/enums/Currencies";
+import useCardGivingFees from "hooks/apiHooks/useCardGivingFees";
 import * as S from "../styles";
 
 const { lightGray } = theme.colors;
 
-const givingsDetails = [
-  {
-    givingTotal: "R$5.00",
-    netGiving: "R$9.00",
-    serviceFees: "R$1.00",
-    cryptoGivings: "10 USDC",
-  },
-  {
-    givingTotal: "R$10.00",
-    netGiving: "R$9.00",
-    serviceFees: "R$1.00",
-    cryptoGivings: "10 USDC",
-  },
-  {
-    givingTotal: "R$20.00",
-    netGiving: "R$19.00",
-    serviceFees: "R$1.00",
-    cryptoGivings: "20 USDC",
-  },
-];
-
 function CardSection(): JSX.Element {
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
-  const { netGiving, serviceFees, cryptoGivings } =
-    givingsDetails[selectedButtonIndex];
   const { t } = useTranslation("translation", {
     keyPrefix: "promoters.supportFundPage.cardSection",
   });
@@ -47,6 +25,14 @@ function CardSection(): JSX.Element {
   const [currentCoin, setCurrentCoin] = useState<Currencies>(defaultCoin());
   const { givingValues, refetch: refetchGivingValues } =
     useGivingValues(currentCoin);
+
+  const givingValue = useCallback(() => {
+    if (givingValues) return givingValues[selectedButtonIndex].value;
+
+    return 0;
+  }, [selectedButtonIndex]);
+
+  const { cardGivingFees } = useCardGivingFees(givingValue(), currentCoin);
 
   function givingTotal() {
     if (!givingValues) return "";
@@ -85,12 +71,14 @@ function CardSection(): JSX.Element {
       <Divider color={lightGray} />
       <S.Subtitle>{t("detailsSubtitle")}</S.Subtitle>
       <S.GivingValue>{givingTotal()}</S.GivingValue>
-      <S.NetGivingValue>{t("netGivingText", { netGiving })}</S.NetGivingValue>
+      <S.NetGivingValue>
+        {t("netGivingText", { netGiving: cardGivingFees?.netGiving })}
+      </S.NetGivingValue>
       <S.ServiceFeesValue>
-        {t("serviceFeesText", { serviceFees })}
+        {t("serviceFeesText", { serviceFees: cardGivingFees?.serviceFees })}
       </S.ServiceFeesValue>
       <S.CryptoGivingValue>
-        {t("cryptoValueText", { cryptoGivings })}
+        {t("cryptoValueText", { cryptoGivings: cardGivingFees?.cryptoGiving })}
       </S.CryptoGivingValue>
 
       <S.ButtonContainer>
