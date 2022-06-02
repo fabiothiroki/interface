@@ -15,8 +15,9 @@ export const Title = styled.h6`
 `;
 
 export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
+  & :nth-child(2) {
+    margin-right: 4px;
+  }
 `;
 
 export const Input = styled.input`
@@ -31,6 +32,7 @@ export const Input = styled.input`
 
 export const HalfInput = styled.input`
   ${({ theme }) => css`
+    display: inline-block;
     width: calc(50% - 4px);
     margin-bottom: 12px;
     border: 1px solid ${theme.colors.ribonBlue};
