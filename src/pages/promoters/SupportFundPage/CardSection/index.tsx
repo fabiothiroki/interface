@@ -6,8 +6,9 @@ import Dropdown from "components/atomics/Dropdown";
 import Divider from "components/atomics/Divider";
 import theme from "styles/theme";
 import { Currencies } from "types/enums/Currencies";
-import useCardGivingFees from "hooks/apiHooks/useCardGivingFees";
+import { coinByLanguage } from "lib/coinByLanguage";
 import * as S from "../styles";
+import FeesSection from "./FeesSection";
 
 const { lightGray } = theme.colors;
 
@@ -17,12 +18,9 @@ function CardSection(): JSX.Element {
     keyPrefix: "promoters.supportFundPage.cardSection",
   });
   const { currentLang } = useLanguage();
-  function defaultCoin() {
-    if (currentLang === "pt-BR") return Currencies.BRL;
-
-    return Currencies.USD;
-  }
-  const [currentCoin, setCurrentCoin] = useState<Currencies>(defaultCoin());
+  const [currentCoin, setCurrentCoin] = useState<Currencies>(
+    coinByLanguage(currentLang),
+  );
   const { givingValues, refetch: refetchGivingValues } =
     useGivingValues(currentCoin);
 
@@ -31,11 +29,6 @@ function CardSection(): JSX.Element {
 
     return 0;
   }, [selectedButtonIndex]);
-
-  const { cardGivingFees, isLoading: loadingFees } = useCardGivingFees(
-    givingValue(),
-    currentCoin,
-  );
 
   function givingTotal() {
     if (!givingValues) return "";
@@ -74,21 +67,7 @@ function CardSection(): JSX.Element {
       <Divider color={lightGray} />
       <S.Subtitle>{t("detailsSubtitle")}</S.Subtitle>
       <S.GivingValue>{givingTotal()}</S.GivingValue>
-      <S.NetGivingValue>
-        {t("netGivingText", {
-          netGiving: loadingFees ? "..." : cardGivingFees?.netGiving,
-        })}
-      </S.NetGivingValue>
-      <S.ServiceFeesValue>
-        {t("serviceFeesText", {
-          serviceFees: loadingFees ? "..." : cardGivingFees?.serviceFees,
-        })}
-      </S.ServiceFeesValue>
-      <S.CryptoGivingValue>
-        {t("cryptoValueText", {
-          cryptoGivings: loadingFees ? "..." : cardGivingFees?.cryptoGiving,
-        })}
-      </S.CryptoGivingValue>
+      <FeesSection currency={currentCoin} givingValue={givingValue()} />
 
       <S.ButtonContainer>
         <S.FinishButton text={t("buttonTextCard")} onClick={() => {}} />
