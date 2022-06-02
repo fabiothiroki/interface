@@ -9,8 +9,8 @@ describe("ModalError", () => {
     expectTextToBeInTheDocument("ModalError");
   });
 
-  describe("when it receives a function", () => {
-    it("should execute it", () => {
+  describe("when it button is clicked", () => {
+    it("should execute function", () => {
       const mockFunction = jest.fn();
       renderComponent(
         <ModalError
