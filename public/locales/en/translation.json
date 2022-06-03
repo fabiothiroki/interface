@@ -115,7 +115,11 @@
         "subtitleCard": "Choose your giving",
         "buttonTextCard": "Next",
         "billingInformationSection": {
-          "title": "Billing information"
+          "title": "Billing information",
+          "country": "Country",
+          "state": "State",
+          "city": "City",
+          "taxID": "Tax ID"
         }
       },
       "linkMessageToast": "Learn more"
