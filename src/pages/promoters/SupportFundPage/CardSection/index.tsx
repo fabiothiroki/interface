@@ -39,7 +39,11 @@ function CardSection(): JSX.Element {
   }
 
   const sections = [
-    <FeesSection currency={currentCoin} givingValue={givingValue()} />,
+    <FeesSection
+      currency={currentCoin}
+      givingValue={givingValue()}
+      givingTotal={givingTotal()}
+    />,
     <BillingInformationSection />,
   ];
 
@@ -78,8 +82,7 @@ function CardSection(): JSX.Element {
       </S.ValuesContainer>
 
       <Divider color={lightGray} />
-      <S.Subtitle>{t("detailsSubtitle")}</S.Subtitle>
-      <S.GivingValue>{givingTotal()}</S.GivingValue>
+
       {sections[currentSectionIndex]}
       <S.ButtonContainer>
         <S.FinishButton
