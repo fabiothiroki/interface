@@ -8,13 +8,14 @@ import { Currencies } from "types/enums/Currencies";
 import { coinByLanguage } from "lib/coinByLanguage";
 import Divider from "components/atomics/Divider";
 import * as S from "../styles";
-// import BillingInformationSection from "./BillingInformationSection";
+import BillingInformationSection from "./BillingInformationSection";
 import FeesSection from "./FeesSection";
 
 const { lightGray } = theme.colors;
 
 function CardSection(): JSX.Element {
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
+  const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
   const { t } = useTranslation("translation", {
     keyPrefix: "promoters.supportFundPage.cardSection",
   });
@@ -35,6 +36,17 @@ function CardSection(): JSX.Element {
     if (!givingValues) return "";
 
     return givingValues[selectedButtonIndex].valueText;
+  }
+
+  const sections = [
+    <FeesSection currency={currentCoin} givingValue={givingValue()} />,
+    <BillingInformationSection />,
+  ];
+
+  function handleClickNext() {
+    if (currentSectionIndex <= sections.length - 1) {
+      setCurrentSectionIndex(currentSectionIndex + 1);
+    }
   }
 
   useEffect(() => {
@@ -68,10 +80,14 @@ function CardSection(): JSX.Element {
       <Divider color={lightGray} />
       <S.Subtitle>{t("detailsSubtitle")}</S.Subtitle>
       <S.GivingValue>{givingTotal()}</S.GivingValue>
-      <FeesSection currency={currentCoin} givingValue={givingValue()} />
-
+      {sections[currentSectionIndex]}
       <S.ButtonContainer>
-        <S.FinishButton text={t("buttonTextCard")} onClick={() => {}} />
+        <S.FinishButton
+          text={t("buttonTextCard")}
+          onClick={() => {
+            handleClickNext();
+          }}
+        />
       </S.ButtonContainer>
     </S.CardSectionContainer>
   );
