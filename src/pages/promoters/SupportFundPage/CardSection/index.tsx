@@ -27,7 +27,7 @@ function CardSection(): JSX.Element {
     useGivingValues(currentCoin);
 
   const givingValue = useCallback(() => {
-    if (givingValues) return givingValues[selectedButtonIndex].value;
+    if (givingValues) return givingValues[selectedButtonIndex]?.value;
 
     return 0;
   }, [selectedButtonIndex]);
@@ -35,7 +35,7 @@ function CardSection(): JSX.Element {
   function givingTotal() {
     if (!givingValues) return "";
 
-    return givingValues[selectedButtonIndex].valueText;
+    return givingValues[selectedButtonIndex]?.valueText;
   }
 
   const sections = [
@@ -55,6 +55,7 @@ function CardSection(): JSX.Element {
 
   useEffect(() => {
     refetchGivingValues();
+    console.log("oi");
   }, [currentCoin]);
 
   return (
@@ -71,12 +72,12 @@ function CardSection(): JSX.Element {
       <S.ValuesContainer>
         {givingValues?.map((item, index) => (
           <S.CardValueButton
-            text={item.valueText}
+            text={item?.valueText}
             onClick={() => {
               setSelectedButtonIndex(index);
             }}
             outline={index !== selectedButtonIndex}
-            key={item.value}
+            key={item?.value}
           />
         ))}
       </S.ValuesContainer>
