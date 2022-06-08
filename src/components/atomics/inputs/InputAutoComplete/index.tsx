@@ -12,7 +12,6 @@ function InputAutoComplete({ suggestions, placeholder }: Props): JSX.Element {
   const [input, setInput] = useState("");
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInput(e.target.value);
     const userInput = e.target.value;
     const relatedSuggestions = suggestions
       ? suggestions.filter((suggestion) =>
@@ -20,8 +19,10 @@ function InputAutoComplete({ suggestions, placeholder }: Props): JSX.Element {
         )
       : [];
 
+    setInput(e.target.value);
     setFilteredSuggestions(relatedSuggestions);
     setShowSuggestions(true);
+    console.log(filteredSuggestions);
   };
 
   const onClick = (e: React.MouseEvent<HTMLInputElement>) => {
@@ -45,17 +46,14 @@ function InputAutoComplete({ suggestions, placeholder }: Props): JSX.Element {
       />
       {showSuggestions && input && (
         <S.Container>
-          {filteredSuggestions.map(
-            (value, index) =>
-              index <= 1 && (
-                <S.OptionContainer
-                  onClick={() => handleOptionClick(value)}
-                  key={index.toString(10)}
-                >
-                  <S.OptionText>{value}</S.OptionText>
-                </S.OptionContainer>
-              ),
-          )}
+          {filteredSuggestions.map((value) => (
+            <S.OptionContainer
+              onClick={() => handleOptionClick(value)}
+              key={value}
+            >
+              <S.OptionText>{value}</S.OptionText>
+            </S.OptionContainer>
+          ))}
         </S.Container>
       )}
     </>

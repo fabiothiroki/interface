@@ -20,9 +20,11 @@ export const Input = styled.input`
 
 export const OptionContainer = styled.div`
   ${({ theme }) => css`
+    position: absolute;
     padding: 8px 16px;
-    opacity: 1;
     z-index: 999;
+    background-color: ${theme.colors.bgGray};
+    width: 100%;
 
     &:hover {
       background-color: ${theme.colors.hoverGray};
