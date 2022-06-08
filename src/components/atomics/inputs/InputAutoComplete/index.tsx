@@ -9,11 +9,11 @@ export type Props = {
 
 function InputAutoComplete({ suggestions, placeholder }: Props): JSX.Element {
   const [filteredSuggestions, setFilteredSuggestions] = useState(suggestions);
-  const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(0);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [input, setInput] = useState("");
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value);
     const userInput = e.target.value;
     const relatedSuggestions = suggestions
       ? suggestions.filter((suggestion) =>
@@ -21,36 +21,19 @@ function InputAutoComplete({ suggestions, placeholder }: Props): JSX.Element {
         )
       : [];
 
-    setInput(userInput);
     setFilteredSuggestions(relatedSuggestions);
     setShowSuggestions(true);
-    setActiveSuggestionIndex(0);
   };
 
   const onClick = (e: React.MouseEvent<HTMLInputElement>) => {
     setInput(e.currentTarget.value);
     setFilteredSuggestions([]);
     setShowSuggestions(false);
-    setActiveSuggestionIndex(0);
   };
 
-  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (!filteredSuggestions) return;
-    if (e.key === "ArrowDown") {
-      e.preventDefault();
-      if (activeSuggestionIndex < filteredSuggestions.length - 1) {
-        setActiveSuggestionIndex(activeSuggestionIndex + 1);
-      }
-    } else if (e.key === "ArrowUp") {
-      e.preventDefault();
-      if (activeSuggestionIndex > 0) {
-        setActiveSuggestionIndex(activeSuggestionIndex - 1);
-      }
-    } else if (e.key === "Enter") {
-      e.preventDefault();
-      setInput(filteredSuggestions[activeSuggestionIndex]);
-      setShowSuggestions(false);
-    }
+  const handleOptionClick = (value: string) => {
+    setInput(value);
+    setShowSuggestions(false);
   };
 
   return (
@@ -58,7 +41,6 @@ function InputAutoComplete({ suggestions, placeholder }: Props): JSX.Element {
       <S.Input
         onChange={onChange}
         onClick={onClick}
-        onKeyDown={onKeyDown}
         value={input}
         placeholder={placeholder}
       />
@@ -91,7 +73,10 @@ function InputAutoComplete({ suggestions, placeholder }: Props): JSX.Element {
             }
           >
             {filteredSuggestions.map((value, index) => (
-              <S.OptionContainer key={index.toString(10)}>
+              <S.OptionContainer
+                onClick={() => handleOptionClick(value)}
+                key={index.toString(10)}
+              >
                 <S.OptionText>{value}</S.OptionText>
               </S.OptionContainer>
             ))}

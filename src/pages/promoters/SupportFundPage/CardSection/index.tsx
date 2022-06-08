@@ -55,7 +55,6 @@ function CardSection(): JSX.Element {
 
   useEffect(() => {
     refetchGivingValues();
-    console.log("oi");
   }, [currentCoin]);
 
   return (
