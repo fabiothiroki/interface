@@ -4,6 +4,7 @@ export const Container = styled.div`
   ${() => css`
     position: relative;
     width: 100%;
+    z-index: 999;
   `}
 `;
 
@@ -20,6 +21,8 @@ export const Input = styled.input`
 export const OptionContainer = styled.div`
   ${({ theme }) => css`
     padding: 8px 16px;
+    opacity: 1;
+    z-index: 999;
 
     &:hover {
       background-color: ${theme.colors.hoverGray};
