@@ -4,7 +4,9 @@ import InputAutoComplete from ".";
 
 describe("InputAutoComplete", () => {
   it("should render without error", () => {
-    renderComponent(<InputAutoComplete suggestions={[]} />);
+    renderComponent(
+      <InputAutoComplete suggestions={[]} placeholder="country" />,
+    );
 
     expectTextToBeInTheDocument("InputAutoComplete");
   });
