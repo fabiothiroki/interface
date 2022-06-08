@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 import InputAutoComplete from "components/atomics/inputs/InputAutoComplete";
+import { countryList } from "./countrylist";
 import * as S from "./styles";
 
 function BillingInformationSection(): JSX.Element {
@@ -17,7 +18,7 @@ function BillingInformationSection(): JSX.Element {
 
       <S.Form>
         <InputAutoComplete
-          suggestions={["brazil", "argentina", "chile"]}
+          suggestions={countryList}
           placeholder={t("country")}
         />
         <S.HalfInput placeholder={t("city")} />
