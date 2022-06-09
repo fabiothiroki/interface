@@ -4,7 +4,10 @@ export const Container = styled.div`
   ${() => css`
     position: absolute;
     width: 100%;
+    max-width: 300px;
     z-index: 999;
+    box-shadow: 0px 4px 12px rgba(24, 86, 105, 0.15);
+    border-radius: 8px;
   `}
 `;
 
