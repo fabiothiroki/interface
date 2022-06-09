@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import InputAutoComplete from "components/atomics/inputs/InputAutoComplete";
+import { Languages } from "types/enums/Languages";
 import { useLanguage } from "hooks/useLanguage";
 import { countryList } from "./countryList";
 import { mask } from "./mask";
@@ -12,6 +13,7 @@ function BillingInformationSection(): JSX.Element {
       "promoters.supportFundPage.cardSection.billingInformationSection",
   });
   const { currentLang } = useLanguage();
+  const maxLengthByLanguage = currentLang === Languages.PT ? 14 : 11;
 
   const [taxId, setTaxId] = useState("");
 
@@ -37,6 +39,7 @@ function BillingInformationSection(): JSX.Element {
           placeholder={t("taxID")}
           value={taxId}
           onChange={handleChangeMask}
+          maxLength={maxLengthByLanguage}
         />
       </S.Form>
     </S.BillingInformationSectionContainer>
