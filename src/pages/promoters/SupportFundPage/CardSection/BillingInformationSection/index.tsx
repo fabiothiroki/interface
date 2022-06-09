@@ -1,7 +1,9 @@
 import { useTranslation } from "react-i18next";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import InputAutoComplete from "components/atomics/inputs/InputAutoComplete";
+import { useLanguage } from "hooks/useLanguage";
 import { countryList } from "./countryList";
+import { mask } from "./mask";
 import * as S from "./styles";
 
 function BillingInformationSection(): JSX.Element {
@@ -9,6 +11,14 @@ function BillingInformationSection(): JSX.Element {
     keyPrefix:
       "promoters.supportFundPage.cardSection.billingInformationSection",
   });
+  const { currentLang } = useLanguage();
+
+  const [taxId, setTaxId] = useState("");
+
+  const handleChangeMask = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setTaxId(mask(value, currentLang));
+  };
 
   useEffect(() => {}, []);
 
@@ -23,7 +33,11 @@ function BillingInformationSection(): JSX.Element {
         />
         <S.HalfInput placeholder={t("city")} />
         <S.HalfInput placeholder={t("state")} />
-        <S.Input placeholder={t("taxID")} />
+        <S.Input
+          placeholder={t("taxID")}
+          value={taxId}
+          onChange={handleChangeMask}
+        />
       </S.Form>
     </S.BillingInformationSectionContainer>
   );
