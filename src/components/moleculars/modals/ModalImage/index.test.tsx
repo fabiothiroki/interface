@@ -33,6 +33,19 @@ describe("ModalImage", () => {
   });
 
   describe("Buttons", () => {
+    it("should render primary and secondary button", () => {
+      renderComponent(
+        <ModalImage
+          title="ModalImage"
+          visible
+          primaryButtonText="click"
+          secondaryButtonText="click2"
+        />,
+      );
+
+      expectTextToBeInTheDocument("click");
+      expectTextToBeInTheDocument("click2");
+    });
     it("should call function when click in primary button", () => {
       const handlePrimaryButton = jest.fn();
       renderComponent(
@@ -44,7 +57,6 @@ describe("ModalImage", () => {
         />,
       );
 
-      expectTextToBeInTheDocument("click");
       clickOn("click");
       expect(handlePrimaryButton).toHaveBeenCalled();
     });
@@ -55,7 +67,6 @@ describe("ModalImage", () => {
         <ModalImage title="ModalImage" visible primaryButtonText="click" />,
       );
 
-      expectTextToBeInTheDocument("click");
       clickOn("click");
       expect(handlePrimaryButton).not.toHaveBeenCalled();
     });
@@ -71,7 +82,6 @@ describe("ModalImage", () => {
         />,
       );
 
-      expectTextToBeInTheDocument("click");
       clickOn("click");
       expect(handleSecondaryButton).toHaveBeenCalled();
     });
@@ -82,7 +92,6 @@ describe("ModalImage", () => {
         <ModalImage title="ModalImage" visible secondaryButtonText="click" />,
       );
 
-      expectTextToBeInTheDocument("click");
       clickOn("click");
       expect(handleSecondaryButton).not.toHaveBeenCalled();
     });
