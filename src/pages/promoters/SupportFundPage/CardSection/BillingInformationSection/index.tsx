@@ -36,7 +36,7 @@ function BillingInformationSection(): JSX.Element {
         <S.HalfInput placeholder={t("city")} />
         <S.HalfInput placeholder={t("state")} />
         <S.Input
-          placeholder={t("taxID")}
+          placeholder={t("taxId")}
           value={taxId}
           onChange={handleChangeMask}
           maxLength={maxLengthByLanguage}

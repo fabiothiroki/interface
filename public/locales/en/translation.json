@@ -123,7 +123,7 @@
           "country": "Country",
           "state": "State",
           "city": "City",
-          "taxID": "Tax ID"
+          "taxId": "Tax ID"
         }
       },
       "linkMessageToast": "Learn more"

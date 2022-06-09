@@ -123,7 +123,7 @@
           "country": "País",
           "state": "Estado",
           "city": "Cidade",
-          "taxID": "CPF"
+          "taxId": "CPF"
         }
       },
       "linkMessageToast": "Saiba mais"
