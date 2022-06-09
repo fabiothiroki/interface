@@ -1,33 +1,30 @@
 import { useCallback, useEffect, useState } from "react";
-import { Network } from "@ethersproject/networks";
+import { networks } from "config/networks";
 import { useProvider } from "../useProvider";
 
-const networks = [
-  {
-    chainId: 0x13881,
-    rpcUrls: ["https://rpc-mumbai.maticvigil.com"],
-    chainName: "Mumbai Testnet",
-  },
-];
 
 export function useNetwork() {
-  const [currentNetwork, setCurrentNetwork] = useState<Network>();
+  const [currentNetwork, setCurrentNetwork] = useState(networks.localhost);
+  const [isValidNetwork, setIsValidNetwork] = useState(false);
   const provider = useProvider();
 
   const getCurrentNetwork = useCallback(async () => {
     try {
-      setCurrentNetwork(await provider?.getNetwork());
+      const providerNetwork = await provider?.getNetwork()
+      if (providerNetwork) {
+        setIsValidNetwork(false);
+        Object.entries(networks).map((network) => {
+          if (providerNetwork.chainId === network[1].chainId) {
+            setCurrentNetwork(network[1]);
+            setIsValidNetwork(true);
+          }
+          return null;
+        });
+      }
     } catch (e) {
       console.log(e);
     }
   }, [provider]);
-
-  const isValidNetwork = useCallback(() => {
-    if (!currentNetwork) return false;
-
-    const networksChainIds = networks.map((network) => network.chainId);
-    return networksChainIds.includes(Number(currentNetwork.chainId));
-  }, [currentNetwork]);
 
   useEffect(() => {
     getCurrentNetwork();
@@ -39,7 +36,6 @@ export function useNetwork() {
 
   return {
     currentNetwork,
-    getCurrentNetwork,
     isValidNetwork,
   };
 }
