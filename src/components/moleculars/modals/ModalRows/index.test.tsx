@@ -56,6 +56,25 @@ describe("ModalRows", () => {
   });
 
   describe("Buttons", () => {
+    it("should render primary and secondary button", () => {
+      renderComponent(
+        <ModalRows
+          rowsContent={[
+            {
+              id: 1,
+              icon,
+              text: "rows",
+            },
+          ]}
+          visible
+          primaryButtonText="click"
+          secondaryButtonText="click2"
+        />,
+      );
+
+      expectTextToBeInTheDocument("click");
+      expectTextToBeInTheDocument("click2");
+    });
     it("should call function when click primary", () => {
       const handlePrimaryButton = jest.fn();
       renderComponent(
@@ -73,7 +92,6 @@ describe("ModalRows", () => {
         />,
       );
 
-      expectTextToBeInTheDocument("click");
       clickOn("click");
       expect(handlePrimaryButton).toHaveBeenCalled();
     });
@@ -94,7 +112,6 @@ describe("ModalRows", () => {
         />,
       );
 
-      expectTextToBeInTheDocument("click");
       clickOn("click");
       expect(handlePrimaryButton).not.toHaveBeenCalled();
     });
@@ -116,7 +133,6 @@ describe("ModalRows", () => {
         />,
       );
 
-      expectTextToBeInTheDocument("click");
       clickOn("click");
       expect(handleSecondaryButton).toHaveBeenCalled();
     });
@@ -137,7 +153,6 @@ describe("ModalRows", () => {
         />,
       );
 
-      expectTextToBeInTheDocument("click");
       clickOn("click");
       expect(handleSecondaryButton).not.toHaveBeenCalled();
     });
