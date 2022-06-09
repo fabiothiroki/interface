@@ -2,9 +2,7 @@ import { useTranslation } from "react-i18next";
 import CardBlank from "components/moleculars/cards/CardBlank";
 import Button from "components/atomics/Button";
 import { useEffect } from "react";
-import { usePermitedSignature } from "hooks/usePermitedSignature";
 import { useNetwork } from "hooks/useNetwork";
-import { constants } from "ethers";
 import useNavigation from "hooks/useNavigation";
 import { useContract } from "hooks/useContract";
 import DonationTokenAbi from "utils/abis/DonationToken.json";
@@ -19,7 +17,6 @@ import ModalOnboarding from "./ModalOnboarding";
 function FundPage(): JSX.Element {
   const coin = "USDC";
   const { navigateTo } = useNavigation();
-  const { signatureData, getPermitedSignature } = usePermitedSignature();
   const { currentNetwork } = useNetwork();
 
   const { t } = useTranslation("translation", {
@@ -55,10 +52,6 @@ function FundPage(): JSX.Element {
       fetchContractBalance();
     });
   }, []);
-
-  useEffect(() => {
-    console.log("signatureData:", signatureData);
-  }, [signatureData]);
 
   return (
     <S.Container>
