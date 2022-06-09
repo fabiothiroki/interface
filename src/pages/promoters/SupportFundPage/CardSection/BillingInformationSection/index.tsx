@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 import InputAutoComplete from "components/atomics/inputs/InputAutoComplete";
-import { countryList } from "./countrylist";
+import { countryList } from "./countryList";
 import * as S from "./styles";
 
 function BillingInformationSection(): JSX.Element {

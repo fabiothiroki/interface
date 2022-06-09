@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   ${() => css`
-    position: relative;
+    position: absolute;
     width: 100%;
     z-index: 999;
   `}
@@ -10,6 +10,7 @@ export const Container = styled.div`
 
 export const Input = styled.input`
   ${({ theme }) => css`
+    position: relative;
     width: 100%;
     margin-bottom: 12px;
     border: 1px solid ${theme.colors.ribonBlue};
@@ -20,9 +21,7 @@ export const Input = styled.input`
 
 export const OptionContainer = styled.div`
   ${({ theme }) => css`
-    position: absolute;
     padding: 8px 16px;
-    z-index: 999;
     background-color: ${theme.colors.bgGray};
     width: 100%;
 

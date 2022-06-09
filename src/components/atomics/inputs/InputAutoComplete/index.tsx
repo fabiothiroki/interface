@@ -22,7 +22,7 @@ function InputAutoComplete({ suggestions, placeholder }: Props): JSX.Element {
     setInput(e.target.value);
     setFilteredSuggestions(relatedSuggestions);
     setShowSuggestions(true);
-    console.log(filteredSuggestions);
+    console.log(filteredSuggestions, input);
   };
 
   const onClick = (e: React.MouseEvent<HTMLInputElement>) => {
@@ -46,14 +46,17 @@ function InputAutoComplete({ suggestions, placeholder }: Props): JSX.Element {
       />
       {showSuggestions && input && (
         <S.Container>
-          {filteredSuggestions.map((value) => (
-            <S.OptionContainer
-              onClick={() => handleOptionClick(value)}
-              key={value}
-            >
-              <S.OptionText>{value}</S.OptionText>
-            </S.OptionContainer>
-          ))}
+          {filteredSuggestions.map(
+            (value, index) =>
+              index < 2 && (
+                <S.OptionContainer
+                  onClick={() => handleOptionClick(value)}
+                  key={value}
+                >
+                  <S.OptionText>{value}</S.OptionText>
+                </S.OptionContainer>
+              ),
+          )}
         </S.Container>
       )}
     </>
