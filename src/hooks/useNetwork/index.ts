@@ -3,7 +3,7 @@ import { networks } from "config/networks";
 import { useProvider } from "../useProvider";
 
 export function useNetwork() {
-  const [currentNetwork, setCurrentNetwork] = useState(networks.localhost);
+  const [currentNetwork, setCurrentNetwork] = useState(networks[0]);
   const [isValidNetwork, setIsValidNetwork] = useState(false);
   const provider = useProvider();
 
@@ -11,19 +11,34 @@ export function useNetwork() {
     try {
       const providerNetwork = await provider?.getNetwork()
       if (providerNetwork) {
-        setIsValidNetwork(false);
-        Object.entries(networks).map((network) => {
-          if (providerNetwork.chainId === network[1].chainId) {
-            setCurrentNetwork(network[1]);
-            setIsValidNetwork(true);
-          }
-          return null;
-        });
+        const permittedNetworks = networks.filter((network) => providerNetwork.chainId === network.chainId);
+        if (permittedNetworks.length > 0) {
+          setCurrentNetwork(permittedNetworks[0]);
+          setIsValidNetwork(true);
+        }
       }
     } catch (e) {
       console.log(e);
     }
   }, [provider]);
+
+  const changeNetwork = () => {
+    const defaultNetwork = networks[0];
+    window.ethereum.request({
+      method: "wallet_addEthereumChain",
+      params: [{
+          chainId: defaultNetwork.chainId,
+          rpcUrls: [defaultNetwork.rpcUrls],
+          chainName: defaultNetwork.chainName,
+          nativeCurrency: {
+              name: defaultNetwork.currencyName,
+              symbol: defaultNetwork.symbolName,
+              decimals: 18
+          },
+          blockExplorerUrls: [defaultNetwork.blockExplorerUrls]
+      }]
+  });
+  }
 
   useEffect(() => {
     getCurrentNetwork();
@@ -36,5 +51,6 @@ export function useNetwork() {
   return {
     currentNetwork,
     isValidNetwork,
+    changeNetwork,
   };
 }
