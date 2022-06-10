@@ -4,7 +4,7 @@ export const mask = (v: string, language: string) => {
   let c = v.replace(/\D/g, "");
 
   if (language === Languages.PT) {
-    c = c.replace(/(\d{3})(\d)/, "$1-$2");
+    c = c.replace(/(\d{3})(\d)/, "$1.$2");
     c = c.replace(/(\d{3})(\d)/, "$1.$2");
     c = c.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
   } else {

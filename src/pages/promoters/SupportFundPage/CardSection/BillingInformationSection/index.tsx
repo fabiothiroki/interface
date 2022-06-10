@@ -4,7 +4,7 @@ import InputAutoComplete from "components/atomics/inputs/InputAutoComplete";
 import { Languages } from "types/enums/Languages";
 import { useLanguage } from "hooks/useLanguage";
 import { countryList } from "./countryList";
-import { mask } from "./mask";
+import { mask } from "../../../../../lib/maskForTaxId/mask";
 import * as S from "./styles";
 
 function BillingInformationSection(): JSX.Element {
@@ -25,9 +25,7 @@ function BillingInformationSection(): JSX.Element {
     setTaxId(mask(value, currentLang));
   };
 
-  useEffect(() => {
-    console.log(taxId, state, city, country);
-  }, [taxId, state, city, country]);
+  useEffect(() => {}, [taxId, state, city, country]);
 
   return (
     <S.BillingInformationSectionContainer>
