@@ -4,9 +4,14 @@ import * as S from "./styles";
 export type Props = {
   suggestions: any[];
   placeholder: string;
+  onOptionChanged?: (value: any) => void;
 };
 
-function InputAutoComplete({ suggestions, placeholder }: Props): JSX.Element {
+function InputAutoComplete({
+  suggestions,
+  placeholder,
+  onOptionChanged,
+}: Props): JSX.Element {
   const [filteredSuggestions, setFilteredSuggestions] = useState(suggestions);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [input, setInput] = useState("");
@@ -33,6 +38,7 @@ function InputAutoComplete({ suggestions, placeholder }: Props): JSX.Element {
   const handleOptionClick = (value: string) => {
     setInput(value);
     setShowSuggestions(false);
+    if (onOptionChanged) onOptionChanged(value);
   };
 
   return (

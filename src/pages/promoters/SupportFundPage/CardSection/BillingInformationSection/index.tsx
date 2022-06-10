@@ -15,6 +15,9 @@ function BillingInformationSection(): JSX.Element {
   const { currentLang } = useLanguage();
   const maxLengthByLanguage = currentLang === Languages.PT ? 14 : 11;
 
+  const [country, setCountry] = useState("");
+  const [state, setState] = useState("");
+  const [city, setCity] = useState("");
   const [taxId, setTaxId] = useState("");
 
   const handleChangeMask = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,7 +25,9 @@ function BillingInformationSection(): JSX.Element {
     setTaxId(mask(value, currentLang));
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    console.log(taxId, state, city, country);
+  }, [taxId, state, city, country]);
 
   return (
     <S.BillingInformationSectionContainer>
@@ -32,9 +37,18 @@ function BillingInformationSection(): JSX.Element {
         <InputAutoComplete
           suggestions={countryList}
           placeholder={t("country")}
+          onOptionChanged={(value: string) => setCountry(value)}
         />
-        <S.HalfInput placeholder={t("city")} />
-        <S.HalfInput placeholder={t("state")} />
+        <S.HalfInput
+          placeholder={t("city")}
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+        />
+        <S.HalfInput
+          placeholder={t("state")}
+          value={state}
+          onChange={(e) => setState(e.target.value)}
+        />
         <S.Input
           placeholder={t("taxId")}
           value={taxId}
