@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { networks } from "config/networks";
+import { logError } from "services/crashReport";
 import { useProvider } from "../useProvider";
 
 export function useNetwork() {
@@ -18,7 +19,7 @@ export function useNetwork() {
         }
       }
     } catch (e) {
-      console.log(e);
+      logError(e);
     }
   }, [provider]);
 
