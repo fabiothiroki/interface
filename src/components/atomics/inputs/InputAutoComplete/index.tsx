@@ -48,6 +48,7 @@ function InputAutoComplete({
         onClick={onClick}
         value={input}
         placeholder={placeholder}
+        aria-label={placeholder}
       />
       {showSuggestions && input && (
         <S.Container>
