@@ -4,7 +4,7 @@ import {
   connectWalletRequest,
   getChain,
   onAccountChange,
-  USER_REJECTED_CONNECTION_ERROR_CODE
+  USER_REJECTED_CONNECTION_ERROR_CODE,
 } from ".";
 
 describe("#walletConnector", () => {

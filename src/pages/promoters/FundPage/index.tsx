@@ -13,7 +13,6 @@ import * as S from "./styles";
 import GivingsSection from "./GivingsSection";
 import ModalOnboarding from "./ModalOnboarding";
 
-
 function FundPage(): JSX.Element {
   const coin = "USDC";
   const { navigateTo } = useNavigation();

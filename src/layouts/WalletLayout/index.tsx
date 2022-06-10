@@ -24,7 +24,7 @@ function WalletLayout({
   });
   const { connectWallet, wallet, checkIfWalletIsConnected, setWallet } =
     useWalletContext();
-  
+
   const handleAccountChange = (accounts: string[]) => {
     setWallet(accounts[0]);
   };
