@@ -2,7 +2,6 @@ import { useCallback, useEffect, useState } from "react";
 import { networks } from "config/networks";
 import { useProvider } from "../useProvider";
 
-
 export function useNetwork() {
   const [currentNetwork, setCurrentNetwork] = useState(networks.localhost);
   const [isValidNetwork, setIsValidNetwork] = useState(false);

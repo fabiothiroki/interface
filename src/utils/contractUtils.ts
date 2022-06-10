@@ -5,6 +5,19 @@ import { Signer } from "ethers";
 import { Web3Provider } from "@ethersproject/providers";
 import { Provider } from "@ethersproject/abstract-provider";
 
+<<<<<<< HEAD
+=======
+export const RIBON_CONTRACT_ADDRESS =
+  process.env.REACT_APP_RIBON_CONTRACT_ADDRESS ||
+  "0x38D30f5123e774E26D60C02d4B2927b90953E3d5";
+
+export const DONATION_TOKEN_CONTRACT_ADDRESS =
+  process.env.REACT_APP_DONATION_TOKEN_CONTRACT_ADDRESS ||
+  "0x21A72dc641c8e5f13717a7e087d6D63B4f9A3574";
+
+export const ALCHEMY_URL = process.env.REACT_APP_ALCHEMY_URL;
+
+>>>>>>> 49dcb698f64c5e4f14552f398c6f9719b815eece
 export function isAddress(value: string): string | false {
   try {
     return getAddress(value);
