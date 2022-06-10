@@ -1,4 +1,4 @@
-import { mask } from "./mask";
+import { mask } from ".";
 
 describe("should format according to language", () => {
   it("expects to return formatted CPF when in pt-BR", () => {
