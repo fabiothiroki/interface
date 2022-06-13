@@ -9,6 +9,7 @@ import InputAutoComplete from ".";
 
 describe("InputAutoComplete", () => {
   let input: any;
+  const br = "brazil";
 
   beforeEach(() => {
     renderComponent(
@@ -17,7 +18,7 @@ describe("InputAutoComplete", () => {
         placeholder="country"
       />,
     );
-    input = screen.queryAllByPlaceholderText("country");
+    input = screen.getByRole("textbox", { name: "country" });
   });
 
   it("should render without error", () => {
@@ -26,13 +27,13 @@ describe("InputAutoComplete", () => {
 
   it("should show related input suggestion", () => {
     changeInputValue(input, "br");
-    expectTextToBeInTheDocument("brazil");
+    expectTextToBeInTheDocument(br);
     expectTextNotToBeInTheDocument("argentina");
   });
 
   it("should update input value when option is clicked", () => {
     changeInputValue(input, "br");
-    clickOn("brazil");
+    clickOn(br);
     expect(input).toHaveAttribute("value", "brazil");
   });
 });
