@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import InputAutoComplete from "components/atomics/inputs/InputAutoComplete";
 import { Languages } from "types/enums/Languages";
 import { useLanguage } from "hooks/useLanguage";
+import { mask } from "lib/maskForTaxId";
 import { countryList } from "./countryList";
-import { mask } from "../../../../../lib/maskForTaxId";
 import * as S from "./styles";
 
 function BillingInformationSection(): JSX.Element {
