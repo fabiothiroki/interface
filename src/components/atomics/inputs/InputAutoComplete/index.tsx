@@ -44,6 +44,7 @@ function InputAutoComplete({
   return (
     <>
       <S.Input
+        name={placeholder}
         onChange={onChange}
         onClick={onClick}
         value={input}

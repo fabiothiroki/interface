@@ -38,16 +38,19 @@ function BillingInformationSection(): JSX.Element {
           onOptionChanged={(value: string) => setCountry(value)}
         />
         <S.HalfInput
+          name={city}
           placeholder={t("city")}
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
         <S.HalfInput
+          name={state}
           placeholder={t("state")}
           value={state}
           onChange={(e) => setState(e.target.value)}
         />
         <S.Input
+          name={taxId}
           placeholder={t("taxId")}
           value={taxId}
           onChange={handleChangeMask}
