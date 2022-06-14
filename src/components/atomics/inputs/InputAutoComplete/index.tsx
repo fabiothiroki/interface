@@ -16,6 +16,8 @@ function InputAutoComplete({
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [input, setInput] = useState("");
 
+  const maxInputsShowing = 4;
+
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const userInput = e.target.value;
     const relatedSuggestions = suggestions
@@ -55,7 +57,7 @@ function InputAutoComplete({
         <S.Container>
           {filteredSuggestions.map(
             (value, index) =>
-              index < 2 && (
+              index < maxInputsShowing && (
                 <S.OptionContainer
                   onClick={() => handleOptionClick(value)}
                   key={value}
