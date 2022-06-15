@@ -175,39 +175,39 @@ function CryptoSection(): JSX.Element {
     );
   }
 
+  function renderFormCryptocurrency() {
+    return (
+      <div>
+        <S.Subtitle>{t("subtitle")}</S.Subtitle>
+
+        <S.InputContainer>
+          <S.Input
+            name="amount"
+            id="amount"
+            type="text"
+            placeholder="0.00"
+            inputMode="numeric"
+          />
+          <S.UsdcContainer>
+            <S.UsdcIcon src={UsdcIcon} />
+            <S.UsdcText>USDC</S.UsdcText>
+          </S.UsdcContainer>
+        </S.InputContainer>
+        <S.Text>{t("usdcBalanceText", { balance: userBalance })}</S.Text>
+
+        <S.ButtonContainer>
+          <S.FinishButton
+            text={finishButtonText()}
+            onClick={handleFinishButtonClick}
+            disabled={disableButton()}
+          />
+        </S.ButtonContainer>
+      </div>
+    );
+  }
+
   return (
-    <div>
-      {wallet ? (
-        <div>
-          <S.Subtitle>{t("subtitle")}</S.Subtitle>
-
-          <S.InputContainer>
-            <S.Input
-              name="amount"
-              id="amount"
-              type="text"
-              placeholder="0.00"
-              inputMode="numeric"
-            />
-            <S.UsdcContainer>
-              <S.UsdcIcon src={UsdcIcon} />
-              <S.UsdcText>USDC</S.UsdcText>
-            </S.UsdcContainer>
-          </S.InputContainer>
-          <S.Text>{t("usdcBalanceText", { balance: userBalance })}</S.Text>
-
-          <S.ButtonContainer>
-            <S.FinishButton
-              text={finishButtonText()}
-              onClick={handleFinishButtonClick}
-              disabled={disableButton()}
-            />
-          </S.ButtonContainer>
-        </div>
-      ) : (
-        renderConnectWallet()
-      )}
-    </div>
+    <div>{wallet ? renderFormCryptocurrency() : renderConnectWallet()}</div>
   );
 }
 
