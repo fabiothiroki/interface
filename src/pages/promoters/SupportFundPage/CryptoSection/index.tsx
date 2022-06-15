@@ -113,9 +113,6 @@ function CryptoSection(): JSX.Element {
   };
 
   const handleFinishButtonClick = async () => {
-    if (!wallet) {
-      connectWallet();
-    }
     logEvent("fundSupportConfirmBtn_click");
     setLoading(true);
     showLoadingOverlay(t("tokenAmountTransferMessage"));
@@ -157,6 +154,27 @@ function CryptoSection(): JSX.Element {
     }
   };
 
+  const handleConnectWalletButtonClick = () => {
+    logEvent("fundConWalletBtn_click", {
+      from: "supportPageButton",
+    });
+    connectWallet();
+  };
+
+  function renderConnectWallet() {
+    logEvent("fundSupportWalletRequest_view");
+    return (
+      <S.ConnectContainer>
+        <S.Image src={WalletIcon} alt="walletIcon" />
+        <S.Label>{t("connectWallet")}</S.Label>
+        <S.ConnectButton
+          text={t("connectWalletButton")}
+          onClick={handleConnectWalletButtonClick}
+        />
+      </S.ConnectContainer>
+    );
+  }
+
   return (
     <div>
       {wallet ? (
@@ -187,14 +205,7 @@ function CryptoSection(): JSX.Element {
           </S.ButtonContainer>
         </div>
       ) : (
-        <S.ConnectContainer>
-          <S.Image src={WalletIcon} alt="walletIcon" />
-          <S.Label>{t("connectWallet")}</S.Label>
-          <S.ConnectButton
-            text={t("connectWalletButton")}
-            onClick={connectWallet}
-          />
-        </S.ConnectContainer>
+        renderConnectWallet()
       )}
     </div>
   );
