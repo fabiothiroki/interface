@@ -1,4 +1,4 @@
-import { renderComponent, clickOn, waitForPromises } from "config/testUtils";
+import { renderComponent } from "config/testUtils";
 import {
   expectTextToBeInTheDocument,
   expectLogEventToHaveBeenCalledWith,
