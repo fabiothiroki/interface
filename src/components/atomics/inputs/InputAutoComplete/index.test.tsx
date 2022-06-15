@@ -14,6 +14,7 @@ describe("InputAutoComplete", () => {
   beforeEach(() => {
     renderComponent(
       <InputAutoComplete
+        name="country"
         suggestions={["brazil", "argentina"]}
         placeholder="country"
       />,

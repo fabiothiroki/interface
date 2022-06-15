@@ -2,12 +2,14 @@ import { useState } from "react";
 import * as S from "./styles";
 
 export type Props = {
+  name: string;
   suggestions: any[];
   placeholder: string;
   onOptionChanged?: (value: any) => void;
 };
 
 function InputAutoComplete({
+  name,
   suggestions,
   placeholder,
   onOptionChanged,
@@ -46,12 +48,12 @@ function InputAutoComplete({
   return (
     <>
       <S.Input
-        name={placeholder}
+        name={name}
         onChange={onChange}
         onClick={onClick}
         value={input}
         placeholder={placeholder}
-        aria-label={placeholder}
+        aria-label={name}
       />
       {showSuggestions && input && (
         <S.Container>

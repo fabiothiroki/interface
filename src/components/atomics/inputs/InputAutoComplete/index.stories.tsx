@@ -15,6 +15,7 @@ const Template: ComponentStory<typeof InputAutoComplete> = function (
 export const Default = Template.bind({});
 
 Default.args = {
+  name: "name",
   suggestions: ["InputAutoComplete"],
   placeholder: "InputAutoComplete",
 };

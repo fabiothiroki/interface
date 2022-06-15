@@ -33,6 +33,7 @@ function BillingInformationSection(): JSX.Element {
 
       <S.Form>
         <InputAutoComplete
+          name={t("country")}
           suggestions={countryList}
           placeholder={t("country")}
           onOptionChanged={(value: string) => setCountry(value)}
