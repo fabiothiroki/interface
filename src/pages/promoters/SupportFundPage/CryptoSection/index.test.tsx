@@ -3,11 +3,15 @@ import {
   expectLogEventToHaveBeenCalledWith,
   expectTextToBeInTheDocument,
 } from "config/testUtils/expects";
-import SupportFundPage from ".";
+import CryptoSection from ".";
 
-describe("SupportFundPage", () => {
+describe("CryptoSection", () => {
   beforeEach(async () => {
-    renderComponent(<SupportFundPage />);
+    renderComponent(<CryptoSection />, {
+      walletProviderValue: {
+        wallet: "0xFFFF",
+      },
+    });
     await waitForPromises();
   });
 

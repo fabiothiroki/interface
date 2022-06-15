@@ -4,7 +4,7 @@ import useGivingValues from "hooks/apiHooks/useGivingValues";
 import { useLanguage } from "hooks/useLanguage";
 import Dropdown from "components/atomics/Dropdown";
 import { Currencies } from "types/enums/Currencies";
-import * as S from "../styles";
+import * as S from "./styles";
 
 function CardSection(): JSX.Element {
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);

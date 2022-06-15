@@ -15,7 +15,8 @@ import { logEvent } from "services/analytics";
 import { formatFromWei } from "lib/web3Helpers/etherFormatters";
 import { stringToNumber } from "lib/formatters/stringToNumberFormatter";
 import { useLoadingOverlay } from "contexts/loadingOverlayContext";
-import * as S from "../styles";
+import WalletIcon from "./assets/wallet-icon.svg";
+import * as S from "./styles";
 
 function CryptoSection(): JSX.Element {
   const cryptoUser =
@@ -88,7 +89,9 @@ function CryptoSection(): JSX.Element {
   }, [fetchUsdcUserBalance]);
 
   useEffect(() => {
-    SimpleMaskMoney.setMask("#amount", args);
+    if (wallet) {
+      SimpleMaskMoney.setMask("#amount", args);
+    }
   }, []);
 
   const insufficientBalance = () => {
@@ -156,30 +159,43 @@ function CryptoSection(): JSX.Element {
 
   return (
     <div>
-      <S.Subtitle>{t("subtitle")}</S.Subtitle>
+      {wallet ? (
+        <div>
+          <S.Subtitle>{t("subtitle")}</S.Subtitle>
 
-      <S.InputContainer>
-        <S.Input
-          name="amount"
-          id="amount"
-          type="text"
-          placeholder="0.00"
-          inputMode="numeric"
-        />
-        <S.UsdcContainer>
-          <S.UsdcIcon src={UsdcIcon} />
-          <S.UsdcText>USDC</S.UsdcText>
-        </S.UsdcContainer>
-      </S.InputContainer>
-      <S.Text>{t("usdcBalanceText", { balance: userBalance })}</S.Text>
+          <S.InputContainer>
+            <S.Input
+              name="amount"
+              id="amount"
+              type="text"
+              placeholder="0.00"
+              inputMode="numeric"
+            />
+            <S.UsdcContainer>
+              <S.UsdcIcon src={UsdcIcon} />
+              <S.UsdcText>USDC</S.UsdcText>
+            </S.UsdcContainer>
+          </S.InputContainer>
+          <S.Text>{t("usdcBalanceText", { balance: userBalance })}</S.Text>
 
-      <S.ButtonContainer>
-        <S.FinishButton
-          text={finishButtonText()}
-          onClick={handleFinishButtonClick}
-          disabled={disableButton()}
-        />
-      </S.ButtonContainer>
+          <S.ButtonContainer>
+            <S.FinishButton
+              text={finishButtonText()}
+              onClick={handleFinishButtonClick}
+              disabled={disableButton()}
+            />
+          </S.ButtonContainer>
+        </div>
+      ) : (
+        <S.ConnectContainer>
+          <S.Image src={WalletIcon} alt="walletIcon" />
+          <S.Label>{t("connectWallet")}</S.Label>
+          <S.ConnectButton
+            text={t("connectWalletButton")}
+            onClick={connectWallet}
+          />
+        </S.ConnectContainer>
+      )}
     </div>
   );
 }
