@@ -27,9 +27,7 @@ function BillingInformationSection(): JSX.Element {
 
   const handleSubmit = () => {};
 
-  useEffect(() => {
-    console.log(country, state, city, taxId);
-  }, [taxId, state, city, country]);
+  useEffect(() => {}, [taxId, state, city, country]);
 
   return (
     <S.BillingInformationSectionContainer>
