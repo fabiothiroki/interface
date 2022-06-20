@@ -25,7 +25,9 @@ function BillingInformationSection(): JSX.Element {
     setTaxId(mask(value, currentLang));
   };
 
-  useEffect(() => {}, [taxId, state, city, country]);
+  useEffect(() => {
+    console.log(country, state, city, taxId);
+  }, [taxId, state, city, country]);
 
   return (
     <S.BillingInformationSectionContainer>
@@ -33,7 +35,7 @@ function BillingInformationSection(): JSX.Element {
 
       <S.Form>
         <InputAutoComplete
-          name={t("country")}
+          name="country"
           suggestions={countryList}
           placeholder={t("country")}
           onOptionChanged={(value: string) => setCountry(value)}
