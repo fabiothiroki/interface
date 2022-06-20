@@ -7,9 +7,9 @@ import theme from "styles/theme";
 import { Currencies } from "types/enums/Currencies";
 import { coinByLanguage } from "lib/coinByLanguage";
 import Divider from "components/atomics/Divider";
-import * as S from "../styles";
 import BillingInformationSection from "./BillingInformationSection";
 import FeesSection from "./FeesSection";
+import * as S from "./styles";
 
 const { lightGray } = theme.colors;
 
