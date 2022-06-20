@@ -25,6 +25,8 @@ function BillingInformationSection(): JSX.Element {
     setTaxId(mask(value, currentLang));
   };
 
+  const handleSubmit = () => {};
+
   useEffect(() => {
     console.log(country, state, city, taxId);
   }, [taxId, state, city, country]);
@@ -33,7 +35,7 @@ function BillingInformationSection(): JSX.Element {
     <S.BillingInformationSectionContainer>
       <S.Title>{t("title")}</S.Title>
 
-      <S.Form>
+      <S.Form onSubmit={handleSubmit}>
         <InputAutoComplete
           name="country"
           suggestions={countryList}
