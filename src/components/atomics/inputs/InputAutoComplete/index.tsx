@@ -47,14 +47,19 @@ function InputAutoComplete({
 
   return (
     <>
-      <S.Input
-        name={name}
-        onChange={onChange}
-        onClick={onClick}
-        value={input}
-        placeholder={placeholder}
-        aria-label={name}
-      />
+      <S.Input>
+        <label htmlFor={name}>{placeholder}</label>
+        <input
+          id={name}
+          onChange={onChange}
+          onClick={onClick}
+          value={input}
+          placeholder={placeholder}
+          aria-label={placeholder}
+          name={name}
+        />
+      </S.Input>
+
       {showSuggestions && input && (
         <S.Container>
           {filteredSuggestions.map(
