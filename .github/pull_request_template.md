@@ -8,7 +8,7 @@
 - eg: update an environment variable
 
 ## Does this pull request close any open issues?
-- Put here the issue that must be closed whith this PR 
+- Put here the issue that must be closed with this PR 
 - eg: closes #111
 
 ## Type of change
