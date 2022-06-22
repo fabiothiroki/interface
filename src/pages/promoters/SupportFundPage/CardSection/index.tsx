@@ -7,14 +7,15 @@ import theme from "styles/theme";
 import { Currencies } from "types/enums/Currencies";
 import { coinByLanguage } from "lib/coinByLanguage";
 import Divider from "components/atomics/Divider";
+import { useCardPaymentInformation } from "contexts/cardPaymentInformationContext";
 import BillingInformationSection from "./BillingInformationSection";
 import FeesSection from "./FeesSection";
 import * as S from "./styles";
+import PaymentInformations from "../PaymentInformationsSection";
 
 const { lightGray } = theme.colors;
 
 function CardSection(): JSX.Element {
-  const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
   const { t } = useTranslation("translation", {
     keyPrefix: "promoters.supportFundPage.cardSection",
@@ -25,6 +26,9 @@ function CardSection(): JSX.Element {
   );
   const { givingValues, refetch: refetchGivingValues } =
     useGivingValues(currentCoin);
+
+  const { handleSubmit, selectedButtonIndex, setSelectedButtonIndex } =
+    useCardPaymentInformation();
 
   const givingValue = useCallback(() => {
     if (givingValues) return givingValues[selectedButtonIndex]?.value;
@@ -45,11 +49,14 @@ function CardSection(): JSX.Element {
       givingTotal={givingTotal()}
     />,
     <BillingInformationSection />,
+    <PaymentInformations />,
   ];
 
   function handleClickNext() {
-    if (currentSectionIndex <= sections.length - 1) {
+    if (currentSectionIndex < sections.length - 1) {
       setCurrentSectionIndex(currentSectionIndex + 1);
+    } else {
+      handleSubmit();
     }
   }
 
@@ -86,7 +93,11 @@ function CardSection(): JSX.Element {
       {sections[currentSectionIndex]}
       <S.ButtonContainer>
         <S.FinishButton
-          text={t("buttonTextCard")}
+          text={
+            currentSectionIndex < sections.length - 1
+              ? t("buttonTextCard")
+              : t("buttonSubmit")
+          }
           onClick={() => {
             handleClickNext();
           }}
