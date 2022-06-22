@@ -116,6 +116,7 @@
         "currency": "Moeda",
         "subtitleCard": "Escolha sua contribuição",
         "buttonTextCard": "Próximo",
+        "buttonSubmit": "Confirmar",
         "detailsSubtitle": "Detalhes da contribuição",
         "netGivingText": "Contribuição líquida: {{netGiving}}*",
         "serviceFeesText": "Taxas de serviço: {{serviceFees}}",
@@ -127,6 +128,16 @@
           "city": "Cidade",
           "taxId": "CPF"
         }
+      },
+      "paymentInformationsSection": {
+        "title": "Forma de pagamento",
+        "email": "E-mail",
+        "placeholderEmail": "myemail@email.com",
+        "cardNumber": "Número do cartão",
+        "cardName": "Nome impresso no cartão",
+        "cardDueDate": "Vencimento",
+        "securityCode": "Código de segurança",
+        "paymentFailedText": "Falha no pagamento. Tente novamente."
       },
       "linkMessageToast": "Saiba mais"
     }

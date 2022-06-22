@@ -3,10 +3,9 @@ import * as S from "./styles";
 
 export type Props = {
   name: string;
-  label: string;
   value?: string;
   type?: string;
-  placeholder: string;
+  placeholder?: string;
   maxLength?: number;
   minLength?: number;
   required?: boolean;
@@ -15,7 +14,6 @@ export type Props = {
 
 function InputText({
   name,
-  label,
   value,
   type,
   placeholder,
@@ -26,20 +24,17 @@ function InputText({
 }: Props): JSX.Element {
   return (
     <S.Container>
-      <S.Input>
-        {label && <label htmlFor={name}>{label}</label>}
-        <input
-          placeholder={placeholder}
-          type={type}
-          name={name}
-          aria-label={name}
-          value={value}
-          required={required}
-          maxLength={maxLength}
-          minLength={minLength}
-          onChange={onChange}
-        />
-      </S.Input>
+      <S.Input
+        placeholder={placeholder}
+        type={type}
+        name={name}
+        aria-label={name}
+        value={value}
+        required={required}
+        maxLength={maxLength}
+        minLength={minLength}
+        onChange={onChange}
+      />
     </S.Container>
   );
 }

@@ -15,7 +15,7 @@ export const Default = Template.bind({});
 Default.args = {
   name: "InputText",
   value: "value",
-  label: "InputText",
+  placeholder: "placeholder",
   onChange: (value) => {
     console.log(value);
   },

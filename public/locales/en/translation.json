@@ -116,6 +116,7 @@
         "currency": "Currency",
         "subtitleCard": "Choose your giving",
         "buttonTextCard": "Next",
+        "buttonSubmit": "Confirm",
         "detailsSubtitle": "Giving details",
         "netGivingText": "Net giving: {{netGiving}}*",
         "serviceFeesText": "Service fees: {{serviceFees}}",
@@ -127,6 +128,15 @@
           "city": "City",
           "taxId": "Tax ID"
         }
+      },
+      "paymentInformationsSection": {
+        "title": "Payment method",
+        "email": "E-mail",
+        "cardNumber": "Card number",
+        "cardName": "Name on card",
+        "cardDueDate": "Expiration",
+        "securityCode": "Card verification code",
+        "paymentFailedText": "Payment failed. Try again."
       },
       "linkMessageToast": "Learn more"
     }
