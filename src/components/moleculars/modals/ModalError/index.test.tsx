@@ -20,6 +20,14 @@ describe("ModalError", () => {
     });
   });
 
+  describe("when there is no title", () => {
+    it("should not display title", () => {
+      renderComponent(<ModalError visible />);
+
+      expectTextNotToBeInTheDocument("ModalError");
+    });
+  });
+
   describe("when it button is clicked", () => {
     it("should execute function", () => {
       const mockFunction = jest.fn();
