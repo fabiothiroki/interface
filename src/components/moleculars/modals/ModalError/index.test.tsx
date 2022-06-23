@@ -7,9 +7,12 @@ import ModalError from ".";
 
 describe("ModalError", () => {
   it("should render without error", () => {
-    renderComponent(<ModalError title="ModalError" visible />);
+    renderComponent(
+      <ModalError title="ModalError" buttonText="buttonText" visible />,
+    );
 
     expectTextToBeInTheDocument("ModalError");
+    expectTextToBeInTheDocument("buttonText");
   });
 
   describe("when visible is false", () => {
