@@ -113,4 +113,4 @@ We encourage you to contribute! Please check out the [Contributing guide](https:
 ## 🍕 Community
 
 Got Questions? Join the conversation in our [Discord](https://discord.gg/DBcwmDrkpy).  
-Find RibonDAO updates on our [Twitter](https://www.twitter.com/RibonDAO).
+Find RibonDAO updates in our [Twitter](https://www.twitter.com/RibonDAO).
