@@ -3,8 +3,8 @@ import {
   expectTextNotToBeInTheDocument,
   expectTextToBeInTheDocument,
 } from "config/testUtils/expects";
+import { clickOn } from "config/testUtils";
 import WalletLayout from ".";
-import { clickOn } from "../../config/testUtils";
 
 describe("WalletLayout", () => {
   it("renders the children passed", () => {
