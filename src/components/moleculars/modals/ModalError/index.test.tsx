@@ -1,5 +1,8 @@
 import { clickOn, renderComponent } from "config/testUtils";
-import { expectTextToBeInTheDocument } from "config/testUtils/expects";
+import {
+  expectTextNotToBeInTheDocument,
+  expectTextToBeInTheDocument,
+} from "config/testUtils/expects";
 import ModalError from ".";
 
 describe("ModalError", () => {
@@ -7,6 +10,14 @@ describe("ModalError", () => {
     renderComponent(<ModalError title="ModalError" visible />);
 
     expectTextToBeInTheDocument("ModalError");
+  });
+
+  describe("when visible is false", () => {
+    it("should not render", () => {
+      renderComponent(<ModalError title="ModalError" />);
+
+      expectTextNotToBeInTheDocument("ModalError");
+    });
   });
 
   describe("when it button is clicked", () => {
