@@ -11,8 +11,8 @@
       "donateText": "Usar ticket",
       "donateBlockedText": "Bloqueado",
       "pageTitle": "Causas",
-      "errorModalTitle": "Falha no processo",
-      "errorModalText": "Não foi possível concluir esta ação. Por favor verifique sua conexão com a internet e tente novamente.",
+      "errorModalTitle": "Falha no processamento",
+      "errorModalText": "A rede está instável e não foi possível registrar sua doação. Tente novamente, por favor.",
       "errorModalButtonText": "Ok",
       "blockedModalTitle": "Você não tem tickets doação",
       "blockedModalText": "Contribua para o Tesouro de Doação da Ribon e promova novas doações.",
@@ -30,7 +30,7 @@
     "donationDonePage": {
       "title": "Obrigada pela sua doação!",
       "subtitle": "1 dia de ração para animais resgatados",
-      "button": "Terminar",
+      "button": "Ver impacto",
       "ngoTitle": "Sobre ",
       "ngoInformation": "Amor em Patas é uma organização que tem como objetivo resgatar animais abandonados, cuidar deles e buscar adoção.",
       "moreInfoButtonText": "Mais informações"
@@ -107,13 +107,26 @@
       "card": "Cartão",
       "cryptocurrency": "Criptomoeda",
       "transactionOnBlockchainText": "Sua transação está sendo processada",
+      "connectWallet": "Conecte sua carteira",
+      "connectWalletButton": "Conectar carteira",
       "givingsPage": {
         "title": "Suas contribuições"
       },
       "cardSection": {
         "currency": "Moeda",
         "subtitleCard": "Escolha sua contribuição",
-        "buttonTextCard": "Próximo"
+        "buttonTextCard": "Próximo",
+        "detailsSubtitle": "Detalhes da contribuição",
+        "netGivingText": "Contribuição líquida: {{netGiving}}*",
+        "serviceFeesText": "Taxas de serviço: {{serviceFees}}",
+        "cryptoValueText": "*A contribuição será convertida em criptomoedas ({{cryptoGivings}})",
+        "billingInformationSection": {
+          "title": "Informações de cobrança",
+          "country": "País",
+          "state": "Estado",
+          "city": "Cidade",
+          "taxId": "CPF"
+        }
       },
       "linkMessageToast": "Saiba mais"
     }

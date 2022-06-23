@@ -11,8 +11,8 @@
       "donateText": "Use ticket",
       "donateBlockedText": "Blocked",
       "pageTitle": "Causes",
-      "errorModalTitle": "Process failed",
-      "errorModalText": "It was not possible to finish this action. Please, check your internet connection and try again.",
+      "errorModalTitle": "Processing failed",
+      "errorModalText": "The network is unstable and it was not possible to process your donation. Try again shortly.",
       "errorModalButtonText": "Ok",
       "blockedModalTitle": "You don't have donation tickets",
       "blockedModalText": "Make a giving to Ribon's Donation Treasure to promote new donations",
@@ -30,7 +30,7 @@
     "donationDonePage": {
       "title": "Thank you for your donation!",
       "subtitle": "1 day of pet food for rescued animals",
-      "button": "Finish",
+      "button": "Check impact",
       "ngoTitle": "About ",
       "ngoInformation": "Amor em Patas is an organization that aims to rescue abandoned animals, take care of them and seek adoption.",
       "moreInfoButtonText": "More info"
@@ -107,13 +107,26 @@
       "card": "Card",
       "cryptocurrency": "Cryptocurrency",
       "transactionOnBlockchainText": "Your transaction is being processed",
+      "connectWallet": "Connect your wallet",
+      "connectWalletButton": "Connect wallet",
       "givingsPage": {
         "title": "Your Givings"
       },
       "cardSection": {
         "currency": "Currency",
         "subtitleCard": "Choose your giving",
-        "buttonTextCard": "Next"
+        "buttonTextCard": "Next",
+        "detailsSubtitle": "Giving details",
+        "netGivingText": "Net giving: {{netGiving}}*",
+        "serviceFeesText": "Service fees: {{serviceFees}}",
+        "cryptoValueText": "*This giving will be converted in cryptocurrency ({{cryptoGivings}})",
+        "billingInformationSection": {
+          "title": "Billing information",
+          "country": "Country",
+          "state": "State",
+          "city": "City",
+          "taxId": "Tax ID"
+        }
       },
       "linkMessageToast": "Learn more"
     }

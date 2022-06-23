@@ -1,25 +1,59 @@
 import { useTranslation } from "react-i18next";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import useGivingValues from "hooks/apiHooks/useGivingValues";
 import { useLanguage } from "hooks/useLanguage";
 import Dropdown from "components/atomics/Dropdown";
+import theme from "styles/theme";
 import { Currencies } from "types/enums/Currencies";
-import * as S from "../styles";
+import { coinByLanguage } from "lib/coinByLanguage";
+import Divider from "components/atomics/Divider";
+import BillingInformationSection from "./BillingInformationSection";
+import FeesSection from "./FeesSection";
+import * as S from "./styles";
+
+const { lightGray } = theme.colors;
 
 function CardSection(): JSX.Element {
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
+  const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
   const { t } = useTranslation("translation", {
     keyPrefix: "promoters.supportFundPage.cardSection",
   });
   const { currentLang } = useLanguage();
-  function defaultCoin() {
-    if (currentLang === "pt-BR") return Currencies.BRL;
-
-    return Currencies.USD;
-  }
-  const [currentCoin, setCurrentCoin] = useState<Currencies>(defaultCoin());
+  const [currentCoin, setCurrentCoin] = useState<Currencies>(
+    coinByLanguage(currentLang),
+  );
   const { givingValues, refetch: refetchGivingValues } =
     useGivingValues(currentCoin);
+
+  const givingValue = useCallback(() => {
+    if (givingValues) return givingValues[selectedButtonIndex]?.value;
+
+    return 0;
+  }, [selectedButtonIndex, givingValues, currentCoin]);
+
+  const givingTotal = useCallback(() => {
+    if (!givingValues) return "";
+
+    return givingValues[selectedButtonIndex]?.valueText;
+  }, [givingValues, selectedButtonIndex, currentCoin]);
+
+  const sections = [
+    givingValue() > 0 && (
+      <FeesSection
+        currency={currentCoin}
+        givingValue={givingValue()}
+        givingTotal={givingTotal()}
+      />
+    ),
+    <BillingInformationSection />,
+  ];
+
+  function handleClickNext() {
+    if (currentSectionIndex <= sections.length - 1) {
+      setCurrentSectionIndex(currentSectionIndex + 1);
+    }
+  }
 
   useEffect(() => {
     refetchGivingValues();
@@ -39,18 +73,26 @@ function CardSection(): JSX.Element {
       <S.ValuesContainer>
         {givingValues?.map((item, index) => (
           <S.CardValueButton
-            text={item.valueText}
+            text={item?.valueText}
             onClick={() => {
               setSelectedButtonIndex(index);
             }}
             outline={index !== selectedButtonIndex}
-            key={item.value}
+            key={item?.value}
           />
         ))}
       </S.ValuesContainer>
 
+      <Divider color={lightGray} />
+
+      {sections[currentSectionIndex]}
       <S.ButtonContainer>
-        <S.FinishButton text={t("buttonTextCard")} onClick={() => {}} />
+        <S.FinishButton
+          text={t("buttonTextCard")}
+          onClick={() => {
+            handleClickNext();
+          }}
+        />
       </S.ButtonContainer>
     </S.CardSectionContainer>
   );

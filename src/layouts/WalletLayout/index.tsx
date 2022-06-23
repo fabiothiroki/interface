@@ -3,9 +3,10 @@ import Navigation from "config/routes/Navigation";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 import { useWalletContext } from "contexts/walletContext";
-import { getChain, onAccountChange, validChain } from "lib/walletConnector";
+import { onAccountChange } from "lib/walletConnector";
 import WalletIcon from "assets/icons/wallet-icon.svg";
 import { logEvent } from "services/analytics";
+import { walletTruncate } from "lib/formatters/walletTruncate";
 import * as S from "./styles";
 
 export type Props = {
@@ -25,17 +26,12 @@ function WalletLayout({
   const { connectWallet, wallet, checkIfWalletIsConnected, setWallet } =
     useWalletContext();
 
-  const handleChainChange = (chainId: string) => {
-    validChain(chainId);
-  };
-
   const handleAccountChange = (accounts: string[]) => {
     setWallet(accounts[0]);
   };
 
   useEffect(() => {
     checkIfWalletIsConnected();
-    getChain(handleChainChange);
     onAccountChange(handleAccountChange);
   }, []);
 
@@ -49,10 +45,7 @@ function WalletLayout({
   const walletButtonText = () => {
     if (!wallet) return t("connectWallet");
 
-    return `${wallet.substring(0, 4)}...${wallet.substring(
-      wallet.length - 4,
-      wallet.length,
-    )}`;
+    return walletTruncate(wallet);
   };
 
   return (

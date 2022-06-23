@@ -2,10 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useCallback, useEffect, useState } from "react";
 import SimpleMaskMoney from "simple-mask-money";
 import { useContract } from "hooks/useContract";
-import {
-  DONATION_TOKEN_CONTRACT_ADDRESS,
-  RIBON_CONTRACT_ADDRESS,
-} from "utils/contractUtils";
+import { useNetwork } from "hooks/useNetwork";
 import RibonAbi from "utils/abis/RibonAbi.json";
 import DonationTokenAbi from "utils/abis/DonationToken.json";
 import { useWalletContext } from "contexts/walletContext";
@@ -18,22 +15,27 @@ import { logEvent } from "services/analytics";
 import { formatFromWei } from "lib/web3Helpers/etherFormatters";
 import { stringToNumber } from "lib/formatters/stringToNumberFormatter";
 import { useLoadingOverlay } from "contexts/loadingOverlayContext";
-import * as S from "../styles";
+import WalletIcon from "./assets/wallet-icon.svg";
+import * as S from "./styles";
 
 function CryptoSection(): JSX.Element {
+  const cryptoUser =
+    "0x0000000000000000000000000000000000000000000000000000000000000000";
+
   const [amount, setAmount] = useState("");
   const [loading, setLoading] = useState(false);
   const [userBalance, setUserBalance] = useState("");
+  const { currentNetwork } = useNetwork();
 
   const { t } = useTranslation("translation", {
     keyPrefix: "promoters.supportFundPage",
   });
   const contract = useContract({
-    address: RIBON_CONTRACT_ADDRESS,
+    address: currentNetwork.ribonContractAddress,
     ABI: RibonAbi.abi,
   });
   const donationTokenContract = useContract({
-    address: DONATION_TOKEN_CONTRACT_ADDRESS,
+    address: currentNetwork.donationTokenContractAddress,
     ABI: DonationTokenAbi.abi,
   });
   const toast = useToast();
@@ -58,7 +60,7 @@ function CryptoSection(): JSX.Element {
 
   const approveAmount = async () =>
     donationTokenContract?.functions.approve(
-      RIBON_CONTRACT_ADDRESS,
+      currentNetwork.ribonContractAddress,
       utils.parseEther(amount),
       {
         from: wallet,
@@ -66,7 +68,10 @@ function CryptoSection(): JSX.Element {
     );
 
   const donateToContract = async () =>
-    contract?.functions.addDonationPoolBalance(utils.parseEther(amount));
+    contract?.functions.addDonationPoolBalance(
+      utils.parseEther(amount),
+      cryptoUser,
+    );
 
   const fetchUsdcUserBalance = useCallback(async () => {
     try {
@@ -84,7 +89,9 @@ function CryptoSection(): JSX.Element {
   }, [fetchUsdcUserBalance]);
 
   useEffect(() => {
-    SimpleMaskMoney.setMask("#amount", args);
+    if (wallet) {
+      SimpleMaskMoney.setMask("#amount", args);
+    }
   }, []);
 
   const insufficientBalance = () => {
@@ -106,9 +113,6 @@ function CryptoSection(): JSX.Element {
   };
 
   const handleFinishButtonClick = async () => {
-    if (!wallet) {
-      connectWallet();
-    }
     logEvent("fundSupportConfirmBtn_click");
     setLoading(true);
     showLoadingOverlay(t("tokenAmountTransferMessage"));
@@ -124,7 +128,7 @@ function CryptoSection(): JSX.Element {
       toast({
         message: t("transactionOnBlockchainText"),
         type: "success",
-        link: `https://mumbai.polygonscan.com/tx/${id}`,
+        link: `${currentNetwork.blockExplorerUrls}tx/${id}`,
         linkMessage: t("linkMessageToast"),
       });
       logEvent("toastNotification_view", {
@@ -150,33 +154,60 @@ function CryptoSection(): JSX.Element {
     }
   };
 
+  const handleConnectWalletButtonClick = () => {
+    logEvent("fundConWalletBtn_click", {
+      from: "supportPageButton",
+    });
+    connectWallet();
+  };
+
+  function renderConnectWallet() {
+    logEvent("fundSupportWalletRequest_view");
+    return (
+      <S.ConnectContainer>
+        <S.Image src={WalletIcon} alt="walletIcon" />
+        <S.Label>{t("connectWallet")}</S.Label>
+        <S.ConnectButton
+          text={t("connectWalletButton")}
+          onClick={handleConnectWalletButtonClick}
+        />
+      </S.ConnectContainer>
+    );
+  }
+
+  function renderFormCryptocurrency() {
+    return (
+      <div>
+        <S.Subtitle>{t("subtitle")}</S.Subtitle>
+
+        <S.InputContainer>
+          <S.Input
+            name="amount"
+            id="amount"
+            type="text"
+            placeholder="0.00"
+            inputMode="numeric"
+          />
+          <S.UsdcContainer>
+            <S.UsdcIcon src={UsdcIcon} />
+            <S.UsdcText>USDC</S.UsdcText>
+          </S.UsdcContainer>
+        </S.InputContainer>
+        <S.Text>{t("usdcBalanceText", { balance: userBalance })}</S.Text>
+
+        <S.ButtonContainer>
+          <S.FinishButton
+            text={finishButtonText()}
+            onClick={handleFinishButtonClick}
+            disabled={disableButton()}
+          />
+        </S.ButtonContainer>
+      </div>
+    );
+  }
+
   return (
-    <div>
-      <S.Subtitle>{t("subtitle")}</S.Subtitle>
-
-      <S.InputContainer>
-        <S.Input
-          name="amount"
-          id="amount"
-          type="text"
-          placeholder="0.00"
-          inputMode="numeric"
-        />
-        <S.UsdcContainer>
-          <S.UsdcIcon src={UsdcIcon} />
-          <S.UsdcText>USDC</S.UsdcText>
-        </S.UsdcContainer>
-      </S.InputContainer>
-      <S.Text>{t("usdcBalanceText", { balance: userBalance })}</S.Text>
-
-      <S.ButtonContainer>
-        <S.FinishButton
-          text={finishButtonText()}
-          onClick={handleFinishButtonClick}
-          disabled={disableButton()}
-        />
-      </S.ButtonContainer>
-    </div>
+    <div>{wallet ? renderFormCryptocurrency() : renderConnectWallet()}</div>
   );
 }
 
