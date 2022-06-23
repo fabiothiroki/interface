@@ -5,7 +5,7 @@ https://github.com/open-sauced/open-sauced#readme
 
 <div align="center">
   <br>
-  <img alt="Open Sauced" src="https://ribon.io/wp-content/uploads/2021/03/cropped-Ribon-logo-verde.png" width="300px">
+  <img alt="Ribon Logo" src="https://ribon.io/wp-content/uploads/2021/03/cropped-Ribon-logo-verde.png" width="300px">
   <h1>Ribon DApp</h1>
   <strong>The decentralized giving protocol on the Web 3.0</strong>
 </div>
@@ -100,9 +100,8 @@ yarn storybook
 
 In local development the data comes from the [development API](https://github.com/RibonDAO/core-api) (hosted on AWS). There are still two another environments:
 
- Staging: [https://ribon-dapp-staging.web.app/?integration_id=1](https://ribon-dapp-staging.web.app/?integration_id=1)
- <br/>
- Production: [https://dapp.ribon.io/?integration_id=1](https://dapp.ribon.io/?integration_id=1)
+ - Staging: [https://ribon-dapp-staging.web.app/?integration_id=1](https://ribon-dapp-staging.web.app/?integration_id=1)
+ - Production: [https://dapp.ribon.io/?integration_id=1](https://dapp.ribon.io/?integration_id=1)
 
 The staging environment is a production replica, but with a different database. Every time a PR is merged into _main_ this environment is updated with the new code
 
