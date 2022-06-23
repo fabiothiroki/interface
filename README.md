@@ -1,3 +1,8 @@
+<!---
+The main structure of this README was taken from:
+https://github.com/open-sauced/open-sauced#readme
+-->
+
 <div align="center">
   <br>
   <img alt="Open Sauced" src="https://ribon.io/wp-content/uploads/2021/03/cropped-Ribon-logo-verde.png" width="300px">
