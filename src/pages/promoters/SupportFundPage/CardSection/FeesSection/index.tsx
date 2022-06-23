@@ -8,6 +8,7 @@ type Props = {
   currency: Currencies;
   givingTotal: string;
 };
+
 function FeesSection({
   givingValue,
   currency,

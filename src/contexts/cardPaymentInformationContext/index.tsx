@@ -1,13 +1,20 @@
 import { useCurrentUser } from "contexts/currentUserContext";
+import useGivingValues from "hooks/apiHooks/useGivingValues";
+import { useLanguage } from "hooks/useLanguage";
+import { coinByLanguage } from "lib/coinByLanguage";
 import {
   createContext,
   useContext,
   SetStateAction,
   useState,
   useMemo,
+  useCallback,
 } from "react";
+import GivingValue from "types/entities/GivingValue";
+import { Currencies } from "types/enums/Currencies";
 
 export interface ICardPaymentInformationContext {
+  setCurrentCoin: (value: SetStateAction<Currencies>) => void;
   setCountry: (value: SetStateAction<string>) => void;
   setState: (value: SetStateAction<string>) => void;
   setCity: (value: SetStateAction<string>) => void;
@@ -18,6 +25,11 @@ export interface ICardPaymentInformationContext {
   setExpirationDate: (value: SetStateAction<string>) => void;
   setSecurityCode: (value: SetStateAction<string>) => void;
   setSelectedButtonIndex: (value: SetStateAction<number>) => void;
+  refetchGivingValues: () => void;
+  givingValue: () => number;
+  givingTotal: string;
+  currentCoin: Currencies;
+  givingValues: GivingValue[] | undefined;
   country: string;
   state: string;
   city: string;
@@ -42,6 +54,25 @@ export const CardPaymentInformationContext =
 
 function CardPaymentInformationProvider({ children }: Props) {
   const { currentUser } = useCurrentUser();
+  const { currentLang } = useLanguage();
+
+  const [currentCoin, setCurrentCoin] = useState<Currencies>(
+    coinByLanguage(currentLang),
+  );
+  const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
+
+  const { givingValues, refetch: refetchGivingValues } =
+    useGivingValues(currentCoin);
+
+  const givingValue = useCallback(() => {
+    if (givingValues) return givingValues[selectedButtonIndex]?.value;
+
+    return 0;
+  }, [selectedButtonIndex]);
+
+  const givingTotal = givingValues
+    ? givingValues[selectedButtonIndex]?.valueText
+    : "";
 
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");
@@ -52,10 +83,13 @@ function CardPaymentInformationProvider({ children }: Props) {
   const [cardName, setCardName] = useState("");
   const [expirationDate, setExpirationDate] = useState("");
   const [securityCode, setSecurityCode] = useState("");
-  const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
 
   const handleSubmit = () => {
     console.log({
+      currentCoin,
+      givingValue,
+      givingValues,
+      givingTotal,
       country,
       state,
       city,
@@ -71,6 +105,12 @@ function CardPaymentInformationProvider({ children }: Props) {
 
   const cardPaymentInformationObject: ICardPaymentInformationContext = useMemo(
     () => ({
+      currentCoin,
+      setCurrentCoin,
+      givingValue,
+      givingTotal,
+      givingValues,
+      refetchGivingValues,
       country,
       setCountry,
       city,
@@ -94,6 +134,9 @@ function CardPaymentInformationProvider({ children }: Props) {
       setSelectedButtonIndex,
     }),
     [
+      currentCoin,
+      givingValue,
+      refetchGivingValues,
       country,
       city,
       state,
