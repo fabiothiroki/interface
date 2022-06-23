@@ -27,7 +27,7 @@ export interface ICardPaymentInformationContext {
   setSelectedButtonIndex: (value: SetStateAction<number>) => void;
   refetchGivingValues: () => void;
   givingValue: () => number;
-  givingTotal: string;
+  givingTotal: () => string;
   currentCoin: Currencies;
   givingValues: GivingValue[] | undefined;
   country: string;
@@ -70,9 +70,10 @@ function CardPaymentInformationProvider({ children }: Props) {
     return 0;
   }, [selectedButtonIndex]);
 
-  const givingTotal = givingValues
-    ? givingValues[selectedButtonIndex]?.valueText
-    : "";
+  function givingTotal() {
+    if (!givingValues) return "";
+    return givingValues[selectedButtonIndex]?.valueText;
+  }
 
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");

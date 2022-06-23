@@ -34,7 +34,7 @@ function CardSection(): JSX.Element {
     <FeesSection
       currency={currentCoin}
       givingValue={givingValue()}
-      givingTotal={givingTotal}
+      givingTotal={givingTotal()}
     />,
     <BillingInformationSection />,
     <PaymentInformations />,
