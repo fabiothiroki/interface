@@ -1,4 +1,4 @@
-import InputText from "components/InputText";
+import InputText from "components/atomics/inputs/InputText";
 import { useCardPaymentInformation } from "contexts/cardPaymentInformationContext";
 import { useCurrentUser } from "contexts/currentUserContext";
 import { maskToCreditCard } from "lib/maskToCreditCard";
@@ -8,9 +8,9 @@ import { useTranslation } from "react-i18next";
 import { logEvent } from "services/analytics";
 import * as S from "./styles";
 
-function PaymentInformations() {
+function PaymentInformation() {
   const { t } = useTranslation("translation", {
-    keyPrefix: "promoters.supportFundPage.paymentInformationsSection",
+    keyPrefix: "promoters.supportFundPage.paymentInformationSection",
   });
 
   const {
@@ -50,8 +50,8 @@ function PaymentInformations() {
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        required
         disabled={!!currentUser?.email}
+        required
       />
       <InputText
         name="cardNumber"
@@ -89,4 +89,4 @@ function PaymentInformations() {
   );
 }
 
-export default PaymentInformations;
+export default PaymentInformation;

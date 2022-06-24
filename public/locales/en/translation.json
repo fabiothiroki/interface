@@ -129,7 +129,7 @@
           "taxId": "Tax ID"
         }
       },
-      "paymentInformationsSection": {
+      "paymentInformationSection": {
         "title": "Payment method",
         "email": "E-mail",
         "cardNumber": "Card number",

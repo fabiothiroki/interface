@@ -2,17 +2,17 @@ import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { renderComponent } from "config/testUtils";
 import { expectTextToBeInTheDocument } from "config/testUtils/expects";
-import PaymentInformations from ".";
+import PaymentInformation from ".";
 
 describe("PaymentInformationSection", () => {
   it("should render without error", () => {
-    renderComponent(<PaymentInformations />);
+    renderComponent(<PaymentInformation />);
 
     expectTextToBeInTheDocument("Payment method");
   });
 
   it("should fill payment methods form", () => {
-    renderComponent(<PaymentInformations />);
+    renderComponent(<PaymentInformation />);
 
     userEvent.type(screen.getByPlaceholderText("E-mail"), "leticia@ribon.io");
 

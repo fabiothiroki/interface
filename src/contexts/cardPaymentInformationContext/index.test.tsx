@@ -2,9 +2,9 @@ import { renderComponent } from "config/testUtils";
 import { expectTextToBeInTheDocument } from "config/testUtils/expects";
 import { useCardPaymentInformation } from ".";
 
-function CardPaymentInformationTestPage(){
+function CardPaymentInformationTestPage() {
   useCardPaymentInformation();
-  return <div>CardPaymentInformation</div>
+  return <div>CardPaymentInformation</div>;
 }
 
 describe("useCardPaymentInformation", () => {

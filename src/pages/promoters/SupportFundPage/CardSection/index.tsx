@@ -1,17 +1,14 @@
 import { useTranslation } from "react-i18next";
-import { useCallback, useEffect, useState } from "react";
-import useGivingValues from "hooks/apiHooks/useGivingValues";
-import { useLanguage } from "hooks/useLanguage";
+import { useEffect, useState } from "react";
 import Dropdown from "components/atomics/Dropdown";
 import theme from "styles/theme";
 import { Currencies } from "types/enums/Currencies";
-import { coinByLanguage } from "lib/coinByLanguage";
 import Divider from "components/atomics/Divider";
 import { useCardPaymentInformation } from "contexts/cardPaymentInformationContext";
 import BillingInformationSection from "./BillingInformationSection";
 import FeesSection from "./FeesSection";
 import * as S from "./styles";
-import PaymentInformations from "../PaymentInformationsSection";
+import PaymentInformation from "./PaymentInformationSection";
 
 const { lightGray } = theme.colors;
 
@@ -21,31 +18,25 @@ function CardSection(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "promoters.supportFundPage.cardSection",
   });
-  const { currentLang } = useLanguage();
-  const [currentCoin, setCurrentCoin] = useState<Currencies>(
-    coinByLanguage(currentLang),
-  );
-  const { givingValues, refetch: refetchGivingValues } =
-    useGivingValues(currentCoin);
 
-  const { handleSubmit, selectedButtonIndex, setSelectedButtonIndex } =
-    useCardPaymentInformation();
+  const {
+    givingValues,
+    givingTotal,
+    refetchGivingValues,
+    givingValue,
+    currentCoin,
+    setCurrentCoin,
+    handleSubmit,
+    selectedButtonIndex,
+    setSelectedButtonIndex,
+    buttonDisabled,
+    setButtonDisabled,
+  } = useCardPaymentInformation();
 
-  const givingValue = useCallback(() => {
-    if (givingValues) return givingValues[selectedButtonIndex]?.value;
-
-    return 0;
-  }, [selectedButtonIndex]);
-
-  function givingTotal() {
-    if (!givingValues) return "";
-
-    return givingValues[selectedButtonIndex]?.valueText;
-  }
-
-  const sections = [<BillingInformationSection />, <PaymentInformations />];
+  const sections = [<BillingInformationSection />, <PaymentInformation />];
 
   function handleClickNext() {
+    setButtonDisabled(true);
     if (currentSectionIndex < sections.length - 1) {
       setCurrentSectionIndex(currentSectionIndex + 1);
     } else {
@@ -101,6 +92,7 @@ function CardSection(): JSX.Element {
           onClick={() => {
             handleClickNext();
           }}
+          disabled={buttonDisabled}
         />
       </S.ButtonContainer>
     </S.CardSectionContainer>

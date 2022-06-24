@@ -5,18 +5,25 @@ import usePayment from "hooks/apiHooks/usePayment";
 import { useModal } from "hooks/modalHooks/useModal";
 import useNavigation from "hooks/useNavigation";
 import useToast from "hooks/useToast";
+import useGivingValues from "hooks/apiHooks/useGivingValues";
+import { useLanguage } from "hooks/useLanguage";
+import { coinByLanguage } from "lib/coinByLanguage";
 import {
   createContext,
   useContext,
   SetStateAction,
   useState,
   useMemo,
+  useCallback,
 } from "react";
 import { useTranslation } from "react-i18next";
 import { logEvent } from "services/analytics";
 import { logError } from "services/crashReport";
+import GivingValue from "types/entities/GivingValue";
+import { Currencies } from "types/enums/Currencies";
 
 export interface ICardPaymentInformationContext {
+  setCurrentCoin: (value: SetStateAction<Currencies>) => void;
   setCountry: (value: SetStateAction<string>) => void;
   setState: (value: SetStateAction<string>) => void;
   setCity: (value: SetStateAction<string>) => void;
@@ -27,6 +34,13 @@ export interface ICardPaymentInformationContext {
   setExpirationDate: (value: SetStateAction<string>) => void;
   setSecurityCode: (value: SetStateAction<string>) => void;
   setSelectedButtonIndex: (value: SetStateAction<number>) => void;
+  setButtonDisabled: (value: SetStateAction<boolean>) => void;
+  refetchGivingValues: () => void;
+  givingValue: () => number;
+  givingTotal: () => string;
+  buttonDisabled: boolean;
+  currentCoin: Currencies;
+  givingValues: GivingValue[] | undefined;
   country: string;
   state: string;
   city: string;
@@ -51,6 +65,26 @@ export const CardPaymentInformationContext =
 
 function CardPaymentInformationProvider({ children }: Props) {
   const { currentUser } = useCurrentUser();
+  const { currentLang } = useLanguage();
+
+  const [currentCoin, setCurrentCoin] = useState<Currencies>(
+    coinByLanguage(currentLang),
+  );
+  const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
+
+  const { givingValues, refetch: refetchGivingValues } =
+    useGivingValues(currentCoin);
+
+  const givingValue = useCallback(() => {
+    if (givingValues) return givingValues[selectedButtonIndex]?.value;
+
+    return 0;
+  }, [selectedButtonIndex]);
+
+  function givingTotal() {
+    if (!givingValues) return "";
+    return givingValues[selectedButtonIndex]?.valueText;
+  }
 
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");
@@ -61,7 +95,7 @@ function CardPaymentInformationProvider({ children }: Props) {
   const [cardName, setCardName] = useState("");
   const [expirationDate, setExpirationDate] = useState("");
   const [securityCode, setSecurityCode] = useState("");
-  const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const { showLoadingOverlay, hideLoadingOverlay } = useLoadingOverlay();
 
@@ -76,7 +110,7 @@ function CardPaymentInformationProvider({ children }: Props) {
   const handleSubmit = async () => {
     logEvent("fundSupportConfirmBtn_click");
     showLoadingOverlay(t("loadingMessage"));
-    const paymentInformations = {
+    const paymentInformation = {
       email,
       country,
       state,
@@ -90,7 +124,7 @@ function CardPaymentInformationProvider({ children }: Props) {
       },
     };
     try {
-      await usePayment(paymentInformations);
+      await usePayment(paymentInformation);
 
       useModal({
         type: MODAL_TYPES.MODAL_ICON,
@@ -119,6 +153,12 @@ function CardPaymentInformationProvider({ children }: Props) {
 
   const cardPaymentInformationObject: ICardPaymentInformationContext = useMemo(
     () => ({
+      currentCoin,
+      setCurrentCoin,
+      givingValue,
+      givingTotal,
+      givingValues,
+      refetchGivingValues,
       country,
       setCountry,
       city,
@@ -140,8 +180,13 @@ function CardPaymentInformationProvider({ children }: Props) {
       securityCode,
       selectedButtonIndex,
       setSelectedButtonIndex,
+      buttonDisabled,
+      setButtonDisabled,
     }),
     [
+      currentCoin,
+      givingValue,
+      refetchGivingValues,
       country,
       city,
       state,
@@ -152,6 +197,7 @@ function CardPaymentInformationProvider({ children }: Props) {
       expirationDate,
       securityCode,
       selectedButtonIndex,
+      buttonDisabled,
     ],
   );
 

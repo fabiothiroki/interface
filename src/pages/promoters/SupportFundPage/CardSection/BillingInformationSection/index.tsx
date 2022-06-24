@@ -1,10 +1,11 @@
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import InputAutoComplete from "components/atomics/inputs/InputAutoComplete";
 import { Languages } from "types/enums/Languages";
 import { useLanguage } from "hooks/useLanguage";
 import { mask } from "lib/maskForTaxId";
 import { useCardPaymentInformation } from "contexts/cardPaymentInformationContext";
-import InputText from "components/InputText";
+import InputText from "components/atomics/inputs/InputText";
 import { countryList } from "./countryList";
 import * as S from "./styles";
 
@@ -15,13 +16,30 @@ function BillingInformationSection(): JSX.Element {
   });
   const { currentLang } = useLanguage();
   const maxLengthByLanguage = currentLang === Languages.PT ? 14 : 11;
-  const { setCountry, state, setState, city, setCity, taxId, setTaxId } =
-    useCardPaymentInformation();
+  const {
+    country,
+    setCountry,
+    state,
+    setState,
+    city,
+    setCity,
+    taxId,
+    setTaxId,
+    setButtonDisabled,
+  } = useCardPaymentInformation();
 
   const handleChangeMask = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setTaxId(mask(value, currentLang));
   };
+
+  useEffect(() => {
+    if (country && state && city && taxId.length === maxLengthByLanguage) {
+      setButtonDisabled(false);
+    } else {
+      setButtonDisabled(true);
+    }
+  }, [country, state, city, taxId]);
 
   return (
     <S.BillingInformationSectionContainer>
@@ -39,12 +57,14 @@ function BillingInformationSection(): JSX.Element {
           placeholder={t("city")}
           value={city}
           onChange={(e) => setCity(e.target.value)}
+          required
         />
         <S.HalfInput
           name={state}
           placeholder={t("state")}
           value={state}
           onChange={(e) => setState(e.target.value)}
+          required
         />
         <InputText
           name={taxId}
@@ -52,6 +72,7 @@ function BillingInformationSection(): JSX.Element {
           value={taxId}
           onChange={handleChangeMask}
           maxLength={maxLengthByLanguage}
+          required
         />
       </S.Form>
     </S.BillingInformationSectionContainer>
