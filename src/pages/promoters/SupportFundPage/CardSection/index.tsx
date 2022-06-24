@@ -8,7 +8,7 @@ import { useCardPaymentInformation } from "contexts/cardPaymentInformationContex
 import BillingInformationSection from "./BillingInformationSection";
 import FeesSection from "./FeesSection";
 import * as S from "./styles";
-import PaymentInformations from "./PaymentInformationsSection";
+import PaymentInformation from "./PaymentInformationSection";
 
 const { lightGray } = theme.colors;
 
@@ -37,7 +37,7 @@ function CardSection(): JSX.Element {
       givingTotal={givingTotal()}
     />,
     <BillingInformationSection />,
-    <PaymentInformations />,
+    <PaymentInformation />,
   ];
 
   function handleClickNext() {

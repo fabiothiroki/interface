@@ -129,7 +129,7 @@
           "taxId": "CPF"
         }
       },
-      "paymentInformationsSection": {
+      "paymentInformationSection": {
         "title": "Forma de pagamento",
         "email": "E-mail",
         "placeholderEmail": "myemail@email.com",

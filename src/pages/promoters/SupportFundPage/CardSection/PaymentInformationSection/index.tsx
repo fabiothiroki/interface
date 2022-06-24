@@ -10,9 +10,9 @@ import { useTranslation } from "react-i18next";
 import { logEvent } from "services/analytics";
 import * as S from "./styles";
 
-function PaymentInformations() {
+function PaymentInformation() {
   const { t } = useTranslation("translation", {
-    keyPrefix: "promoters.supportFundPage.paymentInformationsSection",
+    keyPrefix: "promoters.supportFundPage.paymentInformationSection",
   });
 
   const toast = useToast();
@@ -98,4 +98,4 @@ function PaymentInformations() {
   );
 }
 
-export default PaymentInformations;
+export default PaymentInformation;

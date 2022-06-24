@@ -1,10 +1,10 @@
 import { renderComponent } from "config/testUtils";
 import { expectTextToBeInTheDocument } from "config/testUtils/expects";
-import PaymentInformations from ".";
+import PaymentInformation from ".";
 
 describe("BillingInformationSection", () => {
   it("should render without error", () => {
-    renderComponent(<PaymentInformations />);
+    renderComponent(<PaymentInformation />);
 
     expectTextToBeInTheDocument("Forma de pagamento");
   });
