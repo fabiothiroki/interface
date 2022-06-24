@@ -25,9 +25,11 @@ export interface ICardPaymentInformationContext {
   setExpirationDate: (value: SetStateAction<string>) => void;
   setSecurityCode: (value: SetStateAction<string>) => void;
   setSelectedButtonIndex: (value: SetStateAction<number>) => void;
+  setButtonDisabled: (value: SetStateAction<boolean>) => void;
   refetchGivingValues: () => void;
   givingValue: () => number;
   givingTotal: () => string;
+  buttonDisabled: boolean;
   currentCoin: Currencies;
   givingValues: GivingValue[] | undefined;
   country: string;
@@ -84,6 +86,7 @@ function CardPaymentInformationProvider({ children }: Props) {
   const [cardName, setCardName] = useState("");
   const [expirationDate, setExpirationDate] = useState("");
   const [securityCode, setSecurityCode] = useState("");
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const handleSubmit = () => {
     console.log({
@@ -133,6 +136,8 @@ function CardPaymentInformationProvider({ children }: Props) {
       securityCode,
       selectedButtonIndex,
       setSelectedButtonIndex,
+      buttonDisabled,
+      setButtonDisabled,
     }),
     [
       currentCoin,
@@ -148,6 +153,7 @@ function CardPaymentInformationProvider({ children }: Props) {
       expirationDate,
       securityCode,
       selectedButtonIndex,
+      buttonDisabled,
     ],
   );
 

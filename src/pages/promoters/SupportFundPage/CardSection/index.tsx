@@ -19,15 +19,17 @@ function CardSection(): JSX.Element {
   });
 
   const {
-    handleSubmit,
-    selectedButtonIndex,
-    setSelectedButtonIndex,
     givingValues,
     givingTotal,
     refetchGivingValues,
     givingValue,
     currentCoin,
     setCurrentCoin,
+    handleSubmit,
+    selectedButtonIndex,
+    setSelectedButtonIndex,
+    buttonDisabled,
+    setButtonDisabled,
   } = useCardPaymentInformation();
 
   const sections = [
@@ -41,6 +43,7 @@ function CardSection(): JSX.Element {
   ];
 
   function handleClickNext() {
+    setButtonDisabled(true);
     if (currentSectionIndex < sections.length - 1) {
       setCurrentSectionIndex(currentSectionIndex + 1);
     } else {
@@ -89,6 +92,7 @@ function CardSection(): JSX.Element {
           onClick={() => {
             handleClickNext();
           }}
+          disabled={buttonDisabled}
         />
       </S.ButtonContainer>
     </S.CardSectionContainer>
