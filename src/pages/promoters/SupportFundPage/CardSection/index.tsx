@@ -33,11 +33,13 @@ function CardSection(): JSX.Element {
   } = useCardPaymentInformation();
 
   const sections = [
-    <FeesSection
-      currency={currentCoin}
-      givingValue={givingValue()}
-      givingTotal={givingTotal()}
-    />,
+    givingValue() > 0 && (
+      <FeesSection
+        currency={currentCoin}
+        givingValue={givingValue()}
+        givingTotal={givingTotal()}
+      />
+    ),
     <BillingInformationSection />,
     <PaymentInformation />,
   ];
