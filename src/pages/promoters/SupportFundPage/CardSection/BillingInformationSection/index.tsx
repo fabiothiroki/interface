@@ -34,8 +34,10 @@ function BillingInformationSection(): JSX.Element {
   };
 
   useEffect(() => {
-    if (country && state && city && taxId) {
+    if (country && state && city && taxId.length === maxLengthByLanguage) {
       setButtonDisabled(false);
+    } else {
+      setButtonDisabled(true);
     }
   }, [country, state, city, taxId]);
 
