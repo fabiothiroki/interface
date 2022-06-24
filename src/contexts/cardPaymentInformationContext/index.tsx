@@ -1,4 +1,10 @@
 import { useCurrentUser } from "contexts/currentUserContext";
+import { useLoadingOverlay } from "contexts/loadingOverlayContext";
+import { MODAL_TYPES } from "contexts/modalContext/helpers";
+import usePayment from "hooks/apiHooks/usePayment";
+import { useModal } from "hooks/modalHooks/useModal";
+import useNavigation from "hooks/useNavigation";
+import useToast from "hooks/useToast";
 import {
   createContext,
   useContext,
@@ -6,6 +12,9 @@ import {
   useState,
   useMemo,
 } from "react";
+import { useTranslation } from "react-i18next";
+import { logEvent } from "services/analytics";
+import { logError } from "services/crashReport";
 
 export interface ICardPaymentInformationContext {
   setCountry: (value: SetStateAction<string>) => void;
@@ -54,19 +63,58 @@ function CardPaymentInformationProvider({ children }: Props) {
   const [securityCode, setSecurityCode] = useState("");
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
 
-  const handleSubmit = () => {
-    console.log({
+  const { showLoadingOverlay, hideLoadingOverlay } = useLoadingOverlay();
+
+  const { navigateTo } = useNavigation();
+
+  const { t } = useTranslation("translation", {
+    keyPrefix: "contexts.cardPaymentInformation",
+  });
+
+  const toast = useToast();
+
+  const handleSubmit = async () => {
+    logEvent("fundSupportConfirmBtn_click");
+    showLoadingOverlay(t("loadingMessage"));
+    const paymentInformations = {
+      email,
       country,
       state,
       city,
       taxId,
-      email,
-      cardNumber,
-      cardName,
-      expirationDate,
-      securityCode,
-      selectedButtonIndex,
-    });
+      card: {
+        cardNumber,
+        cardName,
+        expirationDate,
+        securityCode,
+      },
+    };
+    try {
+      await usePayment(paymentInformations);
+
+      useModal({
+        type: MODAL_TYPES.MODAL_ICON,
+        props: {
+          title: t("modalSuccessTitle"),
+          body: t("modalSuccessDescription"),
+          primaryButtonText: t("modalSuccessButton"),
+          primaryButtonCallback: () => navigateTo("/promoters/support-fund"),
+        },
+      });
+      logEvent("fundGivingConfirmMdl_view");
+    } catch (error) {
+      logError(error);
+      toast({
+        message: t("onErrorMessage"),
+        type: "error",
+      });
+
+      logEvent("toastNotification_view", {
+        status: "transactionFailed",
+      });
+    } finally {
+      hideLoadingOverlay();
+    }
   };
 
   const cardPaymentInformationObject: ICardPaymentInformationContext = useMemo(
