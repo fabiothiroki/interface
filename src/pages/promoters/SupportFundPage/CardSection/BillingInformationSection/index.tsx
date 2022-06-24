@@ -4,7 +4,7 @@ import { Languages } from "types/enums/Languages";
 import { useLanguage } from "hooks/useLanguage";
 import { mask } from "lib/maskForTaxId";
 import { useCardPaymentInformation } from "contexts/cardPaymentInformationContext";
-import InputText from "components/InputText";
+import InputText from "components/atomics/inputs/InputText";
 import { countryList } from "./countryList";
 import * as S from "./styles";
 

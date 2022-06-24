@@ -8,7 +8,7 @@ import { useCardPaymentInformation } from "contexts/cardPaymentInformationContex
 import BillingInformationSection from "./BillingInformationSection";
 import FeesSection from "./FeesSection";
 import * as S from "./styles";
-import PaymentInformations from "../PaymentInformationsSection";
+import PaymentInformations from "./PaymentInformationsSection";
 
 const { lightGray } = theme.colors;
 

@@ -1,5 +1,5 @@
 import Button from "components/atomics/Button";
-import InputText from "components/InputText";
+import InputText from "components/atomics/inputs/InputText";
 import { useCardPaymentInformation } from "contexts/cardPaymentInformationContext";
 
 import useToast from "hooks/useToast";
