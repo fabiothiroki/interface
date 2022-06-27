@@ -47,11 +47,7 @@ function CardSection(): JSX.Element {
 
   useEffect(() => {
     refetchGivingValues();
-    console.log(givingValues);
-    if (givingValues === undefined) {
-      refetchGivingValues();
-    }
-  }, [currentCoin, givingValue]);
+  }, [currentCoin]);
 
   return (
     <S.CardSectionContainer>
@@ -77,12 +73,14 @@ function CardSection(): JSX.Element {
       </S.ValuesContainer>
       <Divider color={lightGray} />
 
-      <FeesSection
-        currency={currentCoin}
-        givingValue={givingValue()}
-        givingTotal={givingTotal()}
-        setCryptoGiving={setCryptoGiving}
-      />
+      {givingValue() > 0 && (
+        <FeesSection
+          currency={currentCoin}
+          givingValue={givingValue()}
+          givingTotal={givingTotal()}
+          setCryptoGiving={setCryptoGiving}
+        />
+      )}
 
       <Divider color={lightGray} />
 

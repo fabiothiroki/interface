@@ -126,8 +126,6 @@ function CardPaymentInformationProvider({ children }: Props) {
 
   const toast = useToast();
 
-  console.log(cryptoGiving);
-
   const handleSubmit = async () => {
     logEvent("fundSupportConfirmBtn_click");
     showLoadingOverlay(t("loadingMessage"));
