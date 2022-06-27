@@ -114,25 +114,25 @@ export function renderComponent(
           <I18nextProvider i18n={i18n}>
             <Router history={historyObject}>
               {renderProvider(
-                CardPaymentInformationProvider,
-                CardPaymentInformationContext,
-                cardPaymentProviderValue,
+                WalletProvider,
+                WalletContext,
+                walletProviderValue,
                 renderProvider(
-                  WalletProvider,
-                  WalletContext,
-                  walletProviderValue,
+                  CurrentUserProvider,
+                  CurrentUserContext,
+                  currentUserProviderValue,
                   renderProvider(
-                    CurrentUserProvider,
-                    CurrentUserContext,
-                    currentUserProviderValue,
+                    ToastContextProvider,
+                    ToastContext,
+                    toastProviderValue,
                     renderProvider(
-                      ToastContextProvider,
-                      ToastContext,
-                      toastProviderValue,
+                      LoadingOverlayProvider,
+                      LoadingOverlayContext,
+                      loadingOverlayValue,
                       renderProvider(
-                        LoadingOverlayProvider,
-                        LoadingOverlayContext,
-                        loadingOverlayValue,
+                        CardPaymentInformationProvider,
+                        CardPaymentInformationContext,
+                        cardPaymentProviderValue,
                         renderProvider(
                           ModalProvider,
                           ModalContext,

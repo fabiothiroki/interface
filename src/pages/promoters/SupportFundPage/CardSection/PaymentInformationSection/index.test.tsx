@@ -14,17 +14,14 @@ describe("PaymentInformationSection", () => {
   it("should fill payment methods form", () => {
     renderComponent(<PaymentInformation />);
 
-    userEvent.type(screen.getByPlaceholderText("E-mail"), "leticia@ribon.io");
+    userEvent.type(screen.getByPlaceholderText("E-mail"), "usertest@ribon.io");
 
     userEvent.type(
       screen.getByPlaceholderText("Card number"),
       "1234567890123456",
     );
 
-    userEvent.type(
-      screen.getByPlaceholderText("Name on card"),
-      "Leticia Ribon",
-    );
+    userEvent.type(screen.getByPlaceholderText("Name on card"), "User Test");
 
     userEvent.type(screen.getByPlaceholderText("Expiration"), "1220");
 

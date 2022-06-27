@@ -16,14 +16,15 @@ function PaymentInformation() {
   const {
     email,
     setEmail,
-    cardName,
-    setCardName,
-    cardNumber,
-    setCardNumber,
+    name,
+    setName,
+    number,
+    setNumber,
     expirationDate,
     setExpirationDate,
-    securityCode,
-    setSecurityCode,
+    cvv,
+    setCvv,
+    setButtonDisabled,
   } = useCardPaymentInformation();
 
   const { currentUser } = useCurrentUser();
@@ -37,8 +38,16 @@ function PaymentInformation() {
   };
 
   const maskCreditCard = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCardNumber(maskToCreditCard(e.target.value));
+    setNumber(maskToCreditCard(e.target.value));
   };
+
+  useEffect(() => {
+    if (email && number && name && expirationDate && cvv.length === 3) {
+      setButtonDisabled(false);
+    } else {
+      setButtonDisabled(true);
+    }
+  }, [email, number, name, expirationDate, cvv]);
 
   return (
     <S.PaymentInformationSectionContainer>
@@ -54,34 +63,36 @@ function PaymentInformation() {
         required
       />
       <InputText
-        name="cardNumber"
+        name="number"
         placeholder={t("cardNumber")}
-        value={cardNumber}
+        value={number}
         onChange={maskCreditCard}
         maxLength={19}
+        minLength={19}
         required
       />
       <InputText
-        name={t("cardName")}
+        name="name"
         placeholder={t("cardName")}
-        value={cardName}
-        onChange={(e) => setCardName(e.target.value)}
+        value={name}
+        onChange={(e) => setName(e.target.value)}
         required
       />
       <S.Half>
         <InputText
-          name="cardDueDate"
+          name="expirationDate"
           value={expirationDate}
           placeholder={t("cardDueDate")}
           onChange={maskExpiration}
           required
         />
         <InputText
-          name="securityCode"
-          placeholder={t("securityCode")}
+          name="cvv"
+          placeholder={t("cvv")}
           maxLength={3}
-          value={securityCode}
-          onChange={(e) => setSecurityCode(e.target.value)}
+          minLength={3}
+          value={cvv}
+          onChange={(e) => setCvv(e.target.value)}
           required
         />
       </S.Half>

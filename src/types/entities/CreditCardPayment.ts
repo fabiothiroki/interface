@@ -2,12 +2,14 @@ export default interface CreditCardPayment {
   country: string;
   state: string;
   city: string;
-  taxId: string;
+  tax_id: string;
+  offer_id: number;
   email: string;
   card: {
-    cardNumber: string;
-    cardName: string;
-    expirationDate: string;
-    securityCode: string;
+    number: string;
+    name: string;
+    expirationYear: string;
+    expirationMonth: string;
+    cvv: string;
   };
 }

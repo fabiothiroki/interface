@@ -136,7 +136,7 @@
         "cardNumber": "Número do cartão",
         "cardName": "Nome impresso no cartão",
         "cardDueDate": "Vencimento",
-        "securityCode": "Código de segurança"
+        "cvv": "Código de segurança"
       },
       "linkMessageToast": "Saiba mais"
     }

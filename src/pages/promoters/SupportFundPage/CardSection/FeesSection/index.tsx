@@ -8,12 +8,14 @@ type Props = {
   givingValue: number;
   currency: Currencies;
   givingTotal: string;
+  setCryptoGiving: (cryptoGiving: string) => void;
 };
 
 function FeesSection({
   givingValue,
   currency,
   givingTotal,
+  setCryptoGiving,
 }: Props): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "promoters.supportFundPage.cardSection",
@@ -27,6 +29,7 @@ function FeesSection({
 
   useEffect(() => {
     refetch();
+    setCryptoGiving(cardGivingFees?.cryptoGiving ?? "...");
   }, [givingValue]);
 
   return (

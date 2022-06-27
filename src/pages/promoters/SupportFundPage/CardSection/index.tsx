@@ -31,6 +31,7 @@ function CardSection(): JSX.Element {
     setSelectedButtonIndex,
     buttonDisabled,
     setButtonDisabled,
+    setCryptoGiving,
   } = useCardPaymentInformation();
 
   const sections = [<BillingInformationSection />, <PaymentInformation />];
@@ -46,7 +47,11 @@ function CardSection(): JSX.Element {
 
   useEffect(() => {
     refetchGivingValues();
-  }, [currentCoin]);
+    console.log(givingValues);
+    if (givingValues === undefined) {
+      refetchGivingValues();
+    }
+  }, [currentCoin, givingValue]);
 
   return (
     <S.CardSectionContainer>
@@ -76,6 +81,7 @@ function CardSection(): JSX.Element {
         currency={currentCoin}
         givingValue={givingValue()}
         givingTotal={givingTotal()}
+        setCryptoGiving={setCryptoGiving}
       />
 
       <Divider color={lightGray} />

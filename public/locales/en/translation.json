@@ -135,7 +135,7 @@
         "cardNumber": "Card number",
         "cardName": "Name on card",
         "cardDueDate": "Expiration",
-        "securityCode": "Card verification code"
+        "cvv": "Card verification code"
       },
       "linkMessageToast": "Learn more"
     }

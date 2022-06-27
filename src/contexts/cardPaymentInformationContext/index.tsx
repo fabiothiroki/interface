@@ -1,7 +1,6 @@
 import { useCurrentUser } from "contexts/currentUserContext";
 import { useLoadingOverlay } from "contexts/loadingOverlayContext";
 import { MODAL_TYPES } from "contexts/modalContext/helpers";
-import usePayment from "hooks/apiHooks/usePayment";
 import { useModal } from "hooks/modalHooks/useModal";
 import useNavigation from "hooks/useNavigation";
 import useToast from "hooks/useToast";
@@ -21,6 +20,8 @@ import { logEvent } from "services/analytics";
 import { logError } from "services/crashReport";
 import GivingValue from "types/entities/GivingValue";
 import { Currencies } from "types/enums/Currencies";
+import creditCardPaymentApi from "services/api/creditCardPaymentApi";
+import successIcon from "assets/icons/success-icon.svg";
 
 export interface ICardPaymentInformationContext {
   setCurrentCoin: (value: SetStateAction<Currencies>) => void;
@@ -29,12 +30,13 @@ export interface ICardPaymentInformationContext {
   setCity: (value: SetStateAction<string>) => void;
   setTaxId: (value: SetStateAction<string>) => void;
   setEmail: (value: SetStateAction<string>) => void;
-  setCardNumber: (value: SetStateAction<string>) => void;
-  setCardName: (value: SetStateAction<string>) => void;
+  setNumber: (value: SetStateAction<string>) => void;
+  setName: (value: SetStateAction<string>) => void;
   setExpirationDate: (value: SetStateAction<string>) => void;
-  setSecurityCode: (value: SetStateAction<string>) => void;
+  setCvv: (value: SetStateAction<string>) => void;
   setSelectedButtonIndex: (value: SetStateAction<number>) => void;
   setButtonDisabled: (value: SetStateAction<boolean>) => void;
+  setCryptoGiving: (value: SetStateAction<string>) => void;
   refetchGivingValues: () => void;
   givingValue: () => number;
   givingTotal: () => string;
@@ -46,11 +48,12 @@ export interface ICardPaymentInformationContext {
   city: string;
   taxId: string;
   email: string;
-  cardNumber: string;
-  cardName: string;
+  number: string;
+  name: string;
   expirationDate: string;
-  securityCode: string;
+  cvv: string;
   selectedButtonIndex: number;
+  cryptoGiving: string;
   handleSubmit: () => void;
 }
 
@@ -79,62 +82,77 @@ function CardPaymentInformationProvider({ children }: Props) {
     if (givingValues) return givingValues[selectedButtonIndex]?.value;
 
     return 0;
-  }, [selectedButtonIndex]);
+  }, [givingValues, selectedButtonIndex, currentCoin]);
 
-  function givingTotal() {
+  const givingTotal = useCallback(() => {
     if (!givingValues) return "";
+
     return givingValues[selectedButtonIndex]?.valueText;
-  }
+  }, [givingValues, selectedButtonIndex, currentCoin]);
 
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
   const [taxId, setTaxId] = useState("");
   const [email, setEmail] = useState(currentUser?.email ?? "");
-  const [cardNumber, setCardNumber] = useState("");
-  const [cardName, setCardName] = useState("");
+  const [number, setNumber] = useState("");
+  const [name, setName] = useState("");
   const [expirationDate, setExpirationDate] = useState("");
-  const [securityCode, setSecurityCode] = useState("");
+  const [cvv, setCvv] = useState("");
   const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [cryptoGiving, setCryptoGiving] = useState("");
 
   const { showLoadingOverlay, hideLoadingOverlay } = useLoadingOverlay();
-
-  const { navigateTo } = useNavigation();
 
   const { t } = useTranslation("translation", {
     keyPrefix: "contexts.cardPaymentInformation",
   });
 
+  const { navigateTo } = useNavigation();
+
+  const { show, hide } = useModal({
+    type: MODAL_TYPES.MODAL_ICON,
+    props: {
+      title: t("modalSuccessTitle").replace("{{value}}", cryptoGiving),
+      body: t("modalSuccessDescription"),
+      icon: successIcon,
+      primaryButtonText: t("modalSuccessButton"),
+      primaryButtonCallback: () => {
+        navigateTo("/promoters/fund");
+        hide();
+      },
+    },
+  });
+
   const toast = useToast();
+
+  console.log(cryptoGiving);
 
   const handleSubmit = async () => {
     logEvent("fundSupportConfirmBtn_click");
     showLoadingOverlay(t("loadingMessage"));
+
+    const expiration = expirationDate.split("/");
     const paymentInformation = {
       email,
       country,
       state,
       city,
-      taxId,
+      tax_id: taxId,
+      offer_id: givingValues?.[selectedButtonIndex]?.id ?? 0,
       card: {
-        cardNumber,
-        cardName,
-        expirationDate,
-        securityCode,
+        number: number.replace(/\D/g, ""),
+        name,
+        expirationMonth: expiration[0],
+        expirationYear: expiration[1],
+        cvv,
       },
     };
     try {
-      await usePayment(paymentInformation);
+      await creditCardPaymentApi.postCreditCardPayment(paymentInformation);
 
-      useModal({
-        type: MODAL_TYPES.MODAL_ICON,
-        props: {
-          title: t("modalSuccessTitle"),
-          body: t("modalSuccessDescription"),
-          primaryButtonText: t("modalSuccessButton"),
-          primaryButtonCallback: () => navigateTo("/promoters/support-fund"),
-        },
-      });
+      show();
+
       logEvent("fundGivingConfirmMdl_view");
     } catch (error) {
       logError(error);
@@ -168,20 +186,22 @@ function CardPaymentInformationProvider({ children }: Props) {
       taxId,
       setTaxId,
       handleSubmit,
-      setCardName,
-      cardName,
-      setCardNumber,
-      cardNumber,
+      setName,
+      name,
+      setNumber,
+      number,
       setEmail,
       email,
       setExpirationDate,
       expirationDate,
-      setSecurityCode,
-      securityCode,
+      setCvv,
+      cvv,
       selectedButtonIndex,
       setSelectedButtonIndex,
       buttonDisabled,
       setButtonDisabled,
+      setCryptoGiving,
+      cryptoGiving,
     }),
     [
       currentCoin,
@@ -192,10 +212,10 @@ function CardPaymentInformationProvider({ children }: Props) {
       state,
       taxId,
       email,
-      cardNumber,
-      cardName,
+      number,
+      name,
       expirationDate,
-      securityCode,
+      cvv,
       selectedButtonIndex,
       buttonDisabled,
     ],
