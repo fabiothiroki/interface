@@ -129,7 +129,6 @@ export function renderComponent(
                       LoadingOverlayProvider,
                       LoadingOverlayContext,
                       loadingOverlayValue,
-
                       renderProvider(
                         ModalProvider,
                         ModalContext,

@@ -1,10 +1,11 @@
 import { useTranslation } from "react-i18next";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Dropdown from "components/atomics/Dropdown";
 import theme from "styles/theme";
 import { Currencies } from "types/enums/Currencies";
 import Divider from "components/atomics/Divider";
 import { useCardPaymentInformation } from "contexts/cardPaymentInformationContext";
+import useOffers from "hooks/apiHooks/useOffers";
 import BillingInformationSection from "./BillingInformationSection";
 import FeesSection from "./FeesSection";
 import * as S from "./styles";
@@ -20,10 +21,6 @@ function CardSection(): JSX.Element {
   });
 
   const {
-    offers,
-    givingTotal,
-    refetchOffers,
-    givingValue,
     currentCoin,
     setCurrentCoin,
     handleSubmit,
@@ -32,7 +29,22 @@ function CardSection(): JSX.Element {
     buttonDisabled,
     setButtonDisabled,
     setCryptoGiving,
+    setOfferId,
   } = useCardPaymentInformation();
+
+  const { offers, refetch: refetchOffers } = useOffers(currentCoin, false);
+
+  const givingValue = useCallback(() => {
+    if (offers) return offers[selectedButtonIndex]?.priceValue;
+
+    return 0;
+  }, [selectedButtonIndex, offers, currentCoin]);
+
+  const givingTotal = useCallback(() => {
+    if (!offers) return "";
+
+    return offers[selectedButtonIndex]?.price;
+  }, [offers, selectedButtonIndex, currentCoin]);
 
   const sections = [<BillingInformationSection />, <PaymentInformation />];
 
@@ -40,6 +52,7 @@ function CardSection(): JSX.Element {
     setButtonDisabled(true);
     if (currentSectionIndex < sections.length - 1) {
       setCurrentSectionIndex(currentSectionIndex + 1);
+      setOfferId(offers?.[selectedButtonIndex]?.id ?? 0);
     } else {
       handleSubmit();
     }
