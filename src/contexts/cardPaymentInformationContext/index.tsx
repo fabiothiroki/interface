@@ -70,11 +70,11 @@ function CardPaymentInformationProvider({ children }: Props) {
   const { currentUser } = useCurrentUser();
   const { currentLang } = useLanguage();
 
+  const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
+
   const [currentCoin, setCurrentCoin] = useState<Currencies>(
     coinByLanguage(currentLang),
   );
-  const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
-
   const { offers, refetch: refetchOffers } = useOffers(currentCoin, false);
 
   const givingValue = useCallback(() => {
@@ -109,6 +109,8 @@ function CardPaymentInformationProvider({ children }: Props) {
 
   const { navigateTo } = useNavigation();
 
+  const toast = useToast();
+
   const { show, hide } = useModal({
     type: MODAL_TYPES.MODAL_ICON,
     props: {
@@ -123,13 +125,13 @@ function CardPaymentInformationProvider({ children }: Props) {
     },
   });
 
-  const toast = useToast();
-
   const handleSubmit = async () => {
     logEvent("fundSupportConfirmBtn_click");
     showLoadingOverlay(t("loadingMessage"));
 
     const expiration = expirationDate.split("/");
+
+    Object.assign(expiration);
     const paymentInformation = {
       email,
       country,

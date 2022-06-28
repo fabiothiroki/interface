@@ -129,14 +129,15 @@ export function renderComponent(
                       LoadingOverlayProvider,
                       LoadingOverlayContext,
                       loadingOverlayValue,
+
                       renderProvider(
-                        CardPaymentInformationProvider,
-                        CardPaymentInformationContext,
-                        cardPaymentProviderValue,
+                        ModalProvider,
+                        ModalContext,
+                        modalProviderValue,
                         renderProvider(
-                          ModalProvider,
-                          ModalContext,
-                          modalProviderValue,
+                          CardPaymentInformationProvider,
+                          CardPaymentInformationContext,
+                          cardPaymentProviderValue,
                           component,
                         ),
                       ),
