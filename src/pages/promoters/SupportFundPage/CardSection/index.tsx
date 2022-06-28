@@ -6,6 +6,7 @@ import { Currencies } from "types/enums/Currencies";
 import Divider from "components/atomics/Divider";
 import { useCardPaymentInformation } from "contexts/cardPaymentInformationContext";
 import useOffers from "hooks/apiHooks/useOffers";
+import { logEvent } from "services/analytics";
 import BillingInformationSection from "./BillingInformationSection";
 import FeesSection from "./FeesSection";
 import * as S from "./styles";
@@ -53,6 +54,7 @@ function CardSection(): JSX.Element {
     if (currentSectionIndex < sections.length - 1) {
       setCurrentSectionIndex(currentSectionIndex + 1);
       setOfferId(offers?.[selectedButtonIndex]?.id ?? 0);
+      logEvent("fundSupportNextStepBtn_click");
     } else {
       handleSubmit();
     }
