@@ -7,8 +7,8 @@ export const networks = [
     rpcUrls: "https://rpc-mumbai.maticvigil.com",
     nodeUrl:
       "https://polygon-mumbai.g.alchemy.com/v2/1fEWpdSHuohPveNBGvlozE6qv9P1uAks",
-    symbolName: "Matic",
-    currencyName: "MATIC",
+    symbolName: "MATIC",
+    currencyName: "Matic",
     blockExplorerUrls: "https://mumbai.polygonscan.com/",
   },
   {
