@@ -31,6 +31,7 @@ type LocationStateType = {
 
 function GivingsSection(): JSX.Element {
   const [promoterDonations, setPromoterDonations] = useState<any>();
+  const [allDonations, setAllDonations] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);
   const toast = useToast();
   const provider = useProvider();
@@ -39,7 +40,8 @@ function GivingsSection(): JSX.Element {
     keyPrefix: "promoters.fundPage.givingsSection",
   });
   const { wallet, connectWallet } = useWalletContext();
-  const { getPromoterDonations } = usePromoterDonations();
+  const { getPromoterDonations, getAllPromotersDonations } =
+    usePromoterDonations();
   const { isMobile } = useBreakpoint();
   const { currentNetwork } = useNetwork();
   const coin = "USDC";
@@ -78,6 +80,17 @@ function GivingsSection(): JSX.Element {
     [wallet],
   );
 
+  const fetchAllDonations = useCallback(async () => {
+    try {
+      const donations = await getAllPromotersDonations(isMobile ? 2 : 3);
+      setAllDonations(donations.promoterDonations);
+    } catch (e) {
+      logError(e);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
   const transactionIsBeingProcessed = useCallback(
     async (hash: string) => {
       if (!hash) return;
@@ -113,6 +126,7 @@ function GivingsSection(): JSX.Element {
     if (wallet) {
       fetchPromoterDonations(wallet);
     }
+    fetchAllDonations();
   }, [wallet]);
 
   useEffect(() => {
@@ -150,7 +164,7 @@ function GivingsSection(): JSX.Element {
     return null;
   }
 
-  function renderCardsCarousel() {
+  function renderCardsCarouselPromoterGivings() {
     return promoterDonations?.map((item: any) => (
       <CardDoubleTextDividerButton
         key={item.id}
@@ -163,6 +177,21 @@ function GivingsSection(): JSX.Element {
       />
     ));
   }
+
+  function renderCardsCarouselAllGivings() {
+    return allDonations?.map((item: any) => (
+      <CardDoubleTextDividerButton
+        key={item.id}
+        firstText={formatDate(item.timestamp).toString()}
+        mainText={formatFromWei(item.amountDonated)}
+        rightComplementText={coin}
+        buttonText={t("linkTransactionText")}
+        rightComponentButton={RightArrowBlack}
+        link={concatLinkHash(item.id)}
+      />
+    ));
+  }
+
   return (
     <S.Container>
       <S.SectionTitle>{t("subtitleGivings")}</S.SectionTitle>
@@ -170,7 +199,7 @@ function GivingsSection(): JSX.Element {
         !loading && (
           <Carousel sliderPerView={isMobile ? 1.8 : 4} spacing={-10}>
             {renderProcessingTransaction()}
-            {renderCardsCarousel()}
+            {renderCardsCarouselPromoterGivings()}
             {false && (
               <S.LastCardCarousel
                 onClick={() => {
@@ -189,6 +218,21 @@ function GivingsSection(): JSX.Element {
           <S.GivingText>{t("firstGivingText")}</S.GivingText>
         </S.CardBlank>
       )}
+
+      <S.SectionTitle>All Givings</S.SectionTitle>
+      <Carousel sliderPerView={isMobile ? 1.8 : 4} spacing={-10}>
+        {renderCardsCarouselAllGivings()}
+        {false && (
+          <S.LastCardCarousel
+            onClick={() => {
+              handleShowGivingsButtonClick();
+            }}
+          >
+            <BlueRightArrow />
+            <S.TextLastCard>{t("textLastCard")}</S.TextLastCard>
+          </S.LastCardCarousel>
+        )}
+      </Carousel>
     </S.Container>
   );
 }
