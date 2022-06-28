@@ -30,7 +30,7 @@ function FeesSection({
   useEffect(() => {
     refetch();
     setCryptoGiving(cardGivingFees?.cryptoGiving.replace("$", "") ?? "...");
-  }, [givingValue]);
+  }, [givingValue, cardGivingFees]);
 
   return (
     <>

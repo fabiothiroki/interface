@@ -4,7 +4,6 @@ import { MODAL_TYPES } from "contexts/modalContext/helpers";
 import { useModal } from "hooks/modalHooks/useModal";
 import useNavigation from "hooks/useNavigation";
 import useToast from "hooks/useToast";
-import useGivingValues from "hooks/apiHooks/useGivingValues";
 import { useLanguage } from "hooks/useLanguage";
 import { coinByLanguage } from "lib/coinByLanguage";
 import {
@@ -18,10 +17,11 @@ import {
 import { useTranslation } from "react-i18next";
 import { logEvent } from "services/analytics";
 import { logError } from "services/crashReport";
-import GivingValue from "types/entities/GivingValue";
 import { Currencies } from "types/enums/Currencies";
 import creditCardPaymentApi from "services/api/creditCardPaymentApi";
 import successIcon from "assets/icons/success-icon.svg";
+import useOffers from "hooks/apiHooks/useOffers";
+import Offer from "types/entities/Offer";
 
 export interface ICardPaymentInformationContext {
   setCurrentCoin: (value: SetStateAction<Currencies>) => void;
@@ -37,12 +37,12 @@ export interface ICardPaymentInformationContext {
   setSelectedButtonIndex: (value: SetStateAction<number>) => void;
   setButtonDisabled: (value: SetStateAction<boolean>) => void;
   setCryptoGiving: (value: SetStateAction<string>) => void;
-  refetchGivingValues: () => void;
+  refetchOffers: () => void;
   givingValue: () => number;
   givingTotal: () => string;
   buttonDisabled: boolean;
   currentCoin: Currencies;
-  givingValues: GivingValue[] | undefined;
+  offers: Offer[] | undefined;
   country: string;
   state: string;
   city: string;
@@ -75,20 +75,19 @@ function CardPaymentInformationProvider({ children }: Props) {
   );
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
 
-  const { givingValues, refetch: refetchGivingValues } =
-    useGivingValues(currentCoin);
+  const { offers, refetch: refetchOffers } = useOffers(currentCoin, false);
 
   const givingValue = useCallback(() => {
-    if (givingValues) return givingValues[selectedButtonIndex]?.value;
+    if (offers) return offers[selectedButtonIndex]?.priceValue;
 
     return 0;
-  }, [givingValues, selectedButtonIndex, currentCoin]);
+  }, [selectedButtonIndex, offers, currentCoin]);
 
   const givingTotal = useCallback(() => {
-    if (!givingValues) return "";
+    if (!offers) return "";
 
-    return givingValues[selectedButtonIndex]?.valueText;
-  }, [givingValues, selectedButtonIndex, currentCoin]);
+    return offers[selectedButtonIndex]?.price;
+  }, [offers, selectedButtonIndex, currentCoin]);
 
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");
@@ -137,7 +136,7 @@ function CardPaymentInformationProvider({ children }: Props) {
       state,
       city,
       tax_id: taxId,
-      offer_id: givingValues?.[selectedButtonIndex]?.id ?? 0,
+      offer_id: offers?.[selectedButtonIndex]?.id ?? 0,
       card: {
         number: number.replace(/\D/g, ""),
         name,
@@ -171,10 +170,10 @@ function CardPaymentInformationProvider({ children }: Props) {
     () => ({
       currentCoin,
       setCurrentCoin,
-      givingValue,
+      offers,
       givingTotal,
-      givingValues,
-      refetchGivingValues,
+      givingValue,
+      refetchOffers,
       country,
       setCountry,
       city,
@@ -204,7 +203,7 @@ function CardPaymentInformationProvider({ children }: Props) {
     [
       currentCoin,
       givingValue,
-      refetchGivingValues,
+      refetchOffers,
       country,
       city,
       state,

@@ -20,9 +20,9 @@ function CardSection(): JSX.Element {
   });
 
   const {
-    givingValues,
+    offers,
     givingTotal,
-    refetchGivingValues,
+    refetchOffers,
     givingValue,
     currentCoin,
     setCurrentCoin,
@@ -46,7 +46,7 @@ function CardSection(): JSX.Element {
   }
 
   useEffect(() => {
-    refetchGivingValues();
+    refetchOffers();
   }, [currentCoin]);
 
   return (
@@ -60,14 +60,14 @@ function CardSection(): JSX.Element {
       />
       <S.Subtitle>{t("subtitleCard")}</S.Subtitle>
       <S.ValuesContainer>
-        {givingValues?.map((item, index) => (
+        {offers?.map((item, index) => (
           <S.CardValueButton
-            text={item?.valueText}
+            text={item?.price}
             onClick={() => {
               setSelectedButtonIndex(index);
             }}
             outline={index !== selectedButtonIndex}
-            key={item?.value}
+            key={item?.id}
           />
         ))}
       </S.ValuesContainer>

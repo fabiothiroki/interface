@@ -15,7 +15,7 @@ describe("creditCardPaymentApi", () => {
       offer_id: 1,
       email: "usertest@ribon.io",
       card: {
-        number: "0000 0000 0000 0000",
+        number: "0000000000000000",
         name: "User Test",
         expirationMonth: "06",
         expirationYear: "27",
@@ -27,7 +27,7 @@ describe("creditCardPaymentApi", () => {
       creditCardPaymentApi.postCreditCardPayment(paymentInformations);
 
       expect(api.post).toHaveBeenCalledWith(
-        "/api/v1/payment/credit_cards",
+        "/api/v1/payments/credit_cards",
         paymentInformations,
       );
     });
