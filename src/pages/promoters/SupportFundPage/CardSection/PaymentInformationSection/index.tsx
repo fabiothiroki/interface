@@ -10,7 +10,8 @@ import * as S from "./styles";
 
 function PaymentInformation() {
   const { t } = useTranslation("translation", {
-    keyPrefix: "promoters.supportFundPage.paymentInformationSection",
+    keyPrefix:
+      "promoters.supportFundPage.cardSection.paymentInformationSection",
   });
 
   const {

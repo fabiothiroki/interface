@@ -127,17 +127,17 @@
           "state": "Estado",
           "city": "Cidade",
           "taxId": "CPF"
+        },
+        "paymentInformationSection": {
+          "title": "Forma de pagamento",
+          "email": "E-mail",
+          "cardNumber": "Número do cartão",
+          "cardName": "Nome impresso no cartão",
+          "cardDueDate": "Vencimento",
+          "cvv": "Código de segurança"
         }
       },
-      "paymentInformationSection": {
-        "title": "Forma de pagamento",
-        "email": "E-mail",
-        "placeholderEmail": "myemail@email.com",
-        "cardNumber": "Número do cartão",
-        "cardName": "Nome impresso no cartão",
-        "cardDueDate": "Vencimento",
-        "cvv": "Código de segurança"
-      },
+
       "linkMessageToast": "Saiba mais"
     }
   },

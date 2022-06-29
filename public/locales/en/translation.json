@@ -127,16 +127,17 @@
           "state": "State",
           "city": "City",
           "taxId": "Tax ID"
+        },
+        "paymentInformationSection": {
+          "title": "Payment method",
+          "email": "E-mail",
+          "cardNumber": "Card number",
+          "cardName": "Name on card",
+          "cardDueDate": "Expiration",
+          "cvv": "Card verification code"
         }
       },
-      "paymentInformationSection": {
-        "title": "Payment method",
-        "email": "E-mail",
-        "cardNumber": "Card number",
-        "cardName": "Name on card",
-        "cardDueDate": "Expiration",
-        "cvv": "Card verification code"
-      },
+
       "linkMessageToast": "Learn more"
     }
   },
