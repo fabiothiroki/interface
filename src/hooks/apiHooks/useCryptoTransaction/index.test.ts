@@ -8,10 +8,9 @@ describe("useCryptoTransaction", () => {
 
   const testHash = "0xAAAA";
   const testWalletAddress = "0xBBBB";
-  const testContractAddress = "0xCCCC";
   const testAmount = 100;
 
-  const transactionData = [ testHash, testWalletAddress, testContractAddress, testAmount ];
+  const transactionData = [ testHash, testWalletAddress, testAmount ];
 
   beforeEach(() => {
     const { result } = renderHook(() => useCryptoTransaction());
@@ -24,7 +23,7 @@ describe("useCryptoTransaction", () => {
     });
 
     it("calls the usersApi searchUser with correct params", () => {
-      hook.createTransaction(testHash, testWalletAddress, testContractAddress, testAmount, TransactionStatus.PROCESSING);
+      hook.createTransaction(testHash, testWalletAddress, testAmount, TransactionStatus.PROCESSING);
 
       expect(cryptoTransactionApi.postTransaction).toHaveBeenCalledWith(...transactionData, TransactionStatus.PROCESSING);
     });

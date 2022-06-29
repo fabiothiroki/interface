@@ -9,12 +9,11 @@ describe("cryptoTransacrionApi", () => {
     });
 
     it("expects to send a get request with the correct info: url, params and headers", () => {
-      cryptoTransactionApi.postTransaction("0xAAAA", "0xBBBB", "0xCCCC", 100, TransactionStatus.PROCESSING);
+      cryptoTransactionApi.postTransaction("0xAAAA", "0xBBBB", 100, TransactionStatus.PROCESSING);
 
       expect(api.post).toHaveBeenCalledWith("/api/v1/payments/cryptocurrency", {
         hash: "0xAAAA",
         walletAddress: "0xBBBB",
-        contractAddress: "0xCCCC",
         amount: 100,
         status: TransactionStatus.PROCESSING
       });
