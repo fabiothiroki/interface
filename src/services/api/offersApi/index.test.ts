@@ -1,18 +1,18 @@
 import { Currencies } from "types/enums/Currencies";
-import givingsValuesApi from ".";
+import offersApi from ".";
 import api from "..";
 
-describe("givingsValuesApi", () => {
-  describe("#getGivingsValue", () => {
+describe("offersApi", () => {
+  describe("#getOffers", () => {
     beforeEach(() => {
       api.get = jest.fn();
     });
 
     it("expects to send a get request with the correct info: url, params and headers", () => {
-      givingsValuesApi.getGivingValues(Currencies.BRL);
+      offersApi.getOffers(Currencies.BRL, false);
 
       expect(api.get).toHaveBeenCalledWith(
-        "/api/v1/giving_values?currency=brl",
+        "/api/v1/givings/offers?currency=brl&subscription=false",
       );
     });
   });
