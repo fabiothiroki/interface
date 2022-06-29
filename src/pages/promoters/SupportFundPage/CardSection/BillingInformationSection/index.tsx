@@ -51,6 +51,7 @@ function BillingInformationSection(): JSX.Element {
           suggestions={countryList}
           placeholder={t("country")}
           onOptionChanged={(value: string) => setCountry(value)}
+          required
         />
         <S.HalfInput
           name={city}

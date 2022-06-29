@@ -124,8 +124,8 @@ function CardPaymentInformationProvider({ children }: Props) {
       country,
       state,
       city,
-      tax_id: taxId,
-      offer_id: offerId,
+      taxId,
+      offerId,
       card: {
         number: number.replace(/\D/g, ""),
         name,

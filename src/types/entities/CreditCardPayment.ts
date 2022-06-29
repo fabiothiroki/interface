@@ -2,8 +2,8 @@ export default interface CreditCardPayment {
   country: string;
   state: string;
   city: string;
-  tax_id: string;
-  offer_id: number;
+  taxId: string;
+  offerId: number;
   email: string;
   card: {
     number: string;

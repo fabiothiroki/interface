@@ -11,8 +11,8 @@ describe("creditCardPaymentApi", () => {
       country: "Brazil",
       state: "TO",
       city: "Palmas",
-      tax_id: "000.000.000-00",
-      offer_id: 1,
+      taxId: "000.000.000-00",
+      offerId: 1,
       email: "usertest@ribon.io",
       card: {
         number: "0000000000000000",
