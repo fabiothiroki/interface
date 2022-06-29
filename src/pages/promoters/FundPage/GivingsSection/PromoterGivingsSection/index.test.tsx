@@ -6,10 +6,7 @@ import {
 } from "config/testUtils/expects";
 import promoterDonationFactory from "config/testUtils/factories/promoterDonationFactory";
 import { mockGraphqlRequest } from "config/testUtils/test-helper";
-import {
-  PROMOTER_DONATIONS_ID_QUERY_NAME,
-  ALL_PROMOTERS_DONATIONS_QUERY_NAME,
-} from "services/apiTheGraph/querys/promoterDonation";
+import { PROMOTER_DONATIONS_ID_QUERY_NAME } from "services/apiTheGraph/querys/promoterDonation";
 import PromoterGivingsSection from ".";
 
 describe("PromoterGivingsSection", () => {
