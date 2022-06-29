@@ -11,8 +11,8 @@ import useNavigation from "hooks/useNavigation";
 import usePromoterDonations from "hooks/apiTheGraphHooks/usePromoterDonations";
 import { useWalletContext } from "contexts/walletContext";
 import { useNetwork } from "hooks/useNetwork";
-import RightArrowBlack from "../assets/right-arrow-black.svg";
-import { ReactComponent as BlueRightArrow } from "../assets/right-arrow-blue.svg";
+import RightArrowBlack from "assets/icons/right-arrow-black.svg";
+import { ReactComponent as BlueRightArrow } from "assets/icons/right-arrow-blue.svg";
 import * as S from "../styles";
 
 function GivingsSection(): JSX.Element {
@@ -71,7 +71,7 @@ function GivingsSection(): JSX.Element {
 
   return (
     <S.Container>
-      <S.SectionTitle>All Givings</S.SectionTitle>
+      <S.SectionTitle>{t("subtitleAllGivings")}</S.SectionTitle>
       <Carousel sliderPerView={isMobile ? 1.8 : 4} spacing={-10}>
         {renderCardsCarouselAllGivings()}
         {false && (

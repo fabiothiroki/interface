@@ -17,9 +17,9 @@ import { useNetwork } from "hooks/useNetwork";
 import { BigNumber } from "ethers";
 import RibonAbi from "utils/abis/RibonAbi.json";
 import useToast from "hooks/useToast";
-import TreasureIcon from "../assets/treasure-icon.svg";
-import RightArrowBlack from "../assets/right-arrow-black.svg";
-import { ReactComponent as BlueRightArrow } from "../assets/right-arrow-blue.svg";
+import TreasureIcon from "assets/icons/treasure-off-icon.svg";
+import RightArrowBlack from "assets/icons/right-arrow-black.svg";
+import { ReactComponent as BlueRightArrow } from "assets/icons/right-arrow-blue.svg";
 import * as S from "../styles";
 
 type LocationStateType = {
@@ -166,6 +166,7 @@ function GivingsSection(): JSX.Element {
 
   return (
     <S.Container>
+      <S.SectionTitle>{t("subtitleYourGivings")}</S.SectionTitle>
       {shouldRenderCarousel() ? (
         !loading && (
           <Carousel sliderPerView={isMobile ? 1.8 : 4} spacing={-10}>
