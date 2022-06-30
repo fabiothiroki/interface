@@ -47,7 +47,11 @@ function CardSection(): JSX.Element {
     return offers[selectedButtonIndex]?.price;
   }, [offers, selectedButtonIndex, currentCoin]);
 
-  const sections = ["", <BillingInformationSection />, <PaymentInformation />];
+  const sections = [
+    <div />,
+    <BillingInformationSection />,
+    <PaymentInformation />,
+  ];
 
   function handleClickNext() {
     setButtonDisabled(true);
