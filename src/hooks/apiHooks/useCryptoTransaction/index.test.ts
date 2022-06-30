@@ -29,7 +29,7 @@ describe("useCryptoTransaction", () => {
     });
   });
 
-  describe("#createUser", () => {
+  describe("#updateTransactionStatus", () => {
     beforeEach(() => {
       cryptoTransactionApi.putTransactionStatus = jest.fn(() => ({ transactionData } as any));
     });
