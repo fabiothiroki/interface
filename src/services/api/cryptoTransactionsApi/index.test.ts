@@ -26,12 +26,13 @@ describe("cryptoTransacrionApi", () => {
     });
 
     it("expects to send a get request with the correct info: url, params and headers", () => {
-      cryptoTransactionApi.putTransactionStatus("0xCCCC", TransactionStatus.SUCCESS);
+      cryptoTransactionApi.putTransactionStatus("0xAAAA", TransactionStatus.SUCCESS);
 
       expect(api.put).toHaveBeenCalledWith("/api/v1/payments/cryptocurrency", {
-        hash: "0xCCCC",
+        hash: "0xAAAA",
         status: TransactionStatus.SUCCESS
       });
     });
   });
 });
+

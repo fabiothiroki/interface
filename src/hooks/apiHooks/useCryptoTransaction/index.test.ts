@@ -40,5 +40,4 @@ describe("useCryptoTransaction", () => {
       expect(cryptoTransactionApi.putTransactionStatus).toHaveBeenCalledWith(testHash, TransactionStatus.SUCCESS);
     });
   });
-
 });
