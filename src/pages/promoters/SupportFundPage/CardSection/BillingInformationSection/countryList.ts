@@ -1,7 +1,4 @@
-import { useLanguage } from "hooks/useLanguage";
 import { Languages } from "types/enums/Languages";
-
-const { currentLang } = useLanguage();
 
 export const countryListEnglish = [
   "Afghanistan",
@@ -182,6 +179,7 @@ export const countryListEnglish = [
   "Zambia",
   "Zimbabwe",
 ];
+
 export const countryListPtBr = [
   "Afeganistão",
   "Albânia",
@@ -362,5 +360,5 @@ export const countryListPtBr = [
   "Zimbábue.",
 ];
 
-export const countryList =
+export const countryList = (currentLang: Languages) =>
   currentLang === Languages.PT ? countryListPtBr : countryListEnglish;
