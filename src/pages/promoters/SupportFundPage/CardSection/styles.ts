@@ -48,6 +48,7 @@ export const ButtonContainer = styled.div`
     display: flex;
     align-items: center;
     position: absolute;
+    right: 0;
     left: 0;
 
     @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
