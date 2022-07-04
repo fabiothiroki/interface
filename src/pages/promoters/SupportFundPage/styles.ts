@@ -6,6 +6,7 @@ export const Container = styled.div`
 
     @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
       max-width: 472px;
+      height: 100vh;
       display: flex;
       flex-direction: column;
     }
