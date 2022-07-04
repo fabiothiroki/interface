@@ -47,7 +47,8 @@ export const ButtonContainer = styled.div`
     align-self: end;
     display: flex;
     align-items: center;
-    position: absolute;
+    position: fixed;
+    bottom: 0;
     right: 0;
     left: 0;
 
