@@ -30,11 +30,9 @@ export const ValuesContainer = styled.div`
 `;
 
 export const CardValueButton = styled(Button)`
-  ${() => css`
-    border-radius: 66px;
-    height: 30px;
-    max-width: 112px;
-  `}
+  border-radius: 66px;
+  height: 30px;
+  max-width: 112px;
 `;
 
 export const ButtonContainer = styled.div`
