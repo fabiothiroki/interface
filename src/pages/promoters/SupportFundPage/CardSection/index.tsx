@@ -47,7 +47,11 @@ function CardSection(): JSX.Element {
     return offers[selectedButtonIndex]?.price;
   }, [offers, selectedButtonIndex, currentCoin]);
 
-  const sections = [<BillingInformationSection />, <PaymentInformation />];
+  const sections = [
+    <div />,
+    <BillingInformationSection />,
+    <PaymentInformation />,
+  ];
 
   function handleClickNext() {
     setButtonDisabled(true);
@@ -65,42 +69,47 @@ function CardSection(): JSX.Element {
   }, [currentCoin]);
 
   return (
-    <S.CardSectionContainer>
-      <Dropdown
-        name="currency"
-        label={t("currency")}
-        values={[Currencies.USD, Currencies.BRL]}
-        defaultValue={currentCoin}
-        onOptionChanged={(value) => setCurrentCoin(value)}
-      />
-      <S.Subtitle>{t("subtitleCard")}</S.Subtitle>
-      <S.ValuesContainer>
-        {offers?.map((item, index) => (
-          <S.CardValueButton
-            text={item?.price}
-            onClick={() => {
-              setSelectedButtonIndex(index);
-            }}
-            outline={index !== selectedButtonIndex}
-            key={item?.id}
+    <>
+      <S.CardSectionContainer>
+        {currentSectionIndex === 0 && (
+          <>
+            <Dropdown
+              name="currency"
+              label={t("currency")}
+              values={[Currencies.USD, Currencies.BRL]}
+              defaultValue={currentCoin}
+              onOptionChanged={(value) => setCurrentCoin(value)}
+            />
+            <S.Subtitle>{t("subtitleCard")}</S.Subtitle>
+            <S.ValuesContainer>
+              {offers?.map((item, index) => (
+                <S.CardValueButton
+                  text={item?.price}
+                  onClick={() => {
+                    setSelectedButtonIndex(index);
+                  }}
+                  outline={index !== selectedButtonIndex}
+                  key={item?.id}
+                />
+              ))}
+            </S.ValuesContainer>
+          </>
+        )}
+        <Divider color={lightGray} />
+
+        {givingValue() > 0 && (
+          <FeesSection
+            currency={currentCoin}
+            givingValue={givingValue()}
+            givingTotal={givingTotal()}
+            setCryptoGiving={setCryptoGiving}
           />
-        ))}
-      </S.ValuesContainer>
-      <Divider color={lightGray} />
+        )}
 
-      {givingValue() > 0 && (
-        <FeesSection
-          currency={currentCoin}
-          givingValue={givingValue()}
-          givingTotal={givingTotal()}
-          setCryptoGiving={setCryptoGiving}
-        />
-      )}
+        <Divider color={lightGray} />
 
-      <Divider color={lightGray} />
-
-      {sections[currentSectionIndex]}
-
+        {sections[currentSectionIndex]}
+      </S.CardSectionContainer>
       <S.ButtonContainer>
         <S.FinishButton
           text={
@@ -114,7 +123,7 @@ function CardSection(): JSX.Element {
           disabled={buttonDisabled}
         />
       </S.ButtonContainer>
-    </S.CardSectionContainer>
+    </>
   );
 }
 
