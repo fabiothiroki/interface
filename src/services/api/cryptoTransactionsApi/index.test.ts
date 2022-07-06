@@ -9,13 +9,12 @@ describe("cryptoTransacrionApi", () => {
     });
 
     it("expects to send a get request with the correct info: url, params and headers", () => {
-      cryptoTransactionApi.postTransaction("0xAAAA", "0xBBBB", 100, TransactionStatus.PROCESSING);
+      cryptoTransactionApi.postTransaction("0xAAAA", '5.00', 'user@ribon.io');
 
       expect(api.post).toHaveBeenCalledWith("/api/v1/payments/cryptocurrency", {
-        hash: "0xAAAA",
-        walletAddress: "0xBBBB",
-        amount: 100,
-        status: TransactionStatus.PROCESSING
+        transaction_hash: "0xAAAA",
+        amount: '5.00',
+        email: 'user@ribon.io'
       });
     });
   });
@@ -29,7 +28,7 @@ describe("cryptoTransacrionApi", () => {
       cryptoTransactionApi.putTransactionStatus("0xAAAA", TransactionStatus.SUCCESS);
 
       expect(api.put).toHaveBeenCalledWith("/api/v1/payments/cryptocurrency", {
-        hash: "0xAAAA",
+        transaction_hash: "0xAAAA",
         status: TransactionStatus.SUCCESS
       });
     });
