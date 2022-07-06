@@ -3,27 +3,25 @@ import { TransactionStatus } from "types/enums/TransactionStatus";
 
 function useCryptoTransaction() {
   async function createTransaction(
-    hash: string,
-    walletAddress: string,
-    amount: number,
-    status: TransactionStatus,
+    transactionHash: string,
+    amount: string,
+    email: string,
   ) {
     const { data: transaction } = await cryptoTransactionApi.postTransaction(
-      hash,
-      walletAddress,
+      transactionHash,
       amount,
-      status,
+      email,
     );
 
     return transaction;
   }
 
   async function updateTransactionStatus(
-    hash: string,
+    transactionHash: string,
     status: TransactionStatus,
   ) {
     const { data: transaction } =
-      await cryptoTransactionApi.putTransactionStatus(hash, status);
+      await cryptoTransactionApi.putTransactionStatus(transactionHash, status);
 
     return transaction;
   }
