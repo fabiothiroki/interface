@@ -13,6 +13,8 @@ import { useWalletContext } from "contexts/walletContext";
 import { useNetwork } from "hooks/useNetwork";
 import RightArrowBlack from "assets/icons/right-arrow-black.svg";
 import { ReactComponent as BlueRightArrow } from "assets/icons/right-arrow-blue.svg";
+import usePromoterCardGivings from "hooks/apiHooks/usePromoterCardGivings";
+import { Currencies } from "types/enums/Currencies";
 import * as S from "../styles";
 
 function GivingsSection(): JSX.Element {
@@ -23,6 +25,10 @@ function GivingsSection(): JSX.Element {
   });
   const { wallet, connectWallet } = useWalletContext();
   const { getAllPromotersDonations } = usePromoterDonations();
+  const { promoterCardGivings } = usePromoterCardGivings(
+    "nicholas@ribon.io",
+    Currencies.USD,
+  );
   const { isMobile } = useBreakpoint();
   const { currentNetwork } = useNetwork();
   const coin = "USDC";
@@ -49,6 +55,7 @@ function GivingsSection(): JSX.Element {
 
   useEffect(() => {
     fetchAllDonations();
+    console.log(promoterCardGivings);
   }, []);
 
   function concatLinkHash(hash: string) {
