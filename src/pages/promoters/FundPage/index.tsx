@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import CardBlank from "components/moleculars/cards/CardBlank";
 import Button from "components/atomics/Button";
 import { useEffect } from "react";
-import { useNetwork } from "hooks/useNetwork";
+import { useNetwork } from "contexts/networkContext";
 import useNavigation from "hooks/useNavigation";
 import { useContract } from "hooks/useContract";
 import DonationTokenAbi from "utils/abis/DonationToken.json";
@@ -44,6 +44,7 @@ function FundPage(): JSX.Element {
 
   useEffect(() => {
     logEvent("fundScreen_view");
+    console.log(currentNetwork);
   }, []);
 
   useEffect(() => {

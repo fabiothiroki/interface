@@ -13,7 +13,7 @@ import { useWalletContext } from "contexts/walletContext";
 import { useLocation } from "react-router-dom";
 import { useProvider } from "hooks/useProvider";
 import { useContract } from "hooks/useContract";
-import { useNetwork } from "hooks/useNetwork";
+import { useNetwork } from "contexts/networkContext";
 import { BigNumber } from "ethers";
 import RibonAbi from "utils/abis/RibonAbi.json";
 import useToast from "hooks/useToast";

@@ -1,7 +1,7 @@
 import { Contract } from "@ethersproject/contracts";
 import { useMemo } from "react";
 import { getContract } from "utils/contractUtils";
-import { useNetwork } from "hooks/useNetwork";
+import { useNetwork } from "contexts/networkContext";
 import { Web3Provider, JsonRpcProvider } from "@ethersproject/providers";
 import { logError } from "services/crashReport";
 import { useWalletContext } from "contexts/walletContext";

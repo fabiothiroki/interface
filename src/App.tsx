@@ -8,6 +8,7 @@ import GlobalStyle from "./styles/globalStyle";
 import theme from "./styles/theme";
 import LoadingOverlayProvider from "./contexts/loadingOverlayContext";
 import ModalProvider from "./contexts/modalContext";
+import NetworkProvider from "./contexts/networkContext";
 
 function App() {
   const queryClient = new QueryClient();
@@ -15,17 +16,19 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
-        <LoadingOverlayProvider>
-          <ModalProvider>
-            <GlobalStyle />
-            <BrowserRouter>
-              <ToastContextProvider>
-                <RoutesComponent />
-                <Toast />
-              </ToastContextProvider>
-            </BrowserRouter>
-          </ModalProvider>
-        </LoadingOverlayProvider>
+        <NetworkProvider>
+          <LoadingOverlayProvider>
+            <ModalProvider>
+              <GlobalStyle />
+              <BrowserRouter>
+                <ToastContextProvider>
+                  <RoutesComponent />
+                  <Toast />
+                </ToastContextProvider>
+              </BrowserRouter>
+            </ModalProvider>
+          </LoadingOverlayProvider>
+        </NetworkProvider>
       </ThemeProvider>
     </QueryClientProvider>
   );

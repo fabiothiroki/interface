@@ -10,9 +10,9 @@ import { logEvent } from "services/analytics";
 import useNavigation from "hooks/useNavigation";
 import usePromoterDonations from "hooks/apiTheGraphHooks/usePromoterDonations";
 import { useWalletContext } from "contexts/walletContext";
-import { useNetwork } from "hooks/useNetwork";
 import RightArrowBlack from "assets/icons/right-arrow-black.svg";
 import { ReactComponent as BlueRightArrow } from "assets/icons/right-arrow-blue.svg";
+import { useNetwork } from "contexts/networkContext";
 import * as S from "../styles";
 
 function GivingsSection(): JSX.Element {
