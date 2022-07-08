@@ -51,7 +51,9 @@ To install the application:
 ```shell
 yarn install
 ```
+
 Copy the .env.example to a .env file
+
 ```shell
 cp .env.example .env
 ```
