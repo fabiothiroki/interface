@@ -5,7 +5,6 @@ import api from "..";
 describe("promoterCardGivingsApi", () => {
   describe("#getPromoterCardGivings", () => {
     beforeEach(() => {
-      // If it's a different method just change it to: post, put, delete, etc.
       api.get = jest.fn();
     });
 
