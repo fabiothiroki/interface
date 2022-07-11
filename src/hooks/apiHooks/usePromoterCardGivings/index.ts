@@ -3,7 +3,10 @@ import PromoterCardGiving from "types/apiResponses/PromoterCardGiving";
 import { Currencies } from "types/enums/Currencies";
 import { useApi } from "../../useApi";
 
-function usePromoterCardGivings(email: string, currency: Currencies) {
+function usePromoterCardGivings(
+  email: string | undefined,
+  currency: Currencies,
+) {
   const {
     data: promoterCardGivings,
     isLoading,

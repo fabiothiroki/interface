@@ -20,8 +20,9 @@ import useToast from "hooks/useToast";
 import TreasureIcon from "assets/icons/treasure-off-icon.svg";
 import RightArrowBlack from "assets/icons/right-arrow-black.svg";
 import { ReactComponent as BlueRightArrow } from "assets/icons/right-arrow-blue.svg";
-import { Currencies } from "types/enums/Currencies";
 import usePromoterCardGivings from "hooks/apiHooks/usePromoterCardGivings";
+import { useCurrentUser } from "contexts/currentUserContext";
+import { useCardPaymentInformation } from "contexts/cardPaymentInformationContext";
 import * as S from "../styles";
 
 type LocationStateType = {
@@ -42,9 +43,11 @@ function GivingsSection(): JSX.Element {
   });
   const { wallet, connectWallet } = useWalletContext();
   const { getPromoterDonations } = usePromoterDonations();
+  const { currentUser } = useCurrentUser();
+  const { currentCoin } = useCardPaymentInformation();
   const { promoterCardGivings } = usePromoterCardGivings(
-    "nicholas@ribon.io",
-    Currencies.USD,
+    currentUser?.email,
+    currentCoin,
   );
   const { isMobile } = useBreakpoint();
   const { currentNetwork } = useNetwork();
@@ -116,7 +119,6 @@ function GivingsSection(): JSX.Element {
   );
 
   useEffect(() => {
-    console.log(promoterCardGivings);
     if (wallet) {
       fetchPromoterDonations(wallet);
     }

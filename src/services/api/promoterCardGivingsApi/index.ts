@@ -5,7 +5,7 @@ import { apiGet } from "..";
 
 const promoterCardGivingsApi = {
   getPromoterCardGivings: (
-    email: string,
+    email: string | undefined,
     currency: Currencies,
   ): Promise<AxiosResponse<PromoterCardGiving[]>> =>
     apiGet(`givings/user_givings?email=${email}&currency=${currency}`),
