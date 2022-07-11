@@ -20,6 +20,8 @@ import useToast from "hooks/useToast";
 import TreasureIcon from "assets/icons/treasure-off-icon.svg";
 import RightArrowBlack from "assets/icons/right-arrow-black.svg";
 import { ReactComponent as BlueRightArrow } from "assets/icons/right-arrow-blue.svg";
+import { Currencies } from "types/enums/Currencies";
+import usePromoterCardGivings from "hooks/apiHooks/usePromoterCardGivings";
 import * as S from "../styles";
 
 type LocationStateType = {
@@ -40,6 +42,10 @@ function GivingsSection(): JSX.Element {
   });
   const { wallet, connectWallet } = useWalletContext();
   const { getPromoterDonations } = usePromoterDonations();
+  const { promoterCardGivings } = usePromoterCardGivings(
+    "nicholas@ribon.io",
+    Currencies.USD,
+  );
   const { isMobile } = useBreakpoint();
   const { currentNetwork } = useNetwork();
   const coin = "USDC";
@@ -110,6 +116,7 @@ function GivingsSection(): JSX.Element {
   );
 
   useEffect(() => {
+    console.log(promoterCardGivings);
     if (wallet) {
       fetchPromoterDonations(wallet);
     }
@@ -127,7 +134,10 @@ function GivingsSection(): JSX.Element {
 
   function shouldRenderCarousel() {
     return (
-      promoterDonations?.length && promoterDonations?.length !== 0 && wallet
+      (promoterDonations?.length &&
+        promoterDonations?.length !== 0 &&
+        wallet) ||
+      promoterCardGivings?.length
     );
   }
 
@@ -164,6 +174,20 @@ function GivingsSection(): JSX.Element {
     ));
   }
 
+  function renderPromoterCardGivings() {
+    const paidDate = (date: string) => date.split(" ")[0].replaceAll("-", "/");
+
+    return promoterCardGivings?.map((item: any) => (
+      <CardDoubleTextDividerButton
+        key={item.id}
+        firstText={paidDate(item.paidDate)}
+        mainText={item.cryptoAmount}
+        rightComplementText={coin}
+        buttonText={t("cardDonationText")}
+      />
+    ));
+  }
+
   return (
     <S.Container>
       <S.SectionTitle>{t("subtitleYourGivings")}</S.SectionTitle>
@@ -172,6 +196,7 @@ function GivingsSection(): JSX.Element {
           <Carousel sliderPerView={isMobile ? 1.8 : 4} spacing={-10}>
             {renderProcessingTransaction()}
             {renderCardsCarouselPromoterGivings()}
+            {renderPromoterCardGivings()}
             {false && (
               <S.LastCardCarousel
                 onClick={() => {
