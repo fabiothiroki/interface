@@ -180,7 +180,8 @@ function GivingsSection(): JSX.Element {
   }
 
   function renderPromoterCardGivings() {
-    const paidDate = (date: string) => date.split(" ")[0].replaceAll("-", "/");
+    const paidDate = (date: string) =>
+      date.split(" ")[0].split("-").reverse().join("/");
 
     return promoterCardGivings?.map((item: any) => (
       <CardDoubleTextDividerButton
