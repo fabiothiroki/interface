@@ -3,7 +3,7 @@ import promoterCardGivingsApi from ".";
 import api from "..";
 
 describe("promoterCardGivingsApi", () => {
-  describe("FUNCTION YOU WANT TO TEST", () => {
+  describe("GetPromoterCardGivings", () => {
     beforeEach(() => {
       // If it's a different method just change it to: post, put, delete, etc.
       api.get = jest.fn();
@@ -16,7 +16,7 @@ describe("promoterCardGivingsApi", () => {
       );
 
       expect(api.get).toHaveBeenCalledWith(
-        "/api/v1/givings/user_givings?email=test@gmail.com&currency=usd",
+        "/api/v1/givings/user_givings?email=test@gmail.com&currency=USD",
       );
     });
   });
