@@ -12,7 +12,7 @@ import usePromoterDonations from "hooks/apiTheGraphHooks/usePromoterDonations";
 import { useWalletContext } from "contexts/walletContext";
 import RightArrowBlack from "assets/icons/right-arrow-black.svg";
 import { ReactComponent as BlueRightArrow } from "assets/icons/right-arrow-blue.svg";
-import { useNetwork } from "contexts/networkContext";
+import { useNetworkContext } from "contexts/networkContext";
 import * as S from "../styles";
 
 function GivingsSection(): JSX.Element {
@@ -24,7 +24,7 @@ function GivingsSection(): JSX.Element {
   const { wallet, connectWallet } = useWalletContext();
   const { getAllPromotersDonations } = usePromoterDonations();
   const { isMobile } = useBreakpoint();
-  const { currentNetwork } = useNetwork();
+  const { currentNetwork } = useNetworkContext();
   const coin = "USDC";
 
   const handleShowGivingsButtonClick = () => {

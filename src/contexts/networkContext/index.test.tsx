@@ -1,9 +1,9 @@
 import { renderComponent } from "config/testUtils";
 import { expectTextToBeInTheDocument } from "config/testUtils/expects";
-import { useNetwork } from ".";
+import { useNetworkContext } from ".";
 
 function NetworkTestPage() {
-  useNetwork();
+  useNetworkContext();
   return <div>Network</div>;
 }
 

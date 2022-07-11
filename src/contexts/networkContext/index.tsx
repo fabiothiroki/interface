@@ -24,6 +24,7 @@ export interface INetworkContext {
     currencyName: string;
     blockExplorerUrls: string;
   };
+  getCurrentNetwork: () => void;
 }
 
 export type Props = {
@@ -78,7 +79,7 @@ function NetworkProvider({ children }: Props) {
 
   useEffect(() => {
     getCurrentNetwork();
-  }, [getCurrentNetwork]);
+  }, [getCurrentNetwork, currentNetwork]);
 
   useEffect(() => {
     window.ethereum?.on("chainChanged", getCurrentNetwork);
@@ -89,8 +90,9 @@ function NetworkProvider({ children }: Props) {
       currentNetwork,
       isValidNetwork,
       changeNetwork,
+      getCurrentNetwork,
     }),
-    [getCurrentNetwork, provider],
+    [currentNetwork, isValidNetwork, changeNetwork],
   );
 
   return (
@@ -102,7 +104,7 @@ function NetworkProvider({ children }: Props) {
 
 export default NetworkProvider;
 
-export const useNetwork = () => {
+export const useNetworkContext = () => {
   const context = useContext(NetworkContext);
 
   if (!context) {
