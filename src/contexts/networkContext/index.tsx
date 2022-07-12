@@ -12,7 +12,6 @@ import { useProvider } from "hooks/useProvider";
 
 export interface INetworkContext {
   isValidNetwork: boolean;
-  changeNetwork: () => void;
   currentNetwork: {
     chainName: string;
     ribonContractAddress: string;
@@ -57,26 +56,6 @@ function NetworkProvider({ children }: Props) {
     }
   }, [provider]);
 
-  const changeNetwork = () => {
-    const defaultNetwork = networks[0];
-    window.ethereum.request({
-      method: "wallet_addEthereumChain",
-      params: [
-        {
-          chainId: defaultNetwork.chainId,
-          rpcUrls: [defaultNetwork.rpcUrls],
-          chainName: defaultNetwork.chainName,
-          nativeCurrency: {
-            name: defaultNetwork.currencyName,
-            symbol: defaultNetwork.symbolName,
-            decimals: 18,
-          },
-          blockExplorerUrls: [defaultNetwork.blockExplorerUrls],
-        },
-      ],
-    });
-  };
-
   useEffect(() => {
     getCurrentNetwork();
   }, [getCurrentNetwork, currentNetwork]);
@@ -89,10 +68,9 @@ function NetworkProvider({ children }: Props) {
     () => ({
       currentNetwork,
       isValidNetwork,
-      changeNetwork,
       getCurrentNetwork,
     }),
-    [currentNetwork, isValidNetwork, changeNetwork],
+    [currentNetwork, isValidNetwork],
   );
 
   return (
