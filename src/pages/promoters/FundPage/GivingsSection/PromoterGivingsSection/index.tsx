@@ -34,6 +34,7 @@ type LocationStateType = {
 
 function GivingsSection(): JSX.Element {
   const [promoterDonations, setPromoterDonations] = useState<any>();
+  const [allPromoterDonations, setAllPromoterDonations] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);
   const toast = useToast();
   const provider = useProvider();
@@ -128,6 +129,11 @@ function GivingsSection(): JSX.Element {
   }, [wallet]);
 
   useEffect(() => {
+    setAllPromoterDonations(promoterCardGivings?.concat(promoterDonations));
+    console.log(allPromoterDonations);
+  }, [promoterDonations, promoterCardGivings]);
+
+  useEffect(() => {
     contract?.on("PoolBalanceIncreased", () => {
       transactionIsBeingProcessed(state?.id);
     });
@@ -165,33 +171,45 @@ function GivingsSection(): JSX.Element {
     return null;
   }
 
-  function renderCardsCarouselPromoterGivings() {
-    return promoterDonations?.map((item: any) => (
-      <CardDoubleTextDividerButton
-        key={item.id}
-        firstText={formatDate(item.timestamp).toString()}
-        mainText={formatFromWei(item.amountDonated)}
-        rightComplementText={coin}
-        buttonText={t("linkTransactionText")}
-        rightComponentButton={RightArrowBlack}
-        link={concatLinkHash(item.id)}
-      />
-    ));
-  }
-
-  function renderPromoterCardGivings() {
+  function renderAllPromoterDonations() {
     const paidDate = (date: string) =>
       date.split(" ")[0].split("-").reverse().join("/");
 
-    return promoterCardGivings?.map((item: any) => (
-      <CardDoubleTextDividerButton
-        key={item.id}
-        firstText={paidDate(item.paidDate)}
-        mainText={item.cryptoAmount}
-        rightComplementText={coin}
-        buttonText={t("cardDonationText")}
-      />
-    ));
+    const allDonations = allPromoterDonations
+      ?.sort((a: any, b: any) => {
+        const aTime =
+          formatDate(a.timestamp).toString() || paidDate(a.paidDate);
+        const bTime =
+          formatDate(b.timestamp).toString() || paidDate(b.paidDate);
+
+        const first = aTime.split("/").reverse().join("");
+        const second = bTime.split("/").reverse().join("");
+        // eslint-disable-next-line no-nested-ternary
+        return first > second ? 1 : first <= second ? -1 : 0;
+      })
+      .reverse();
+
+    return allDonations?.map((item: any) =>
+      item.timestamp ? (
+        <CardDoubleTextDividerButton
+          key={item.id}
+          firstText={formatDate(item.timestamp).toString()}
+          mainText={formatFromWei(item.amountDonated)}
+          rightComplementText={coin}
+          buttonText={t("linkTransactionText")}
+          rightComponentButton={RightArrowBlack}
+          link={concatLinkHash(item.id)}
+        />
+      ) : (
+        <CardDoubleTextDividerButton
+          key={item.id}
+          firstText={paidDate(item.paidDate)}
+          mainText={item.cryptoAmount}
+          rightComplementText={coin}
+          buttonText={t("cardDonationText")}
+        />
+      ),
+    );
   }
 
   return (
@@ -201,8 +219,7 @@ function GivingsSection(): JSX.Element {
         !loading && (
           <Carousel sliderPerView={isMobile ? 1.8 : 4} spacing={-10}>
             {renderProcessingTransaction()}
-            {renderCardsCarouselPromoterGivings()}
-            {renderPromoterCardGivings()}
+            {renderAllPromoterDonations()}
             {false && (
               <S.LastCardCarousel
                 onClick={() => {
