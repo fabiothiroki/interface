@@ -5,12 +5,12 @@ function useCryptoTransaction() {
   async function createTransaction(
     transactionHash: string,
     amount: string,
-    email: string,
+    walletAddress: string,
   ) {
     const { data: transaction } = await cryptoTransactionApi.postTransaction(
       transactionHash,
       amount,
-      email,
+      walletAddress,
     );
 
     return transaction;
