@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import Carousel from "components/moleculars/sliders/Carousel";
 import CardDoubleTextDividerButton from "components/moleculars/cards/CardDoubleTextDividerButton";
 import useBreakpoint from "hooks/useBreakpoint";
+import { TransactionStatus } from "types/enums/TransactionStatus";
 import { logError } from "services/crashReport";
 import { formatFromWei } from "lib/web3Helpers/etherFormatters";
 import { formatDate } from "lib/web3Helpers/timeStampFormatters";
@@ -17,12 +18,11 @@ import { useNetwork } from "hooks/useNetwork";
 import { BigNumber } from "ethers";
 import RibonAbi from "utils/abis/RibonAbi.json";
 import useToast from "hooks/useToast";
+import useCryptoTransaction from "hooks/apiHooks/useCryptoTransaction";
 import TreasureIcon from "assets/icons/treasure-off-icon.svg";
 import RightArrowBlack from "assets/icons/right-arrow-black.svg";
 import { ReactComponent as BlueRightArrow } from "assets/icons/right-arrow-blue.svg";
 import * as S from "../styles";
-import useCryptoTransaction from "hooks/apiHooks/useCryptoTransaction";
-import { TransactionStatus } from "types/enums/TransactionStatus";
 
 type LocationStateType = {
   id: string;

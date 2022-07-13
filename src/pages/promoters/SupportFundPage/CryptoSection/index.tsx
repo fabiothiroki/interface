@@ -15,9 +15,9 @@ import { logEvent } from "services/analytics";
 import { formatFromWei } from "lib/web3Helpers/etherFormatters";
 import { stringToNumber } from "lib/formatters/stringToNumberFormatter";
 import { useLoadingOverlay } from "contexts/loadingOverlayContext";
+import useCryptoTransaction from "hooks/apiHooks/useCryptoTransaction";
 import WalletIcon from "./assets/wallet-icon.svg";
 import * as S from "./styles";
-import useCryptoTransaction from "hooks/apiHooks/useCryptoTransaction";
 
 function CryptoSection(): JSX.Element {
   const [amount, setAmount] = useState("");
