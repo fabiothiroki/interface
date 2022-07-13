@@ -129,9 +129,12 @@ function GivingsSection(): JSX.Element {
   }, [wallet]);
 
   useEffect(() => {
-    setAllPromoterDonations(promoterCardGivings?.concat(promoterDonations));
-    console.log(allPromoterDonations);
-  }, [promoterDonations, promoterCardGivings]);
+    if (wallet) {
+      setAllPromoterDonations(promoterCardGivings?.concat(promoterDonations));
+    } else {
+      setAllPromoterDonations(promoterCardGivings);
+    }
+  }, [promoterDonations, promoterCardGivings, wallet]);
 
   useEffect(() => {
     contract?.on("PoolBalanceIncreased", () => {
@@ -177,10 +180,12 @@ function GivingsSection(): JSX.Element {
 
     const allDonations = allPromoterDonations
       ?.sort((a: any, b: any) => {
-        const aTime =
-          formatDate(a.timestamp).toString() || paidDate(a.paidDate);
-        const bTime =
-          formatDate(b.timestamp).toString() || paidDate(b.paidDate);
+        const aTime = a.timestamp
+          ? formatDate(a.timestamp).toString()
+          : paidDate(a.paidDate);
+        const bTime = b.timestamp
+          ? formatDate(b.timestamp).toString()
+          : paidDate(b.paidDate);
 
         const first = aTime.split("/").reverse().join("");
         const second = bTime.split("/").reverse().join("");
