@@ -21,6 +21,8 @@ import TreasureIcon from "assets/icons/treasure-off-icon.svg";
 import RightArrowBlack from "assets/icons/right-arrow-black.svg";
 import { ReactComponent as BlueRightArrow } from "assets/icons/right-arrow-blue.svg";
 import * as S from "../styles";
+import useCryptoTransaction from "hooks/apiHooks/useCryptoTransaction";
+import { TransactionStatus } from "types/enums/TransactionStatus";
 
 type LocationStateType = {
   id: string;
@@ -40,6 +42,7 @@ function GivingsSection(): JSX.Element {
   });
   const { wallet, connectWallet } = useWalletContext();
   const { getPromoterDonations } = usePromoterDonations();
+  const { updateTransactionStatus } = useCryptoTransaction();
   const { isMobile } = useBreakpoint();
   const { currentNetwork } = useNetwork();
   const coin = "USDC";
@@ -88,6 +91,7 @@ function GivingsSection(): JSX.Element {
         const receipt = await provider?.getTransactionReceipt(hash);
         if (receipt) {
           setProcessingTransaction(false);
+          updateTransactionStatus(state.id, TransactionStatus.SUCCESS);
           setPromoterDonations((prevState: any) => [
             { ...state, processing: false },
             ...prevState,
@@ -102,6 +106,7 @@ function GivingsSection(): JSX.Element {
         }
       } catch (e) {
         logError(e);
+        updateTransactionStatus(state.id, TransactionStatus.FAILED);
         toast({
           message: t("transactionFailedText"),
           type: "error",

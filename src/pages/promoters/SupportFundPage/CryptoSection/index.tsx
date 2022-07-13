@@ -17,6 +17,7 @@ import { stringToNumber } from "lib/formatters/stringToNumberFormatter";
 import { useLoadingOverlay } from "contexts/loadingOverlayContext";
 import WalletIcon from "./assets/wallet-icon.svg";
 import * as S from "./styles";
+import useCryptoTransaction from "hooks/apiHooks/useCryptoTransaction";
 
 function CryptoSection(): JSX.Element {
   const [amount, setAmount] = useState("");
@@ -39,6 +40,7 @@ function CryptoSection(): JSX.Element {
   const { navigateTo } = useNavigation();
   const { showLoadingOverlay, hideLoadingOverlay } = useLoadingOverlay();
   const { wallet, connectWallet } = useWalletContext();
+  const { createTransaction } = useCryptoTransaction();
 
   const args = {
     afterFormat(e: string) {
@@ -119,6 +121,8 @@ function CryptoSection(): JSX.Element {
       const id = response.hash;
       const timestamp = Math.floor(new Date().getTime() / 1000);
 
+      createTransaction(id, amount, wallet ?? "");
+
       toast({
         message: t("transactionOnBlockchainText"),
         type: "success",
@@ -128,6 +132,7 @@ function CryptoSection(): JSX.Element {
       logEvent("toastNotification_view", {
         status: "transactionProcessed",
       });
+
       navigateTo({
         pathname: "/promoters/fund",
         state: {
