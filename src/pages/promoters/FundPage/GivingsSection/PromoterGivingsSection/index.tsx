@@ -177,9 +177,10 @@ function GivingsSection(): JSX.Element {
 
   function renderAllPromoterDonations() {
     const allDonations = sortDonationsByDate(allPromoterDonations);
+    const isCryptoDonation = (item: any) => !!item.timestamp;
 
     return allDonations?.map((item: any) =>
-      item.timestamp ? (
+      isCryptoDonation(item) ? (
         <CardDoubleTextDividerButton
           key={item.id}
           firstText={formatDate(item.timestamp).toString()}
