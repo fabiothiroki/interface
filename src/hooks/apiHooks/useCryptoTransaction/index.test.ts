@@ -22,7 +22,7 @@ describe("useCryptoTransaction", () => {
       cryptoTransactionApi.postTransaction = jest.fn(() => ({ transactionData } as any));
     });
 
-    it("calls the usersApi searchUser with correct params", () => {
+    it("calls postTransaction with correct params", () => {
       hook.createTransaction(testHash, testAmount, testWallet);
 
       expect(cryptoTransactionApi.postTransaction).toHaveBeenCalledWith(...transactionData);
@@ -34,7 +34,7 @@ describe("useCryptoTransaction", () => {
       cryptoTransactionApi.putTransactionStatus = jest.fn(() => ({ transactionData } as any));
     });
 
-    it("calls the usersApi createUser with correct params", () => {
+    it("calls putTransactionStatus with correct params", () => {
       hook.updateTransactionStatus(testHash, TransactionStatus.SUCCESS);
 
       expect(cryptoTransactionApi.putTransactionStatus).toHaveBeenCalledWith(testHash, TransactionStatus.SUCCESS);
