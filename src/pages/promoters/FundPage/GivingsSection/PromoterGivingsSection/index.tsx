@@ -24,7 +24,7 @@ import usePromoterCardGivings from "hooks/apiHooks/usePromoterCardGivings";
 import { useCurrentUser } from "contexts/currentUserContext";
 import { useCardPaymentInformation } from "contexts/cardPaymentInformationContext";
 import * as S from "../styles";
-import sortDonationsByDate, { paidDate } from "./utils/sortDonationsByDate";
+import sortDonationsByDate, { paidDate } from "./lib/sortDonationsByDate";
 
 type LocationStateType = {
   id: string;
