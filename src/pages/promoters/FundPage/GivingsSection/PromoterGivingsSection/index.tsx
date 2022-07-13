@@ -24,6 +24,7 @@ import usePromoterCardGivings from "hooks/apiHooks/usePromoterCardGivings";
 import { useCurrentUser } from "contexts/currentUserContext";
 import { useCardPaymentInformation } from "contexts/cardPaymentInformationContext";
 import * as S from "../styles";
+import sortDonationsByDate, { paidDate } from "./utils/sortDonationsByDate";
 
 type LocationStateType = {
   id: string;
@@ -175,24 +176,7 @@ function GivingsSection(): JSX.Element {
   }
 
   function renderAllPromoterDonations() {
-    const paidDate = (date: string) =>
-      date.split(" ")[0].split("-").reverse().join("/");
-
-    const allDonations = allPromoterDonations
-      ?.sort((a: any, b: any) => {
-        const aTime = a.timestamp
-          ? formatDate(a.timestamp).toString()
-          : paidDate(a.paidDate);
-        const bTime = b.timestamp
-          ? formatDate(b.timestamp).toString()
-          : paidDate(b.paidDate);
-
-        const first = aTime.split("/").reverse().join("");
-        const second = bTime.split("/").reverse().join("");
-        // eslint-disable-next-line no-nested-ternary
-        return first > second ? 1 : first <= second ? -1 : 0;
-      })
-      .reverse();
+    const allDonations = sortDonationsByDate(allPromoterDonations);
 
     return allDonations?.map((item: any) =>
       item.timestamp ? (
