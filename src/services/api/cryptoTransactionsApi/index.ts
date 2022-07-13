@@ -4,17 +4,17 @@ import { apiPost, apiPut } from "..";
 
 const cryptoTransactionApi = {
   postTransaction: (
-    transaction_hash: string,
+    transactionHash: string,
     amount: string,
-    wallet_address: string
+    walletAddress: string
   ): Promise<AxiosResponse<any>> =>
-    apiPost("payments/cryptocurrency", { transaction_hash, amount, wallet_address }),
+    apiPost("payments/cryptocurrency", { transactionHash, amount, walletAddress }),
   
   putTransactionStatus: (
-    transaction_hash: string,
+    transactionHash: string,
     status: TransactionStatus
   ): Promise<AxiosResponse<any>> =>
-    apiPut("payments/cryptocurrency", { transaction_hash, status })
+    apiPut("payments/cryptocurrency", { transactionHash, status })
 };
 
 export default cryptoTransactionApi;

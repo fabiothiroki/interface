@@ -12,9 +12,9 @@ describe("cryptoTransacrionApi", () => {
       cryptoTransactionApi.postTransaction("0xAAAA", '5.00', '0xBBBB');
 
       expect(api.post).toHaveBeenCalledWith("/api/v1/payments/cryptocurrency", {
-        transaction_hash: "0xAAAA",
+        transactionHash: "0xAAAA",
         amount: '5.00',
-        wallet_address: '0xBBBB'
+        walletAddress: '0xBBBB'
       });
     });
   });
@@ -28,7 +28,7 @@ describe("cryptoTransacrionApi", () => {
       cryptoTransactionApi.putTransactionStatus("0xAAAA", TransactionStatus.SUCCESS);
 
       expect(api.put).toHaveBeenCalledWith("/api/v1/payments/cryptocurrency", {
-        transaction_hash: "0xAAAA",
+        transactionHash: "0xAAAA",
         status: TransactionStatus.SUCCESS
       });
     });
