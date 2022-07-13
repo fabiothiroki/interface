@@ -6,9 +6,9 @@ const cryptoTransactionApi = {
   postTransaction: (
     transaction_hash: string,
     amount: string,
-    email: string
+    wallet_address: string
   ): Promise<AxiosResponse<any>> =>
-    apiPost("payments/cryptocurrency", { transaction_hash, amount, email }),
+    apiPost("payments/cryptocurrency", { transaction_hash, amount, wallet_address }),
   
   putTransactionStatus: (
     transaction_hash: string,

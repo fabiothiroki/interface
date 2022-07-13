@@ -9,12 +9,12 @@ describe("cryptoTransacrionApi", () => {
     });
 
     it("expects to send a get request with the correct info: url, params and headers", () => {
-      cryptoTransactionApi.postTransaction("0xAAAA", '5.00', 'user@ribon.io');
+      cryptoTransactionApi.postTransaction("0xAAAA", '5.00', '0xBBBB');
 
       expect(api.post).toHaveBeenCalledWith("/api/v1/payments/cryptocurrency", {
         transaction_hash: "0xAAAA",
         amount: '5.00',
-        email: 'user@ribon.io'
+        wallet_address: '0xBBBB'
       });
     });
   });
