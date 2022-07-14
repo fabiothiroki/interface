@@ -135,8 +135,10 @@ function GivingsSection(): JSX.Element {
   }, [wallet]);
 
   useEffect(() => {
-    if (wallet) {
+    if (wallet && promoterCardGivings) {
       setAllPromoterDonations(promoterCardGivings?.concat(promoterDonations));
+    } else if (wallet && !promoterCardGivings) {
+      setAllPromoterDonations(promoterDonations);
     } else {
       setAllPromoterDonations(promoterCardGivings);
     }
