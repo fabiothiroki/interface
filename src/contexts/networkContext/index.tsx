@@ -9,20 +9,11 @@ import {
 import { networks } from "config/networks";
 import { logError } from "services/crashReport";
 import { useProvider } from "hooks/useProvider";
+import { CurrentNetwork } from "types/entities/CurrentNetwork";
 
 export interface INetworkContext {
   isValidNetwork: boolean;
-  currentNetwork: {
-    chainName: string;
-    ribonContractAddress: string;
-    donationTokenContractAddress: string;
-    chainId: number;
-    rpcUrls: string;
-    nodeUrl: string;
-    symbolName: string;
-    currencyName: string;
-    blockExplorerUrls: string;
-  };
+  currentNetwork: CurrentNetwork;
   getCurrentNetwork: () => void;
 }
 
