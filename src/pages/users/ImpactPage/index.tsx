@@ -19,7 +19,7 @@ function ImpactPage(): JSX.Element {
   const [impactCardsToShow, setImpactCardsToShow] =
     useState<number>(INITIAL_CARDS_COUNT);
 
-  const userHasDonated = ticketsUsed && currentUser;
+  const userHasDonated = !!ticketsUsed && currentUser;
 
   useEffect(() => {
     logEvent("profile_view");
