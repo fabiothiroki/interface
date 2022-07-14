@@ -1,4 +1,4 @@
-export type CurrentNetwork = {
+export default interface CurrentNetwork {
   chainName: string;
   ribonContractAddress: string;
   donationTokenContractAddress: string;
@@ -8,4 +8,4 @@ export type CurrentNetwork = {
   symbolName: string;
   currencyName: string;
   blockExplorerUrls: string;
-};
+}

@@ -9,7 +9,7 @@ import {
 import { networks } from "config/networks";
 import { logError } from "services/crashReport";
 import { useProvider } from "hooks/useProvider";
-import { CurrentNetwork } from "types/entities/CurrentNetwork";
+import CurrentNetwork from "types/entities/CurrentNetwork";
 
 export interface INetworkContext {
   isValidNetwork: boolean;
