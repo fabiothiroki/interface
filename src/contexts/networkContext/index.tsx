@@ -42,6 +42,7 @@ function NetworkProvider({ children }: Props) {
   const getCurrentNetwork = useCallback(async () => {
     try {
       const providerNetwork = await provider?.getNetwork();
+
       if (providerNetwork) {
         const permittedNetworks = networks.filter(
           (network) => providerNetwork.chainId === network.chainId,
