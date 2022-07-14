@@ -15,6 +15,9 @@ function usePromoterCardGivings(
     key: "promoterCardGivings",
     fetchMethod: () =>
       promoterCardGivingsApi.getPromoterCardGivings(email, currency),
+    options: {
+      enabled: !!email,
+    },
   });
 
   return {
