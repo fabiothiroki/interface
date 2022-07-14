@@ -73,7 +73,7 @@ describe("PromoterGivingsSection", () => {
         const amount = "0.50";
 
         expectTextToBeInTheDocument("See transaction");
-        expectTextToBeInTheDocument("18/05/2022");
+        expectTextToBeInTheDocument("5/18/2022");
         expectTextToBeInTheDocument(amount);
       });
     });
