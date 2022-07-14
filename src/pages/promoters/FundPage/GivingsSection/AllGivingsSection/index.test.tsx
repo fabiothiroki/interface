@@ -30,11 +30,11 @@ describe("AllGivingsSection", () => {
 
     it("shows the global givings", async () => {
       const text = "See transaction";
-      const date = "5/18/2022";
+      const date = new Date("5/18/2022");
       const amount = "0.50";
 
       expectTextToBeInTheDocument(text);
-      expectTextToBeInTheDocument(date);
+      expectTextToBeInTheDocument(date.toLocaleDateString());
       expectTextToBeInTheDocument(amount);
     });
   });

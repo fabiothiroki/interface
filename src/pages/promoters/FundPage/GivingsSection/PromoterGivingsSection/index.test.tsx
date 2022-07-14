@@ -70,12 +70,11 @@ describe("PromoterGivingsSection", () => {
       });
 
       it("shows the user givings", async () => {
-        const text = "See transaction";
-        const date = "5/18/2022";
+        const date = new Date("18/05/2022");
         const amount = "0.50";
 
-        expectTextToBeInTheDocument(text);
-        expectTextToBeInTheDocument(date);
+        expectTextToBeInTheDocument("See transaction");
+        expectTextToBeInTheDocument(date.toLocaleDateString());
         expectTextToBeInTheDocument(amount);
       });
     });
