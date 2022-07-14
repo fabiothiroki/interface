@@ -135,14 +135,18 @@ function GivingsSection(): JSX.Element {
   }, [wallet]);
 
   useEffect(() => {
-    if (wallet && promoterCardGivings) {
+    const onlyCrypto = wallet && (!currentUser || !promoterCardGivings);
+    const onlyCard = !wallet && currentUser && promoterCardGivings;
+    const both = !!wallet && !!currentUser && !!promoterCardGivings;
+
+    if (both) {
       setAllPromoterDonations(promoterCardGivings?.concat(promoterDonations));
-    } else if (wallet && !promoterCardGivings) {
+    } else if (onlyCrypto) {
       setAllPromoterDonations(promoterDonations);
-    } else {
+    } else if (onlyCard) {
       setAllPromoterDonations(promoterCardGivings);
     }
-  }, [promoterDonations, promoterCardGivings, wallet]);
+  }, [promoterDonations, promoterCardGivings, wallet, currentUser]);
 
   useEffect(() => {
     contract?.on("PoolBalanceIncreased", () => {
@@ -154,14 +158,7 @@ function GivingsSection(): JSX.Element {
     return `${currentNetwork.blockExplorerUrls}tx/${hash}`;
   }
 
-  function shouldRenderCarousel() {
-    return (
-      (promoterDonations?.length &&
-        promoterDonations?.length !== 0 &&
-        wallet) ||
-      promoterCardGivings?.length
-    );
-  }
+  const shouldRenderCarousel = () => allPromoterDonations?.length;
 
   function renderProcessingTransaction() {
     if (processingTransaction) {
