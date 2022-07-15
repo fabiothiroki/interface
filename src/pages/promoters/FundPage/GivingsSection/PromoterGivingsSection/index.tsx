@@ -135,6 +135,7 @@ function GivingsSection(): JSX.Element {
   }, [wallet]);
 
   useEffect(() => {
+    console.log(promoterCardGivings, currentUser);
     const onlyCrypto = wallet && (!currentUser || !promoterCardGivings);
     const onlyCard = !wallet && currentUser && promoterCardGivings;
     const both = !!wallet && !!currentUser && !!promoterCardGivings;
