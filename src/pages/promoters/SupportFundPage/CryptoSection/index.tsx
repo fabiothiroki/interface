@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useCallback, useEffect, useState } from "react";
 import SimpleMaskMoney from "simple-mask-money";
 import { useContract } from "hooks/useContract";
-import { useNetwork } from "hooks/useNetwork";
+import { useNetworkContext } from "contexts/networkContext";
 import RibonAbi from "utils/abis/RibonAbi.json";
 import DonationTokenAbi from "utils/abis/DonationToken.json";
 import { useWalletContext } from "contexts/walletContext";
@@ -15,6 +15,7 @@ import { logEvent } from "services/analytics";
 import { formatFromWei } from "lib/web3Helpers/etherFormatters";
 import { stringToNumber } from "lib/formatters/stringToNumberFormatter";
 import { useLoadingOverlay } from "contexts/loadingOverlayContext";
+import useCryptoTransaction from "hooks/apiHooks/useCryptoTransaction";
 import WalletIcon from "./assets/wallet-icon.svg";
 import * as S from "./styles";
 
@@ -22,7 +23,7 @@ function CryptoSection(): JSX.Element {
   const [amount, setAmount] = useState("");
   const [loading, setLoading] = useState(false);
   const [userBalance, setUserBalance] = useState("");
-  const { currentNetwork } = useNetwork();
+  const { currentNetwork } = useNetworkContext();
 
   const { t } = useTranslation("translation", {
     keyPrefix: "promoters.supportFundPage",
@@ -39,6 +40,7 @@ function CryptoSection(): JSX.Element {
   const { navigateTo } = useNavigation();
   const { showLoadingOverlay, hideLoadingOverlay } = useLoadingOverlay();
   const { wallet, connectWallet } = useWalletContext();
+  const { createTransaction } = useCryptoTransaction();
 
   const args = {
     afterFormat(e: string) {
@@ -119,6 +121,8 @@ function CryptoSection(): JSX.Element {
       const id = response.hash;
       const timestamp = Math.floor(new Date().getTime() / 1000);
 
+      createTransaction(id, amount, wallet ?? "");
+
       toast({
         message: t("transactionOnBlockchainText"),
         type: "success",
@@ -128,6 +132,7 @@ function CryptoSection(): JSX.Element {
       logEvent("toastNotification_view", {
         status: "transactionProcessed",
       });
+
       navigateTo({
         pathname: "/promoters/fund",
         state: {
