@@ -8,11 +8,11 @@ describe("sourcesApi", () => {
     });
 
     it("expects to send a get request with the correct info: url, params and headers", () => {
-      sourcesApi.postCreateSource("1", "2");
+      sourcesApi.postCreateSource(1, 2);
 
       expect(api.post).toHaveBeenCalledWith("/api/v1/sources", {
-        userId: "1",
-        integrationId: "2"
+        userId: 1,
+        integrationId: 2
       });
     });
   });

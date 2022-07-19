@@ -4,8 +4,8 @@ import useSources from ".";
 
 describe("useUsers", () => {
   let hook: ReturnType<typeof useSources>;
-  const testUserId = "1";
-  const testIntegrationId = "2";
+  const testUserId = 1;
+  const testIntegrationId = 2;
 
   const data = { testUserId: testUserId, testIntegrationId: testIntegrationId };
 
