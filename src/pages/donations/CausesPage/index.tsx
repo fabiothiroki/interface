@@ -84,8 +84,8 @@ function CausesPage(): JSX.Element {
       try {
         if (!signedIn) {
           const user = await findOrCreateUser(email);
-          if(integrationId) {
-            createSource(user.id, integrationId)
+          if (integrationId) {
+            createSource(user.id, integrationId);
           }
 
           setCurrentUser(user);

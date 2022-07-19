@@ -13,7 +13,7 @@ describe("useUsers", () => {
     const { result } = renderHook(() => useSources());
     hook = result.current;
   });
-  
+
   describe("#createSource", () => {
     beforeEach(() => {
       sourcesApi.postCreateSource = jest.fn(() => ({ data } as any));
@@ -22,11 +22,17 @@ describe("useUsers", () => {
     it("calls the usersApi searchUser with correct params", () => {
       hook.createSource(testUserId, testIntegrationId);
 
-      expect(sourcesApi.postCreateSource).toHaveBeenCalledWith(testUserId, testIntegrationId);
+      expect(sourcesApi.postCreateSource).toHaveBeenCalledWith(
+        testUserId,
+        testIntegrationId,
+      );
     });
 
     it("returns the data fetched from the api", async () => {
-      const findResultResult = await hook.createSource(testUserId, testIntegrationId);
+      const findResultResult = await hook.createSource(
+        testUserId,
+        testIntegrationId,
+      );
       expect(findResultResult).toEqual(data);
     });
   });

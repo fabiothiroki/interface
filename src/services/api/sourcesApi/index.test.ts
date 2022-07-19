@@ -12,7 +12,7 @@ describe("sourcesApi", () => {
 
       expect(api.post).toHaveBeenCalledWith("/api/v1/sources", {
         userId: 1,
-        integrationId: 2
+        integrationId: 2,
       });
     });
   });
