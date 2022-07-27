@@ -26,6 +26,5 @@ export const WalletButton = styled(Button)`
     cursor: pointer;
     padding: 3px 12px;
     font-size: 12px;
-    line-height: 14px;
   `}
 `;

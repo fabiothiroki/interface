@@ -24,7 +24,6 @@ export const Container = styled.button`
     width: 100%;
     padding: 10px 5px;
     font-size: 16px;
-    line-height: 18px;
     max-height: 40px;
     font-weight: bold;
     display: flex;
