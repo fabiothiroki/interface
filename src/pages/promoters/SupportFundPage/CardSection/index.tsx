@@ -1,28 +1,38 @@
 import { useTranslation } from "react-i18next";
 import { useCallback, useEffect, useState } from "react";
-import { useLanguage } from "hooks/useLanguage";
 import Dropdown from "components/atomics/Dropdown";
 import theme from "styles/theme";
 import { Currencies } from "types/enums/Currencies";
-import { coinByLanguage } from "lib/coinByLanguage";
 import Divider from "components/atomics/Divider";
+import { useCardPaymentInformation } from "contexts/cardPaymentInformationContext";
 import useOffers from "hooks/apiHooks/useOffers";
+import { logEvent } from "services/analytics";
 import BillingInformationSection from "./BillingInformationSection";
 import FeesSection from "./FeesSection";
 import * as S from "./styles";
+import PaymentInformation from "./PaymentInformationSection";
 
 const { lightGray } = theme.colors;
 
 function CardSection(): JSX.Element {
-  const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
+
   const { t } = useTranslation("translation", {
     keyPrefix: "promoters.supportFundPage.cardSection",
   });
-  const { currentLang } = useLanguage();
-  const [currentCoin, setCurrentCoin] = useState<Currencies>(
-    coinByLanguage(currentLang),
-  );
+
+  const {
+    currentCoin,
+    setCurrentCoin,
+    handleSubmit,
+    selectedButtonIndex,
+    setSelectedButtonIndex,
+    buttonDisabled,
+    setButtonDisabled,
+    setCryptoGiving,
+    setOfferId,
+  } = useCardPaymentInformation();
+
   const { offers, refetch: refetchOffers } = useOffers(currentCoin, false);
 
   const givingValue = useCallback(() => {
@@ -38,19 +48,19 @@ function CardSection(): JSX.Element {
   }, [offers, selectedButtonIndex, currentCoin]);
 
   const sections = [
-    givingValue() > 0 && (
-      <FeesSection
-        currency={currentCoin}
-        givingValue={givingValue()}
-        givingTotal={givingTotal()}
-      />
-    ),
+    <div />,
     <BillingInformationSection />,
+    <PaymentInformation />,
   ];
 
   function handleClickNext() {
-    if (currentSectionIndex <= sections.length - 1) {
+    setButtonDisabled(true);
+    if (currentSectionIndex < sections.length - 1) {
       setCurrentSectionIndex(currentSectionIndex + 1);
+      setOfferId(offers?.[selectedButtonIndex]?.id ?? 0);
+      logEvent("fundSupportNextStepBtn_click");
+    } else {
+      handleSubmit();
     }
   }
 
@@ -59,41 +69,61 @@ function CardSection(): JSX.Element {
   }, [currentCoin]);
 
   return (
-    <S.CardSectionContainer>
-      <Dropdown
-        name="currency"
-        label={t("currency")}
-        values={[Currencies.USD, Currencies.BRL]}
-        defaultValue={currentCoin}
-        onOptionChanged={(value) => setCurrentCoin(value)}
-      />
-      <S.Subtitle>{t("subtitleCard")}</S.Subtitle>
+    <>
+      <S.CardSectionContainer>
+        {currentSectionIndex === 0 && (
+          <>
+            <Dropdown
+              name="currency"
+              label={t("currency")}
+              values={[Currencies.USD, Currencies.BRL]}
+              defaultValue={currentCoin}
+              onOptionChanged={(value) => setCurrentCoin(value)}
+            />
+            <S.Subtitle>{t("subtitleCard")}</S.Subtitle>
+            <S.ValuesContainer>
+              {offers?.map((item, index) => (
+                <S.CardValueButton
+                  text={item?.price}
+                  onClick={() => {
+                    setSelectedButtonIndex(index);
+                  }}
+                  outline={index !== selectedButtonIndex}
+                  key={item?.id}
+                />
+              ))}
+            </S.ValuesContainer>
+          </>
+        )}
+        <Divider color={lightGray} />
 
-      <S.ValuesContainer>
-        {offers?.map((item, index) => (
-          <S.CardValueButton
-            text={item?.price}
-            onClick={() => {
-              setSelectedButtonIndex(index);
-            }}
-            outline={index !== selectedButtonIndex}
-            key={item?.id}
+        {givingValue() > 0 && (
+          <FeesSection
+            currency={currentCoin}
+            givingValue={givingValue()}
+            givingTotal={givingTotal()}
+            setCryptoGiving={setCryptoGiving}
           />
-        ))}
-      </S.ValuesContainer>
+        )}
 
-      <Divider color={lightGray} />
+        <Divider color={lightGray} />
 
-      {sections[currentSectionIndex]}
+        {sections[currentSectionIndex]}
+      </S.CardSectionContainer>
       <S.ButtonContainer>
         <S.FinishButton
-          text={t("buttonTextCard")}
+          text={
+            currentSectionIndex < sections.length - 1
+              ? t("buttonTextCard")
+              : t("buttonSubmit")
+          }
           onClick={() => {
             handleClickNext();
           }}
+          disabled={buttonDisabled}
         />
       </S.ButtonContainer>
-    </S.CardSectionContainer>
+    </>
   );
 }
 
