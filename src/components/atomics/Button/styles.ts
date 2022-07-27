@@ -22,9 +22,11 @@ export const Container = styled.button`
     border: 1px solid black;
     border-radius: ${borderRadius || "8px"};
     width: 100%;
+    padding: 10px 5px;
     font-size: 16px;
+    line-height: 18px;
+    max-height: 40px;
     font-weight: bold;
-    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
