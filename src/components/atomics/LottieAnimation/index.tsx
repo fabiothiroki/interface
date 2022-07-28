@@ -9,7 +9,7 @@ export type Props = {
 
 function LottieAnimation({ animationData, width, height }: Props): JSX.Element {
   return (
-    <Lottie loop play animationData={animationData} style={{ width, height }} />
+    <Lottie loop play animationData={animationData} style={{ width, height }} data-testid="loader" />
   );
 }
 
