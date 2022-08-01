@@ -13,11 +13,13 @@ export const Container = styled.div`
     flex-direction: row;
     justify-content: space-around;
     padding: 3px 12px;
-    position: absolute;
+    position: fixed;
+    bottom: 0;
     width: 100%;
     align-self: flex-end;
-    background: #fbfbfd;
+    background: #ffffff;
     box-shadow: 0px -2px 4px rgba(24, 86, 105, 0.15);
+    z-index: 2;
 
     @media (min-width: ${theme.breakpoints.pad}) {
       display: flex;
@@ -25,7 +27,7 @@ export const Container = styled.div`
       align-items: center;
       padding: 56px 0px;
       max-width: 80px;
-      position: static;
+      position: fixed;
       align-self: flex-start;
       justify-content: flex-start;
       min-height: 100vh;
