@@ -20,6 +20,7 @@ const GlobalStyle = createGlobalStyle`
     body,
     #root {
       min-height: 100vh;
+      background: #fbfbfd;
     }
 
     body {
