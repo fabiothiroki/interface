@@ -6,8 +6,8 @@ export const Container = styled.div`
 `;
 
 export const LogoutButton = styled(Button)`
-  ${() => css`
-    background: #ffffff;
+  ${({ theme }) => css`
+    background: ${theme.colors.ribonWhite};
     padding: 4px 12px;
     line-height: 16px;
     min-width: 76px;
