@@ -75,6 +75,10 @@ function CausesPage(): JSX.Element {
     }
   }, []);
 
+  useEffect(() => {
+    if (state?.failedDonation) logEvent("donateDonationError_view");
+  }, []);
+
   const closeConfirmModal = useCallback(() => {
     setConfirmModalVisible(false);
   }, []);
