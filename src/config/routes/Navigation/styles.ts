@@ -17,7 +17,7 @@ export const Container = styled.div`
     bottom: 0;
     width: 100%;
     align-self: flex-end;
-    background: #ffffff;
+    background: ${theme.colors.ribonWhite};
     box-shadow: 0px -2px 4px rgba(24, 86, 105, 0.15);
     z-index: 2;
 
@@ -31,7 +31,7 @@ export const Container = styled.div`
       align-self: flex-start;
       justify-content: flex-start;
       min-height: 100vh;
-      background: #fbfbfd;
+      background: ${theme.colors.ribonWhite}
       box-shadow: 0px 4px 12px rgba(24, 86, 105, 0.15);
     }
   `}

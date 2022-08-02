@@ -13,14 +13,14 @@ export const TextLastCard = styled.p`
 `;
 
 export const LastCardCarousel = styled.a`
-  ${() => css`
+  ${({ theme }) => css`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 206px;
     padding: 12px 16px;
-    background: #ffffff;
+    background: ${theme.colors.ribonWhite};
     box-shadow: 0px 4px 12px rgba(24, 86, 105, 0.15);
     border-radius: 16px;
     height: 123px;
@@ -40,13 +40,13 @@ export const GivingText = styled.span`
 `;
 
 export const CardBlank = styled.div`
-  ${() => css`
+  ${({ theme }) => css`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 18px 29px 12px 29px;
-    background: #ffffff;
+    background: ${theme.colors.ribonWhite};
     box-shadow: 0px 4px 12px rgba(24, 86, 105, 0.15);
     border-radius: 16px;
     gap: 10px;
