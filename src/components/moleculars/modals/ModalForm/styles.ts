@@ -2,13 +2,11 @@ import styled, { css } from "styled-components";
 import ReactModal from "react-modal";
 
 export const BlankModal = styled(ReactModal)`
-  ${({ theme }) => css`
-    background-color: ${theme.colors.ribonWhite};
-    width: 100%;
-    border-radius: 16px;
-    margin: 16px;
-    max-width: 360px;
-  `}
+  background-color: #fff;
+  width: 100%;
+  border-radius: 16px;
+  margin: 16px;
+  max-width: 360px;
 `;
 
 export const Modal = styled(BlankModal)`
