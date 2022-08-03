@@ -5,9 +5,24 @@ on:
     workflows: [ "Dependabot PR Check" ]
     types:
       - completed
+env:
+  REACT_APP_FIREBASE_API_KEY: ${{ secrets.REACT_APP_FIREBASE_API_KEY }}
+  REACT_APP_FIREBASE_AUTH_DOMAIN: ${{ secrets.REACT_APP_FIREBASE_AUTH_DOMAIN }}
+  REACT_APP_FIREBASE_PROJECT_ID: ${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }}
+  REACT_APP_FIREBASE_STORAGE_BUCKET: ${{ secrets.REACT_APP_FIREBASE_STORAGE_BUCKET }}
+  REACT_APP_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.REACT_APP_FIREBASE_MESSAGING_SENDER_ID }}
+  REACT_APP_FIREBASE_APP_ID: ${{ secrets.REACT_APP_FIREBASE_APP_ID }}
+  REACT_APP_FIREBASE_MEASUREMENT_ID: ${{ secrets.REACT_APP_FIREBASE_MEASUREMENT_ID }}
+  REACT_APP_RIBON_API: ${{ secrets.REACT_APP_RIBON_API }}
+  REACT_APP_RIBON_COMPANY_ID: ${{ secrets.REACT_APP_RIBON_COMPANY_ID }}
+  REACT_APP_ALCHEMY_URL: ${{ secrets.REACT_APP_ALCHEMY_URL }}
+  REACT_APP_THE_GRAPH_URL: ${{ secrets.REACT_APP_THE_GRAPH_URL }}
+  REACT_APP_RIBON_CONTRACT_ADDRESS: ${{ secrets.REACT_APP_RIBON_CONTRACT_ADDRESS }}
+  REACT_APP_DONATION_TOKEN_CONTRACT_ADDRESS: ${{ secrets.REACT_APP_DONATION_TOKEN_CONTRACT_ADDRESS }}
 
 jobs:
-  install-and-test:
+  test-and-preview:
+    environment: staging
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
@@ -22,15 +37,12 @@ jobs:
         run: |
           yarn lint
       - name: Run tests and check coverage
-        env:
-          REACT_APP_FIREBASE_API_KEY: ${{ secrets.REACT_APP_FIREBASE_API_KEY }}
-          REACT_APP_FIREBASE_AUTH_DOMAIN: ${{ secrets.REACT_APP_FIREBASE_AUTH_DOMAIN }}
-          REACT_APP_FIREBASE_PROJECT_ID: ${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }}
-          REACT_APP_FIREBASE_STORAGE_BUCKET: ${{ secrets.REACT_APP_FIREBASE_STORAGE_BUCKET }}
-          REACT_APP_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.REACT_APP_FIREBASE_MESSAGING_SENDER_ID }}
-          REACT_APP_FIREBASE_APP_ID: ${{ secrets.REACT_APP_FIREBASE_APP_ID }}
-          REACT_APP_FIREBASE_MEASUREMENT_ID: ${{ secrets.REACT_APP_FIREBASE_MEASUREMENT_ID }}
-          REACT_APP_RIBON_API: ${{ secrets.REACT_APP_RIBON_API }}
-          REACT_APP_RIBON_COMPANY_ID: ${{ secrets.REACT_APP_RIBON_COMPANY_ID }}
         run: |
           yarn testCoverage
+      - name: build
+        run: yarn build
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_RIBON_DAPP }}"
+          projectId: ribon-dapp-staging
