@@ -1,14 +1,20 @@
-name: Continuous Integration
+name: Dependabot Continuous Integration
 
 on:
-  push:
+  workflow_run:
+    workflows: [ "Dependabot PR Check" ]
+    types:
+      - completed
 
 jobs:
   install-and-test:
     runs-on: ubuntu-latest
-    if: ${{ github.actor != 'dependabot[bot]' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Install npm dependencies
         run: |
           yarn install
