@@ -1,3 +1,6 @@
 export function removeInsignificantZeros(price: string) {
-  return price.split(".00")[0];
+  const lastThree = price.slice(price.length - 3);
+  if (lastThree === ".00" || lastThree === ",00")
+    return price.split(lastThree)[0];
+  return price;
 }
