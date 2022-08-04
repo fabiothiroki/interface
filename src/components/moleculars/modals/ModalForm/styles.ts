@@ -1,48 +1,14 @@
 import styled, { css } from "styled-components";
-import ReactModal from "react-modal";
-
-export const BlankModal = styled(ReactModal)`
-  background-color: #fff;
-  width: 100%;
-  border-radius: 16px;
-  margin: 16px;
-  max-width: 360px;
-`;
-
-export const Modal = styled(BlankModal)`
-  button,
-  a {
-    margin-bottom: 8px;
-
-    &:last-child {
-      margin: 0;
-    }
-  }
-`;
+import { Modal } from "../ModalBlank/styles";
 
 export const ModalWithIcon = styled(Modal)`
   padding: 16px;
 `;
 
-export const ModalWithImage = styled(Modal)`
-  overflow: hidden;
-`;
-
 export const Icon = styled.img`
   display: block;
-  width: 96px;
   height: 96px;
   margin: -64px auto 8px auto;
-`;
-
-export const BiggerIcon = styled.img`
-  display: block;
-  margin: -64px auto 16px auto;
-`;
-
-export const Image = styled.img`
-  width: 100%;
-  height: 152px;
 `;
 
 type TitleProps = {
