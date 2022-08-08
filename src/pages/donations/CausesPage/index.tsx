@@ -18,6 +18,7 @@ import { getLocalStorageItem, setLocalStorageItem } from "lib/localStorage";
 import { DONATION_MODAL_SEEN_AT_KEY } from "lib/localStorage/constants";
 import { today } from "lib/dateTodayFormatter";
 import { useDonationTicketModal } from "hooks/modalHooks/useDonationTicketModal";
+import { IfFeatureEnabled, useExperiment } from "@growthbook/growthbook-react";
 import * as S from "./styles";
 import NonProfitsList from "./NonProfitsList";
 import { LocationStateType } from "./LocationStateType";
@@ -108,6 +109,11 @@ function CausesPage(): JSX.Element {
     [chosenNonProfit],
   );
 
+  const { value } = useExperiment({
+    key: "first-test",
+    variations: ["Hello", "Hi", "Good Day"],
+  });
+
   return (
     <S.Container>
       {chosenNonProfit && (
@@ -121,6 +127,10 @@ function CausesPage(): JSX.Element {
       )}
 
       <S.BodyContainer>
+        <IfFeatureEnabled feature="logo">
+          <p>Feature test!</p>
+        </IfFeatureEnabled>
+        <p>{value}</p>
         <S.Title>{t("pageTitle")}</S.Title>
         {isLoading ? (
           <Loader />
