@@ -18,17 +18,17 @@ export const Container = styled.button`
     backgroundColor,
     borderRadius,
   }: Props) => css`
-    position: relative;
+    width: 100%;
+    max-height: 40px;
     border: 1px solid black;
     border-radius: ${borderRadius || "8px"};
-    width: 100%;
     padding: 10px 5px;
-    font-size: 16px;
-    max-height: 40px;
-    font-weight: bold;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: 16px;
+    font-weight: bold;
     background-color: ${backgroundColor};
     border-color: ${borderColor || backgroundColor};
     color: ${textColor};
