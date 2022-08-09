@@ -13,7 +13,6 @@ export function useDonationTicketModal(initialState?: boolean) {
     type: MODAL_TYPES.MODAL_ICON,
     props: {
       title: t("donationModalTitle"),
-      body: t("donationModalBody"),
       primaryButtonText: t("donationModalButtonText"),
       primaryButtonCallback: () => {
         hide();

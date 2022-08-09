@@ -2,7 +2,6 @@
   "donations": {
     "causesPage": {
       "donationModalTitle": "You got a donation ticket",
-      "donationModalBody": "Use your free ticket to make a donation",
       "donationModalButtonText": "Continue",
       "confirmModalTitle": "Enter your e-mail to use your donation ticket",
       "confirmModalAuthTitle": "Confirm your donation",
