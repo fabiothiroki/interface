@@ -56,6 +56,7 @@ export const Subtitle = styled.h6`
     margin-bottom: 24px;
     font-size: 16px;
     line-height: 160%;
+    text-align: center;
 
     @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
       font-size: 20px;
