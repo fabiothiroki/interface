@@ -6,9 +6,10 @@ import { logEvent, setUserId } from "services/analytics";
 export const growthbook = new GrowthBook({
   // Callback when a user is put into an A/B experiment
   trackingCallback: (experiment, result) => {
+    console.log("trackingCallback", experiment.key, result.variationId);
     logEvent("viewed_experiment", {
       experimentId: experiment.key,
-      variationId: result.variationId,
+      variationId: result.variationId.toString(),
     });
   },
 });
