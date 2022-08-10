@@ -21,6 +21,7 @@ function App() {
 
   useEffect(() => {
     growthbookSetFeatures();
+    // eslint-disable-next-line no-console
     growthbookSetAttributes().catch(console.error);
   }, []);
 

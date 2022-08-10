@@ -16,6 +16,7 @@ export const growthbook = new GrowthBook({
 
 export const growthbookSetAttributes = async () => {
   const installationId = await firebase.app().installations().getId();
+  // eslint-disable-next-line no-console
   console.log(installationId);
   setUserProperties({ anonymous_id: installationId });
   growthbook.setAttributes({
