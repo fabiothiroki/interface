@@ -21,12 +21,12 @@ function DonationDonePage(): JSX.Element {
   } = useLocation<LocationStateType>();
 
   const { navigateTo } = useNavigation();
-  const handleFinishButtonClick = () => {
-    navigateTo("/impact");
-  };
 
   useEffect(() => {
     logEvent("donateFinishedDonation_view", { selected: nonProfit?.id });
+    setTimeout(() => {
+      navigateTo("/");
+    }, 3000);
   }, []);
 
   return (
@@ -50,15 +50,6 @@ function DonationDonePage(): JSX.Element {
           nonProfit?.impactDescription
         }`}</S.Subtitle>
       </S.Wrapper>
-
-      <S.ButtonContainer>
-        <S.FinishButton
-          text={t("button")}
-          onClick={() => {
-            handleFinishButtonClick();
-          }}
-        />
-      </S.ButtonContainer>
     </S.Container>
   );
 }
