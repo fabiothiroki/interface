@@ -1,4 +1,6 @@
 import { GrowthBook } from "@growthbook/growthbook-react";
+import firebase from "firebase/app";
+import { setUserProperties } from "services/analytics";
 
 // Create a GrowthBook instance
 export const growthbook = new GrowthBook({
@@ -11,3 +13,21 @@ export const growthbook = new GrowthBook({
     });
   },
 });
+
+export const growthbookSetAttributes = async () => {
+  const installationId = await firebase.app().installations().getId();
+  console.log(installationId);
+  setUserProperties({ anonymous_id: installationId });
+  growthbook.setAttributes({
+    id: installationId,
+    company: "ribon",
+  });
+};
+
+export const growthbookSetFeatures = () => {
+  fetch("https://cdn.growthbook.io/api/features/key_prod_a04c5731fa615e46")
+    .then((res) => res.json())
+    .then((parsed) => {
+      growthbook.setFeatures(parsed.features);
+    });
+};
