@@ -21,10 +21,9 @@ const Arrow = styled.svg<Props>`
 `;
 
 export const ArrowRightImage = styled(Arrow)`
-  left: auto;
-  right: 0px;
+  right: 0;
 `;
 
 export const ArrowLeftImage = styled(Arrow)`
-  left: 0px;
+  left: 0;
 `;
