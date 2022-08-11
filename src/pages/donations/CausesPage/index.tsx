@@ -19,6 +19,7 @@ import { DONATION_MODAL_SEEN_AT_KEY } from "lib/localStorage/constants";
 import { today } from "lib/dateTodayFormatter";
 import { useDonationTicketModal } from "hooks/modalHooks/useDonationTicketModal";
 import { useAnimationModal } from "hooks/modalHooks/useAnimationModal";
+import { IfFeatureEnabled } from "@growthbook/growthbook-react";
 import * as S from "./styles";
 import NonProfitsList from "./NonProfitsList";
 import { LocationStateType } from "./LocationStateType";
@@ -65,12 +66,26 @@ function CausesPage(): JSX.Element {
     return userLastDonation === today();
   }
 
+  function hasReceivedTicketToday() {
+    const donationModalSeenAtKey = getLocalStorageItem(
+      DONATION_MODAL_SEEN_AT_KEY,
+    );
+
+    if (donationModalSeenAtKey) {
+      const dateUserSawModal = new Date(parseInt(donationModalSeenAtKey, 10));
+      return dateUserSawModal.toLocaleDateString() === today();
+    }
+    return false;
+  }
+
+  const hasAvailableDonation = !state?.blockedDonation && !hasDonateToday();
+
   useEffect(() => {
     logEvent("donateIntroDial_view");
+
     if (
-      !state?.blockedDonation &&
-      !hasDonateToday() &&
-      hasNotSeenDonationModal
+      !hasReceivedTicketToday() ||
+      (hasAvailableDonation && hasNotSeenDonationModal)
     ) {
       setLocalStorageItem(DONATION_MODAL_SEEN_AT_KEY, Date.now().toString());
       showDonationTicketModal();
@@ -125,6 +140,9 @@ function CausesPage(): JSX.Element {
 
       <S.BodyContainer>
         <S.Title>{t("pageTitle")}</S.Title>
+        <IfFeatureEnabled feature="teste-1">
+          <p>.</p>
+        </IfFeatureEnabled>
         {isLoading ? (
           <Loader />
         ) : (
