@@ -26,7 +26,7 @@ function DonationDonePage(): JSX.Element {
     logEvent("donateFinishedDonation_view", { selected: nonProfit?.id });
     setTimeout(() => {
       navigateTo("/");
-    }, 3000);
+    }, 5000);
   }, []);
 
   return (
