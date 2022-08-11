@@ -63,11 +63,27 @@ function CausesPage(): JSX.Element {
     return userLastDonation === today();
   }
 
-  useEffect(() => {
-    const hasAvailableDonation = !state?.blockedDonation && !hasDonateToday();
+  function hasReceivedTicketToday() {
+    const donationModalSeenAtKey = getLocalStorageItem(
+      DONATION_MODAL_SEEN_AT_KEY,
+    );
 
+    if (donationModalSeenAtKey) {
+      const dateUserSawModal = new Date(parseInt(donationModalSeenAtKey, 10));
+      return dateUserSawModal.toLocaleDateString() === today();
+    }
+    return false;
+  }
+
+  const hasAvailableDonation = !state?.blockedDonation && !hasDonateToday();
+
+  useEffect(() => {
     logEvent("donateIntroDial_view");
-    if (hasAvailableDonation || hasNotSeenDonationModal) {
+
+    if (
+      !hasReceivedTicketToday() ||
+      (hasAvailableDonation && hasNotSeenDonationModal)
+    ) {
       setLocalStorageItem(DONATION_MODAL_SEEN_AT_KEY, Date.now().toString());
       showDonationTicketModal();
     }
