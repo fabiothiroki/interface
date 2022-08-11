@@ -2,8 +2,7 @@
   "donations": {
     "causesPage": {
       "donationModalTitle": "Você recebeu um ticket doação",
-      "donationModalBody": "Use seu ticket gratuito para fazer uma doação",
-      "donationModalButtonText": "Continuar",
+      "donationModalButtonText": "Receber ticket",
       "confirmModalTitle": "Insira seu e-mail para usar seu ticket doação",
       "confirmModalAuthTitle": "Confirmar doação",
       "confirmModalPrimaryButtonText": "Confirmar",
@@ -28,12 +27,13 @@
       }
     },
     "donationDonePage": {
-      "title": "Obrigada pela sua doação!",
+      "title": "Obrigada pela doação!",
       "subtitle": "1 dia de ração para animais resgatados",
       "button": "Ver impacto",
       "ngoTitle": "Sobre ",
       "ngoInformation": "Amor em Patas é uma organização que tem como objetivo resgatar animais abandonados, cuidar deles e buscar adoção.",
-      "moreInfoButtonText": "Mais informações"
+      "moreInfoButtonText": "Mais informações",
+      "youDonatedText": "Você doou"
     },
     "donationInProcess": {
       "animationText": "Doando...",
@@ -88,7 +88,7 @@
         "transactionSuccessText": "Transação processada",
         "transactionFailedText": "Falha ao processar transação",
         "linkMessageToast": "Saiba mais",
-        "cardDonationText": "Doação por cartão"
+        "cardDonationText": "Contribuição por cartão"
       },
       "modalOnboarding": {
         "title": "Tesouro de Doação da Ribon",
