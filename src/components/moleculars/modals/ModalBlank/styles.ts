@@ -2,7 +2,7 @@ import styled from "styled-components";
 import ReactModal from "react-modal";
 
 export const BlankModal = styled(ReactModal)`
-  background-color: #fff;
+  background-color: #ffffff;
   width: 100%;
   border-radius: 16px;
   margin: 16px;
