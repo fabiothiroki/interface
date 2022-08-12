@@ -6,23 +6,18 @@ export const ModalWithIcon = styled(Modal)`
 `;
 
 export const Icon = styled.img`
-  display: block;
   height: 96px;
-  margin: -64px auto 8px auto;
-`;
-
-export const BiggerIcon = styled.img`
+  margin: -64px auto 8px;
   display: block;
-  margin: -64px auto 16px auto;
 `;
 
 export const Animation = styled.div`
+  width: 50%;
+  height: 50%;
+  margin: -100px auto 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50%;
-  height: 50%;
-  margin: -100px auto 5px auto;
 `;
 
 type TitleProps = {
@@ -49,15 +44,15 @@ export const RowsModalContainer = styled.div`
 `;
 
 export const RowsModalSection = styled.div`
-  display: flex;
-  flex-direction: column;
   margin-top: 50px;
   padding: 0;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const RowsModalRow = styled.div`
-  display: flex;
   margin-bottom: 28px;
+  display: flex;
 `;
 
 export const RowsModalIcon = styled.img`

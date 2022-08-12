@@ -2,18 +2,18 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   ${({ theme }) => css`
-    display: flex;
-    background-color: ${theme.colors.ribonWhite};
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    height: 104px;
+    max-width: 312px;
     padding: 15px 16px;
     border: 1px solid ${theme.colors.ribonWhite};
-    box-sizing: border-box;
     border-radius: 16px;
-    width: 100%;
-    max-width: 312px;
-    height: 104px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    background-color: ${theme.colors.ribonWhite};
     cursor: pointer;
 
     &:hover {
@@ -28,40 +28,40 @@ export const Container = styled.div`
 `;
 
 export const CardSection = styled.div`
-  display: flex;
   width: 100%;
   height: 100%;
+  display: flex;
 `;
 
 export const Content = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 100%;
 `;
 
 export const TextContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  margin-left: 4px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
-  margin-left: 4px;
 
   #left-icon {
-    position: static;
     margin-right: 2px;
+    position: static;
   }
 `;
 
 export const RibonsAmountContainer = styled.div`
   ${({ theme }) => css`
-    background-color: ${theme.colors.ribonWhite};
     width: 60%;
     border-radius: 20px;
     position: absolute;
     bottom: 4px;
+    background-color: ${theme.colors.ribonWhite};
   `}
 `;
 
@@ -72,11 +72,11 @@ export const TitleContainer = styled.div`
 
 export const Title = styled.h3`
   ${({ theme }) => css`
+    margin-bottom: 4px;
     font-weight: bold;
     text-align: center;
     line-height: 1.4;
     font-size: 16px;
-    margin-bottom: 4px;
     color: ${theme.colors.ribonBlack};
   `}
 `;
@@ -88,18 +88,18 @@ export const DescriptionContainer = styled.div`
 
 export const Description = styled.h4`
   ${({ theme }) => css`
-    color: ${theme.colors.darkGray};
     text-align: center;
     line-height: 160%;
+    color: ${theme.colors.darkGray};
   `}
 `;
 
 export const ImageSection = styled.div`
-  display: flex;
   position: relative;
-  justify-content: center;
-  align-items: center;
+  display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Image = styled.img`
@@ -109,14 +109,14 @@ export const Image = styled.img`
 
 export const CounterContainer = styled.span`
   ${({ theme }) => css`
-    text-align: center;
+    padding: 2px;
     min-width: 16px;
-    color: ${theme.colors.ribonWhite};
+    border-radius: 100%;
     position: absolute;
-    background-color: ${theme.colors.phcYellow2};
     right: 0px;
     top: 8px;
-    border-radius: 100%;
-    padding: 2px;
+    text-align: center;
+    background-color: ${theme.colors.phcYellow2};
+    color: ${theme.colors.ribonWhite};
   `}
 `;

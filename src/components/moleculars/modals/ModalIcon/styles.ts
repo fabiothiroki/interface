@@ -6,20 +6,16 @@ export const ModalWithIcon = styled(Modal)`
 `;
 
 export const Icon = styled.img`
+  height: 80px;
+  margin: -64px auto 8px;
   display: block;
-  height: 96px;
-  margin: -64px auto 8px auto;
 `;
 
-export const BiggerIcon = styled.img`
-  display: block;
-  margin: -64px auto 16px auto;
+export const BiggerIcon = styled(Icon)`
+  height: 100px;
 `;
 
-export const RoundIcon = styled.img`
-  display: block;
-  height: 96px;
-  margin: -64px auto 8px auto;
+export const RoundIcon = styled(Icon)`
   border-radius: 70px;
   object-fit: cover;
 `;
@@ -30,17 +26,17 @@ type TitleProps = {
 
 export const Title = styled.h2<TitleProps>`
   ${({ theme, color }) => css`
+    margin-bottom: 16px;
     text-align: center;
     color: ${color || theme.colors.ribonBlack};
-    margin-bottom: 16px;
   `}
 `;
 
 export const Body = styled.h3`
   ${({ theme }) => css`
+    margin: 0px 0px 20px;
     color: ${theme.colors.darkGray};
     text-align: center;
-    margin: 0px 0px 20px;
   `}
 `;
 
@@ -49,12 +45,12 @@ export const HighlightedText = styled.p`
     margin-top: 16px;
     font-weight: bold;
     text-align: center;
-    color: ${theme.colors.ribonBlack};
     font-size: 16px;
+    color: ${theme.colors.ribonBlack};
   `}
 `;
 
 export const RowsModalRow = styled.div`
-  display: flex;
   margin-bottom: 28px;
+  display: flex;
 `;

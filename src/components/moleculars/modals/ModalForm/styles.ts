@@ -6,9 +6,9 @@ export const ModalWithIcon = styled(Modal)`
 `;
 
 export const Icon = styled.img`
-  display: block;
   height: 96px;
-  margin: -64px auto 8px auto;
+  margin: -64px auto 8px;
+  display: block;
 `;
 
 type TitleProps = {
@@ -17,9 +17,9 @@ type TitleProps = {
 
 export const Title = styled.h2<TitleProps>`
   ${({ theme, color }) => css`
+    margin-bottom: 8px;
     text-align: center;
     color: ${color || theme.colors.ribonBlack};
-    margin-bottom: 8px;
   `}
 `;
 

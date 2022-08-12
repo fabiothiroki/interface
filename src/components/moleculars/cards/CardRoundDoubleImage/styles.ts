@@ -8,13 +8,13 @@ export const Container = styled.div`
 `;
 
 export const ImageContainer = styled.div`
+  height: 180px;
+  width: 310px;
   position: relative;
   margin: 20px 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 180px;
-  width: 310px;
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
     width: 350px;
     height: 200px;
@@ -23,13 +23,13 @@ export const ImageContainer = styled.div`
 
 export const LeftImage = styled.img`
   ${({ theme }) => css`
-    object-fit: cover;
-    position: absolute;
     width: 180px;
     height: 180px;
+    position: absolute;
     left: 0;
     border-radius: 50%;
     border: solid 5px ${theme.colors.ribonWhite};
+    object-fit: cover;
     filter: drop-shadow(0px 20px 40px ${theme.colors.ribonShadow});
 
     @media (min-width: ${theme.breakpoints.pad}) {
@@ -41,13 +41,13 @@ export const LeftImage = styled.img`
 
 export const RightImage = styled.img`
   ${({ theme }) => css`
-    object-fit: cover;
-    z-index: 1;
-    position: absolute;
     width: 180px;
     height: 180px;
-    right: 0;
     border-radius: 50%;
+    position: absolute;
+    right: 0;
+    object-fit: cover;
+    z-index: 1;
     filter: drop-shadow(0px 20px 40px ${theme.colors.ribonShadow});
 
     @media (min-width: ${theme.breakpoints.pad}) {

@@ -2,17 +2,15 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   ${({ theme }) => css`
+    min-height: 140px;
+    min-width: 240px;
+    padding: 14px;
+    border-radius: 16px;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    width: 100%;
-    height: 100%;
-    min-height: 140px;
-    min-width: 240px;
-    border-radius: 16px;
     box-sizing: border-box;
-    padding: 14px;
     background-color: ${theme.colors.ribonWhite};
     cursor: pointer;
     box-shadow: 8px 8px 20px -2px rgba(192, 192, 192, 0.75);
@@ -20,11 +18,10 @@ export const Container = styled.div`
 `;
 
 export const Image = styled.img`
-  width: 60%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 200px;
+  height: 130px;
   margin-bottom: 8px;
+  border-radius: 200px;
+  object-fit: cover;
 `;
 
 export const Title = styled.h3`

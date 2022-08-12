@@ -6,9 +6,9 @@ export const ModalWithIcon = styled(Modal)`
 `;
 
 export const Icon = styled.img`
-  display: block;
   height: 96px;
-  margin: -64px auto 8px auto;
+  margin: -64px auto 8px;
+  display: block;
 `;
 
 type TitleProps = {
@@ -24,22 +24,22 @@ export const Title = styled.h2<TitleProps>`
 
 export const Body = styled.h3`
   ${({ theme }) => css`
-    color: ${theme.colors.darkGray};
-    text-align: center;
     margin: 8px 0px 20px;
+    text-align: center;
+    color: ${theme.colors.darkGray};
   `}
 `;
 
 export const HighlightedText = styled.p`
   ${({ theme }) => css`
     margin-top: 16px;
-    font-weight: bold;
     text-align: center;
-    color: ${theme.colors.ribonBlack};
+    font-weight: bold;
     font-size: 16px;
+    color: ${theme.colors.ribonBlack};
   `}
 `;
 export const RowsModalRow = styled.div`
-  display: flex;
   margin-bottom: 28px;
+  display: flex;
 `;

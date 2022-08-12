@@ -34,6 +34,6 @@ export const Body = styled.h3`
 `;
 
 export const RowsModalRow = styled.div`
-  display: flex;
   margin-bottom: 28px;
+  display: flex;
 `;
