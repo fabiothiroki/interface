@@ -18,7 +18,6 @@ import { getLocalStorageItem, setLocalStorageItem } from "lib/localStorage";
 import { DONATION_MODAL_SEEN_AT_KEY } from "lib/localStorage/constants";
 import { today } from "lib/dateTodayFormatter";
 import { useDonationTicketModal } from "hooks/modalHooks/useDonationTicketModal";
-import { useAnimationModal } from "hooks/modalHooks/useAnimationModal";
 import { IfFeatureEnabled } from "@growthbook/growthbook-react";
 import * as S from "./styles";
 import NonProfitsList from "./NonProfitsList";
@@ -60,7 +59,6 @@ function CausesPage(): JSX.Element {
   const { createSource } = useSources();
   const { signedIn, setCurrentUser, userLastDonation } = useCurrentUser();
   const { showDonationTicketModal } = useDonationTicketModal();
-  const { showAnimationModal } = useAnimationModal();
 
   function hasDonateToday() {
     return userLastDonation === today();
@@ -89,7 +87,6 @@ function CausesPage(): JSX.Element {
     ) {
       setLocalStorageItem(DONATION_MODAL_SEEN_AT_KEY, Date.now().toString());
       showDonationTicketModal();
-      showAnimationModal();
     }
   }, []);
 
