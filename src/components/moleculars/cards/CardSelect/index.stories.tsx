@@ -18,4 +18,5 @@ Default.args = {
     name: "non profits",
     label: "Non Profits",
   },
+  children: <div>children</div>,
 };

@@ -1,13 +1,31 @@
 import { renderComponent } from "config/testUtils";
-import { expectTextToBeInTheDocument } from "config/testUtils/expects";
+import {
+  expectInputToHaveValue,
+  expectTextToBeInTheDocument,
+} from "config/testUtils/expects";
 import CardSelect from ".";
 
 describe("CardSelect", () => {
-  it("should render without error", () => {
+  beforeEach(() => {
     renderComponent(
-      <CardSelect dropdownProps={{ name: "", label: "", values: [] }} />,
+      <CardSelect
+        dropdownProps={{
+          name: "dropdown",
+          label: "dropdown",
+          values: ["value 1"],
+        }}
+      >
+        <div>children</div>
+      </CardSelect>,
     );
+  });
 
-    expectTextToBeInTheDocument("CardSelect");
+  it("renders the children props", () => {
+    expectTextToBeInTheDocument("children");
+  });
+
+  it("renders the dropdown props", () => {
+    expectTextToBeInTheDocument("dropdown");
+    expectInputToHaveValue("dropdown", "value 1");
   });
 });
