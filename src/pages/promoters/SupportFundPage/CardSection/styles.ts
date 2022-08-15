@@ -105,3 +105,31 @@ export const CryptoGivingValue = styled.p`
     margin-bottom: 32px;
   `}
 `;
+
+export const CardImpact = styled.div`
+  ${() => css`
+    display: flex;
+    align-items: center;
+    width: 100%;
+  `}
+`;
+
+export const CardImpactImage = styled.img`
+  ${() => css`
+    height: 72px;
+    width: 72px;
+    object-fit: cover;
+    border-radius: 50px;
+    margin-right: 14px;
+  `}
+`;
+
+export const CardImpactText = styled.p`
+  ${({ theme }) => css`
+    color: ${theme.colors.darkGray};
+    font-size: 12px;
+    line-height: 19.2px;
+    font-style: italic;
+    margin-bottom: 32px;
+  `}
+`;

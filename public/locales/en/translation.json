@@ -137,6 +137,9 @@
           "cardName": "Name on card",
           "cardDueDate": "Expiration",
           "cvv": "Card verification code"
+        },
+        "impactSimulationSection": {
+          "label": "Select a NGO"
         }
       },
 
