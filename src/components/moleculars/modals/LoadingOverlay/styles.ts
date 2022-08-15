@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
@@ -23,8 +23,6 @@ export const CenterDiv = styled.div`
 `;
 
 export const Message = styled.h3`
-  ${({ theme }) => css`
-    color: ${theme.colors.ribonBlack};
-    margin-left: 8px;
-  `}
+  color: ${({ theme }) => theme.colors.ribonBlack};
+  margin-left: 8px;
 `;

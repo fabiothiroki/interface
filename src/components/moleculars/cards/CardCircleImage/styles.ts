@@ -1,20 +1,18 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div`
-  ${({ theme }) => css`
-    min-height: 140px;
-    min-width: 240px;
-    padding: 14px;
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    box-sizing: border-box;
-    background-color: ${theme.colors.ribonWhite};
-    cursor: pointer;
-    box-shadow: 8px 8px 20px -2px rgba(192, 192, 192, 0.75);
-  `}
+  min-height: 140px;
+  min-width: 240px;
+  padding: 14px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  background-color: ${({ theme }) => theme.colors.ribonWhite};
+  cursor: pointer;
+  box-shadow: 8px 8px 20px -2px rgba(192, 192, 192, 0.75);
 `;
 
 export const Image = styled.img`
@@ -30,7 +28,5 @@ export const Title = styled.h3`
 `;
 
 export const Subtitle = styled.h5`
-  ${({ theme }) => css`
-    color: ${theme.colors.ribonBlue};
-  `}
+  color: ${({ theme }) => theme.colors.ribonBlue};
 `;

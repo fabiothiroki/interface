@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 type NgoImageProps = {
   image: string;
@@ -30,26 +30,22 @@ export const SlideImage = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
 
-  ${({ theme }) => css`
-    @media (min-width: ${theme.breakpoints.pad}) {
-      max-width: 344px;
-      border-right: 1px solid white;
-    }
-  `}
+  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
+    max-width: 344px;
+    border-right: 1px solid white;
+  }
 `;
 
 export const SlideVideo = styled.video`
-  ${({ theme }) => css`
-    min-width: 100%;
-    height: calc(100vw - 16px);
-    max-height: 209px;
-    object-fit: cover;
+  min-width: 100%;
+  height: calc(100vw - 16px);
+  max-height: 209px;
+  object-fit: cover;
 
-    @media (min-width: ${theme.breakpoints.pad}) {
-      max-width: 344px;
-      border-right: 1px solid white;
-    }
-  `}
+  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
+    max-width: 344px;
+    border-right: 1px solid white;
+  }
 `;
 
 export const PaginationContainer = styled.div`

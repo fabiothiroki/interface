@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { Modal } from "../ModalBlank/styles";
 
 export const ModalWithIcon = styled(Modal)`
@@ -25,29 +25,23 @@ type TitleProps = {
 };
 
 export const Title = styled.h2<TitleProps>`
-  ${({ theme, color }) => css`
-    margin-bottom: 16px;
-    text-align: center;
-    color: ${color || theme.colors.ribonBlack};
-  `}
+  margin-bottom: 16px;
+  text-align: center;
+  color: ${({ theme, color }) => color || theme.colors.ribonBlack};
 `;
 
 export const Body = styled.h3`
-  ${({ theme }) => css`
-    margin: 0px 0px 20px;
-    color: ${theme.colors.darkGray};
-    text-align: center;
-  `}
+  margin: 0px 0px 20px;
+  color: ${({ theme }) => theme.colors.darkGray};
+  text-align: center;
 `;
 
 export const HighlightedText = styled.p`
-  ${({ theme }) => css`
-    margin-top: 16px;
-    font-weight: bold;
-    text-align: center;
-    font-size: 16px;
-    color: ${theme.colors.ribonBlack};
-  `}
+  margin-top: 16px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 16px;
+  color: ${({ theme }) => theme.colors.ribonBlack};
 `;
 
 export const RowsModalRow = styled.div`

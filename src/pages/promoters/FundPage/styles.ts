@@ -23,18 +23,18 @@ export const CarouselContainer = styled.div`
 
 export const CardBlank = styled.div`
   ${({ theme }) => css`
+    width: 206px;
+    height: 123px;
     padding: 12px 16px;
+    border-radius: 16px;
     background: ${theme.colors.ribonWhite};
     box-shadow: 0px 4px 12px rgba(24, 86, 105, 0.15);
-    border-radius: 16px;
-    height: 123px;
-    width: 206px;
   `}
 `;
 
 export const Title = styled.h1`
-  text-transform: uppercase;
   margin: 4px 0;
+  text-transform: uppercase;
   font-weight: 900;
   margin-bottom: 16px;
 

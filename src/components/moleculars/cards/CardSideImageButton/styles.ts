@@ -1,30 +1,28 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div`
-  ${({ theme }) => css`
-    width: 100%;
-    height: 104px;
-    max-width: 312px;
-    padding: 15px 16px;
-    border: 1px solid ${theme.colors.ribonWhite};
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    background-color: ${theme.colors.ribonWhite};
-    cursor: pointer;
+  width: 100%;
+  height: 104px;
+  max-width: 312px;
+  padding: 15px 16px;
+  border: 1px solid ${({ theme }) => theme.colors.ribonWhite};
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background-color: ${({ theme }) => theme.colors.ribonWhite};
+  cursor: pointer;
 
-    &:hover {
-      transition: transform 0.4s ease;
-      transform: scale(1, 1.1);
-    }
+  &:hover {
+    transition: transform 0.4s ease;
+    transform: scale(1, 1.1);
+  }
 
-    @media (min-width: ${theme.breakpoints.pad}) {
-      margin-bottom: 24%;
-    }
-  `}
+  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
+    margin-bottom: 24%;
+  }
 `;
 
 export const CardSection = styled.div`
@@ -56,13 +54,11 @@ export const TextContainer = styled.div`
 `;
 
 export const RibonsAmountContainer = styled.div`
-  ${({ theme }) => css`
-    width: 60%;
-    border-radius: 20px;
-    position: absolute;
-    bottom: 4px;
-    background-color: ${theme.colors.ribonWhite};
-  `}
+  width: 60%;
+  border-radius: 20px;
+  position: absolute;
+  bottom: 4px;
+  background-color: ${({ theme }) => theme.colors.ribonWhite};
 `;
 
 export const TitleContainer = styled.div`
@@ -71,14 +67,12 @@ export const TitleContainer = styled.div`
 `;
 
 export const Title = styled.h3`
-  ${({ theme }) => css`
-    margin-bottom: 4px;
-    font-weight: bold;
-    text-align: center;
-    line-height: 1.4;
-    font-size: 16px;
-    color: ${theme.colors.ribonBlack};
-  `}
+  margin-bottom: 4px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.4;
+  font-size: 16px;
+  color: ${({ theme }) => theme.colors.ribonBlack};
 `;
 
 export const DescriptionContainer = styled.div`
@@ -87,11 +81,9 @@ export const DescriptionContainer = styled.div`
 `;
 
 export const Description = styled.h4`
-  ${({ theme }) => css`
-    text-align: center;
-    line-height: 160%;
-    color: ${theme.colors.darkGray};
-  `}
+  text-align: center;
+  line-height: 160%;
+  color: ${({ theme }) => theme.colors.darkGray};
 `;
 
 export const ImageSection = styled.div`
@@ -108,15 +100,13 @@ export const Image = styled.img`
 `;
 
 export const CounterContainer = styled.span`
-  ${({ theme }) => css`
-    padding: 2px;
-    min-width: 16px;
-    border-radius: 100%;
-    position: absolute;
-    right: 0px;
-    top: 8px;
-    text-align: center;
-    background-color: ${theme.colors.phcYellow2};
-    color: ${theme.colors.ribonWhite};
-  `}
+  padding: 2px;
+  min-width: 16px;
+  border-radius: 100%;
+  position: absolute;
+  right: 0px;
+  top: 8px;
+  text-align: center;
+  background-color: ${({ theme }) => theme.colors.phcYellow2};
+  color: ${({ theme }) => theme.colors.ribonWhite};
 `;

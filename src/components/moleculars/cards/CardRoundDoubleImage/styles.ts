@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
@@ -22,37 +22,33 @@ export const ImageContainer = styled.div`
 `;
 
 export const LeftImage = styled.img`
-  ${({ theme }) => css`
-    width: 180px;
-    height: 180px;
-    position: absolute;
-    left: 0;
-    border-radius: 50%;
-    border: solid 5px ${theme.colors.ribonWhite};
-    object-fit: cover;
-    filter: drop-shadow(0px 20px 40px ${theme.colors.ribonShadow});
+  width: 180px;
+  height: 180px;
+  position: absolute;
+  left: 0;
+  border-radius: 50%;
+  border: solid 5px ${({ theme }) => theme.colors.ribonWhite};
+  object-fit: cover;
+  filter: drop-shadow(0px 20px 40px ${({ theme }) => theme.colors.ribonShadow});
 
-    @media (min-width: ${theme.breakpoints.pad}) {
-      width: 200px;
-      height: 200px;
-    }
-  `}
+  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
+    width: 200px;
+    height: 200px;
+  }
 `;
 
 export const RightImage = styled.img`
-  ${({ theme }) => css`
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    position: absolute;
-    right: 0;
-    object-fit: cover;
-    z-index: 1;
-    filter: drop-shadow(0px 20px 40px ${theme.colors.ribonShadow});
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  position: absolute;
+  right: 0;
+  object-fit: cover;
+  z-index: 1;
+  filter: drop-shadow(0px 20px 40px ${({ theme }) => theme.colors.ribonShadow});
 
-    @media (min-width: ${theme.breakpoints.pad}) {
-      width: 200px;
-      height: 200px;
-    }
-  `}
+  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
+    width: 200px;
+    height: 200px;
+  }
 `;

@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { Modal } from "../ModalBlank/styles";
 
 export const ModalWithIcon = styled(Modal)`
@@ -25,18 +25,14 @@ type TitleProps = {
 };
 
 export const Title = styled.h2<TitleProps>`
-  ${({ theme, color }) => css`
-    text-align: center;
-    color: ${color || theme.colors.ribonBlack};
-  `}
+  text-align: center;
+  color: ${({ theme, color }) => color || theme.colors.ribonBlack};
 `;
 
 export const Body = styled.h3`
-  ${({ theme }) => css`
-    color: ${theme.colors.darkGray};
-    text-align: center;
-    margin: 8px 0px 20px;
-  `}
+  color: ${({ theme }) => theme.colors.darkGray};
+  text-align: center;
+  margin: 8px 0px 20px;
 `;
 
 export const RowsModalContainer = styled.div`

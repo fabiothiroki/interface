@@ -1,18 +1,19 @@
 import styled, { css } from "styled-components";
 
 export const NotificationContainer = styled.div`
-  box-sizing: border-box;
   position: fixed;
-  font-size: 14px;
-  z-index: 9999;
-  bottom: 12px;
   right: 12px;
+  bottom: 12px;
+  z-index: 9999;
+  box-sizing: border-box;
+  font-size: 14px;
   animation: toast-in-right 0.7s;
 
   @keyframes toast-in-right {
     from {
       transform: translateX(100%);
     }
+
     to {
       transform: translateX(0);
     }

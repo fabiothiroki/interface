@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
@@ -10,19 +10,17 @@ type CenterImageContainerProps = {
   backgroundImage: string;
 };
 export const CenterImageContainer = styled.div<CenterImageContainerProps>`
-  ${({ backgroundImage }) => css`
-    float: left;
-    position: relative;
-    width: 100%;
-    padding-bottom: 100%; /* = width for a 1:1 aspect ratio */
-    border-radius: 50%;
-    min-width: 256px;
-    margin: 1.66%;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image: url(${backgroundImage});
-  `}
+  float: left;
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%; /* = width for a 1:1 aspect ratio */
+  border-radius: 50%;
+  min-width: 256px;
+  margin: 1.66%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(${({ backgroundImage }) => backgroundImage});
 `;
 
 export const LogoContainer = styled.div`
