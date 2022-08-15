@@ -22,7 +22,7 @@ export const Modal = styled(BlankModal)`
 `;
 
 export const Circle = styled.div`
-  ${({ theme }) => css`
+  ${() => css`
     border: 3px solid #d9e5eb;
     border-radius: 50%;
     display: flex;
