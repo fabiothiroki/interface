@@ -26,7 +26,7 @@ export const Input = styled.div`
       text-align: center;
       padding: 0 2px;
       display: inline;
-      background-color: ${theme.colors.bgGray};
+      background-color: ${theme.colors.ribonWhite};
       color: ${theme.colors.ribonBlue};
 
       @media (min-width: ${theme.breakpoints.desktop}) {

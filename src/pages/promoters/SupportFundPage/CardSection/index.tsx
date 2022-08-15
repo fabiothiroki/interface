@@ -49,7 +49,31 @@ function CardSection(): JSX.Element {
   }, [offers, selectedButtonIndex, currentCoin]);
 
   const sections = [
-    <div />,
+    <>
+      <Dropdown
+        name="currency"
+        label={t("currency")}
+        values={[Currencies.USD, Currencies.BRL]}
+        defaultValue={currentCoin}
+        onOptionChanged={(value) => setCurrentCoin(value)}
+      />
+      <S.Subtitle>{t("subtitleCard")}</S.Subtitle>
+      <S.ValuesContainer>
+        {offers?.map((item, index) => (
+          <S.CardValueButton
+            text={removeInsignificantZeros(item?.price)}
+            onClick={() => {
+              logEvent("fundSupportAmountBtn_click", {
+                option: item?.id,
+              });
+              setSelectedButtonIndex(index);
+            }}
+            outline={index !== selectedButtonIndex}
+            key={item?.id}
+          />
+        ))}
+      </S.ValuesContainer>
+    </>,
     <BillingInformationSection />,
     <PaymentInformation />,
   ];
@@ -72,46 +96,17 @@ function CardSection(): JSX.Element {
   return (
     <>
       <S.CardSectionContainer>
-        {currentSectionIndex === 0 && (
+        {givingValue() > 0 && currentSectionIndex > 0 && (
           <>
-            <Dropdown
-              name="currency"
-              label={t("currency")}
-              values={[Currencies.USD, Currencies.BRL]}
-              defaultValue={currentCoin}
-              onOptionChanged={(value) => setCurrentCoin(value)}
+            <FeesSection
+              currency={currentCoin}
+              givingValue={givingValue()}
+              givingTotal={givingTotal()}
+              setCryptoGiving={setCryptoGiving}
             />
-            <S.Subtitle>{t("subtitleCard")}</S.Subtitle>
-            <S.ValuesContainer>
-              {offers?.map((item, index) => (
-                <S.CardValueButton
-                  text={removeInsignificantZeros(item?.price)}
-                  onClick={() => {
-                    logEvent("fundSupportAmountBtn_click", {
-                      option: item?.id,
-                    });
-                    setSelectedButtonIndex(index);
-                  }}
-                  outline={index !== selectedButtonIndex}
-                  key={item?.id}
-                />
-              ))}
-            </S.ValuesContainer>
+            <Divider color={lightGray} />
           </>
         )}
-        <Divider color={lightGray} />
-
-        {givingValue() > 0 && (
-          <FeesSection
-            currency={currentCoin}
-            givingValue={givingValue()}
-            givingTotal={givingTotal()}
-            setCryptoGiving={setCryptoGiving}
-          />
-        )}
-
-        <Divider color={lightGray} />
-
         {sections[currentSectionIndex]}
       </S.CardSectionContainer>
       <S.ButtonContainer>
