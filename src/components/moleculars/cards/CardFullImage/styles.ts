@@ -5,20 +5,17 @@ type ContainerProps = {
 };
 
 export const Container = styled.div<ContainerProps>`
-  background-image: url(${({ backgroundImage }) => backgroundImage});
-  background-position: center center;
-  background-repeat: no-repeat;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  height: 100vh;
   width: 100%;
+  height: 100vh;
+  padding: 40px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 40px 0;
+  background-image: url(${({ backgroundImage }) => backgroundImage});
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
 `;
 
 export const ImageContainer = styled.div`
@@ -48,9 +45,9 @@ export const RoundLogo = styled.img`
 `;
 
 export const Title = styled.h3`
+  margin-left: 3px;
   line-height: 25px;
   text-align: center;
-  margin-left: 3px;
 `;
 
 export const TitleContainer = styled.div`
@@ -60,7 +57,7 @@ export const TitleContainer = styled.div`
 `;
 
 export const Subtitle = styled.h3`
-  color: ${({ theme }) => theme.colors.ribonWhite};
   line-height: 25px;
   text-align: center;
+  color: ${({ theme }) => theme.colors.ribonWhite};
 `;

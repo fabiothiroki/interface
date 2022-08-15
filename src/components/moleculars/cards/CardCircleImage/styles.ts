@@ -1,18 +1,18 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  min-height: 140px;
   min-width: 240px;
+  min-height: 140px;
   padding: 14px;
   border-radius: 16px;
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   box-sizing: border-box;
   background-color: ${({ theme }) => theme.colors.ribonWhite};
+  box-shadow: 8px 8px 20px -2px ${({ theme }) => theme.colors.ribonShadow};
   cursor: pointer;
-  box-shadow: 8px 8px 20px -2px rgba(192, 192, 192, 0.75);
 `;
 
 export const Image = styled.img`

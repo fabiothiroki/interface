@@ -1,29 +1,29 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  width: 160px;
+  margin-bottom: 16px;
+  padding: 16px;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 160px;
-  padding: 16px;
   background-color: ${({ theme }) => theme.colors.ribonWhite};
-  box-shadow: 0px 4px 12px rgba(24, 86, 105, 0.15);
-  border-radius: 16px;
-  margin-bottom: 16px;
+  box-shadow: 0 4px 12px ${({ theme }) => theme.colors.ribonShadow};
 `;
 
 export const Image = styled.img`
-  display: block;
-  height: 72px;
   width: 72px;
-  object-fit: cover;
+  height: 72px;
   border-radius: 50%;
+  display: block;
+  object-fit: cover;
 `;
 
 export const Text = styled.p`
   margin-top: 16px;
-  font-size: 14px;
-  color: ${({ theme }) => theme.colors.ribonBlack};
   font-weight: ${({ theme }) => theme.font.normal};
+  font-size: 14px;
   text-align: center;
+  color: ${({ theme }) => theme.colors.ribonBlack};
 `;

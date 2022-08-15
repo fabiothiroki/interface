@@ -22,21 +22,21 @@ export const Title = styled.h2<TitleProps>`
 `;
 
 export const FormContainer = styled.div`
-  padding: 8px 0px;
+  padding: 8px 0;
 `;
 export const Input = styled.input`
-  height: 39px;
   width: 100%;
-  border-radius: 8px;
-  border: 1px solid ${({ theme }) => theme.colors.ribonBlue};
-  padding: 8px;
+  height: 39px;
   margin-bottom: 8px;
+  padding: 8px;
+  border: 1px solid ${({ theme }) => theme.colors.ribonBlue};
+  border-radius: 8px;
 `;
 
 export const FooterContainer = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   color: ${({ theme }) => theme.colors.ribonGray};
 `;

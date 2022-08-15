@@ -30,9 +30,9 @@ export const Title = styled.h2<TitleProps>`
 `;
 
 export const Body = styled.h3`
-  color: ${({ theme }) => theme.colors.darkGray};
+  margin: 8px 0 20px;
   text-align: center;
-  margin: 8px 0px 20px;
+  color: ${({ theme }) => theme.colors.darkGray};
 `;
 
 export const RowsModalContainer = styled.div`

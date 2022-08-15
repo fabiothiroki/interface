@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  height: 104px;
   max-width: 312px;
+  height: 104px;
   padding: 15px 16px;
   border: 1px solid ${({ theme }) => theme.colors.ribonWhite};
   border-radius: 16px;
@@ -69,9 +69,9 @@ export const TitleContainer = styled.div`
 export const Title = styled.h3`
   margin-bottom: 4px;
   font-weight: bold;
-  text-align: center;
-  line-height: 1.4;
   font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
   color: ${({ theme }) => theme.colors.ribonBlack};
 `;
 
@@ -81,8 +81,8 @@ export const DescriptionContainer = styled.div`
 `;
 
 export const Description = styled.h4`
-  text-align: center;
   line-height: 160%;
+  text-align: center;
   color: ${({ theme }) => theme.colors.darkGray};
 `;
 
@@ -100,12 +100,12 @@ export const Image = styled.img`
 `;
 
 export const CounterContainer = styled.span`
-  padding: 2px;
   min-width: 16px;
+  padding: 2px;
   border-radius: 100%;
   position: absolute;
-  right: 0px;
   top: 8px;
+  right: 0;
   text-align: center;
   background-color: ${({ theme }) => theme.colors.phcYellow2};
   color: ${({ theme }) => theme.colors.ribonWhite};

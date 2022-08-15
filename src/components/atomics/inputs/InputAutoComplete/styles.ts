@@ -6,7 +6,7 @@ export const Container = styled.div`
   max-width: 300px;
   border-radius: 5px;
   z-index: 999;
-  box-shadow: 0 4px 12px rgba(24, 86, 105, 15%);
+  box-shadow: 0 4px 12px ${({ theme }) => theme.colors.ribonShadow};
 `;
 
 export const InputAutoComplete = styled(Input)``;

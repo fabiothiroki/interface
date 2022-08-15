@@ -6,9 +6,9 @@ export const Container = styled.div`
   padding: 16px;
   border-radius: 16px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  box-shadow: 0px 4px 12px rgba(24, 86, 105, 0.1);
+  justify-content: space-between;
+  box-shadow: 0 4px 12px ${({ theme }) => theme.colors.ribonShadow};
 `;
 
 export const Title = styled.h3`

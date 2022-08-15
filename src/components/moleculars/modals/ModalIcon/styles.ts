@@ -31,16 +31,16 @@ export const Title = styled.h2<TitleProps>`
 `;
 
 export const Body = styled.h3`
-  margin: 0px 0px 20px;
-  color: ${({ theme }) => theme.colors.darkGray};
+  margin: 0 0 20px;
   text-align: center;
+  color: ${({ theme }) => theme.colors.darkGray};
 `;
 
 export const HighlightedText = styled.p`
   margin-top: 16px;
   font-weight: bold;
-  text-align: center;
   font-size: 16px;
+  text-align: center;
   color: ${({ theme }) => theme.colors.ribonBlack};
 `;
 

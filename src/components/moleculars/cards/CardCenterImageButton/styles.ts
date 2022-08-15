@@ -7,9 +7,9 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.ribonWhite};
   box-sizing: border-box;
-  box-shadow: 0px 4px 12px 0px ${({ theme }) => theme.colors.ribonShadow};
+  background-color: ${({ theme }) => theme.colors.ribonWhite};
+  box-shadow: 0 4px 12px 0 ${({ theme }) => theme.colors.ribonShadow};
 `;
 
 export const Image = styled.img`
@@ -28,13 +28,13 @@ export const ContainerText = styled.div`
   padding: 8px 12px 12px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 `;
 
 export const Text = styled.h3`
   margin-bottom: 8px;
-  font-weight: 700;
   align-self: flex-start;
+  font-weight: 700;
   color: ${({ theme }) => theme.colors.ribonBlack};
 `;

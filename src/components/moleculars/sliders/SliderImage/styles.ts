@@ -19,8 +19,7 @@ export const SlideImageContainer = styled.div`
 `;
 
 export const SlideImage = styled.div`
-  width: calc(100vw - 16px);
-  height: calc(100vw - 16px);
+  height: calc(100vh - 16px);
   max-height: 209px;
   padding: 8px;
   border-top-left-radius: 16px;
@@ -38,7 +37,7 @@ export const SlideImage = styled.div`
 
 export const SlideVideo = styled.video`
   min-width: 100%;
-  height: calc(100vw - 16px);
+  height: calc(100vh - 16px);
   max-height: 209px;
   object-fit: cover;
 
@@ -57,7 +56,7 @@ export const PaginationContainer = styled.div`
   bottom: 14px;
   left: 50%;
   z-index: 1;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: ${({ theme }) => theme.colors.ribonBlack};
   opacity: 0.7;
   transform: translateX(-50%);
 `;

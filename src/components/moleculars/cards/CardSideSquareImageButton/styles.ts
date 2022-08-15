@@ -3,8 +3,8 @@ import Button from "components/atomics/buttons/Button";
 
 export const Container = styled.div`
   height: 100%;
-  display: flex;
   margin-top: 24px;
+  display: flex;
 `;
 
 export const Title = styled.h3`
@@ -12,9 +12,9 @@ export const Title = styled.h3`
 `;
 
 export const Text = styled.h4`
+  margin-top: 4px;
   font-weight: 400;
   line-height: 24px;
-  margin-top: 4px;
   color: ${({ theme }) => theme.colors.darkGray};
 `;
 
@@ -23,13 +23,13 @@ export const InsideContainer = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-  height: 96px;
   width: 96px;
+  height: 96px;
   margin-bottom: 8px;
 `;
 
 export const SideButton = styled(Button)`
+  height: 28px;
   border-radius: 16px;
   font-size: 12px;
-  height: 28px;
 `;

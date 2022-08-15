@@ -4,18 +4,18 @@ import Divider from "components/atomics/Divider";
 import LottieAnimation from "components/atomics/LottieAnimation";
 
 export const Container = styled.div`
-  height: 100vh;
   width: 100%;
+  height: 100vh;
   display: grid;
-  grid-gap: 0px; // grid-template-rows: [line-2] 80px;
+  grid-gap: 0; // grid-template-rows: [line-2] 80px;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
     max-width: 340px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin: 0 auto;
+    justify-content: center;
   }
 `;
 
@@ -27,7 +27,7 @@ export const Wrapper = styled.div`
 `;
 
 export const InnerContainer = styled.div`
-  padding: 0px 20px;
+  padding: 0 20px;
 `;
 
 export const Title = styled.h5`
@@ -59,16 +59,16 @@ export const ButtonContainer = styled.div`
   width: 100%;
   height: 80px;
   padding: 12px 16px;
-  align-self: end;
   display: flex;
-  background-color: white;
   align-items: center;
-  box-shadow: 0px -4px 4px rgba(24, 86, 105, 0.15);
+  align-self: end;
+  background-color: white;
+  box-shadow: 0 -4px 4px ${({ theme }) => theme.colors.ribonShadow};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
-    box-shadow: none;
-    padding: 0;
     max-width: 340px;
+    padding: 0;
+    box-shadow: none;
   }
 `;
 

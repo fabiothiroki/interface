@@ -140,6 +140,9 @@
     "*.tsx": [
       "eslint",
       "prettier --check"
+    ],
+    "styles.ts": [
+      "stylelint"
     ]
   },
   "jest": {

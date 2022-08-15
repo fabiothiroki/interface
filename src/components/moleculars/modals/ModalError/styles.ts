@@ -21,16 +21,16 @@ export const Title = styled.h2<TitleProps>`
 `;
 
 export const Body = styled.h3`
-  margin: 8px 0px 20px;
+  margin: 8px 0 20px;
   text-align: center;
   color: ${({ theme }) => theme.colors.darkGray};
 `;
 
 export const HighlightedText = styled.p`
   margin-top: 16px;
-  text-align: center;
   font-weight: bold;
   font-size: 16px;
+  text-align: center;
   color: ${({ theme }) => theme.colors.ribonBlack};
 `;
 export const RowsModalRow = styled.div`
