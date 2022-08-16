@@ -35,7 +35,6 @@ describe("CardFullImage", () => {
         loading
       />,
     );
-    screen.debug();
 
     expect(screen.queryAllByTestId("spinner")).toHaveLength(1);
   });
