@@ -23,7 +23,11 @@ function DonationDonePage(): JSX.Element {
   const { navigateTo } = useNavigation();
 
   useEffect(() => {
-    logEvent("donateFinishedDonation_view", { selected: nonProfit?.id });
+    const installationId = localStorage.getItem("installationId");
+    logEvent("donateFinishedDonation_view", {
+      selected: nonProfit?.id,
+      anonymousId: installationId ?? "",
+    });
     setTimeout(() => {
       navigateTo("/");
     }, 5000);
