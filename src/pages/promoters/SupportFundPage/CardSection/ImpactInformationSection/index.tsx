@@ -21,7 +21,7 @@ function ImpactInformationSection(): JSX.Element {
 
   useEffect(() => {
     if (nonProfits) setSelectedNonProfit(nonProfits[0]);
-  }, []);
+  }, [nonProfits]);
 
   const {
     currentCoin,
@@ -41,13 +41,14 @@ function ImpactInformationSection(): JSX.Element {
   };
 
   const valueText = (value: NonProfit) => value.name;
-  const impactText = () => {
-    if (!offers) return "";
+  const currentOffer = () => {
+    if (!offers) return null;
 
-    return `${offers[selectedButtonIndex].price} ${t(
-      "impactSimulationSection.payUpToText",
-    )} `;
+    return offers[selectedButtonIndex];
   };
+
+  const impactText = () =>
+    `${currentOffer()?.price} ${t("impactSimulationSection.payUpToText")} `;
 
   return (
     <S.ImpactSectionContainer>
