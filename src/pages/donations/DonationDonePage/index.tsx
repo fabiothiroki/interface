@@ -24,6 +24,7 @@ function DonationDonePage(): JSX.Element {
 
   useEffect(() => {
     const installationId = localStorage.getItem("installationId");
+    // eslint-disable-next-line no-console
     console.log(installationId);
     logEvent("donateFinishedDonation_view", {
       selected: nonProfit?.id,
