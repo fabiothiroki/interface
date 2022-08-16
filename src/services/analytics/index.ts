@@ -25,8 +25,10 @@ export function logEvent(eventName: string, params?: EventParams): void {
     } else if (process.env.NODE_ENV === "production") {
       const convertedParams = params
         ? convertParamsToString(params)
-        : undefined;
+        : { anonymousId: localStorage.getItem("installationId") };
 
+      convertedParams.anonymousId =
+        localStorage.getItem("installationId") ?? "";
       firebase.analytics().logEvent(eventName, convertedParams);
     }
   } catch (error) {
@@ -53,8 +55,3 @@ export function setUserId(userId: number | string): void {
   const preparedUserId = userId.toString();
   firebase.analytics().setUserId(preparedUserId);
 }
-
-export const setInstallationId = async () => {
-  const installationId = await firebase.app().installations().getId();
-  localStorage.setItem("installationId", installationId);
-};
