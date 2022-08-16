@@ -23,7 +23,9 @@ function DonationDonePage(): JSX.Element {
   const { navigateTo } = useNavigation();
 
   useEffect(() => {
-    logEvent("donateFinishedDonation_view", { selected: nonProfit?.id });
+    logEvent("donateFinishedDonation_view", {
+      selected: nonProfit?.id,
+    });
     setTimeout(() => {
       navigateTo("/");
     }, 5000);
