@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Dropdown from "components/atomics/Dropdown";
 import { Currencies } from "types/enums/Currencies";
 import { useCardPaymentInformation } from "contexts/cardPaymentInformationContext";
@@ -9,8 +9,8 @@ import { removeInsignificantZeros } from "lib/formatters/currencyFormatter";
 import CardSelect from "components/moleculars/cards/CardSelect";
 import useNonProfits from "hooks/apiHooks/useNonProfits";
 import NonProfit from "types/entities/NonProfit";
+import useNonProfitImpact from "hooks/apiHooks/useNonProfitImpact";
 import * as S from "../styles";
-import useNonProfitImpact from "../../../../../hooks/apiHooks/useNonProfitImpact";
 
 function ImpactInformationSection(): JSX.Element {
   const [selectedNonProfit, setSelectedNonProfit] = useState<NonProfit>();
@@ -42,17 +42,22 @@ function ImpactInformationSection(): JSX.Element {
   };
 
   const valueText = (value: NonProfit) => value.name;
-  const currentOffer = () => {
+  const currentOffer = useCallback(() => {
     if (!offers) return null;
 
     return offers[selectedButtonIndex];
-  };
+  }, [offers, selectedButtonIndex]);
 
-  const { nonProfitImpact } = useNonProfitImpact(
-    selectedNonProfit?.id,
-    currentOffer()?.priceValue,
-    currentCoin,
-  );
+  const { nonProfitImpact, refetch: refetchNonProfitImpact } =
+    useNonProfitImpact(
+      selectedNonProfit?.id,
+      currentOffer()?.priceValue,
+      currentCoin,
+    );
+
+  useEffect(() => {
+    refetchNonProfitImpact();
+  }, [currentOffer]);
 
   const impactText = () =>
     `${currentOffer()?.price} ${t("impactSimulationSection.payUpToText")} `;
