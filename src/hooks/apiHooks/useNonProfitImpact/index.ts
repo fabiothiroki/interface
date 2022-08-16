@@ -4,12 +4,12 @@ import nonProfitImpactApi from "services/api/nonProfitImpactApi";
 import NonProfitImpact from "types/apiResponses/NonProfitImpact";
 
 function useNonProfitImpact(
-  nonProfitId: number,
-  value: number,
-  currency: Currencies,
+  nonProfitId?: number,
+  value?: number,
+  currency?: Currencies,
 ) {
   const {
-    data: nonProfits,
+    data: nonProfitImpact,
     isLoading,
     refetch,
   } = useApi<NonProfitImpact>({
@@ -17,11 +17,11 @@ function useNonProfitImpact(
     fetchMethod: () =>
       nonProfitImpactApi.postImpactByNonProfit(nonProfitId, value, currency),
     options: {
-      enabled: !!nonProfitId,
+      enabled: !!nonProfitId && !!value && !!currency,
     },
   });
 
-  return { nonProfits, isLoading, refetch };
+  return { nonProfitImpact, isLoading, refetch };
 }
 
 export default useNonProfitImpact;

@@ -5,9 +5,9 @@ import { apiPost } from "..";
 
 const nonProfitImpactApi = {
   postImpactByNonProfit: (
-    nonProfitId: number,
-    value: number,
-    currency: Currencies,
+    nonProfitId?: number,
+    value?: number,
+    currency?: Currencies,
   ): Promise<AxiosResponse<NonProfit[]>> =>
     apiPost("givings/impact_by_non_profit", {
       nonProfitId,

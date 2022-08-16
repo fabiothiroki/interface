@@ -10,6 +10,7 @@ import CardSelect from "components/moleculars/cards/CardSelect";
 import useNonProfits from "hooks/apiHooks/useNonProfits";
 import NonProfit from "types/entities/NonProfit";
 import * as S from "../styles";
+import useNonProfitImpact from "../../../../../hooks/apiHooks/useNonProfitImpact";
 
 function ImpactInformationSection(): JSX.Element {
   const [selectedNonProfit, setSelectedNonProfit] = useState<NonProfit>();
@@ -47,8 +48,16 @@ function ImpactInformationSection(): JSX.Element {
     return offers[selectedButtonIndex];
   };
 
+  const { nonProfitImpact } = useNonProfitImpact(
+    selectedNonProfit?.id,
+    currentOffer()?.priceValue,
+    currentCoin,
+  );
+
   const impactText = () =>
     `${currentOffer()?.price} ${t("impactSimulationSection.payUpToText")} `;
+
+  const impactNumber = () => nonProfitImpact?.roundedImpact || "";
 
   return (
     <S.ImpactSectionContainer>
@@ -91,7 +100,9 @@ function ImpactInformationSection(): JSX.Element {
               <S.CardImpactImage src={selectedNonProfit?.mainImage} />
               <S.CardImpactText>
                 {impactText()}
-                <span>1 {selectedNonProfit?.impactDescription}</span>
+                <span>
+                  {impactNumber()} {selectedNonProfit?.impactDescription}
+                </span>
               </S.CardImpactText>
             </S.CardImpact>
           </CardSelect>
