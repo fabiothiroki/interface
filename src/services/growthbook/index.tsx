@@ -1,6 +1,7 @@
 import { GrowthBook } from "@growthbook/growthbook-react";
-import firebase from "firebase/app";
 import { logEvent } from "services/analytics";
+
+const installationId = localStorage.getItem("installationId");
 
 // Create a GrowthBook instance
 export const growthbook = new GrowthBook({
@@ -9,13 +10,12 @@ export const growthbook = new GrowthBook({
     logEvent("viewed_experiment", {
       experimentId: experiment.key,
       variationId: result.variationId,
+      anonymousId: installationId ?? "",
     });
   },
 });
 
 export const growthbookSetAttributes = async () => {
-  const installationId = await firebase.app().installations().getId();
-  localStorage.setItem("installationId", installationId);
   growthbook.setAttributes({
     id: installationId,
     company: "ribon",

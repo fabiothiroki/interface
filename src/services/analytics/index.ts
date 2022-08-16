@@ -53,3 +53,8 @@ export function setUserId(userId: number | string): void {
   const preparedUserId = userId.toString();
   firebase.analytics().setUserId(preparedUserId);
 }
+
+export const setInstallationId = async () => {
+  const installationId = await firebase.app().installations().getId();
+  localStorage.setItem("installationId", installationId);
+};

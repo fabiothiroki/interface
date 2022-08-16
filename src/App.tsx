@@ -10,6 +10,7 @@ import {
   growthbookSetAttributes,
   growthbookSetFeatures,
 } from "services/growthbook";
+import { setInstallationId } from "services/analytics";
 import RoutesComponent from "./config/routes";
 import GlobalStyle from "./styles/globalStyle";
 import theme from "./styles/theme";
@@ -20,6 +21,7 @@ function App() {
   const queryClient = new QueryClient();
 
   useEffect(() => {
+    setInstallationId();
     growthbookSetFeatures();
     // eslint-disable-next-line no-console
     growthbookSetAttributes().catch(console.error);
