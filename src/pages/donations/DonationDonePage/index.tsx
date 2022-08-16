@@ -24,6 +24,7 @@ function DonationDonePage(): JSX.Element {
 
   useEffect(() => {
     const installationId = localStorage.getItem("installationId");
+    console.log(installationId);
     logEvent("donateFinishedDonation_view", {
       selected: nonProfit?.id,
       anonymousId: installationId ?? "",
