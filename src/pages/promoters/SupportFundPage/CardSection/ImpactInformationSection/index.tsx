@@ -43,7 +43,7 @@ function ImpactInformationSection(): JSX.Element {
   const valueText = (value: NonProfit) => value.name;
 
   return (
-    <>
+    <S.ImpactSectionContainer>
       <Dropdown
         name="currency"
         label={t("currency")}
@@ -68,24 +68,27 @@ function ImpactInformationSection(): JSX.Element {
         ))}
       </S.ValuesContainer>
       {nonProfits && (
-        <CardSelect
-          dropdownProps={{
-            values: nonProfits,
-            label: t("impactSimulationSection.label"),
-            name: "nonProfits",
-            onOptionChanged,
-            valueText,
-          }}
-        >
-          <S.CardImpact>
-            <S.CardImpactImage src={selectedNonProfit?.mainImage} />
-            <S.CardImpactText>
-              {selectedNonProfit?.impactDescription}
-            </S.CardImpactText>
-          </S.CardImpact>
-        </CardSelect>
+        <S.ImpactSimulatorContainer>
+          <CardSelect
+            dropdownProps={{
+              values: nonProfits,
+              label: t("impactSimulationSection.label"),
+              name: "nonProfits",
+              onOptionChanged,
+              valueText,
+              containerId: "non-profits-dropdown",
+            }}
+          >
+            <S.CardImpact>
+              <S.CardImpactImage src={selectedNonProfit?.mainImage} />
+              <S.CardImpactText>
+                {selectedNonProfit?.impactDescription}
+              </S.CardImpactText>
+            </S.CardImpact>
+          </CardSelect>
+        </S.ImpactSimulatorContainer>
       )}
-    </>
+    </S.ImpactSectionContainer>
   );
 }
 

@@ -10,6 +10,7 @@ export type Props = {
   defaultValue?: any;
   onOptionChanged?: (value: any) => void;
   valueText?: (value: any) => string;
+  containerId?: string;
 };
 
 function Dropdown({
@@ -19,6 +20,7 @@ function Dropdown({
   onOptionChanged,
   defaultValue,
   valueText,
+  containerId = "dropdown-container",
 }: Props): JSX.Element {
   const valueToText = (value: any) => {
     if (valueText && value) return valueText(value);
@@ -40,7 +42,7 @@ function Dropdown({
   };
 
   return (
-    <S.Container id="dropdown-container">
+    <S.Container id={containerId}>
       <ModalBlank
         visible={optionsVisible}
         onClose={() => setOptionsVisible(false)}
@@ -64,7 +66,7 @@ function Dropdown({
           },
         }}
         parentSelector={() =>
-          document.querySelector("#dropdown-container") || document.body
+          document.querySelector(`#${containerId}`) || document.body
         }
       >
         {values.map((value, index) => (

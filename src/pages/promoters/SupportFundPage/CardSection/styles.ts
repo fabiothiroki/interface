@@ -114,6 +114,17 @@ export const CardImpact = styled.div`
   `}
 `;
 
+export const ImpactSectionContainer = styled.div`
+  ${() => css``}
+`;
+
+export const ImpactSimulatorContainer = styled.div`
+  ${() =>
+    css`
+      margin-bottom: 14px;
+    `}
+`;
+
 export const CardImpactImage = styled.img`
   ${() => css`
     height: 72px;
