@@ -89,6 +89,7 @@ function ImpactInformationSection(): JSX.Element {
           />
         ))}
       </S.ValuesContainer>
+      <S.Subtitle>{t("simulateSectionTitle")}</S.Subtitle>
       {nonProfits && (
         <S.ImpactSimulatorContainer>
           <CardSelect

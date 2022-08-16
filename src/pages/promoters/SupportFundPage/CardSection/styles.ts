@@ -127,8 +127,8 @@ export const ImpactSimulatorContainer = styled.div`
 
 export const CardImpactImage = styled.img`
   ${() => css`
-    height: 72px;
-    width: 72px;
+    height: 48px;
+    width: 48px;
     object-fit: cover;
     border-radius: 50px;
     margin-right: 14px;

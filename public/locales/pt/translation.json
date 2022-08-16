@@ -117,6 +117,7 @@
       "cardSection": {
         "currency": "Moeda",
         "subtitleCard": "Escolha sua contribuição",
+        "simulateSectionTitle": "Simule um resultado possível",
         "buttonTextCard": "Próximo",
         "buttonSubmit": "Confirmar",
         "detailsSubtitle": "Detalhes da contribuição",

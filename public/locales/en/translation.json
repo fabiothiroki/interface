@@ -117,6 +117,7 @@
       "cardSection": {
         "currency": "Currency",
         "subtitleCard": "Choose your giving",
+        "simulateSectionTitle": "Simulate a possible result",
         "buttonTextCard": "Next",
         "buttonSubmit": "Confirm",
         "detailsSubtitle": "Giving details",
