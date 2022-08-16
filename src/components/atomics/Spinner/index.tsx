@@ -11,7 +11,7 @@ function Spinner({
   size = "18",
 }: Props): JSX.Element {
   return (
-    <S.Container>
+    <S.Container data-testid="spinner">
       <SpinnerSvg stroke={strokeColor} width={size} height={size} />
     </S.Container>
   );

@@ -24,7 +24,6 @@ describe("CardFullImage", () => {
     expect(component.container.firstChild).toHaveStyle(
       "background-image: url(https://i.imgur.com/BwtK2hX.png)",
     );
-    expect(screen.queryAllByTestId("loader")).toHaveLength(0);
   });
 
   it("should show loading component", () => {
@@ -36,6 +35,8 @@ describe("CardFullImage", () => {
         loading
       />,
     );
-    expect(screen.queryAllByTestId("loader")).toHaveLength(1);
+    screen.debug();
+
+    expect(screen.queryAllByTestId("spinner")).toHaveLength(1);
   });
 });
