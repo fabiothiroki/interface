@@ -41,6 +41,13 @@ function ImpactInformationSection(): JSX.Element {
   };
 
   const valueText = (value: NonProfit) => value.name;
+  const impactText = () => {
+    if (!offers) return "";
+
+    return `${offers[selectedButtonIndex].price} ${t(
+      "impactSimulationSection.payUpToText",
+    )} `;
+  };
 
   return (
     <S.ImpactSectionContainer>
@@ -82,7 +89,8 @@ function ImpactInformationSection(): JSX.Element {
             <S.CardImpact>
               <S.CardImpactImage src={selectedNonProfit?.mainImage} />
               <S.CardImpactText>
-                {selectedNonProfit?.impactDescription}
+                {impactText()}
+                <span>1 {selectedNonProfit?.impactDescription}</span>
               </S.CardImpactText>
             </S.CardImpact>
           </CardSelect>

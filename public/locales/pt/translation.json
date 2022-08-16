@@ -139,7 +139,8 @@
           "cvv": "Código de segurança"
         },
         "impactSimulationSection": {
-          "label": "Selecione uma ONG"
+          "label": "Selecione uma ONG",
+          "payUpToText": "podem pagar até"
         }
       },
 

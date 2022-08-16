@@ -135,12 +135,13 @@ export const CardImpactImage = styled.img`
   `}
 `;
 
-export const CardImpactText = styled.p`
+export const CardImpactText = styled.h3`
   ${({ theme }) => css`
-    color: ${theme.colors.darkGray};
-    font-size: 12px;
-    line-height: 19.2px;
-    font-style: italic;
-    margin-bottom: 32px;
+    color: ${theme.colors.ribonBlack};
+
+    span {
+      color: ${theme.colors.ribonBlue};
+      font-size: 16px;
+    }
   `}
 `;

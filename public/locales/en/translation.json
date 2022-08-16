@@ -139,7 +139,8 @@
           "cvv": "Card verification code"
         },
         "impactSimulationSection": {
-          "label": "Select a NGO"
+          "label": "Select a NGO",
+          "payUpToText": "can pay up to"
         }
       },
 
