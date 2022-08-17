@@ -16,7 +16,7 @@ export const Title = styled.h1`
   margin: 0;
   font-weight: 900;
   line-height: 1.6;
-  color: ${({ theme }) => theme.colors.ribonBlack};
+  color: ${({ theme }) => theme.colors.black};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
     font-size: 36px;

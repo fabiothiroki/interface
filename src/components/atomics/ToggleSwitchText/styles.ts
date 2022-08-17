@@ -8,7 +8,7 @@ export const Container = styled.div`
   align-items: flex-start;
   box-sizing: border-box;
   text-align: center;
-  background: ${({ theme }) => theme.colors.ribonWhite};
+  background: ${({ theme }) => theme.colors.white};
   cursor: pointer;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
@@ -23,10 +23,10 @@ export const Selected = styled.a`
   font-size: 16px;
   line-height: 1.6;
   background: ${({ theme }) => theme.colors.ribonBlue};
-  color: ${({ theme }) => theme.colors.ribonWhite};
+  color: ${({ theme }) => theme.colors.white};
 `;
 
 export const Unselected = styled(Selected)`
-  background: ${({ theme }) => theme.colors.ribonWhite};
+  background: ${({ theme }) => theme.colors.white};
   color: ${({ theme }) => theme.colors.ribonBlue};
 `;

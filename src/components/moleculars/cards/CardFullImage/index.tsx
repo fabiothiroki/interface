@@ -5,7 +5,7 @@ import Loader from "components/atomics/Loader";
 import * as S from "./styles";
 
 const { colors } = theme;
-const { ribonWhite } = colors;
+const { white } = colors;
 
 export type Props = {
   title?: string;
@@ -29,10 +29,10 @@ function CardFullImage({
       </S.ImageContainer>
       <S.TextContainer>
         <S.TitleContainer>
-          {loading && <Loader color={ribonWhite} width={25} height={25} />}
+          {loading && <Loader color={white} width={25} height={25} />}
           {title && <S.Title>{title}</S.Title>}
         </S.TitleContainer>
-        <Divider color={ribonWhite} width="80px" />
+        <Divider color={white} width="80px" />
         {subtitle && <S.Subtitle>{subtitle}</S.Subtitle>}
       </S.TextContainer>
     </S.Container>

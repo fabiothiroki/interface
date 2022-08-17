@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   padding: 4px;
-  border: 1px solid ${({ theme }) => theme.colors.ribonWhite};
+  border: 1px solid ${({ theme }) => theme.colors.white};
   border-radius: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  background-color: ${({ theme }) => theme.colors.ribonWhite};
-  box-shadow: 0 4px 12px 0 ${({ theme }) => theme.colors.ribonShadow};
+  background-color: ${({ theme }) => theme.colors.white};
+  box-shadow: 0 4px 12px 0 ${({ theme }) => theme.colors.lightShadow};
 `;
 
 export const Image = styled.img`
@@ -36,5 +36,5 @@ export const Text = styled.h3`
   margin-bottom: 8px;
   align-self: flex-start;
   font-weight: 700;
-  color: ${({ theme }) => theme.colors.ribonBlack};
+  color: ${({ theme }) => theme.colors.black};
 `;

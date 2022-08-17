@@ -8,7 +8,7 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h3`
-  color: ${({ theme }) => theme.colors.ribonBlack};
+  color: ${({ theme }) => theme.colors.black};
 `;
 
 export const Text = styled.h4`

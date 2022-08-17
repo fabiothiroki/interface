@@ -11,7 +11,7 @@ export const Container = styled.div`
     max-width: 206px;
     padding: 12px 16px;
     border-radius: 16px;
-    background: ${theme.colors.ribonWhite};
+    background: ${theme.colors.white};
     box-shadow: 0px 4px 12px rgba(24, 86, 105, 0.15);
   `}
 `;
@@ -48,7 +48,7 @@ export const LinkSection = styled.a`
     justify-content: space-between;
     font-size: 12px;
     text-decoration: none;
-    color: ${theme.colors.ribonBlack};
+    color: ${theme.colors.black};
   `}
 `;
 

@@ -8,12 +8,12 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 4px 12px ${({ theme }) => theme.colors.ribonShadow};
+  box-shadow: 0 4px 12px ${({ theme }) => theme.colors.lightShadow};
 `;
 
 export const Title = styled.h3`
   font-weight: 700;
-  color: ${({ theme }) => theme.colors.ribonBlack};
+  color: ${({ theme }) => theme.colors.black};
 `;
 
 export const Subtitle = styled.p`

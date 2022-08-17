@@ -42,7 +42,7 @@ export const ButtonContainer = styled.div`
   align-items: center;
   align-self: end;
   background-color: white;
-  box-shadow: 0 -4px 4px ${({ theme }) => theme.colors.ribonShadow};
+  box-shadow: 0 -4px 4px ${({ theme }) => theme.colors.lightShadow};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
     height: 60px;
@@ -67,7 +67,7 @@ export const GivingValue = styled.h4`
   font-weight: 900;
   font-size: 24px;
   line-height: 38.4px;
-  color: ${({ theme }) => theme.colors.ribonBlack};
+  color: ${({ theme }) => theme.colors.black};
 `;
 
 export const NetGivingValue = styled.p`

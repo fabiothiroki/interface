@@ -8,8 +8,8 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.ribonWhite};
-  box-shadow: 0 4px 12px ${({ theme }) => theme.colors.ribonShadow};
+  background-color: ${({ theme }) => theme.colors.white};
+  box-shadow: 0 4px 12px ${({ theme }) => theme.colors.lightShadow};
 `;
 
 export const Image = styled.img`
@@ -25,5 +25,5 @@ export const Text = styled.p`
   font-weight: ${({ theme }) => theme.font.normal};
   font-size: 14px;
   text-align: center;
-  color: ${({ theme }) => theme.colors.ribonBlack};
+  color: ${({ theme }) => theme.colors.black};
 `;

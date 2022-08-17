@@ -5,14 +5,14 @@ export const Container = styled.div`
   max-width: 312px;
   height: 104px;
   padding: 15px 16px;
-  border: 1px solid ${({ theme }) => theme.colors.ribonWhite};
+  border: 1px solid ${({ theme }) => theme.colors.white};
   border-radius: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  background-color: ${({ theme }) => theme.colors.ribonWhite};
+  background-color: ${({ theme }) => theme.colors.white};
   cursor: pointer;
 
   &:hover {
@@ -58,7 +58,7 @@ export const RibonsAmountContainer = styled.div`
   border-radius: 20px;
   position: absolute;
   bottom: 4px;
-  background-color: ${({ theme }) => theme.colors.ribonWhite};
+  background-color: ${({ theme }) => theme.colors.white};
 `;
 
 export const TitleContainer = styled.div`
@@ -68,11 +68,11 @@ export const TitleContainer = styled.div`
 
 export const Title = styled.h3`
   margin-bottom: 4px;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 16px;
   line-height: 1.4;
   text-align: center;
-  color: ${({ theme }) => theme.colors.ribonBlack};
+  color: ${({ theme }) => theme.colors.black};
 `;
 
 export const DescriptionContainer = styled.div`
@@ -108,5 +108,5 @@ export const CounterContainer = styled.span`
   right: 0;
   text-align: center;
   background-color: ${({ theme }) => theme.colors.phcYellow2};
-  color: ${({ theme }) => theme.colors.ribonWhite};
+  color: ${({ theme }) => theme.colors.white};
 `;

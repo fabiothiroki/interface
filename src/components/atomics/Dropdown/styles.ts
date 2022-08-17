@@ -14,7 +14,7 @@ export const Input = styled.div`
   position: relative;
   display: inline-block;
   box-sizing: border-box;
-  color: ${({ theme }) => theme.colors.ribonBlack};
+  color: ${({ theme }) => theme.colors.black};
 
   label {
     padding: 0 2px;
@@ -24,7 +24,7 @@ export const Input = styled.div`
     display: inline;
     font-size: 14px;
     text-align: center;
-    background-color: ${({ theme }) => theme.colors.ribonWhite};
+    background-color: ${({ theme }) => theme.colors.white};
     color: ${({ theme }) => theme.colors.ribonBlue};
 
     @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
@@ -40,11 +40,11 @@ export const Input = styled.div`
     position: relative;
     top: -5px;
     box-sizing: border-box;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 16px;
     font-family: ${({ theme }) => theme.font.family};
     line-height: 20px;
-    color: ${({ theme }) => theme.colors.ribonBlack};
+    color: ${({ theme }) => theme.colors.black};
 
     &:hover {
       cursor: pointer;

@@ -18,7 +18,7 @@ type TitleProps = {
 export const Title = styled.h2<TitleProps>`
   margin-bottom: 8px;
   text-align: center;
-  color: ${({ theme, color }) => color || theme.colors.ribonBlack};
+  color: ${({ theme, color }) => color || theme.colors.black};
 `;
 
 export const FormContainer = styled.div`

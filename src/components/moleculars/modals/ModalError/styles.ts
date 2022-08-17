@@ -17,7 +17,7 @@ type TitleProps = {
 
 export const Title = styled.h2<TitleProps>`
   text-align: center;
-  color: ${({ theme, color }) => color || theme.colors.ribonBlack};
+  color: ${({ theme, color }) => color || theme.colors.black};
 `;
 
 export const Body = styled.h3`
@@ -28,10 +28,10 @@ export const Body = styled.h3`
 
 export const HighlightedText = styled.p`
   margin-top: 16px;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 16px;
   text-align: center;
-  color: ${({ theme }) => theme.colors.ribonBlack};
+  color: ${({ theme }) => theme.colors.black};
 `;
 export const RowsModalRow = styled.div`
   margin-bottom: 28px;

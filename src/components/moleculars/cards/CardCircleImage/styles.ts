@@ -10,8 +10,8 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  background-color: ${({ theme }) => theme.colors.ribonWhite};
-  box-shadow: 8px 8px 20px -2px ${({ theme }) => theme.colors.ribonShadow};
+  background-color: ${({ theme }) => theme.colors.white};
+  box-shadow: 8px 8px 20px -2px ${({ theme }) => theme.colors.darkShadow};
   cursor: pointer;
 `;
 

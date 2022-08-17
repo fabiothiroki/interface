@@ -21,8 +21,8 @@ export const CardBlank = styled.div`
   height: 123px;
   padding: 12px 16px;
   border-radius: 16px;
-  background: ${({ theme }) => theme.colors.ribonWhite};
-  box-shadow: 0 4px 12px ${({ theme }) => theme.colors.ribonShadow};
+  background: ${({ theme }) => theme.colors.white};
+  box-shadow: 0 4px 12px ${({ theme }) => theme.colors.lightShadow};
 `;
 
 export const Title = styled.h1`
@@ -52,7 +52,7 @@ export const FundTextCoin = styled.span`
 export const SectionTitle = styled.p`
   margin-bottom: 8px;
   font-weight: 700;
-  color: ${({ theme }) => theme.colors.ribonBlack};
+  color: ${({ theme }) => theme.colors.black};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
     margin: 8px 0;
@@ -75,7 +75,7 @@ export const GivingsCard = styled.div`
   padding: 12px 16px;
   border-radius: 16px;
   display: inline-block;
-  background: ${({ theme }) => theme.colors.ribonWhite};
+  background: ${({ theme }) => theme.colors.white};
   box-shadow: 0 4px 12px ${({ theme }) => theme.colors.ribonWShadow};
 `;
 
@@ -122,5 +122,5 @@ export const ProcessingText = styled.span`
 export const TransactionLink = styled.a`
   font-weight: 400;
   font-size: 12px;
-  color: ${({ theme }) => theme.colors.ribonBlack};
+  color: ${({ theme }) => theme.colors.black};
 `;

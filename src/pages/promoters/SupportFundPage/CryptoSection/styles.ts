@@ -67,7 +67,7 @@ export const UsdcContainer = styled.div`
 export const UsdcText = styled.p`
   margin-left: 4px;
   font-size: 14px;
-  color: ${({ theme }) => theme.colors.ribonBlack};
+  color: ${({ theme }) => theme.colors.black};
 `;
 
 export const Text = styled.p`
@@ -92,7 +92,7 @@ export const ButtonContainer = styled.div`
   align-items: center;
   align-self: end;
   background-color: white;
-  box-shadow: 0 -4px 4px ${({ theme }) => theme.colors.ribonShadow};
+  box-shadow: 0 -4px 4px ${({ theme }) => theme.colors.lightShadow};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
     height: 60px;

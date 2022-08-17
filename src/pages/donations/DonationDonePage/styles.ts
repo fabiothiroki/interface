@@ -32,10 +32,10 @@ export const InnerContainer = styled.div`
 
 export const Title = styled.h5`
   margin-top: 20px;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 20px;
   line-height: 160%;
-  color: ${({ theme }) => theme.colors.ribonBlack};
+  color: ${({ theme }) => theme.colors.black};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
     font-size: 24px;
@@ -63,7 +63,7 @@ export const ButtonContainer = styled.div`
   align-items: center;
   align-self: end;
   background-color: white;
-  box-shadow: 0 -4px 4px ${({ theme }) => theme.colors.ribonShadow};
+  box-shadow: 0 -4px 4px ${({ theme }) => theme.colors.lightShadow};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
     max-width: 340px;

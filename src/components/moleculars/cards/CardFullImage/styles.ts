@@ -59,5 +59,5 @@ export const TitleContainer = styled.div`
 export const Subtitle = styled.h3`
   line-height: 25px;
   text-align: center;
-  color: ${({ theme }) => theme.colors.ribonWhite};
+  color: ${({ theme }) => theme.colors.white};
 `;

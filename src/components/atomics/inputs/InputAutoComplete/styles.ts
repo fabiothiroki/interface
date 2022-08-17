@@ -6,7 +6,7 @@ export const Container = styled.div`
   max-width: 300px;
   border-radius: 5px;
   z-index: 999;
-  box-shadow: 0 4px 12px ${({ theme }) => theme.colors.ribonShadow};
+  box-shadow: 0 4px 12px ${({ theme }) => theme.colors.lightShadow};
 `;
 
 export const InputAutoComplete = styled(Input)``;
@@ -14,7 +14,7 @@ export const InputAutoComplete = styled(Input)``;
 export const OptionContainer = styled.div`
   width: 100%;
   padding: 8px 16px;
-  background-color: ${({ theme }) => theme.colors.ribonWhite};
+  background-color: ${({ theme }) => theme.colors.white};
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.hoverGray};
