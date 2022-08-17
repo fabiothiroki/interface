@@ -17,6 +17,9 @@
       "blockedModalText": "Make a giving to Ribon's Donation Treasure to promote new donations",
       "blockedModalFirstButtonText": "Give now",
       "blockedModalSecondButtonText": "Maybe later",
+      "receiveTicketAnimationModalTitle": "Receiving Ticket...",
+      "receiveTicketAnimationModalOrigin": "Supportes",
+      "receiveTicketAnimationModalDestiny": "You",
       "modalForm": {
         "footerStartText": "By signing up you agree to Ribon's",
         "footerAnd": "and",
@@ -50,6 +53,8 @@
       "changeLanguageItem": {
         "changeLanguageText": "Change language"
       },
+      "donationModalTitle": "You got a donation ticket",
+      "donationModalButtonText": "Receive ticket",
       "logoutItem": {
         "logoutButton": "Sign Out",
         "logoutModalTitle": "Do you really want to sign out?",
@@ -117,6 +122,7 @@
       "cardSection": {
         "currency": "Currency",
         "subtitleCard": "Choose your giving",
+        "simulateSectionTitle": "Simulate a possible result",
         "buttonTextCard": "Next",
         "buttonSubmit": "Confirm",
         "detailsSubtitle": "Giving details",
@@ -137,6 +143,10 @@
           "cardName": "Name on card",
           "cardDueDate": "Expiration",
           "cvv": "Card verification code"
+        },
+        "impactSimulationSection": {
+          "label": "Select a NGO",
+          "payUpToText": "can pay up to"
         }
       },
 
