@@ -89,3 +89,32 @@ export const CryptoGivingValue = styled.p`
   line-height: 19.2px;
   color: ${({ theme }) => theme.colors.darkGray};
 `;
+
+export const CardImpact = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+`;
+
+export const ImpactSectionContainer = styled.div``;
+
+export const ImpactSimulatorContainer = styled.div`
+  margin-bottom: 14px;
+`;
+
+export const CardImpactImage = styled.img`
+  width: 48px;
+  height: 48px;
+  margin-right: 14px;
+  border-radius: 50px;
+  object-fit: cover;
+`;
+
+export const CardImpactText = styled.h3`
+  color: ${({ theme }) => theme.colors.ribonBlack};
+
+  span {
+    font-size: 16px;
+    color: ${({ theme }) => theme.colors.ribonBlue};
+  }
+`;
