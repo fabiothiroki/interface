@@ -11,6 +11,7 @@ import useNonProfits from "hooks/apiHooks/useNonProfits";
 import NonProfit from "types/entities/NonProfit";
 import useNonProfitImpact from "hooks/apiHooks/useNonProfitImpact";
 import * as S from "../styles";
+import Offer from "../../../../../types/entities/Offer";
 
 function ImpactInformationSection(): JSX.Element {
   const [selectedNonProfit, setSelectedNonProfit] = useState<NonProfit>();
@@ -39,6 +40,13 @@ function ImpactInformationSection(): JSX.Element {
 
   const onOptionChanged = (nonProfit: NonProfit) => {
     setSelectedNonProfit(nonProfit);
+  };
+
+  const handleOfferClick = (offer: Offer, index: number) => {
+    logEvent("fundSupportAmountBtn_click", {
+      option: offer?.id,
+    });
+    setSelectedButtonIndex(index);
   };
 
   const valueText = (value: NonProfit) => value.name;
@@ -78,12 +86,7 @@ function ImpactInformationSection(): JSX.Element {
         {offers?.map((item, index) => (
           <S.CardValueButton
             text={removeInsignificantZeros(item?.price)}
-            onClick={() => {
-              logEvent("fundSupportAmountBtn_click", {
-                option: item?.id,
-              });
-              setSelectedButtonIndex(index);
-            }}
+            onClick={() => handleOfferClick(item, index)}
             outline={index !== selectedButtonIndex}
             key={item?.id}
           />
