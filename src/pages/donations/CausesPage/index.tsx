@@ -62,10 +62,6 @@ function CausesPage(): JSX.Element {
   const { showDonationTicketModal } = useDonationTicketModal();
   const { canDonate } = useCanDonate(integrationId);
 
-  useEffect(() => {
-    console.log(canDonate);
-  }, [canDonate]);
-
   function hasReceivedTicketToday() {
     const donationModalSeenAtKey = getLocalStorageItem(
       DONATION_MODAL_SEEN_AT_KEY,
