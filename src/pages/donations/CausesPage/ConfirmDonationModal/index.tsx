@@ -9,13 +9,17 @@ type Props = {
   donate: (email: string) => void;
   chosenNonProfit: NonProfit;
   confirmModalVisible: boolean;
+  donationInProgressModalVisible: boolean;
   setConfirmModalVisible: (visible: boolean) => void;
+  setDonationInProgressModalVisible: (visible: boolean) => void;
 };
 function ConfirmDonationModal({
   donate,
   chosenNonProfit,
   confirmModalVisible,
+  donationInProgressModalVisible,
   setConfirmModalVisible,
+  setDonationInProgressModalVisible,
 }: Props): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "donations.causesPage",

@@ -27,6 +27,8 @@ import ConfirmSection from "./ConfirmSection";
 
 function CausesPage(): JSX.Element {
   const [confirmModalVisible, setConfirmModalVisible] = useState(false);
+  const [donationInProgressModalVisible, setDonationInProgressModalVisible] =
+    useState(false);
   const [chosenNonProfit, setChosenNonProfit] = useState<NonProfit>();
   const integrationId = useIntegrationId();
   const { integration } = useIntegration(integrationId);
@@ -128,7 +130,9 @@ function CausesPage(): JSX.Element {
           chosenNonProfit={chosenNonProfit}
           donate={donate}
           confirmModalVisible={confirmModalVisible}
+          donationInProgressModalVisible={donationInProgressModalVisible}
           setConfirmModalVisible={setConfirmModalVisible}
+          setDonationInProgressModalVisible={setDonationInProgressModalVisible}
           closeConfirmModal={closeConfirmModal}
         />
       )}
