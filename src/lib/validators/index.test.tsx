@@ -19,4 +19,3 @@ describe("should check uuid", () => {
     expect(isValidUuid("c5c680cf-3a7a-4ea1-ade6-e5eb77e83c88")).toBe(true);
   });
 });
-
