@@ -20,7 +20,7 @@ function useCanDonate(integrationId: number | null) {
     },
   });
 
-  return { canDonate: canDonate?.canDonate, isLoading, refetch };
+  return { canDonate: canDonate?.canDonate || true, isLoading, refetch };
 }
 
 export default useCanDonate;

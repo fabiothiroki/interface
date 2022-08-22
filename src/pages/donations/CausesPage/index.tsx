@@ -58,17 +58,13 @@ function CausesPage(): JSX.Element {
   const { nonProfits, isLoading } = useNonProfits();
   const { findOrCreateUser } = useUsers();
   const { createSource } = useSources();
-  const { signedIn, setCurrentUser, userLastDonation } = useCurrentUser();
+  const { signedIn, setCurrentUser } = useCurrentUser();
   const { showDonationTicketModal } = useDonationTicketModal();
   const { canDonate } = useCanDonate(integrationId);
 
   useEffect(() => {
     console.log(canDonate);
   }, [canDonate]);
-
-  function hasDonateToday() {
-    return userLastDonation === today();
-  }
 
   function hasReceivedTicketToday() {
     const donationModalSeenAtKey = getLocalStorageItem(
@@ -82,7 +78,7 @@ function CausesPage(): JSX.Element {
     return false;
   }
 
-  const hasAvailableDonation = !state?.blockedDonation && !hasDonateToday();
+  const hasAvailableDonation = !state?.blockedDonation && canDonate;
 
   useEffect(() => {
     logEvent("donateIntroDial_view");
@@ -155,6 +151,7 @@ function CausesPage(): JSX.Element {
                 nonProfits={nonProfits}
                 setChosenNonProfit={setChosenNonProfit}
                 setConfirmModalVisible={setConfirmModalVisible}
+                canDonate={canDonate}
               />
             )}
           </S.CausesContainer>
