@@ -19,6 +19,7 @@ import { today } from "lib/dateTodayFormatter";
 import { useDonationTicketModal } from "hooks/modalHooks/useDonationTicketModal";
 import { IfFeatureEnabled } from "@growthbook/growthbook-react";
 import Spinner from "components/atomics/Spinner";
+import useCanDonate from "hooks/apiHooks/useCanDonate";
 import * as S from "./styles";
 import NonProfitsList from "./NonProfitsList";
 import { LocationStateType } from "./LocationStateType";
@@ -59,6 +60,11 @@ function CausesPage(): JSX.Element {
   const { createSource } = useSources();
   const { signedIn, setCurrentUser, userLastDonation } = useCurrentUser();
   const { showDonationTicketModal } = useDonationTicketModal();
+  const { canDonate } = useCanDonate(integrationId);
+
+  useEffect(() => {
+    console.log(canDonate);
+  }, [canDonate]);
 
   function hasDonateToday() {
     return userLastDonation === today();
