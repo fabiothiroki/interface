@@ -4,7 +4,7 @@ export const NotificationContainer = styled.div`
   position: fixed;
   right: 12px;
   bottom: 12px;
-  z-index: 9999;
+  z-index: ${({ theme }) => theme.zindex.toast};
   box-sizing: border-box;
   font-size: 14px;
   animation: toast-in-right 0.7s;
