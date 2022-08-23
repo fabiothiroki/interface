@@ -66,7 +66,7 @@ function RoutesComponent(): JSX.Element {
         </Suspense>
       </Route>
 
-      <Route path="/promoters/fund" exact>
+      <Route path="/promoters/treasure" exact>
         <Suspense fallback={<div />}>
           <CurrentUserProvider>
             <NetworkProvider>
@@ -80,7 +80,7 @@ function RoutesComponent(): JSX.Element {
         </Suspense>
       </Route>
 
-      <Route path="/promoters/support-fund" exact>
+      <Route path="/promoters/support-treasure" exact>
         <Suspense fallback={<div />}>
           <CurrentUserProvider>
             <NetworkProvider>
@@ -108,7 +108,7 @@ function RoutesComponent(): JSX.Element {
         </Suspense>
       </Route>
 
-      <Route path="/fund" exact>
+      <Route path="/treasure" exact>
         <MainLayout>
           <div />
         </MainLayout>

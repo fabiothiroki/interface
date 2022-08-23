@@ -13,10 +13,10 @@ describe("TreasurePage", () => {
     expectTextToBeInTheDocument("Donation treasure");
   });
 
-  it("logs the fundScreen_view event when loaded", () => {
+  it("logs the treasureScreen_view event when loaded", () => {
     renderComponent(<TreasurePage />);
 
-    expectLogEventToHaveBeenCalledWith("fundScreen_view");
+    expectLogEventToHaveBeenCalledWith("treasureScreen_view");
   });
 
   describe("when there is a wallet connected", () => {
@@ -28,19 +28,19 @@ describe("TreasurePage", () => {
       });
     });
 
-    describe("when the support fund button is clicked", () => {
+    describe("when the support treasure button is clicked", () => {
       beforeEach(() => {
         clickOn("Support the treasure");
       });
 
-      it("logs the fundSupportBtn_click event", () => {
-        expectLogEventToHaveBeenCalledWith("fundSupportBtn_click", {
-          from: "fundBalance",
+      it("logs the treasureSupportBtn_click event", () => {
+        expectLogEventToHaveBeenCalledWith("treasureSupportBtn_click", {
+          from: "treasureBalance",
         });
       });
 
-      it("navigates to the support fund page", () => {
-        expectPageToNavigateTo("/promoters/support-fund");
+      it("navigates to the support treasure page", () => {
+        expectPageToNavigateTo("/promoters/support-treasure");
       });
     });
   });

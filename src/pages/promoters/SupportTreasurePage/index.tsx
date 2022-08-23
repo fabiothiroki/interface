@@ -14,13 +14,13 @@ function SupportTreasurePage(): JSX.Element {
   });
 
   useEffect(() => {
-    logEvent("fundSupportScreen_view");
+    logEvent("treasureSupportScreen_view");
   }, []);
 
   const handleChange = () => {
     try {
       setIsCard(!isCard);
-      logEvent("fundSupportGivingTogBtn_click", {
+      logEvent("treasureSupportGivingTogBtn_click", {
         option: isCard ? "card" : "cryptocurrency",
       });
     } catch (error) {

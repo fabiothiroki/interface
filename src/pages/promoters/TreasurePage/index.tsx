@@ -36,14 +36,14 @@ function TreasurePage(): JSX.Element {
   );
 
   const handleSupportButtonClick = () => {
-    logEvent("fundSupportBtn_click", {
-      from: "fundBalance",
+    logEvent("treasureSupportBtn_click", {
+      from: "treasureBalance",
     });
-    navigateTo("/promoters/support-fund");
+    navigateTo("/promoters/support-treasure");
   };
 
   useEffect(() => {
-    logEvent("fundScreen_view");
+    logEvent("treasureScreen_view");
   }, []);
 
   useEffect(() => {
@@ -59,9 +59,9 @@ function TreasurePage(): JSX.Element {
       <S.SectionTitle>{t("treasureBalance")}</S.SectionTitle>
       <S.CardContainer>
         <CardBlank>
-          <S.FundText>
-            {contractBalance} <S.FundTextCoin>{coin}</S.FundTextCoin>
-          </S.FundText>
+          <S.TreasureText>
+            {contractBalance} <S.TreasureTextCoin>{coin}</S.TreasureTextCoin>
+          </S.TreasureText>
           <Button
             text={t("treasureSupportButtonText")}
             onClick={handleSupportButtonClick}

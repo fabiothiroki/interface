@@ -28,7 +28,7 @@ function GivingsSection(): JSX.Element {
   const coin = "USDC";
 
   const handleShowGivingsButtonClick = () => {
-    logEvent("fundShowGivingsListBtn_click", {
+    logEvent("treasureShowGivingsListBtn_click", {
       from: "yourGivingsCarousel",
     });
     if (wallet) {

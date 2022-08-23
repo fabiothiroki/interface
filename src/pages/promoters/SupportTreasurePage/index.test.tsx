@@ -15,15 +15,15 @@ describe("SupportTreasurePage", () => {
     expectTextToBeInTheDocument("Your giving");
   });
 
-  it("logs the fundSupportScreen_view event", () => {
-    expectLogEventToHaveBeenCalledWith("fundSupportScreen_view");
+  it("logs the treasureSupportScreen_view event", () => {
+    expectLogEventToHaveBeenCalledWith("treasureSupportScreen_view");
   });
 
   describe("when the option toggle is changed", () => {
-    it("logs the fundSupportGivingTogBtn_click event", () => {
+    it("logs the treasureSupportGivingTogBtn_click event", () => {
       clickOn("Cryptocurrency");
 
-      expectLogEventToHaveBeenCalledWith("fundSupportGivingTogBtn_click", {
+      expectLogEventToHaveBeenCalledWith("treasureSupportGivingTogBtn_click", {
         option: "cryptocurrency",
       });
     });

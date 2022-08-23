@@ -43,7 +43,7 @@ function ImpactInformationSection(): JSX.Element {
   };
 
   const handleOfferClick = (offer: Offer, index: number) => {
-    logEvent("fundSupportAmountBtn_click", {
+    logEvent("treasureSupportAmountBtn_click", {
       option: offer?.id,
     });
     setSelectedButtonIndex(index);

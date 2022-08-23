@@ -55,7 +55,7 @@ function CardSection(): JSX.Element {
     if (currentSectionIndex < sections.length - 1) {
       setCurrentSectionIndex(currentSectionIndex + 1);
       setOfferId(offers?.[selectedButtonIndex]?.id ?? 0);
-      logEvent("fundSupportNextStepBtn_click");
+      logEvent("treasureSupportNextStepBtn_click");
     } else {
       handleSubmit();
     }
