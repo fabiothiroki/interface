@@ -38,7 +38,7 @@ function ConfirmDonationModal({
       body={`${chosenNonProfit?.impactByTicket} ${chosenNonProfit?.impactDescription}`}
       primaryButtonText={t("confirmModalPrimaryButtonText")}
       primaryButtonCallback={() => {
-        if (currentUser) donate(currentUser?.email);
+        if (currentUser) donate(currentUser.email);
       }}
       secondaryButtonText={t("confirmModalSecondaryButtonText")}
       secondaryButtonCallback={closeConfirmModal}
