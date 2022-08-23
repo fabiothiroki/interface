@@ -10,6 +10,7 @@ import ImpactPage from "pages/users/ImpactPage";
 import MainLayout from "layouts/MainLayout";
 import FundPage from "pages/promoters/FundPage";
 import SupportFundPage from "pages/promoters/SupportFundPage";
+import BillingInformationPage from "pages/promoters/SupportFundPage/CardSection/BillingInformationPage";
 import GivingsPage from "pages/promoters/GivingsPage";
 import WalletLayout from "layouts/WalletLayout";
 import CardPaymentInformationProvider from "contexts/cardPaymentInformationContext";
@@ -92,6 +93,20 @@ function RoutesComponent(): JSX.Element {
                 </WalletLayout>
               </WalletProvider>
             </NetworkProvider>
+          </CurrentUserProvider>
+        </Suspense>
+      </Route>
+
+      <Route path="/promoters/support-fund/billing-information" exact>
+        <Suspense fallback={<div />}>
+          <CurrentUserProvider>
+            <WalletProvider>
+              <WalletLayout hasBackButton>
+                <CardPaymentInformationProvider>
+                  <BillingInformationPage />
+                </CardPaymentInformationProvider>
+              </WalletLayout>
+            </WalletProvider>
           </CurrentUserProvider>
         </Suspense>
       </Route>

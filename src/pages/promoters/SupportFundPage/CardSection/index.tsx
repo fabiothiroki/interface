@@ -5,7 +5,8 @@ import Divider from "components/atomics/Divider";
 import { useCardPaymentInformation } from "contexts/cardPaymentInformationContext";
 import useOffers from "hooks/apiHooks/useOffers";
 import { logEvent } from "services/analytics";
-import BillingInformationSection from "./BillingInformationSection";
+import useNavigation from "hooks/useNavigation";
+import BillingInformationSection from "./BillingInformationPage/BillingInformationSection";
 import FeesSection from "./FeesSection";
 import * as S from "./styles";
 import PaymentInformation from "./PaymentInformationSection";
@@ -15,6 +16,8 @@ const { lightGray } = theme.colors;
 
 function CardSection(): JSX.Element {
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
+
+  const { navigateTo } = useNavigation();
 
   const { t } = useTranslation("translation", {
     keyPrefix: "promoters.supportFundPage.cardSection",
@@ -56,6 +59,7 @@ function CardSection(): JSX.Element {
       setCurrentSectionIndex(currentSectionIndex + 1);
       setOfferId(offers?.[selectedButtonIndex]?.id ?? 0);
       logEvent("fundSupportNextStepBtn_click");
+      navigateTo("/promoters/support-fund/billing-information");
     } else {
       handleSubmit();
     }
