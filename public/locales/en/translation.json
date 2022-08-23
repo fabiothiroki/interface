@@ -20,6 +20,9 @@
       "receiveTicketAnimationModalTitle": "Receiving Ticket...",
       "receiveTicketAnimationModalOrigin": "Supportes",
       "receiveTicketAnimationModalDestiny": "You",
+      "donateAnimationModalTitle":"Making donation...",
+      "donateAnimationModalOrigin": "You",
+      "donateAnimationModalDestiny": "Project",
       "modalForm": {
         "footerStartText": "By signing up you agree to Ribon's",
         "footerAnd": "and",

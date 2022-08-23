@@ -20,6 +20,9 @@
       "receiveTicketAnimationModalTitle": "Recebendo ticket...",
       "receiveTicketAnimationModalOrigin": "Apoiadores",
       "receiveTicketAnimationModalDestiny": "Você",
+      "donateAnimationModalTitle":"Realizando doação... ",
+      "donateAnimationModalOrigin": "Você",
+      "donateAnimationModalDestiny": "Projeto",
       "modalForm": {
         "footerStartText": "Ao inserir seu e-mail e se inscrever, você aceita a nossa",
         "footerAnd": "e",

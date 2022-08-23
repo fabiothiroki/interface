@@ -10,6 +10,7 @@ import useUsers from "hooks/apiHooks/useUsers";
 import useSources from "hooks/apiHooks/useSources";
 import { useCurrentUser } from "contexts/currentUserContext";
 import { useIntegrationId } from "hooks/useIntegrationId";
+import useDonations from "hooks/apiHooks/useDonations";
 import useIntegration from "hooks/apiHooks/useIntegration";
 import { useModal } from "hooks/modalHooks/useModal";
 import { MODAL_TYPES } from "contexts/modalContext/helpers";
@@ -27,7 +28,7 @@ import ConfirmSection from "./ConfirmSection";
 
 function CausesPage(): JSX.Element {
   const [confirmModalVisible, setConfirmModalVisible] = useState(false);
-  const [donationInProgressModalVisible, setDonationInProgressModalVisible] =
+  const [donationInProcessModalVisible, setDonationInProcessModalVisible] =
     useState(false);
   const [chosenNonProfit, setChosenNonProfit] = useState<NonProfit>();
   const integrationId = useIntegrationId();
@@ -63,6 +64,7 @@ function CausesPage(): JSX.Element {
   const { signedIn, setCurrentUser } = useCurrentUser();
   const { showDonationTicketModal } = useDonationTicketModal();
   const { canDonate } = useCanDonate(integrationId);
+  const { donate } = useDonations();
 
   function hasReceivedTicketToday() {
     const donationModalSeenAtKey = getLocalStorageItem(
@@ -98,24 +100,47 @@ function CausesPage(): JSX.Element {
     setConfirmModalVisible(false);
   }, []);
 
-  const donate = useCallback(
-    async (email: string) => {
+  const showDonationInProcessModal = useCallback(async () => {
+    setConfirmModalVisible(false);
+    setDonationInProcessModalVisible(true);
+  }, []);
+
+  async function handleDonate(email: string) {
+    setDonationInProcessModalVisible(false);
+    if (integration && chosenNonProfit) {
       try {
-        if (!signedIn) {
-          logEvent("authDonationDialButton_click");
-          const user = await findOrCreateUser(email);
-          if (integration) {
-            createSource(user.id, integration.id);
-          }
-          setCurrentUser(user);
-        }
+        await donate(integration?.id, chosenNonProfit?.id, email);
         navigateTo({
-          pathname: "/donation-in-process",
-          state: { nonProfit: chosenNonProfit, integration },
+          pathname: "/donation-done",
+          state: { nonProfit: chosenNonProfit },
         });
-      } catch (e) {
+      } catch (e: any) {
+        const newState =
+          e.response.status === 403
+            ? { blockedDonation: true }
+            : { failedDonation: true };
+        navigateTo({ pathname: "/", state: newState });
+        window.location.reload();
         logError(e);
       }
+    }
+  }
+
+  const donateTicket = useCallback(
+    async (email: string) => {
+      if (!signedIn) {
+        logEvent("authDonationDialButton_click");
+        const user = await findOrCreateUser(email);
+        if (integration) {
+          createSource(user.id, integration.id);
+        }
+        setCurrentUser(user);
+      }
+      showDonationInProcessModal();
+      setTimeout(async () => {
+        await handleDonate(email);
+      }, 3000);
+
       logEvent("donateConfirmDialButton_click", {
         causeId: chosenNonProfit?.id,
       });
@@ -128,11 +153,10 @@ function CausesPage(): JSX.Element {
       {chosenNonProfit && (
         <ConfirmSection
           chosenNonProfit={chosenNonProfit}
-          donate={donate}
+          donate={donateTicket}
           confirmModalVisible={confirmModalVisible}
-          donationInProgressModalVisible={donationInProgressModalVisible}
+          donationInProcessModalVisible={donationInProcessModalVisible}
           setConfirmModalVisible={setConfirmModalVisible}
-          setDonationInProgressModalVisible={setDonationInProgressModalVisible}
           closeConfirmModal={closeConfirmModal}
         />
       )}

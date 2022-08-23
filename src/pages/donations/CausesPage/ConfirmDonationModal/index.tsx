@@ -1,6 +1,8 @@
 import { useCallback } from "react";
-import Ticket from "assets/images/ticket.svg";
+import UserIcon from "assets/icons/user.svg";
+import Ticket from "assets/icons/ticket.svg";
 import ModalIcon from "components/moleculars/modals/ModalIcon";
+import ModalAnimation from "components/moleculars/modals/ModalAnimation";
 import { useTranslation } from "react-i18next";
 import NonProfit from "types/entities/NonProfit";
 import { useCurrentUser } from "contexts/currentUserContext";
@@ -9,17 +11,15 @@ type Props = {
   donate: (email: string) => void;
   chosenNonProfit: NonProfit;
   confirmModalVisible: boolean;
-  donationInProgressModalVisible: boolean;
+  donationInProcessModalVisible: boolean;
   setConfirmModalVisible: (visible: boolean) => void;
-  setDonationInProgressModalVisible: (visible: boolean) => void;
 };
 function ConfirmDonationModal({
   donate,
   chosenNonProfit,
   confirmModalVisible,
-  donationInProgressModalVisible,
+  donationInProcessModalVisible,
   setConfirmModalVisible,
-  setDonationInProgressModalVisible,
 }: Props): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "donations.causesPage",
@@ -31,20 +31,30 @@ function ConfirmDonationModal({
     setConfirmModalVisible(false);
   }, []);
 
-  return (
+  return !donationInProcessModalVisible ? (
     <ModalIcon
       icon={Ticket}
       title={t("confirmModalAuthTitle")}
       body={`${chosenNonProfit?.impactByTicket} ${chosenNonProfit?.impactDescription}`}
       primaryButtonText={t("confirmModalPrimaryButtonText")}
       primaryButtonCallback={() => {
-        if (currentUser) donate(currentUser.email);
+        if (currentUser) donate(currentUser?.email);
       }}
       secondaryButtonText={t("confirmModalSecondaryButtonText")}
       secondaryButtonCallback={closeConfirmModal}
       visible={confirmModalVisible}
       onClose={closeConfirmModal}
       roundIcon
+    />
+  ) : (
+    <ModalAnimation
+      text={t("donateAnimationModalTitle")}
+      iconOrigin={UserIcon}
+      textOrigin={t("donateAnimationModalOrigin")}
+      iconDestiny={chosenNonProfit?.logo}
+      textDestiny={t("donateAnimationModalDestiny")}
+      icon={Ticket}
+      visible={donationInProcessModalVisible}
     />
   );
 }

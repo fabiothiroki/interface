@@ -9,18 +9,16 @@ type Props = {
   chosenNonProfit: NonProfit;
   donate: (email: string) => void;
   confirmModalVisible: boolean;
-  donationInProgressModalVisible: boolean;
+  donationInProcessModalVisible: boolean;
   setConfirmModalVisible: (visible: boolean) => void;
-  setDonationInProgressModalVisible: (visible: boolean) => void;
   closeConfirmModal: () => void;
 };
 function ConfirmSection({
   chosenNonProfit,
   donate,
   confirmModalVisible,
-  donationInProgressModalVisible,
+  donationInProcessModalVisible,
   setConfirmModalVisible,
-  setDonationInProgressModalVisible,
   closeConfirmModal,
 }: Props): JSX.Element {
   const { t } = useTranslation("translation", {
@@ -34,9 +32,8 @@ function ConfirmSection({
       donate={donate}
       chosenNonProfit={chosenNonProfit}
       confirmModalVisible={confirmModalVisible}
-      donationInProgressModalVisible={donationInProgressModalVisible}
+      donationInProcessModalVisible={donationInProcessModalVisible}
       setConfirmModalVisible={setConfirmModalVisible}
-      setDonationInProgressModalVisible={setDonationInProgressModalVisible}
     />
   ) : (
     <ConfirmEmail
