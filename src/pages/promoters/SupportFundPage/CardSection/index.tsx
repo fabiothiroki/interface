@@ -9,7 +9,7 @@ import useNavigation from "hooks/useNavigation";
 import BillingInformationSection from "./BillingInformationPage/BillingInformationSection";
 import FeesSection from "./FeesSection";
 import * as S from "./styles";
-import PaymentInformation from "./PaymentInformationSection";
+import PaymentInformation from "./PaymentInformationPage/PaymentInformationSection";
 import ImpactInformationSection from "./ImpactInformationSection";
 
 const { lightGray } = theme.colors;
