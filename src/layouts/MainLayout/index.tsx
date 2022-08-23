@@ -22,7 +22,6 @@ function MainLayout({ children, hideHeader = false }: Props): JSX.Element {
     }
     return false;
   }
-  console.log(hasShowNavigationBar());
   return (
     <>
       {hasShowNavigationBar() && <Navigation />}
