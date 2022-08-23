@@ -13,7 +13,7 @@ import * as S from "./styles";
 function BillingInformationSection(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix:
-      "promoters.supportFundPage.cardSection.billingInformationSection",
+      "promoters.supportFundPage.cardSection.billingInformationPage.billingInformationSection",
   });
   const { currentLang } = useLanguage();
   const maxLengthByLanguage = currentLang === Languages.PT ? 14 : 11;
