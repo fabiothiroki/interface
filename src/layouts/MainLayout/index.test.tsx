@@ -1,6 +1,5 @@
 import { renderComponent } from "config/testUtils/renders";
 import { expectTextToBeInTheDocument } from "config/testUtils/expects";
-import { waitForPromises } from "config/testUtils";
 import MainLayout from ".";
 
 jest.mock(
