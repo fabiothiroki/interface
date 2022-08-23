@@ -5,17 +5,16 @@ import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import theme from "styles/theme";
 import { logEvent } from "services/analytics";
-import useNavigation from "hooks/useNavigation";
-import BillingInformationSection from "./BillingInformationSection";
+import PaymentInformationSection from "./PaymentInformationSection";
 import FeesSection from "../FeesSection";
 import * as S from "./styles";
 
-function BillingInformationPage(): JSX.Element {
+function PaymentInformationPage(): JSX.Element {
   const { t } = useTranslation("translation", {
-    keyPrefix: "promoters.supportFundPage.cardSection.billingInformationPage",
+    keyPrefix: "promoters.supportFundPage.cardSection.paymentInformationPage",
   });
+
   const { lightGray } = theme.colors;
-  const { navigateTo } = useNavigation();
 
   const { currentCoin, selectedButtonIndex, buttonDisabled, setCryptoGiving } =
     useCardPaymentInformation();
@@ -36,7 +35,6 @@ function BillingInformationPage(): JSX.Element {
 
   function handleClickNext() {
     logEvent("fundSupportNextStepBtn_click", { from: "billingInfo" });
-    navigateTo("/promoters/support-fund/payment-information");
   }
 
   return (
@@ -50,7 +48,7 @@ function BillingInformationPage(): JSX.Element {
       />
       <Divider color={lightGray} />
 
-      <BillingInformationSection />
+      <PaymentInformationSection />
 
       <S.ButtonContainer>
         <S.FinishButton
@@ -65,4 +63,4 @@ function BillingInformationPage(): JSX.Element {
   );
 }
 
-export default BillingInformationPage;
+export default PaymentInformationPage;
