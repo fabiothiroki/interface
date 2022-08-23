@@ -140,13 +140,17 @@
             "taxId": "Tax ID"
           }
         },
-        "paymentInformationSection": {
-          "title": "Payment method",
-          "email": "E-mail",
-          "cardNumber": "Card number",
-          "cardName": "Name on card",
-          "cardDueDate": "Expiration",
-          "cvv": "Card verification code"
+        "paymentInformationPage": {
+          "title": "Your Giving",
+          "buttonTextCard": "Continue",
+          "paymentInformationSection": {
+            "title": "Payment method",
+            "email": "E-mail",
+            "cardNumber": "Card number",
+            "cardName": "Name on card",
+            "cardDueDate": "Expiration",
+            "cvv": "Card verification code"
+          }
         },
         "impactSimulationSection": {
           "label": "Select a NGO",
