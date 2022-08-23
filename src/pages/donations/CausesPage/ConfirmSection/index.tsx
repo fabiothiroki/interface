@@ -7,6 +7,7 @@ import { logError } from "services/crashReport";
 import useNavigation from "hooks/useNavigation";
 import NonProfit from "types/entities/NonProfit";
 import Integration from "types/entities/Integration";
+import { logEvent } from "services/analytics";
 import ConfirmEmail from "../ConfirmEmail";
 import ConfirmDonationModal from "../ConfirmDonationModal";
 
@@ -62,6 +63,7 @@ function ConfirmSection({
   const showDonationInProcessModal = useCallback(async (email: string) => {
     setConfirmModalVisible(false);
     setDonationInProcessModalVisible(true);
+    logEvent("donateDonationLoaderDial_view");
     setTimeout(async () => {
       await handleDonate(email);
     }, 3000);
