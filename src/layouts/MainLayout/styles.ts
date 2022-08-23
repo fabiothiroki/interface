@@ -23,7 +23,5 @@ export const MainBodyContainer = styled.div`
 `;
 
 export const Settings = styled.img`
-  ${() => css`
-    cursor: pointer;
-  `}
+  cursor: pointer;
 `;
