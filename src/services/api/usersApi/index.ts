@@ -10,7 +10,9 @@ const usersApi = {
   postSearchUser: (email: string): Promise<AxiosResponse<User>> =>
     apiPost("users/search", { email }),
 
-  postCanDonate: (integrationId: number): Promise<AxiosResponse<CanDonate>> =>
+  postCanDonate: (
+    integrationId: number | string,
+  ): Promise<AxiosResponse<CanDonate>> =>
     apiPost("users/can_donate", { integrationId }),
 };
 
