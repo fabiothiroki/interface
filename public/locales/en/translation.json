@@ -41,10 +41,6 @@
       "moreInfoButtonText": "More info",
       "youDonatedText": "You donated"
     },
-    "donationInProcess": {
-      "animationText": "Donating...",
-      "impactText": "This donation is funded by Ribon’s Donation Treasure"
-    },
     "menu": {
       "impactPageTitle": "Impact",
       "causesPageTitle": "Causes",

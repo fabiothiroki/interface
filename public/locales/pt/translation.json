@@ -41,10 +41,6 @@
       "moreInfoButtonText": "Mais informações",
       "youDonatedText": "Você doou"
     },
-    "donationInProcess": {
-      "animationText": "Doando...",
-      "impactText": "Essa doação é financiada pelo Tesouro de Doação da Ribon"
-    },
     "menu": {
       "impactPageTitle": "Impacto",
       "causesPageTitle": "Causas",

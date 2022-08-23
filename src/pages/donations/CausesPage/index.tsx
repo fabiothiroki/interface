@@ -1,16 +1,16 @@
 import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { logEvent } from "services/analytics";
-import useNavigation from "hooks/useNavigation";
+
 import NonProfit from "types/entities/NonProfit";
 import useNonProfits from "hooks/apiHooks/useNonProfits";
-import { logError } from "services/crashReport";
+
 import { useLocation } from "react-router-dom";
 import useUsers from "hooks/apiHooks/useUsers";
 import useSources from "hooks/apiHooks/useSources";
 import { useCurrentUser } from "contexts/currentUserContext";
 import { useIntegrationId } from "hooks/useIntegrationId";
-import useDonations from "hooks/apiHooks/useDonations";
+
 import useIntegration from "hooks/apiHooks/useIntegration";
 import { useModal } from "hooks/modalHooks/useModal";
 import { MODAL_TYPES } from "contexts/modalContext/helpers";
@@ -57,14 +57,12 @@ function CausesPage(): JSX.Element {
     DONATION_MODAL_SEEN_AT_KEY,
   );
 
-  const { navigateTo } = useNavigation();
   const { nonProfits, isLoading } = useNonProfits();
   const { findOrCreateUser } = useUsers();
   const { createSource } = useSources();
   const { signedIn, setCurrentUser } = useCurrentUser();
   const { showDonationTicketModal } = useDonationTicketModal();
   const { canDonate } = useCanDonate(integrationId);
-  const { donate } = useDonations();
 
   function hasReceivedTicketToday() {
     const donationModalSeenAtKey = getLocalStorageItem(
@@ -100,32 +98,6 @@ function CausesPage(): JSX.Element {
     setConfirmModalVisible(false);
   }, []);
 
-  const showDonationInProcessModal = useCallback(async () => {
-    setConfirmModalVisible(false);
-    setDonationInProcessModalVisible(true);
-  }, []);
-
-  async function handleDonate(email: string) {
-    setDonationInProcessModalVisible(false);
-    if (integration && chosenNonProfit) {
-      try {
-        await donate(integration?.id, chosenNonProfit?.id, email);
-        navigateTo({
-          pathname: "/donation-done",
-          state: { nonProfit: chosenNonProfit },
-        });
-      } catch (e: any) {
-        const newState =
-          e.response.status === 403
-            ? { blockedDonation: true }
-            : { failedDonation: true };
-        navigateTo({ pathname: "/", state: newState });
-        window.location.reload();
-        logError(e);
-      }
-    }
-  }
-
   const donateTicket = useCallback(
     async (email: string) => {
       if (!signedIn) {
@@ -136,11 +108,6 @@ function CausesPage(): JSX.Element {
         }
         setCurrentUser(user);
       }
-      showDonationInProcessModal();
-      setTimeout(async () => {
-        await handleDonate(email);
-      }, 3000);
-
       logEvent("donateConfirmDialButton_click", {
         causeId: chosenNonProfit?.id,
       });
@@ -150,10 +117,12 @@ function CausesPage(): JSX.Element {
 
   return (
     <S.Container>
-      {chosenNonProfit && (
+      {chosenNonProfit && integration && (
         <ConfirmSection
           chosenNonProfit={chosenNonProfit}
-          donate={donateTicket}
+          donateTicket={donateTicket}
+          integration={integration}
+          setDonationInProcessModalVisible={setDonationInProcessModalVisible}
           confirmModalVisible={confirmModalVisible}
           donationInProcessModalVisible={donationInProcessModalVisible}
           setConfirmModalVisible={setConfirmModalVisible}
