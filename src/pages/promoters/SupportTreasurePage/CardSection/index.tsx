@@ -17,7 +17,7 @@ function CardSection(): JSX.Element {
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
 
   const { t } = useTranslation("translation", {
-    keyPrefix: "promoters.supportFundPage.cardSection",
+    keyPrefix: "promoters.supportTreasurePage.cardSection",
   });
 
   const {

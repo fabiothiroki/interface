@@ -19,7 +19,7 @@ function GivingsSection(): JSX.Element {
   const [allDonations, setAllDonations] = useState<any>();
   const { navigateTo } = useNavigation();
   const { t } = useTranslation("translation", {
-    keyPrefix: "promoters.fundPage.givingsSection",
+    keyPrefix: "promoters.treasurePage.givingsSection",
   });
   const { wallet, connectWallet } = useWalletContext();
   const { getAllPromotersDonations } = usePromoterDonations();

@@ -4,24 +4,24 @@ import {
   expectPageToNavigateTo,
   expectTextToBeInTheDocument,
 } from "config/testUtils/expects";
-import FundPage from ".";
+import TreasurePage from ".";
 
-describe("FundPage", () => {
+describe("TreasurePage", () => {
   it("should render without error", () => {
-    renderComponent(<FundPage />);
+    renderComponent(<TreasurePage />);
 
     expectTextToBeInTheDocument("Donation treasure");
   });
 
   it("logs the fundScreen_view event when loaded", () => {
-    renderComponent(<FundPage />);
+    renderComponent(<TreasurePage />);
 
     expectLogEventToHaveBeenCalledWith("fundScreen_view");
   });
 
   describe("when there is a wallet connected", () => {
     beforeEach(() => {
-      renderComponent(<FundPage />, {
+      renderComponent(<TreasurePage />, {
         walletProviderValue: {
           wallet: "0xFFFF",
         },

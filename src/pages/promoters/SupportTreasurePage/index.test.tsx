@@ -3,11 +3,11 @@ import {
   expectLogEventToHaveBeenCalledWith,
   expectTextToBeInTheDocument,
 } from "config/testUtils/expects";
-import SupportFundPage from ".";
+import SupportTreasurePage from ".";
 
-describe("SupportFundPage", () => {
+describe("SupportTreasurePage", () => {
   beforeEach(async () => {
-    renderComponent(<SupportFundPage />);
+    renderComponent(<SupportTreasurePage />);
     await waitForPromises();
   });
 

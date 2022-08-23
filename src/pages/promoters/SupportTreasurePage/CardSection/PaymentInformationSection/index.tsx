@@ -11,7 +11,7 @@ import * as S from "./styles";
 function PaymentInformation() {
   const { t } = useTranslation("translation", {
     keyPrefix:
-      "promoters.supportFundPage.cardSection.paymentInformationSection",
+      "promoters.supportTreasurePage.cardSection.paymentInformationSection",
   });
 
   const {

@@ -26,7 +26,7 @@ function CryptoSection(): JSX.Element {
   const { currentNetwork } = useNetworkContext();
 
   const { t } = useTranslation("translation", {
-    keyPrefix: "promoters.supportFundPage",
+    keyPrefix: "promoters.supportTreasurePage",
   });
   const contract = useContract({
     address: currentNetwork.ribonContractAddress,

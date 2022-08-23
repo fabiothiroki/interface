@@ -13,13 +13,13 @@ import * as S from "./styles";
 import GivingsSection from "./GivingsSection";
 import ModalOnboarding from "./ModalOnboarding";
 
-function FundPage(): JSX.Element {
+function TreasurePage(): JSX.Element {
   const coin = "USDC";
   const { navigateTo } = useNavigation();
   const { currentNetwork } = useNetworkContext();
 
   const { t } = useTranslation("translation", {
-    keyPrefix: "promoters.fundPage",
+    keyPrefix: "promoters.treasurePage",
   });
   const donationTokenContract = useContract({
     address: currentNetwork.donationTokenContractAddress,
@@ -75,4 +75,4 @@ function FundPage(): JSX.Element {
   );
 }
 
-export default FundPage;
+export default TreasurePage;

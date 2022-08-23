@@ -7,10 +7,10 @@ import * as S from "./styles";
 import CardSection from "./CardSection";
 import CryptoSection from "./CryptoSection";
 
-function SupportFundPage(): JSX.Element {
+function SupportTreasurePage(): JSX.Element {
   const [isCard, setIsCard] = useState(false);
   const { t } = useTranslation("translation", {
-    keyPrefix: "promoters.supportFundPage",
+    keyPrefix: "promoters.supportTreasurePage",
   });
 
   useEffect(() => {
@@ -42,4 +42,4 @@ function SupportFundPage(): JSX.Element {
   );
 }
 
-export default SupportFundPage;
+export default SupportTreasurePage;

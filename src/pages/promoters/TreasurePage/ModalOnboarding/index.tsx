@@ -20,7 +20,7 @@ function ModalOnboarding(): JSX.Element {
   }, []);
 
   const { t } = useTranslation("translation", {
-    keyPrefix: "promoters.fundPage.modalOnboarding",
+    keyPrefix: "promoters.treasurePage.modalOnboarding",
   });
 
   return (
