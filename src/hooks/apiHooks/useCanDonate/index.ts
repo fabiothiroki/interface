@@ -3,7 +3,7 @@ import usersApi from "services/api/usersApi";
 import { CanDonate } from "types/apiResponses/CanDonate";
 import { emptyRequest } from "services/api";
 
-function useCanDonate(integrationId: number | null) {
+function useCanDonate(integrationId: number | string | null) {
   const {
     data: canDonate,
     isLoading,
