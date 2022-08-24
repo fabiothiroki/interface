@@ -30,7 +30,7 @@ describe("SupportFundPage", () => {
 
     it("should render card form", () => {
       expectTextToBeInTheDocument("Choose your giving");
-      expectTextToBeInTheDocument("Next");
+      expectTextToBeInTheDocument("Proceed to Checkout");
     });
 
     it("should render cryptocurrency section", () => {
