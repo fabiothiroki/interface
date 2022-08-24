@@ -21,6 +21,7 @@ import { useDonationTicketModal } from "hooks/modalHooks/useDonationTicketModal"
 import { IfFeatureEnabled } from "@growthbook/growthbook-react";
 import Spinner from "components/atomics/Spinner";
 import useCanDonate from "hooks/apiHooks/useCanDonate";
+import { logError } from "services/crashReport";
 import * as S from "./styles";
 import NonProfitsList from "./NonProfitsList";
 import { LocationStateType } from "./LocationStateType";
@@ -100,13 +101,17 @@ function CausesPage(): JSX.Element {
 
   const donateTicket = useCallback(
     async (email: string) => {
-      if (!signedIn) {
-        logEvent("authDonationDialButton_click");
-        const user = await findOrCreateUser(email);
-        if (integration) {
-          createSource(user.id, integration.id);
+      try {
+        if (!signedIn) {
+          logEvent("authDonationDialButton_click");
+          const user = await findOrCreateUser(email);
+          if (integration) {
+            createSource(user.id, integration.id);
+          }
+          setCurrentUser(user);
         }
-        setCurrentUser(user);
+      } catch (e) {
+        logError(e);
       }
       logEvent("donateConfirmDialButton_click", {
         causeId: chosenNonProfit?.id,

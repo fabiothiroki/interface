@@ -43,7 +43,7 @@ function ConfirmSection({
     setDonationInProcessModalVisible(false);
     if (integration && chosenNonProfit) {
       try {
-        await donate(integration?.id, chosenNonProfit?.id, email);
+        await donate(integration?.id, chosenNonProfit.id, email);
         navigateTo({
           pathname: "/donation-done",
           state: { nonProfit: chosenNonProfit },
@@ -60,7 +60,7 @@ function ConfirmSection({
     }
   }
 
-  const showDonationInProcessModal = useCallback(async (email: string) => {
+  const handleSignedInDonation = useCallback(async (email: string) => {
     setConfirmModalVisible(false);
     setDonationInProcessModalVisible(true);
     logEvent("donateDonationLoaderDial_view");
@@ -71,7 +71,7 @@ function ConfirmSection({
 
   return signedIn ? (
     <ConfirmDonationModal
-      donate={showDonationInProcessModal}
+      donate={handleSignedInDonation}
       chosenNonProfit={chosenNonProfit}
       confirmModalVisible={confirmModalVisible}
       donationInProcessModalVisible={donationInProcessModalVisible}
@@ -81,7 +81,7 @@ function ConfirmSection({
     <ConfirmEmail
       onFormSubmit={(values) => {
         donateTicket(values.email);
-        showDonationInProcessModal(values.email);
+        handleSignedInDonation(values.email);
       }}
       visible={confirmModalVisible}
       icon={Ticket}

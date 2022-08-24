@@ -31,7 +31,17 @@ function ConfirmDonationModal({
     setConfirmModalVisible(false);
   }, []);
 
-  return !donationInProcessModalVisible ? (
+  return donationInProcessModalVisible ? (
+    <ModalAnimation
+      text={t("donateAnimationModalTitle")}
+      iconOrigin={UserIcon}
+      textOrigin={t("donateAnimationModalOrigin")}
+      iconDestiny={chosenNonProfit?.logo}
+      textDestiny={t("donateAnimationModalDestiny")}
+      icon={Ticket}
+      visible={donationInProcessModalVisible}
+    />
+  ) : (
     <ModalIcon
       icon={Ticket}
       title={t("confirmModalAuthTitle")}
@@ -45,16 +55,6 @@ function ConfirmDonationModal({
       visible={confirmModalVisible}
       onClose={closeConfirmModal}
       roundIcon
-    />
-  ) : (
-    <ModalAnimation
-      text={t("donateAnimationModalTitle")}
-      iconOrigin={UserIcon}
-      textOrigin={t("donateAnimationModalOrigin")}
-      iconDestiny={chosenNonProfit?.logo}
-      textDestiny={t("donateAnimationModalDestiny")}
-      icon={Ticket}
-      visible={donationInProcessModalVisible}
     />
   );
 }
