@@ -123,7 +123,7 @@
         "currency": "Moeda",
         "subtitleCard": "Escolha sua contribuição",
         "simulateSectionTitle": "Simule um resultado possível",
-        "buttonTextCard": "Próximo",
+        "buttonTextCard": "Ir para pagamento",
         "buttonSubmit": "Confirmar",
         "detailsSubtitle": "Detalhes da contribuição",
         "netGivingText": "Contribuição líquida: {{netGiving}}*",

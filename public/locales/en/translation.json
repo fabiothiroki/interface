@@ -123,7 +123,7 @@
         "currency": "Currency",
         "subtitleCard": "Choose your giving",
         "simulateSectionTitle": "Simulate a possible result",
-        "buttonTextCard": "Next",
+        "buttonTextCard": "Proceed to Checkout",
         "buttonSubmit": "Confirm",
         "detailsSubtitle": "Giving details",
         "netGivingText": "Net giving: {{netGiving}}*",
