@@ -27,6 +27,6 @@ describe("CardSection", () => {
 
     clickOn("Proceed to Checkout");
 
-    expectTextToBeInTheDocument("Billing information");
+    expectTextToBeInTheDocument("Billing Information");
   });
 });
