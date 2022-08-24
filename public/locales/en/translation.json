@@ -20,6 +20,9 @@
       "receiveTicketAnimationModalTitle": "Receiving Ticket...",
       "receiveTicketAnimationModalOrigin": "Supportes",
       "receiveTicketAnimationModalDestiny": "You",
+      "donateAnimationModalTitle":"Making donation...",
+      "donateAnimationModalOrigin": "You",
+      "donateAnimationModalDestiny": "Project",
       "modalForm": {
         "footerStartText": "By signing up you agree to Ribon's",
         "footerAnd": "and",
@@ -37,10 +40,6 @@
       "ngoInformation": "Amor em Patas is an organization that aims to rescue abandoned animals, take care of them and seek adoption.",
       "moreInfoButtonText": "More info",
       "youDonatedText": "You donated"
-    },
-    "donationInProcess": {
-      "animationText": "Donating...",
-      "impactText": "This donation is funded by Ribon’s Donation Treasure"
     },
     "menu": {
       "impactPageTitle": "Impact",
@@ -78,7 +77,7 @@
     "noImpactButton": "Donate now"
   },
   "promoters": {
-    "fundPage": {
+    "treasurePage": {
       "title": "Donation treasure",
       "treasureBalance": "Treasure balance",
       "treasureSupportButtonText": "Support the treasure",
@@ -101,7 +100,7 @@
         "button": "Ok"
       }
     },
-    "supportFundPage": {
+    "supportTreasurePage": {
       "title": "Your giving",
       "subtitle": "How much do you want to give?",
       "buttonText": "Confirm giving",
@@ -173,6 +172,9 @@
       "modalSuccessTitle": "You've added {{value}} USDC to the treasury!",
       "modalSuccessDescription": "Your donation has been converted into cryptocurrencies to fund more vouchers.",
       "modalSuccessButton": "Ok"
+    },
+    "networkContext": {
+      "invalidNetworkMessage": "Connect to a valid network"
     }
   }
 }

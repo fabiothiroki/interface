@@ -5,13 +5,12 @@ import CausesPage from "pages/donations/CausesPage";
 import CurrentUserProvider from "contexts/currentUserContext";
 import ConfirmEmailPage from "pages/donations/ConfirmEmailPage";
 import DonationDonePage from "pages/donations/DonationDonePage";
-import DonationInProcessPage from "pages/donations/DonationInProcessPage";
 import ImpactPage from "pages/users/ImpactPage";
 import MainLayout from "layouts/MainLayout";
-import FundPage from "pages/promoters/FundPage";
-import SupportFundPage from "pages/promoters/SupportFundPage";
-import BillingInformationPage from "pages/promoters/SupportFundPage/CardSection/BillingInformationPage";
-import PaymentInformationPage from "pages/promoters/SupportFundPage/CardSection/PaymentInformationPage";
+import TreasurePage from "pages/promoters/TreasurePage";
+import SupportTreasurePage from "pages/promoters/SupportTreasurePage";
+import BillingInformationPage from "pages/promoters/SupportTreasurePage/CardSection/BillingInformationPage";
+import PaymentInformationPage from "pages/promoters/SupportTreasurePage/CardSection/PaymentInformationPage";
 import GivingsPage from "pages/promoters/GivingsPage";
 import WalletLayout from "layouts/WalletLayout";
 import CardPaymentInformationProvider from "contexts/cardPaymentInformationContext";
@@ -50,14 +49,6 @@ function RoutesComponent(): JSX.Element {
         </Suspense>
       </Route>
 
-      <Route path="/donation-in-process" exact>
-        <Suspense fallback={<div />}>
-          <CurrentUserProvider>
-            <DonationInProcessPage />
-          </CurrentUserProvider>
-        </Suspense>
-      </Route>
-
       <Route path="/impact" exact>
         <Suspense fallback={<div />}>
           <CurrentUserProvider>
@@ -68,13 +59,13 @@ function RoutesComponent(): JSX.Element {
         </Suspense>
       </Route>
 
-      <Route path="/promoters/fund" exact>
+      <Route path="/promoters/treasure" exact>
         <Suspense fallback={<div />}>
           <CurrentUserProvider>
             <NetworkProvider>
               <WalletProvider>
                 <WalletLayout>
-                  <FundPage />
+                  <TreasurePage />
                 </WalletLayout>
               </WalletProvider>
             </NetworkProvider>
@@ -82,14 +73,14 @@ function RoutesComponent(): JSX.Element {
         </Suspense>
       </Route>
 
-      <Route path="/promoters/support-fund" exact>
+      <Route path="/promoters/support-treasure" exact>
         <Suspense fallback={<div />}>
           <CurrentUserProvider>
             <NetworkProvider>
               <WalletProvider>
                 <WalletLayout hideNavigation hasBackButton>
                   <CardPaymentInformationProvider>
-                    <SupportFundPage />
+                    <SupportTreasurePage />
                   </CardPaymentInformationProvider>
                 </WalletLayout>
               </WalletProvider>
@@ -98,7 +89,7 @@ function RoutesComponent(): JSX.Element {
         </Suspense>
       </Route>
 
-      <Route path="/promoters/support-fund/billing-information" exact>
+      <Route path="/promoters/support-treasure/billing-information" exact>
         <Suspense fallback={<div />}>
           <CurrentUserProvider>
             <WalletProvider>
@@ -112,7 +103,7 @@ function RoutesComponent(): JSX.Element {
         </Suspense>
       </Route>
 
-      <Route path="/promoters/support-fund/payment-information" exact>
+      <Route path="/promoters/support-treasure/payment-information" exact>
         <Suspense fallback={<div />}>
           <CurrentUserProvider>
             <WalletProvider>
@@ -138,7 +129,7 @@ function RoutesComponent(): JSX.Element {
         </Suspense>
       </Route>
 
-      <Route path="/fund" exact>
+      <Route path="/treasure" exact>
         <MainLayout>
           <div />
         </MainLayout>

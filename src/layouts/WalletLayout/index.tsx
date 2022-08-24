@@ -7,6 +7,7 @@ import { onAccountChange } from "lib/walletConnector";
 import WalletIcon from "assets/icons/wallet-icon.svg";
 import { logEvent } from "services/analytics";
 import { walletTruncate } from "lib/formatters/walletTruncate";
+import { useNetworkContext } from "contexts/networkContext";
 import * as S from "./styles";
 
 export type Props = {
@@ -26,6 +27,7 @@ function WalletLayout({
   const { connectWallet, wallet, checkIfWalletIsConnected, setWallet } =
     useWalletContext();
 
+  const { isValidNetwork } = useNetworkContext();
   const handleAccountChange = (accounts: string[]) => {
     setWallet(accounts[0]);
   };
@@ -36,14 +38,14 @@ function WalletLayout({
   }, []);
 
   const handleWalletButtonClick = () => {
-    logEvent("fundConWalletBtn_click", {
+    logEvent("treasureConWalletBtn_click", {
       from: "walletButton",
     });
     connectWallet();
   };
 
   const walletButtonText = () => {
-    if (!wallet) return t("connectWallet");
+    if (!wallet || !isValidNetwork) return t("connectWallet");
 
     return walletTruncate(wallet);
   };

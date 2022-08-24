@@ -20,6 +20,9 @@
       "receiveTicketAnimationModalTitle": "Recebendo ticket...",
       "receiveTicketAnimationModalOrigin": "Apoiadores",
       "receiveTicketAnimationModalDestiny": "Você",
+      "donateAnimationModalTitle":"Realizando doação... ",
+      "donateAnimationModalOrigin": "Você",
+      "donateAnimationModalDestiny": "Projeto",
       "modalForm": {
         "footerStartText": "Ao inserir seu e-mail e se inscrever, você aceita a nossa",
         "footerAnd": "e",
@@ -37,10 +40,6 @@
       "ngoInformation": "Amor em Patas é uma organização que tem como objetivo resgatar animais abandonados, cuidar deles e buscar adoção.",
       "moreInfoButtonText": "Mais informações",
       "youDonatedText": "Você doou"
-    },
-    "donationInProcess": {
-      "animationText": "Doando...",
-      "impactText": "Essa doação é financiada pelo Tesouro de Doação da Ribon"
     },
     "menu": {
       "impactPageTitle": "Impacto",
@@ -78,7 +77,7 @@
     "noImpactButton": "Doar agora"
   },
   "promoters": {
-    "fundPage": {
+    "treasurePage": {
       "title": "Tesouro de doação",
       "treasureBalance": "Saldo do tesouro",
       "treasureSupportButtonText": "Fazer uma contribuição",
@@ -101,7 +100,7 @@
         "button": "Continuar"
       }
     },
-    "supportFundPage": {
+    "supportTreasurePage": {
       "title": "Sua contribuição",
       "subtitle": "Com quanto você quer contribuir?",
       "buttonText": "Confirmar doação",
@@ -173,6 +172,9 @@
       "modalSuccessTitle": "Você incluiu {{value}} USDC ao tesouro!",
       "modalSuccessDescription": "Sua doação foi convertida em criptomoedas para financiar mais vales.",
       "modalSuccessButton": "Ok"
+    },
+    "networkContext": {
+      "invalidNetworkMessage": "Conecte-se a uma rede válida"
     }
   }
 }
