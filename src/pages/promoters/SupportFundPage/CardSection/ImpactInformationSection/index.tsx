@@ -74,6 +74,7 @@ function ImpactInformationSection(): JSX.Element {
 
   return (
     <S.ImpactSectionContainer>
+      <S.Subtitle>{t("subtitleCard")}</S.Subtitle>
       <Dropdown
         name="currency"
         label={t("currency")}
@@ -81,7 +82,6 @@ function ImpactInformationSection(): JSX.Element {
         defaultValue={currentCoin}
         onOptionChanged={(value) => setCurrentCoin(value)}
       />
-      <S.Subtitle>{t("subtitleCard")}</S.Subtitle>
       <S.ValuesContainer>
         {offers?.map((item, index) => (
           <S.CardValueButton

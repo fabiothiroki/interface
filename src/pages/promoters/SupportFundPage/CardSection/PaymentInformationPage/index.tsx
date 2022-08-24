@@ -16,8 +16,13 @@ function PaymentInformationPage(): JSX.Element {
 
   const { lightGray } = theme.colors;
 
-  const { currentCoin, selectedButtonIndex, buttonDisabled, setCryptoGiving } =
-    useCardPaymentInformation();
+  const {
+    currentCoin,
+    selectedButtonIndex,
+    buttonDisabled,
+    setCryptoGiving,
+    handleSubmit,
+  } = useCardPaymentInformation();
 
   const { offers } = useOffers(currentCoin, false);
 
@@ -35,6 +40,7 @@ function PaymentInformationPage(): JSX.Element {
 
   function handleClickNext() {
     logEvent("fundSupportNextStepBtn_click", { from: "billingInfo" });
+    handleSubmit();
   }
 
   return (
