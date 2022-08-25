@@ -6,8 +6,11 @@ export const CardSectionContainer = styled.div`
 `;
 
 export const Subtitle = styled.p`
-  margin-bottom: 18px;
   font-weight: 700;
+
+  &:nth-child(3) {
+    margin-top: 18px;
+  }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
     font-size: 18px;
