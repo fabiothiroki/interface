@@ -43,7 +43,7 @@ function BillingInformationSection(): JSX.Element {
   }, [country, state, city, taxId]);
 
   useEffect(() => {
-    logEvent("fundSupportBillingInfo_view");
+    logEvent("treasureSupportBillingInfo_view");
   });
 
   return (

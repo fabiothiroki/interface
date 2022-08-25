@@ -36,7 +36,7 @@ function BillingInformationPage(): JSX.Element {
   }, [offers, selectedButtonIndex, currentCoin]);
 
   function handleClickNext() {
-    logEvent("fundSupportNextStepBtn_click", { from: "billingInfo" });
+    logEvent("treasureSupportNextStepBtn_click", { from: "billingInfo" });
     navigateTo("/promoters/support-treasure/payment-information");
   }
 

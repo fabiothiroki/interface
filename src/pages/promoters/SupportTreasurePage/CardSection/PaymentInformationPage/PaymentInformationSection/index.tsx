@@ -31,7 +31,7 @@ function PaymentInformationSection() {
   const { currentUser } = useCurrentUser();
 
   useEffect(() => {
-    logEvent("fundSupportPayment_view");
+    logEvent("treasureSupportPayment_view");
   }, []);
 
   const maskExpiration = (e: React.ChangeEvent<HTMLInputElement>) => {

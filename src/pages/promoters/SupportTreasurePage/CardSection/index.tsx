@@ -27,7 +27,7 @@ function CardSection(): JSX.Element {
   function handleClickNext() {
     setButtonDisabled(true);
     setOfferId(offers?.[selectedButtonIndex]?.id ?? 0);
-    logEvent("fundSupportNextStepBtn_click");
+    logEvent("treasureSupportNextStepBtn_click");
     navigateTo("/promoters/support-treasure/billing-information");
   }
 
