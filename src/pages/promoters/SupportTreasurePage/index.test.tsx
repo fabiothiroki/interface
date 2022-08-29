@@ -12,7 +12,7 @@ describe("SupportTreasurePage", () => {
   });
 
   it("should render without error", () => {
-    expectTextToBeInTheDocument("Your giving");
+    expectTextToBeInTheDocument("Make a bigger impact");
   });
 
   it("logs the treasureSupportScreen_view event", () => {
