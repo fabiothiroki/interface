@@ -43,12 +43,12 @@ describe("Header", () => {
 
   describe("when it has a side logo", () => {
     beforeEach(() => {
-      const sidelogo = "src/assets/images/heart.svg"
+      const sidelogo = "src/assets/images/heart.svg";
       renderComponent(<Header sideLogo={sidelogo} />);
     });
 
     it("shows the side logo image", () => {
-      expectImageToBeInTheDocument("side-logo")
-    })
+      expectImageToBeInTheDocument("side-logo");
+    });
   });
 });
