@@ -73,7 +73,7 @@ function CryptoSection(): JSX.Element {
   const approveAmount = async () =>
     donationTokenContract?.functions.approve(
       currentNetwork.ribonContractAddress,
-      formatToDecimals(amount, tokenDecimals),
+      formatToDecimals(amount, tokenDecimals).toString(),
       {
         from: wallet,
       },
@@ -82,13 +82,12 @@ function CryptoSection(): JSX.Element {
   const donateToContract = async () =>
     contract?.functions.addPoolBalance(
       currentNetwork.defaultPoolAddress, // TODO get pool address dynamically
-      formatToDecimals(amount, tokenDecimals),
+      formatToDecimals(amount, tokenDecimals).toString(),
     );
 
   const fetchUsdcUserBalance = useCallback(async () => {
     try {
       const balance = await donationTokenContract?.balanceOf(wallet);
-
       const formattedBalance = formatFromDecimals(balance, tokenDecimals);
 
       setUserBalance(formattedBalance.toString());
