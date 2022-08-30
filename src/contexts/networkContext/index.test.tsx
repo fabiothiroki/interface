@@ -48,7 +48,7 @@ describe("useNetwork", () => {
       current = hook.result.current;
     });
 
-    fit("renders the modal when show is called", async () => {
+    it("renders the modal when show is called", async () => {
       await current.getCurrentNetwork();
       const { currentNetwork } = current;
 
