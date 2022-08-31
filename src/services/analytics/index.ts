@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/analytics";
 import { useIntegrationId } from "hooks/useIntegrationId";
+import useIntegration from "hooks/apiHooks/useIntegration";
 import { logError } from "../crashReport";
 
 interface EventParams {
@@ -25,11 +26,12 @@ export function logEvent(eventName: string, params?: EventParams): void {
       throw new EventNameTooLongError();
     } else if (process.env.NODE_ENV === "production") {
       const integrationId = useIntegrationId();
+      const { integration } = useIntegration(integrationId);
       const convertedParams = params ? convertParamsToString(params) : {};
 
       convertedParams.anonymousId =
         localStorage.getItem("installationId") ?? "";
-      convertedParams.integrationId = integrationId ?? "";
+      convertedParams.integrationName = integration?.name ?? "";
       firebase.analytics().logEvent(eventName, convertedParams);
     }
   } catch (error) {
