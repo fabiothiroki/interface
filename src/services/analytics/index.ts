@@ -20,12 +20,11 @@ export function convertParamsToString(params: EventParams): EventParams {
 export class EventNameTooLongError extends Error {}
 
 export function logEvent(eventName: string, params?: EventParams): void {
-  const integrationId = useIntegrationId();
-
   try {
     if (eventName.length > 32) {
       throw new EventNameTooLongError();
     } else if (process.env.NODE_ENV === "production") {
+      const integrationId = useIntegrationId();
       const convertedParams = params
         ? convertParamsToString(params)
         : {
