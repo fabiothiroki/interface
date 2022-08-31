@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/analytics";
+import { useIntegrationId } from "hooks/useIntegrationId";
 import { logError } from "../crashReport";
 
 interface EventParams {
@@ -19,13 +20,18 @@ export function convertParamsToString(params: EventParams): EventParams {
 export class EventNameTooLongError extends Error {}
 
 export function logEvent(eventName: string, params?: EventParams): void {
+  const integrationId = useIntegrationId();
+
   try {
     if (eventName.length > 32) {
       throw new EventNameTooLongError();
     } else if (process.env.NODE_ENV === "production") {
       const convertedParams = params
         ? convertParamsToString(params)
-        : { anonymousId: localStorage.getItem("installationId") };
+        : {
+            anonymousId: localStorage.getItem("installationId"),
+            integrationId,
+          };
 
       convertedParams.anonymousId =
         localStorage.getItem("installationId") ?? "";
