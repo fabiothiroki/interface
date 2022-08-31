@@ -25,15 +25,11 @@ export function logEvent(eventName: string, params?: EventParams): void {
       throw new EventNameTooLongError();
     } else if (process.env.NODE_ENV === "production") {
       const integrationId = useIntegrationId();
-      const convertedParams = params
-        ? convertParamsToString(params)
-        : {
-            anonymousId: localStorage.getItem("installationId"),
-            integrationId,
-          };
+      const convertedParams = params ? convertParamsToString(params) : {};
 
       convertedParams.anonymousId =
         localStorage.getItem("installationId") ?? "";
+      convertedParams.integrationId = integrationId ?? "";
       firebase.analytics().logEvent(eventName, convertedParams);
     }
   } catch (error) {
