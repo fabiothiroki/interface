@@ -18,6 +18,10 @@ jest.mock("firebase/app", () => ({
   analytics: () => mockAnalytics,
 }));
 
+jest.mock("hooks/useIntegrationId", () => ({
+  useIntegrationId: () => 1,
+}));
+
 jest.spyOn(CrashReport, "logError");
 
 describe("logEvent", () => {
@@ -46,6 +50,7 @@ describe("logEvent", () => {
       logEvent(eventName);
       expect(mockAnalytics.logEvent).toHaveBeenCalledWith(eventName, {
         anonymousId: "",
+        integrationId: 1,
       });
     });
   });
