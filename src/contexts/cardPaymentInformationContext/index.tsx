@@ -129,9 +129,7 @@ function CardPaymentInformationProvider({ children }: Props) {
         cvv,
       },
     };
-    console.log(paymentInformation);
-    return;
-    // eslint-disable-next-line
+
     try {
       await creditCardPaymentApi.postCreditCardPayment(paymentInformation);
 
