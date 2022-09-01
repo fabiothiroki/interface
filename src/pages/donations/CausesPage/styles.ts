@@ -43,9 +43,7 @@ export const CausesCardContainer = styled.div`
   justify-content: center;
 `;
 
-export const FooterText = styled.h5`
-  font-weight: 400;
-  line-height: 19px;
+export const FooterText = styled.p`
   text-align: center;
   color: ${({ theme }) => theme.colors.mediumGray};
 

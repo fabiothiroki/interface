@@ -35,6 +35,7 @@ export const CounterContainer = styled.div`
   }
 `;
 
+// TODO adjust this as bold b option
 export const TicketsAmount = styled.p`
   margin-right: 2px;
   font-weight: 700;

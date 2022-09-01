@@ -11,10 +11,8 @@ export const Title = styled.h3`
   color: ${({ theme }) => theme.colors.darkGray};
 `;
 
-export const Text = styled.h4`
+export const Text = styled.p`
   margin-top: 4px;
-  font-weight: 400;
-  line-height: 24px;
   color: ${({ theme }) => theme.colors.mediumGray};
 `;
 

@@ -117,26 +117,20 @@ export const FinishButton = styled(Button)`
   }
 `;
 
-export const GivingValue = styled.h4`
+export const GivingValue = styled.h2`
   margin-top: 4px;
-  font-weight: 900;
-  font-size: 24px;
-  line-height: 38.4px;
   color: ${({ theme }) => theme.colors.black};
 `;
 
 export const NetGivingValue = styled.p`
-  font-size: 14px;
-  line-height: 23.8px;
   color: ${({ theme }) => theme.colors.darkGray};
 `;
 
 export const ServiceFeesValue = styled.p`
-  font-size: 14px;
-  line-height: 23.8px;
   color: ${({ theme }) => theme.colors.darkGray};
 `;
 
+// TODO adjust this as auxiliar text
 export const CryptoGivingValue = styled.p`
   margin-bottom: 32px;
   font-style: italic;

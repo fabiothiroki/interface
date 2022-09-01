@@ -14,8 +14,6 @@ export const Container = styled.div`
 
 export const Title = styled.h1`
   margin: 0;
-  font-weight: 900;
-  line-height: 1.6;
   color: ${({ theme }) => theme.colors.darkGray};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
@@ -23,13 +21,8 @@ export const Title = styled.h1`
   }
 `;
 
-export const Subtitle = styled.h2`
-  font-size: 14px;
+export const Subtitle = styled.h5`
   color: ${({ theme }) => theme.colors.mediumGray};
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
-    font-size: 16px;
-  }
 `;
 
 export const CardsButtonContainer = styled.div`
