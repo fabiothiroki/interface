@@ -14,7 +14,6 @@ export const Container = styled.div`
 export const Title = styled.h1`
   margin: 4px 0;
   margin-bottom: 48px;
-  font-weight: 900;
   text-transform: uppercase;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {

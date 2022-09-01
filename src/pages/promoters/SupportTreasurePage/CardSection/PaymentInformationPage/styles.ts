@@ -15,12 +15,7 @@ export const Container = styled.div`
 export const Title = styled.h1`
   margin: 4px 0;
   margin-bottom: 8px;
-  font-weight: 900;
   text-transform: uppercase;
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
-    font-size: 36px;
-  }
 `;
 
 export const BillingInformationSectionContainer = styled.div`
@@ -32,11 +27,8 @@ export const BillingInformationSectionContainer = styled.div`
   }
 `;
 
-export const BillingTitle = styled.h6`
+export const BillingTitle = styled.h3`
   margin: 20px 0;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 25.6px;
   color: ${({ theme }) => theme.colors.black};
 `;
 
@@ -77,6 +69,7 @@ export const ValuesContainer = styled.div`
   grid-gap: 8px;
 `;
 
+// TODO: adjust this auxiliary button
 export const CardValueButton = styled(Button)`
   max-width: 112px;
   height: 30px;

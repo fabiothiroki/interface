@@ -28,14 +28,10 @@ export const CardBlank = styled.div`
 export const Title = styled.h1`
   margin: 4px 0;
   margin-bottom: 16px;
-  font-weight: 900;
   text-transform: uppercase;
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
-    font-size: 36px;
-  }
 `;
 
+// TODO: check which tag is better
 export const TreasureText = styled.p`
   margin-bottom: 8px;
   font-weight: 900;
@@ -44,11 +40,11 @@ export const TreasureText = styled.p`
 `;
 
 export const TreasureTextCoin = styled.span`
-  font-weight: 400;
   font-size: 14px;
   color: ${({ theme }) => theme.colors.mediumGreen};
 `;
 
+// TODO: check which tag is better
 export const SectionTitle = styled.p`
   margin-bottom: 8px;
   font-weight: 700;
@@ -79,11 +75,13 @@ export const GivingsCard = styled.div`
   box-shadow: 0 4px 12px ${({ theme }) => theme.colors.lightShadow};
 `;
 
+// TODO: adjust this as auxiliar text option
 export const GivingDate = styled.p`
   font-size: 12px;
   color: ${({ theme }) => theme.colors.mediumGray};
 `;
 
+// TODO: adjust this as better text option
 export const GivingText = styled.p`
   margin-bottom: 8px;
   font-weight: 900;
@@ -96,7 +94,6 @@ export const ProcessingGivingText = styled(GivingText)`
 `;
 
 export const GivingTextCoin = styled.span`
-  font-weight: 400;
   font-size: 14px;
   color: ${({ theme }) => theme.colors.mediumGreen};
 `;
@@ -113,6 +110,7 @@ export const StatusContainer = styled.div`
   align-items: center;
 `;
 
+// TODO: set default span type
 export const ProcessingText = styled.span`
   font-weight: 400;
   font-size: 12px;

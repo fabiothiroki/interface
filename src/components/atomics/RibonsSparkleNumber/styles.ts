@@ -7,6 +7,7 @@ export const Container = styled.div`
   justify-content: center;
 `;
 
+// TODO adjust this as bold p option
 export const RibonsAmount = styled.p`
   margin-right: 2px;
   font-weight: 700;

@@ -2,9 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div``;
 
-export const TextLastCard = styled.p`
-  font-weight: 700;
-  font-size: 16px;
+export const TextLastCard = styled.h4`
   color: ${({ theme }) => theme.colors.darkGray};
 `;
 
@@ -23,6 +21,7 @@ export const LastCardCarousel = styled.a`
   box-shadow: 0 4px 12px ${({ theme }) => theme.colors.lightShadow};
 `;
 
+// TODO: adjust this as auxiliar text option
 export const GivingText = styled.span`
   font-weight: 700;
   font-size: 14px;
@@ -48,6 +47,7 @@ export const Image = styled.img`
   height: 40px;
 `;
 
+// TODO: adjust this as bold p option
 export const SectionTitle = styled.p`
   margin-top: 28px;
   font-weight: 700;

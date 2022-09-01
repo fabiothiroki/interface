@@ -15,12 +15,7 @@ export const Container = styled.div`
 export const Title = styled.h1`
   margin: 4px 0;
   margin-bottom: 8px;
-  font-weight: 900;
   text-transform: uppercase;
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
-    font-size: 36px;
-  }
 `;
 
 export const BillingInformationSectionContainer = styled.div`
@@ -56,6 +51,7 @@ export const CardSectionContainer = styled.div`
   margin-top: 24px;
 `;
 
+// TODO: adjust this for bold p option
 export const Subtitle = styled.p`
   margin-top: 20px;
   font-weight: 700;
@@ -74,6 +70,7 @@ export const ValuesContainer = styled.div`
   grid-gap: 8px;
 `;
 
+// TODO: adjust this for auxiliary button option
 export const CardValueButton = styled(Button)`
   max-width: 112px;
   height: 30px;

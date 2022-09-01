@@ -1,15 +1,11 @@
 import styled from "styled-components";
 import Button from "components/atomics/buttons/Button";
 
-export const Subtitle = styled.p`
+export const Subtitle = styled.h3`
   margin-top: 20px;
-  font-weight: 700;
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
-    font-size: 18px;
-  }
 `;
 
+// TODO: adjust this for bold p option
 export const Label = styled.p`
   margin-top: 24px;
   margin-bottom: 12px;
@@ -66,10 +62,10 @@ export const UsdcContainer = styled.div`
 
 export const UsdcText = styled.p`
   margin-left: 4px;
-  font-size: 14px;
   color: ${({ theme }) => theme.colors.darkGray};
 `;
 
+// TODO: adjust this for another option
 export const Text = styled.p`
   margin-top: 8px;
   font-weight: ${({ theme }) => theme.font.normal};

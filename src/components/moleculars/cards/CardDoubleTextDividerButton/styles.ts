@@ -10,17 +10,16 @@ export const Container = styled.div`
   box-shadow: 0 4px 12px ${({ theme }) => theme.colors.lightShadow};
 `;
 
+// TODO adjust this as auxiliar text option
 export const FirstText = styled.p`
   font-style: italic;
   font-size: 12px;
   color: ${({ theme }) => theme.colors.mediumGray};
 `;
 
-export const MainContent = styled.p<{
+export const MainContent = styled.h2<{
   processing?: boolean;
 }>`
-  font-weight: 900;
-  font-size: 24px;
   color: ${(props) =>
     props.processing
       ? props.theme.colors.mediumGray

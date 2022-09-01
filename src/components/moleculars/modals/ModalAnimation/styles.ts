@@ -40,6 +40,7 @@ export const Icon = styled.img`
   padding: 20%;
 `;
 
+// TODO: adjust this as auxiliar text
 export const IconDescription = styled.p`
   padding-top: 4px;
   font-weight: ${({ theme }) => theme.font.bold};
@@ -50,7 +51,6 @@ export const IconDescription = styled.p`
 
 export const Text = styled.p`
   font-weight: ${({ theme }) => theme.font.bold};
-  font-size: 14px;
   text-align: center;
   color: ${({ theme }) => theme.colors.darkGray};
 `;

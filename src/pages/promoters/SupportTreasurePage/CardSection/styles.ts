@@ -5,6 +5,7 @@ export const CardSectionContainer = styled.div`
   margin-top: 24px;
 `;
 
+// TODO: adjust this to bold p option
 export const Subtitle = styled.p`
   font-weight: 700;
 
@@ -26,6 +27,7 @@ export const ValuesContainer = styled.div`
   grid-gap: 8px;
 `;
 
+// TODO: adjust this to auxiliary button option
 export const CardValueButton = styled(Button)`
   max-width: 112px;
   height: 30px;

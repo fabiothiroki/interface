@@ -15,10 +15,6 @@ export const Container = styled.div`
 export const Title = styled.h1`
   margin: 0;
   color: ${({ theme }) => theme.colors.darkGray};
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
-    font-size: 36px;
-  }
 `;
 
 export const Subtitle = styled.h5`

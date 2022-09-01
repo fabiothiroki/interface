@@ -17,7 +17,6 @@ export const Title = styled.h3`
 `;
 
 export const Subtitle = styled.p`
-  font-size: 14px;
   color: ${({ theme }) => theme.colors.mediumGray};
 `;
 
