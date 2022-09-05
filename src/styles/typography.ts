@@ -10,6 +10,12 @@ const typography = css`
       justify-content: center;
     }
 
+    @font-face {
+      font-family: "Gambarino";
+      src: local("Gambarino"),
+        url(../assets/fonts/Gambarino.OTF) format("opentype");
+    }
+
     h1,
     h2,
     h3,
@@ -20,8 +26,7 @@ const typography = css`
     span {
       color: ${theme.colors.darkGray};
     }
-    ,
-    button h1 {
+    h1 {
       font-size: 36px;
       line-height: 1.6;
       font-weight: 700;

@@ -1,3 +1,4 @@
+import HighlightedText from "components/atomics/typography/HighlightedText";
 import styled from "styled-components";
 
 export const Container = styled.div``;
@@ -11,13 +12,9 @@ export const BodyContainer = styled.div`
   }
 `;
 
-export const Title = styled.h1`
+export const Title = styled(HighlightedText)`
   margin: 0;
   text-transform: uppercase;
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
-    font-size: 36px;
-  }
 `;
 
 export const CausesContainer = styled.div`
