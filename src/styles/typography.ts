@@ -1,19 +1,25 @@
 import { css } from "styled-components";
+import GambarinoRegularTtf from "../assets/fonts/Gambarino-Regular.ttf";
+import GambarinoRegularWoff from "../assets/fonts/Gambarino-Regular.woff";
+import GambarinoRegularWoff2 from "../assets/fonts/Gambarino-Regular.woff2";
 
 const typography = css`
-  ${({ theme }) => css`
-    body {
-      font-family: "Inter", sans-serif;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+  body {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     @font-face {
-      font-family: "Gambarino";
-      src: local("Gambarino"),
-        url(../assets/fonts/Gambarino.OTF) format("opentype");
+      font-family: "Gambarino-Regular";
+      src: url(${GambarinoRegularTtf}) format("truetype"),
+        url(${GambarinoRegularWoff}) format("woff"),
+        url(${GambarinoRegularWoff2}) format("woff2");
+
+      font-weight: 400;
+      font-display: swap;
+      font-style: normal;
     }
 
     h1,
@@ -24,8 +30,9 @@ const typography = css`
     h6,
     p,
     span {
-      color: ${theme.colors.darkGray};
+      color: ${({ theme }) => theme.colors.darkGray};
     }
+
     h1 {
       font-size: 36px;
       line-height: 1.6;
@@ -73,7 +80,7 @@ const typography = css`
       line-height: 1.5;
       font-weight: 600;
     }
-  `}
+  }
 `;
 
 export default typography;
