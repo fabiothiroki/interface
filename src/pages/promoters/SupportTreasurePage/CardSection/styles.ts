@@ -101,6 +101,12 @@ export const CardImpact = styled.div`
 
 export const ImpactSectionContainer = styled.div``;
 
+export const SubtitleContainer = styled.div`
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+`;
+
 export const ImpactSimulatorContainer = styled.div`
   margin-bottom: 14px;
 `;
@@ -120,4 +126,11 @@ export const CardImpactText = styled.h3`
     font-size: 16px;
     color: ${({ theme }) => theme.colors.mediumGreen};
   }
+`;
+
+export const QuestionIcon = styled.img`
+  width: 17px;
+  height: 17px;
+  margin-left: 4px;
+  cursor: pointer;
 `;
