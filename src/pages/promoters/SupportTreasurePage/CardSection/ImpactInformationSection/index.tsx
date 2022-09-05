@@ -124,6 +124,7 @@ function ImpactInformationSection(): JSX.Element {
         <S.QuestionIcon
           src={questionIcon}
           onClick={() => handleQuestionMarkClick()}
+          alt="question-mark-icon"
         />
       </S.SubtitleContainer>
       {nonProfits && (
