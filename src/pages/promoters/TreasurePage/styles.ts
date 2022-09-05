@@ -1,3 +1,4 @@
+import { HighlightedTextH1 } from "components/atomics/typography/HighlightedText";
 import styled from "styled-components";
 
 export const Container = styled.div``;
@@ -25,10 +26,9 @@ export const CardBlank = styled.div`
   box-shadow: 0 4px 12px ${({ theme }) => theme.colors.lightShadow};
 `;
 
-export const Title = styled.h1`
-  margin: 4px 0;
+export const Title = styled(HighlightedTextH1)`
+  margin: 0;
   margin-bottom: 16px;
-  text-transform: uppercase;
 `;
 
 // TODO: check which tag is better
