@@ -118,26 +118,27 @@ function LayoutHeader({
         onBackButtonClick={navigateBack}
         sideLogo={renderSideLogo()}
         rightComponent={
-          hideWallet ? (
-            <S.ContainerRight>{rightComponent}</S.ContainerRight>
-          ) : (
-            <S.ContainerRight>
-              {rightComponent}
-              <S.CounterContainer onClick={() => handleCounterClick()}>
-                <S.TicketsAmount
-                  color={
-                    canDonate
-                      ? theme.colors.mediumGreen
-                      : theme.colors.mediumGray
-                  }
-                >
-                  {canDonate ? 1 : 0}
-                </S.TicketsAmount>
-                <S.CounterImage src={canDonate ? ticketOn : ticketOff} />
-              </S.CounterContainer>
-              <S.Settings onClick={() => openMenu()} src={cogIcon} />
-            </S.ContainerRight>
-          )
+          <S.ContainerRight>
+            {rightComponent}
+            {!hideWallet && (
+              <S.ContainerButtons>
+                <S.CounterContainer onClick={() => handleCounterClick()}>
+                  <S.TicketsAmount
+                    color={
+                      canDonate
+                        ? theme.colors.mediumGreen
+                        : theme.colors.mediumGray
+                    }
+                  >
+                    {canDonate ? 1 : 0}
+                  </S.TicketsAmount>
+                  <S.CounterImage src={canDonate ? ticketOn : ticketOff} />
+                </S.CounterContainer>
+
+                <S.Settings onClick={() => openMenu()} src={cogIcon} />
+              </S.ContainerButtons>
+            )}
+          </S.ContainerRight>
         }
       />
     </S.Container>
