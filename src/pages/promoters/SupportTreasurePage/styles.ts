@@ -15,7 +15,6 @@ export const Container = styled.div`
 export const Title = styled(HighlightedTextH1)`
   margin: 4px 0;
   margin-bottom: 48px;
-  text-transform: uppercase;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
     font-size: 36px;

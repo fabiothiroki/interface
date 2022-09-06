@@ -16,7 +16,6 @@ export const Container = styled.div`
 export const Title = styled(HighlightedTextH1)`
   margin: 4px 0;
   margin-bottom: 8px;
-  text-transform: uppercase;
 `;
 
 export const BillingInformationSectionContainer = styled.div`
