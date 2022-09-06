@@ -12,7 +12,6 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h3`
-  font-weight: 700;
   color: ${({ theme }) => theme.colors.darkGray};
 `;
 

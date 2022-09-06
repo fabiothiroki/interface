@@ -1,3 +1,4 @@
+import { BoldP } from "components/atomics/typography/BoldText/styles";
 import styled from "styled-components";
 
 export const Container = styled.div``;
@@ -47,9 +48,7 @@ export const Image = styled.img`
   height: 40px;
 `;
 
-// TODO: adjust this as bold p option
-export const SectionTitle = styled.p`
+export const SectionTitle = styled(BoldP)`
   margin-top: 28px;
-  font-weight: 700;
   color: ${({ theme }) => theme.colors.darkGray};
 `;

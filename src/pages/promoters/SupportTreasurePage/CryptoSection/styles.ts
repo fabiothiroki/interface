@@ -66,7 +66,6 @@ export const UsdcText = styled.p`
 
 export const Text = styled(AuxiliarText)`
   margin-top: 8px;
-  font-weight: ${({ theme }) => theme.font.normal};
   color: ${({ theme }) => theme.colors.mediumGreen};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {

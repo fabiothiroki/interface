@@ -9,8 +9,6 @@ export const CardSectionContainer = styled.div`
 `;
 
 export const Subtitle = styled(BoldP)`
-  font-weight: 700;
-
   &:nth-child(3) {
     margin-top: 18px;
   }
