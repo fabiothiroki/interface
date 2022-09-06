@@ -15,9 +15,9 @@ export const Treasure = styled.img`
 `;
 
 export const TreasureButton = styled.button`
+  margin-left: 6%;
   border: 1px solid ${({ theme }) => theme.colors.mediumGreen};
   border-radius: 50%;
-  margin-left: 6%;
   display: flex;
   justify-content: center;
   background-color: ${({ theme }) => theme.colors.white};
