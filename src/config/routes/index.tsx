@@ -8,6 +8,7 @@ import DonationDonePage from "pages/donations/DonationDonePage";
 import ImpactPage from "pages/users/ImpactPage";
 import MainLayout from "layouts/MainLayout";
 import TreasurePage from "pages/promoters/TreasurePage";
+// import GivingPage from "pages/promoters/GivingPage";
 import SupportTreasurePage from "pages/promoters/SupportTreasurePage";
 import BillingInformationPage from "pages/promoters/SupportTreasurePage/CardSection/BillingInformationPage";
 import PaymentInformationPage from "pages/promoters/SupportTreasurePage/CardSection/PaymentInformationPage";
@@ -59,7 +60,7 @@ function RoutesComponent(): JSX.Element {
         </Suspense>
       </Route>
 
-      <Route path="/promoters/treasure" exact>
+      <Route path="/promoters/giving" exact>
         <Suspense fallback={<div />}>
           <CurrentUserProvider>
             <NetworkProvider>
