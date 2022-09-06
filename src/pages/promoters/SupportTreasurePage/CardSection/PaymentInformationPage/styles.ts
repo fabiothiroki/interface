@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Button from "components/atomics/buttons/Button";
+import { HighlightedTextH1 } from "components/atomics/typography/HighlightedText/styles";
 
 export const Container = styled.div`
   width: 100%;
@@ -12,7 +13,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Title = styled.h1`
+export const Title = styled(HighlightedTextH1)`
   margin: 4px 0;
   margin-bottom: 8px;
   text-transform: uppercase;

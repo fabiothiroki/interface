@@ -1,3 +1,4 @@
+import { HighlightedTextH1 } from "components/atomics/typography/HighlightedText/styles";
 import styled from "styled-components";
 
 export const BodyContainer = styled.div`
@@ -9,7 +10,7 @@ export const BodyContainer = styled.div`
   }
 `;
 
-export const Title = styled.h1`
+export const Title = styled(HighlightedTextH1)`
   margin: 4px 0;
   text-transform: uppercase;
 

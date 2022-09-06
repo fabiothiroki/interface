@@ -1,4 +1,4 @@
-import { HighlightedTextH1 } from "components/atomics/typography/HighlightedText";
+import { HighlightedTextH1 } from "components/atomics/typography/HighlightedText/styles";
 import styled from "styled-components";
 
 export const Container = styled.div``;
