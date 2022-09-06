@@ -60,12 +60,12 @@ function RoutesComponent(): JSX.Element {
         </Suspense>
       </Route>
 
-      <Route path="/promoters/giving" exact>
+      <Route path="/promoters/treasure" exact>
         <Suspense fallback={<div />}>
           <CurrentUserProvider>
             <NetworkProvider>
               <WalletProvider>
-                <WalletLayout>
+                <WalletLayout hasBackButton hideNavigation hideWallet>
                   <TreasurePage />
                 </WalletLayout>
               </WalletProvider>
@@ -79,7 +79,7 @@ function RoutesComponent(): JSX.Element {
           <CurrentUserProvider>
             <NetworkProvider>
               <WalletProvider>
-                <WalletLayout hideNavigation hasBackButton>
+                <WalletLayout>
                   <CardPaymentInformationProvider>
                     <SupportTreasurePage />
                   </CardPaymentInformationProvider>

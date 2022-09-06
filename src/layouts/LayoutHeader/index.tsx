@@ -25,12 +25,16 @@ import useCanDonate from "../../hooks/apiHooks/useCanDonate";
 
 export type Props = {
   rightComponent?: JSX.Element;
+  leftComponent?: JSX.Element;
   hasBackButton?: boolean;
+  hideWallet?: boolean;
 };
 
 function LayoutHeader({
   rightComponent,
+  leftComponent,
   hasBackButton = false,
+  hideWallet = false,
 }: Props): JSX.Element {
   const integrationId = useIntegrationId();
   const [menuVisible, setMenuVisible] = useState(false);
@@ -114,20 +118,29 @@ function LayoutHeader({
         onBackButtonClick={navigateBack}
         sideLogo={renderSideLogo()}
         rightComponent={
-          <S.ContainerRight>
-            {rightComponent}
-            <S.CounterContainer onClick={() => handleCounterClick()}>
-              <S.TicketsAmount
-                color={
-                  canDonate ? theme.colors.mediumGreen : theme.colors.mediumGray
-                }
-              >
-                {canDonate ? 1 : 0}
-              </S.TicketsAmount>
-              <S.CounterImage src={canDonate ? ticketOn : ticketOff} />
-            </S.CounterContainer>
-            <S.Settings onClick={() => openMenu()} src={cogIcon} />
-          </S.ContainerRight>
+          hideWallet ? (
+            <S.ContainerRight>
+              {rightComponent}
+              {leftComponent}
+            </S.ContainerRight>
+          ) : (
+            <S.ContainerRight>
+              {rightComponent}
+              <S.CounterContainer onClick={() => handleCounterClick()}>
+                <S.TicketsAmount
+                  color={
+                    canDonate
+                      ? theme.colors.mediumGreen
+                      : theme.colors.mediumGray
+                  }
+                >
+                  {canDonate ? 1 : 0}
+                </S.TicketsAmount>
+                <S.CounterImage src={canDonate ? ticketOn : ticketOff} />
+              </S.CounterContainer>
+              <S.Settings onClick={() => openMenu()} src={cogIcon} />
+            </S.ContainerRight>
+          )
         }
       />
     </S.Container>
