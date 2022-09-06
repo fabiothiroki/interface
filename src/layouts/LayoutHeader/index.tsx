@@ -119,10 +119,7 @@ function LayoutHeader({
         sideLogo={renderSideLogo()}
         rightComponent={
           hideWallet ? (
-            <S.ContainerRight>
-              {rightComponent}
-              {leftComponent}
-            </S.ContainerRight>
+            <S.ContainerRight>{rightComponent}</S.ContainerRight>
           ) : (
             <S.ContainerRight>
               {rightComponent}

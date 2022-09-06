@@ -69,19 +69,19 @@ function WalletLayout({
           <LayoutHeader
             hasBackButton={hasBackButton}
             rightComponent={
-              <S.WalletButton
-                text={walletButtonText()}
-                onClick={handleWalletButtonClick}
-                outline
-                round
-                rightIcon={WalletIcon}
-                size="small"
-              />
-            }
-            leftComponent={
-              <S.TreasureButton onClick={handleTreasureButtonClick}>
-                <S.Treasure src={Treasure} />
-              </S.TreasureButton>
+              <S.RightContainer>
+                <S.WalletButton
+                  text={walletButtonText()}
+                  onClick={handleWalletButtonClick}
+                  outline
+                  round
+                  rightIcon={WalletIcon}
+                  size="small"
+                />
+                <S.TreasureButton onClick={handleTreasureButtonClick}>
+                  <S.Treasure src={Treasure} />
+                </S.TreasureButton>
+              </S.RightContainer>
             }
             hideWallet
           />

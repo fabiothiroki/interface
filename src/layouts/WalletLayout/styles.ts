@@ -6,6 +6,10 @@ export const Container = styled(MainContainer)``;
 
 export const BodyContainer = styled(MainBodyContainer)``;
 
+export const RightContainer = styled.div`
+  display: flex;
+`;
+
 export const WalletButton = styled(Button)`
   padding: 3px 12px;
 `;
