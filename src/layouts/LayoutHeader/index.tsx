@@ -25,14 +25,12 @@ import useCanDonate from "../../hooks/apiHooks/useCanDonate";
 
 export type Props = {
   rightComponent?: JSX.Element;
-  leftComponent?: JSX.Element;
   hasBackButton?: boolean;
   hideWallet?: boolean;
 };
 
 function LayoutHeader({
   rightComponent,
-  leftComponent,
   hasBackButton = false,
   hideWallet = false,
 }: Props): JSX.Element {
