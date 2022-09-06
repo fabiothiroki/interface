@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import Button from "components/atomics/buttons/Button";
 import { AuxiliarText } from "components/atomics/typography/AuxiliarText/styles";
+import { BoldP } from "components/atomics/typography/BoldText/styles";
+import { AuxiliarButton } from "components/atomics/typography/AuxiliarButtonText/styles";
 
 export const CardSectionContainer = styled.div`
   margin-top: 24px;
 `;
 
-// TODO: adjust this to bold p option
-export const Subtitle = styled.p`
+export const Subtitle = styled(BoldP)`
   font-weight: 700;
 
   &:nth-child(3) {
@@ -28,12 +29,10 @@ export const ValuesContainer = styled.div`
   grid-gap: 8px;
 `;
 
-// TODO: adjust this to auxiliary button option
-export const CardValueButton = styled(Button)`
+export const CardValueButton = styled(AuxiliarButton)`
   max-width: 112px;
   height: 30px;
   border-radius: 66px;
-  font-size: 12px;
 `;
 
 export const ButtonContainer = styled.div`

@@ -2,6 +2,8 @@ import styled from "styled-components";
 import Button from "components/atomics/buttons/Button";
 import { HighlightedTextH1 } from "components/atomics/typography/HighlightedText/styles";
 import { AuxiliarText } from "components/atomics/typography/AuxiliarText/styles";
+import { BoldP } from "components/atomics/typography/BoldText/styles";
+import { AuxiliarButton } from "components/atomics/typography/AuxiliarButtonText/styles";
 
 export const Container = styled.div`
   width: 100%;
@@ -52,9 +54,8 @@ export const CardSectionContainer = styled.div`
   margin-top: 24px;
 `;
 
-export const Subtitle = styled.p`
+export const Subtitle = styled(BoldP)`
   margin-top: 20px;
-  font-weight: 700;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
     font-size: 18px;
@@ -70,12 +71,10 @@ export const ValuesContainer = styled.div`
   grid-gap: 8px;
 `;
 
-// TODO: adjust this auxiliar button
-export const CardValueButton = styled(Button)`
+export const CardValueButton = styled(AuxiliarButton)`
   max-width: 112px;
   height: 30px;
   border-radius: 66px;
-  font-size: 12px;
 `;
 
 export const ButtonContainer = styled.div`

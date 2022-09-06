@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BoldP } from "../typography/BoldText/styles";
 
 export const Container = styled.div`
   display: flex;
@@ -7,12 +8,8 @@ export const Container = styled.div`
   justify-content: center;
 `;
 
-// TODO adjust this as bold p option
-export const RibonsAmount = styled.p`
+export const RibonsAmount = styled(BoldP)`
   margin-right: 2px;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 17px;
   color: ${({ theme }) => theme.colors.mediumGreen};
 `;
 

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Button from "components/atomics/buttons/Button";
+import { AuxiliarButton } from "components/atomics/typography/AuxiliarButtonText/styles";
 
 export const Container = styled.div`
   height: 100%;
@@ -26,8 +26,7 @@ export const ImageContainer = styled.div`
   margin-bottom: 8px;
 `;
 
-export const SideButton = styled(Button)`
+export const SideButton = styled(AuxiliarButton)`
   height: 28px;
   border-radius: 16px;
-  font-size: 12px;
 `;

@@ -1,17 +1,15 @@
 import styled from "styled-components";
 import Button from "components/atomics/buttons/Button";
 import { AuxiliarText } from "components/atomics/typography/AuxiliarText/styles";
+import { BoldP } from "components/atomics/typography/BoldText/styles";
 
 export const Subtitle = styled.h3`
   margin-top: 20px;
 `;
 
-// TODO: adjust this for bold p option
-export const Label = styled.p`
+export const Label = styled(BoldP)`
   margin-top: 24px;
   margin-bottom: 12px;
-  font-weight: 700;
-  font-size: 16px;
 `;
 
 export const InputContainer = styled.div`

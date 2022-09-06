@@ -12,8 +12,4 @@ export const BodyContainer = styled.div`
 
 export const Title = styled(HighlightedTextH1)`
   margin: 4px 0;
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
-    font-size: 36px;
-  }
 `;
