@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import ReactModal from "react-modal";
+import { AuxiliarText } from "components/atomics/typography/AuxiliarText/styles";
 
 export const BlankModal = styled(ReactModal)`
   width: 100%;
@@ -40,11 +41,9 @@ export const Icon = styled.img`
   padding: 20%;
 `;
 
-// TODO: adjust this as auxiliar text
-export const IconDescription = styled.p`
+export const IconDescription = styled(AuxiliarText)`
   padding-top: 4px;
   font-weight: ${({ theme }) => theme.font.bold};
-  font-size: 12px;
   text-align: center;
   color: #82aabe;
 `;

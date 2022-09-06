@@ -1,3 +1,4 @@
+import { AuxiliarText } from "components/atomics/typography/AuxiliarText/styles";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -10,10 +11,8 @@ export const Container = styled.div`
   box-shadow: 0 4px 12px ${({ theme }) => theme.colors.lightShadow};
 `;
 
-// TODO adjust this as auxiliar text option
-export const FirstText = styled.p`
+export const FirstText = styled(AuxiliarText)`
   font-style: italic;
-  font-size: 12px;
   color: ${({ theme }) => theme.colors.mediumGray};
 `;
 

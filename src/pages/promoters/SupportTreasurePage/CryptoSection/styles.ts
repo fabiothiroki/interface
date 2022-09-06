@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Button from "components/atomics/buttons/Button";
+import { AuxiliarText } from "components/atomics/typography/AuxiliarText/styles";
 
 export const Subtitle = styled.h3`
   margin-top: 20px;
@@ -65,11 +66,9 @@ export const UsdcText = styled.p`
   color: ${({ theme }) => theme.colors.darkGray};
 `;
 
-// TODO: adjust this for another option
-export const Text = styled.p`
+export const Text = styled(AuxiliarText)`
   margin-top: 8px;
   font-weight: ${({ theme }) => theme.font.normal};
-  font-size: 12px;
   color: ${({ theme }) => theme.colors.mediumGreen};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {

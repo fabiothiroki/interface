@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Button from "components/atomics/buttons/Button";
+import { AuxiliarText } from "components/atomics/typography/AuxiliarText/styles";
 
 export const CardSectionContainer = styled.div`
   margin-top: 24px;
@@ -80,11 +81,9 @@ export const ServiceFeesValue = styled.p`
   color: ${({ theme }) => theme.colors.mediumGray};
 `;
 
-// TODO: adjust this as auxiliar text
-export const CryptoGivingValue = styled.p`
+export const CryptoGivingValue = styled(AuxiliarText)`
   margin-bottom: 32px;
   font-style: italic;
-  font-size: 12px;
   line-height: 19.2px;
   color: ${({ theme }) => theme.colors.mediumGray};
 `;

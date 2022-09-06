@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Button from "components/atomics/buttons/Button";
 import { HighlightedTextH1 } from "components/atomics/typography/HighlightedText/styles";
+import { AuxiliarText } from "components/atomics/typography/AuxiliarText/styles";
 
 export const Container = styled.div`
   width: 100%;
@@ -69,7 +70,7 @@ export const ValuesContainer = styled.div`
   grid-gap: 8px;
 `;
 
-// TODO: adjust this auxiliary button
+// TODO: adjust this auxiliar button
 export const CardValueButton = styled(Button)`
   max-width: 112px;
   height: 30px;
@@ -123,11 +124,9 @@ export const ServiceFeesValue = styled.p`
   color: ${({ theme }) => theme.colors.darkGray};
 `;
 
-// TODO adjust this as auxiliar text
-export const CryptoGivingValue = styled.p`
+export const CryptoGivingValue = styled(AuxiliarText)`
   margin-bottom: 32px;
   font-style: italic;
-  font-size: 12px;
   line-height: 19.2px;
   color: ${({ theme }) => theme.colors.darkGray};
 `;
