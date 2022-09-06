@@ -11,15 +11,14 @@ export const WalletButton = styled(Button)`
 `;
 
 export const Treasure = styled.img`
-  cursor: pointer;
   padding: 3px;
 `;
 
 export const TreasureButton = styled.button`
   border: 1px solid ${({ theme }) => theme.colors.mediumGreen};
   border-radius: 50%;
+  margin-left: 6%;
   display: flex;
   justify-content: center;
-  margin-left: 6%;
   background-color: ${({ theme }) => theme.colors.white};
 `;
