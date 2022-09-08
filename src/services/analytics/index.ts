@@ -1,7 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/analytics";
-import { useIntegrationId } from "hooks/useIntegrationId";
-import useIntegration from "hooks/apiHooks/useIntegration";
+
 import { logError } from "../crashReport";
 
 interface EventParams {
@@ -17,15 +16,6 @@ export function convertParamsToString(params: EventParams): EventParams {
 
   return convertedParams;
 }
-
-const setIntegrationId = () => {
-  const integrationId = useIntegrationId();
-  const { integration } = useIntegration(integrationId);
-
-  if (integration) {
-    localStorage.setItem("integrationName", integration?.name);
-  }
-};
 
 export class EventNameTooLongError extends Error {}
 
