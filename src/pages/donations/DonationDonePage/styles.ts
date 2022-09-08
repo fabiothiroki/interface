@@ -33,22 +33,13 @@ export const InnerContainer = styled.div`
 export const Title = styled.h3`
   margin-top: 20px;
   color: ${({ theme }) => theme.colors.darkGray};
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
-    font-size: 24px;
-  }
 `;
 
-export const Subtitle = styled.h5`
+export const Subtitle = styled.h4`
   margin-top: 4px;
   margin-bottom: 24px;
-  font-size: 16px;
   text-align: center;
   color: ${({ theme }) => theme.colors.mediumGray};
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
-    font-size: 20px;
-  }
 `;
 
 export const ButtonContainer = styled.div`

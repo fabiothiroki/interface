@@ -1,6 +1,7 @@
 import { AuxiliarText } from "components/atomics/typography/AuxiliarText/styles";
 import { BoldP } from "components/atomics/typography/BoldText/styles";
 import { HighlightedTextH1 } from "components/atomics/typography/HighlightedText/styles";
+import { Span } from "components/atomics/typography/Spans/styles";
 import styled from "styled-components";
 
 export const Container = styled.div``;
@@ -38,8 +39,7 @@ export const TreasureText = styled.h1`
   color: ${({ theme }) => theme.colors.mediumGreen};
 `;
 
-export const TreasureTextCoin = styled.span`
-  font-size: 14px;
+export const TreasureTextCoin = styled(Span)`
   color: ${({ theme }) => theme.colors.mediumGreen};
 `;
 
@@ -85,8 +85,7 @@ export const ProcessingGivingText = styled(GivingText)`
   color: ${({ theme }) => theme.colors.mediumGray};
 `;
 
-export const GivingTextCoin = styled.span`
-  font-size: 14px;
+export const GivingTextCoin = styled(Span)`
   color: ${({ theme }) => theme.colors.mediumGreen};
 `;
 
@@ -102,15 +101,10 @@ export const StatusContainer = styled.div`
   align-items: center;
 `;
 
-// TODO: set default span type
 export const ProcessingText = styled.span`
-  font-weight: 400;
-  font-size: 12px;
   color: ${({ theme }) => theme.colors.mediumGreen};
 `;
 
 export const TransactionLink = styled.a`
-  font-weight: 400;
-  font-size: 12px;
   color: ${({ theme }) => theme.colors.darkGray};
 `;

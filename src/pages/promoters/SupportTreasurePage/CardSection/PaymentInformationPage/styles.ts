@@ -56,10 +56,6 @@ export const CardSectionContainer = styled.div`
 
 export const Subtitle = styled(BoldP)`
   margin-top: 20px;
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
-    font-size: 18px;
-  }
 `;
 
 export const ValuesContainer = styled.div`
@@ -154,7 +150,6 @@ export const CardImpactText = styled.h3`
   color: ${({ theme }) => theme.colors.black};
 
   span {
-    font-size: 16px;
     color: ${({ theme }) => theme.colors.ribonBlue};
   }
 `;

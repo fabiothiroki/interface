@@ -1,7 +1,10 @@
 import styled from "styled-components";
 import Button from "components/atomics/buttons/Button";
 import { AuxiliarText } from "components/atomics/typography/AuxiliarText/styles";
-import { BoldP } from "components/atomics/typography/BoldText/styles";
+import {
+  BoldInput,
+  BoldP,
+} from "components/atomics/typography/BoldText/styles";
 
 export const Subtitle = styled.h3`
   margin-top: 20px;
@@ -35,7 +38,7 @@ export const Image = styled.img`
   }
 `;
 
-export const Input = styled.input`
+export const Input = styled(BoldInput)`
   width: 100%;
   height: 39px;
   margin-top: 12px;
@@ -43,7 +46,6 @@ export const Input = styled.input`
   padding: 8px;
   border: 1px solid ${({ theme }) => theme.colors.mediumGreen};
   border-radius: 8px;
-  font-weight: ${({ theme }) => theme.font.bold};
   color: ${({ theme }) => theme.colors.mediumGray};
 `;
 
@@ -67,10 +69,6 @@ export const UsdcText = styled.p`
 export const Text = styled(AuxiliarText)`
   margin-top: 8px;
   color: ${({ theme }) => theme.colors.mediumGreen};
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
-    font-size: 14px;
-  }
 `;
 
 export const ButtonContainer = styled.div`

@@ -49,6 +49,10 @@ const typography = css`
       font-size: 20px;
       line-height: 1.7;
       font-weight: 700;
+
+      span {
+        font-size: 16px;
+      }
     }
 
     h4 {
@@ -79,6 +83,24 @@ const typography = css`
       font-size: 16px;
       line-height: 1.5;
       font-weight: 600;
+    }
+
+    label {
+      font-size: 14px;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+
+    input {
+      font-size: 14px;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+
+    a {
+      font-size: 12px;
+      line-height: 1.7;
+      font-weight: 400;
     }
   }
 `;
