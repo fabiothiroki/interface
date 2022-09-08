@@ -23,7 +23,6 @@ export const Input = styled.div`
     top: -9px;
     left: 10px;
     display: inline;
-    font-size: 14px;
     text-align: center;
     background-color: ${({ theme }) => theme.colors.white};
     color: ${({ theme }) => theme.colors.mediumGreen};
@@ -41,8 +40,6 @@ export const Input = styled.div`
     position: relative;
     top: -5px;
     box-sizing: border-box;
-    font-weight: 700;
-    font-size: 16px;
     font-family: ${({ theme }) => theme.font.family};
     line-height: 20px;
     color: ${({ theme }) => theme.colors.darkGray};
