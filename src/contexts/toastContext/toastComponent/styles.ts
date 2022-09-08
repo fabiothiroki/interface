@@ -6,7 +6,6 @@ export const NotificationContainer = styled.div`
   bottom: 12px;
   z-index: ${({ theme }) => theme.zindex.toast};
   box-sizing: border-box;
-  font-size: 14px;
   animation: toast-in-right 0.7s;
 
   @keyframes toast-in-right {

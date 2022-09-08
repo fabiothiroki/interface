@@ -30,11 +30,8 @@ export const InnerContainer = styled.div`
   padding: 0 20px;
 `;
 
-export const Title = styled.h5`
+export const Title = styled.h3`
   margin-top: 20px;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 160%;
   color: ${({ theme }) => theme.colors.darkGray};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
@@ -42,11 +39,10 @@ export const Title = styled.h5`
   }
 `;
 
-export const Subtitle = styled.h6`
+export const Subtitle = styled.h5`
   margin-top: 4px;
   margin-bottom: 24px;
   font-size: 16px;
-  line-height: 160%;
   text-align: center;
   color: ${({ theme }) => theme.colors.mediumGray};
 

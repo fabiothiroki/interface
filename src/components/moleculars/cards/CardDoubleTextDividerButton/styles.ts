@@ -1,3 +1,4 @@
+import { AuxiliarText } from "components/atomics/typography/AuxiliarText/styles";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -10,17 +11,14 @@ export const Container = styled.div`
   box-shadow: 0 4px 12px ${({ theme }) => theme.colors.lightShadow};
 `;
 
-export const FirstText = styled.p`
+export const FirstText = styled(AuxiliarText)`
   font-style: italic;
-  font-size: 12px;
   color: ${({ theme }) => theme.colors.mediumGray};
 `;
 
-export const MainContent = styled.p<{
+export const MainContent = styled.h2<{
   processing?: boolean;
 }>`
-  font-weight: 900;
-  font-size: 24px;
   color: ${(props) =>
     props.processing
       ? props.theme.colors.mediumGray
