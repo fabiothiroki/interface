@@ -19,7 +19,7 @@ export function initializeFirebase(): firebase.app.App {
 export function initializeSentry(): void {
   if (process.env.NODE_ENV !== "production") return;
 
-  const dsn = process.env.REACT_APP_SENTRY_ID;
+  const dsn = process.env.REACT_APP_SENTRY_DNS;
   const release = `ribon-interface@${process.env.npm_package_version}`;
 
   Sentry.init({ dsn, release });

@@ -1,6 +1,7 @@
 import { GrowthBook } from "@growthbook/growthbook-react";
 import { logEvent } from "services/analytics";
 import firebase from "firebase/app";
+import { RIBON_GROWTHBOOK_URL } from "utils/constants";
 
 // Create a GrowthBook instance
 export const growthbook = new GrowthBook({
@@ -23,9 +24,7 @@ export const growthbookSetAttributes = async () => {
 };
 
 export const growthbookSetFeatures = () => {
-  fetch(
-    "https://growthbook.ribon.io:444/api/features/key_prod_2161769c509d739b",
-  )
+  fetch(RIBON_GROWTHBOOK_URL)
     .then((res) => res.json())
     .then((parsed) => {
       growthbook.setFeatures(parsed.features);
