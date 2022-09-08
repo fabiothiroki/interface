@@ -60,7 +60,7 @@ describe("logEvent", () => {
       logEvent(eventName);
       expect(mockAnalytics.logEvent).toHaveBeenCalledWith(eventName, {
         anonymousId: "",
-        integrationName: "",
+        integrationName: "IntegrationName",
       });
     });
   });
