@@ -1,4 +1,5 @@
 import { BoldP } from "components/atomics/typography/BoldText/styles";
+import { BoldSpan } from "components/atomics/typography/Spans/styles";
 import styled from "styled-components";
 
 export const Container = styled.div``;
@@ -22,10 +23,7 @@ export const LastCardCarousel = styled.a`
   box-shadow: 0 4px 12px ${({ theme }) => theme.colors.lightShadow};
 `;
 
-// TODO: adjust this as auxiliar text option
-export const GivingText = styled.span`
-  font-weight: 700;
-  font-size: 14px;
+export const GivingText = styled(BoldSpan)`
   line-height: 22px;
   text-align: center;
   color: ${({ theme }) => theme.colors.mediumGray};

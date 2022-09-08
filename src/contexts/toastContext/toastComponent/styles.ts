@@ -1,3 +1,4 @@
+import { BoldSpan, Span } from "components/atomics/typography/Spans/styles";
 import styled from "styled-components";
 
 export const NotificationContainer = styled.div`
@@ -44,21 +45,18 @@ export const NotificationToast = styled.div`
   }
 `;
 
-export const Message = styled.span`
+export const Message = styled(Span)`
   margin: 0;
   margin-left: -1px;
   overflow: hidden;
-  font-size: 14px;
   text-align: left;
   text-overflow: ellipsis;
   white-space: nowrap;
   color: ${({ theme }) => theme.colors.white};
 `;
 
-export const Link = styled.span`
+export const Link = styled(BoldSpan)`
   float: right;
-  font-weight: 700;
-  font-size: 14px;
   color: ${({ theme }) => theme.colors.white};
 `;
 
