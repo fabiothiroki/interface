@@ -18,20 +18,29 @@ export function convertParamsToString(params: EventParams): EventParams {
   return convertedParams;
 }
 
+const setIntegrationId = () => {
+  const integrationId = useIntegrationId();
+  const { integration } = useIntegration(integrationId);
+
+  if (integration) {
+    localStorage.setItem("integrationName", integration?.name);
+  }
+};
+
 export class EventNameTooLongError extends Error {}
 
 export function logEvent(eventName: string, params?: EventParams): void {
   try {
+    setIntegrationId();
     if (eventName.length > 32) {
       throw new EventNameTooLongError();
     } else if (process.env.NODE_ENV === "production") {
-      const integrationId = useIntegrationId();
-      const { integration } = useIntegration(integrationId);
       const convertedParams = params ? convertParamsToString(params) : {};
 
       convertedParams.anonymousId =
         localStorage.getItem("installationId") ?? "";
-      convertedParams.integrationName = integration?.name ?? "";
+      convertedParams.integrationName =
+        localStorage.getItem("integrationName") ?? "";
       firebase.analytics().logEvent(eventName, convertedParams);
     }
   } catch (error) {
