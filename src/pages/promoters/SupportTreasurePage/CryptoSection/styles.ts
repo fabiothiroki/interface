@@ -67,10 +67,6 @@ export const UsdcText = styled.p`
 export const Text = styled(AuxiliarText)`
   margin-top: 8px;
   color: ${({ theme }) => theme.colors.mediumGreen};
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
-    font-size: 14px;
-  }
 `;
 
 export const ButtonContainer = styled.div`

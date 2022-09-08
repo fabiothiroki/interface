@@ -12,10 +12,6 @@ export const Subtitle = styled(BoldP)`
   &:nth-child(3) {
     margin-top: 18px;
   }
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
-    font-size: 18px;
-  }
 `;
 
 export const ValuesContainer = styled.div`
@@ -109,7 +105,6 @@ export const CardImpactText = styled.h3`
   color: ${({ theme }) => theme.colors.darkGray};
 
   span {
-    font-size: 16px;
     color: ${({ theme }) => theme.colors.mediumGreen};
   }
 `;
