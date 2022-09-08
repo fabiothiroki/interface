@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BoldH4 } from "../typography/BoldText/styles";
 
 export const Container = styled.div`
   width: 100%;
@@ -76,7 +77,4 @@ export const OptionContainer = styled.div`
   }
 `;
 
-export const OptionText = styled.h4`
-  font-weight: 700;
-  line-height: 1.6;
-`;
+export const OptionText = styled(BoldH4)``;
