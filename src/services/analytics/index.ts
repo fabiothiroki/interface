@@ -31,7 +31,6 @@ export class EventNameTooLongError extends Error {}
 
 export function logEvent(eventName: string, params?: EventParams): void {
   try {
-    setIntegrationId();
     if (eventName.length > 32) {
       throw new EventNameTooLongError();
     } else if (process.env.NODE_ENV === "production") {
