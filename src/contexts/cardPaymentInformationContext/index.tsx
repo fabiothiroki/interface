@@ -131,7 +131,6 @@ function CardPaymentInformationProvider({ children }: Props) {
     };
 
     try {
-      console.log(paymentInformation);
       await creditCardPaymentApi.postCreditCardPayment(paymentInformation);
 
       show();
