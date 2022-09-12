@@ -15,6 +15,7 @@ export const growthbook = new GrowthBook({
 });
 
 export const growthbookSetAttributes = async () => {
+  if (process.env.NODE_ENV === "development") return;
   const installationId = await firebase.app().installations().getId();
   localStorage.setItem("installationId", installationId);
   growthbook.setAttributes({
