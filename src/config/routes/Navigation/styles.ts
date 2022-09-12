@@ -54,4 +54,6 @@ export const StyledLink = styled(Link)`
   }
 `;
 
-export const Icon = styled.img``;
+export const Icon = styled.img`
+  height: 30px;
+`;
