@@ -100,7 +100,7 @@ export const CardImpactImage = styled.img`
   object-fit: cover;
 `;
 
-export const CardImpactText = styled.h3`
+export const CardImpactText = styled.h4`
   color: ${({ theme }) => theme.colors.darkGray};
 
   span {
