@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import useDonations from "hooks/apiHooks/useDonations";
 import { useCurrentUser } from "contexts/currentUserContext";
 import { logError } from "services/crashReport";
+import { setLocalStorageItem } from "lib/localStorage";
 import useNavigation from "hooks/useNavigation";
 import NonProfit from "types/entities/NonProfit";
 import Integration from "types/entities/Integration";
@@ -57,6 +58,7 @@ function ConfirmSection({
         window.location.reload();
         logError(e);
       }
+      setLocalStorageItem("SHOW_MENU", "true");
     }
   }
 
