@@ -31,10 +31,6 @@ export function logEvent(eventName: string, params?: EventParams): void {
         localStorage.getItem("integrationName") ?? "false";
       convertedParams.hasDonated =
         localStorage.getItem("HAS_DONATED") ?? "false";
-      // eslint-disable-next-line no-console
-      console.log(eventName);
-      // eslint-disable-next-line no-console
-      console.log(convertedParams);
       firebase.analytics().logEvent(eventName, convertedParams);
     }
   } catch (error) {
