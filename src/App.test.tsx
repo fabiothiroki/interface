@@ -8,6 +8,6 @@ describe("App", () => {
     renderComponent(<App />);
     await waitForPromises();
 
-    expect(screen.queryAllByText("Causes")).toHaveLength(1);
+    expect(screen.queryAllByText("Causes")).toHaveLength(2);
   });
 });
