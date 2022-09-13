@@ -46,9 +46,9 @@ describe("logEvent", () => {
     it("sends an event to firebase", () => {
       logEvent(eventName);
       expect(mockAnalytics.logEvent).toHaveBeenCalledWith(eventName, {
-        anonymousId: "",
-        integrationName: "",
-        hasDonated: "",
+        anonymousId: "false",
+        integrationName: "false",
+        hasDonated: "false",
       });
     });
   });
