@@ -29,6 +29,7 @@ export function logEvent(eventName: string, params?: EventParams): void {
         localStorage.getItem("installationId") ?? "";
       convertedParams.integrationName =
         localStorage.getItem("integrationName") ?? "";
+      console.log(localStorage.getItem("HAS_DONATED"));
       convertedParams.hasDonated = localStorage.getItem("HAS_DONATED") ?? "";
       firebase.analytics().logEvent(eventName, convertedParams);
     }
