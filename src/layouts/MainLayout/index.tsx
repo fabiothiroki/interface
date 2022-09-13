@@ -14,7 +14,8 @@ function MainLayout({ children, hideHeader = false }: Props): JSX.Element {
 
   function hasShowNavigationBar() {
     if (
-      (signedIn && getLocalStorageItem(SHOW_MENU) === "true") ||
+      signedIn &&
+      getLocalStorageItem(SHOW_MENU) === "true" &&
       getLocalStorageItem("HAS_DONATED") === "true"
     ) {
       return true;
