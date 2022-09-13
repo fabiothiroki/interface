@@ -2,7 +2,7 @@ import Ticket from "assets/images/ticket.svg";
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import useDonations from "hooks/apiHooks/useDonations";
-import { useCurrentUser } from "contexts/currentUserContext";
+import { useCurrentUser, SHOW_MENU } from "contexts/currentUserContext";
 import { logError } from "services/crashReport";
 import { setLocalStorageItem } from "lib/localStorage";
 import useNavigation from "hooks/useNavigation";
@@ -58,7 +58,7 @@ function ConfirmSection({
         window.location.reload();
         logError(e);
       }
-      setLocalStorageItem("SHOW_MENU", "true");
+      setLocalStorageItem(SHOW_MENU, "true");
     }
   }
 
