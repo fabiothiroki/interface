@@ -26,10 +26,11 @@ export function logEvent(eventName: string, params?: EventParams): void {
       const convertedParams = params ? convertParamsToString(params) : {};
 
       convertedParams.anonymousId =
-        localStorage.getItem("installationId") ?? "";
+        localStorage.getItem("installationId") ?? "false";
       convertedParams.integrationName =
-        localStorage.getItem("integrationName") ?? "";
-      convertedParams.hasDonated = localStorage.getItem("HAS_DONATED") ?? "";
+        localStorage.getItem("integrationName") ?? "false";
+      convertedParams.hasDonated =
+        localStorage.getItem("HAS_DONATED") ?? "false";
       // eslint-disable-next-line no-console
       console.log(eventName);
       // eslint-disable-next-line no-console
