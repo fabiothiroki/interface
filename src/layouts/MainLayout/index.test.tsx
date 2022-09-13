@@ -1,5 +1,6 @@
 import { renderComponent } from "config/testUtils/renders";
 import { expectTextToBeInTheDocument } from "config/testUtils/expects";
+import { setLocalStorageItem } from "lib/localStorage";
 import MainLayout from ".";
 
 jest.mock(
@@ -22,6 +23,7 @@ describe("MainLayout", () => {
   });
 
   it("show navigation when user is logged", () => {
+    setLocalStorageItem("SHOW_MENU", "true");
     renderComponent(
       <MainLayout>
         <div>test</div>
