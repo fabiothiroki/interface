@@ -2,7 +2,6 @@ import { GrowthBook } from "@growthbook/growthbook-react";
 import { logEvent } from "services/analytics";
 import firebase from "firebase/app";
 import { RIBON_GROWTHBOOK_URL } from "utils/constants";
-import { useCurrentUser } from "contexts/currentUserContext";
 
 // Create a GrowthBook instance
 export const growthbook = new GrowthBook({
@@ -20,11 +19,9 @@ export const growthbookSetAttributes = async () => {
   const installationId = await firebase.app().installations().getId();
   localStorage.setItem("installationId", installationId);
   const hasDonated = localStorage.getItem("HAS_DONATED");
-  const { signedIn } = useCurrentUser();
   growthbook.setAttributes({
     id: installationId,
     hasDonated,
-    loggedIn: signedIn,
     company: "ribon",
   });
 };
