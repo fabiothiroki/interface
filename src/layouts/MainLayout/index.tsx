@@ -13,7 +13,10 @@ function MainLayout({ children, hideHeader = false }: Props): JSX.Element {
   const { signedIn } = useCurrentUser();
 
   function hasShowNavigationBar() {
-    if (signedIn && getLocalStorageItem(SHOW_MENU) === "true") {
+    if (
+      (signedIn && getLocalStorageItem(SHOW_MENU) === "true") ||
+      getLocalStorageItem("HAS_DONATED") === "true"
+    ) {
       return true;
     } else if (menuInFirstDonationFeature()) {
       return true;
