@@ -1,8 +1,8 @@
 import LayoutHeader from "layouts/LayoutHeader";
 import Navigation from "config/routes/Navigation";
-import { menuInFirstDonationFeature } from "config/abTest/features";
 import { getLocalStorageItem } from "lib/localStorage";
-import { useCurrentUser } from "contexts/currentUserContext";
+import { useCurrentUser, SHOW_MENU } from "contexts/currentUserContext";
+import { menuInFirstDonationFeature } from "config/abTest/features";
 import * as S from "./styles";
 
 export type Props = {
@@ -14,10 +14,13 @@ function MainLayout({ children, hideHeader = false }: Props): JSX.Element {
 
   function hasShowNavigationBar() {
     if (
-      menuInFirstDonationFeature() ||
-      getLocalStorageItem("HAS_DONATED") === "true" ||
-      signedIn
+      (signedIn &&
+        getLocalStorageItem(SHOW_MENU) === "true" &&
+        getLocalStorageItem("HAS_DONATED") === "true") ||
+      getLocalStorageItem("HAS_DONATED") === "true"
     ) {
+      return true;
+    } else if (menuInFirstDonationFeature()) {
       return true;
     }
     return false;
