@@ -24,6 +24,8 @@ function useIntegration(integrationId: number | string | null | undefined) {
 
   localStorage.setItem("integrationName", integration?.name ?? "false");
 
+  console.log(localStorage.getItem("integrationName"));
+
   // eslint-disable-next-line no-console
   console.log("useintegration");
 
