@@ -16,7 +16,7 @@ function useIntegration(integrationId: number | string | null | undefined) {
     refetch,
   } = useApi<Integration>({
     key: "integration",
-    fetchMethod: () => integrationsApi.getIntegration(integrationId),
+    fetchMethod: async () => integrationsApi.getIntegration(integrationId),
     options: {
       enabled: !!integrationId,
     },
