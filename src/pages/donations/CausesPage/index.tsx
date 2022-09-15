@@ -79,8 +79,6 @@ function CausesPage(): JSX.Element {
   const hasAvailableDonation = !state?.blockedDonation && canDonate;
 
   useEffect(() => {
-    logEvent("donateIntroDial_view");
-
     if (
       !hasReceivedTicketToday() ||
       (hasAvailableDonation && hasNotSeenDonationModal)
@@ -89,6 +87,12 @@ function CausesPage(): JSX.Element {
       showDonationTicketModal();
     }
   }, []);
+
+  useEffect(() => {
+    // eslint-disable-next-line no-console
+    console.log("effect");
+    logEvent("donateIntroDial_view");
+  }, [integration]);
 
   useEffect(() => {
     if (state?.failedDonation) logEvent("donateDonationError_view");

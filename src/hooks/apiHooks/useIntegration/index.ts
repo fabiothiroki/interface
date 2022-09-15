@@ -16,13 +16,16 @@ function useIntegration(integrationId: number | string | null | undefined) {
     refetch,
   } = useApi<Integration>({
     key: "integration",
-    fetchMethod: async () => integrationsApi.getIntegration(integrationId),
+    fetchMethod: () => integrationsApi.getIntegration(integrationId),
     options: {
       enabled: !!integrationId,
     },
   });
 
   localStorage.setItem("integrationName", integration?.name ?? "false");
+
+  // eslint-disable-next-line no-console
+  console.log("useintegration");
 
   return { integration, isLoading, refetch };
 }
