@@ -79,14 +79,18 @@ function CausesPage(): JSX.Element {
   const hasAvailableDonation = !state?.blockedDonation && canDonate;
 
   useEffect(() => {
-    logEvent("donateIntroDial_view");
-
     if (
       !hasReceivedTicketToday() ||
       (hasAvailableDonation && hasNotSeenDonationModal)
     ) {
       setLocalStorageItem(DONATION_MODAL_SEEN_AT_KEY, Date.now().toString());
       showDonationTicketModal();
+    }
+  }, []);
+
+  useEffect(() => {
+    if (localStorage.getItem("integrationName") !== "false") {
+      logEvent("donateIntroDial_view");
     }
   }, []);
 
