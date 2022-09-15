@@ -22,7 +22,9 @@ function useIntegration(integrationId: number | string | null | undefined) {
     },
   });
 
-  localStorage.setItem("integrationName", integration?.name ?? "false");
+  if (integration) {
+    localStorage.setItem("integrationName", integration?.name);
+  }
   return { integration, isLoading, refetch };
 }
 
