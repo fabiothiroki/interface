@@ -3,17 +3,20 @@ import integrationsApi from "services/api/integrationsApi";
 import Integration from "types/entities/Integration";
 
 function useIntegration(integrationId: number | string | null | undefined) {
-  if (!integrationId)
+  if (!integrationId) {
+    localStorage.setItem("integrationName", "undefined");
     return {
       integration: {} as Integration,
       isLoading: true,
       refetch: () => {},
     };
+  }
 
   const {
     data: integration,
     isLoading,
     refetch,
+    error,
   } = useApi<Integration>({
     key: "integration",
     fetchMethod: () => integrationsApi.getIntegration(integrationId),
@@ -22,15 +25,15 @@ function useIntegration(integrationId: number | string | null | undefined) {
     },
   });
 
-  localStorage.setItem("integrationName", integration?.name ?? "false");
+  if (error) {
+    localStorage.setItem("integrationName", "false");
+  }
 
-  // eslint-disable-next-line no-console
-  console.log(localStorage.getItem("integrationName"));
+  if (integration) {
+    localStorage.setItem("integrationName", integration.name);
+  }
 
-  // eslint-disable-next-line no-console
-  console.log("useintegration");
-
-  return { integration, isLoading, refetch };
+  return { integration, isLoading, refetch, error };
 }
 
 export default useIntegration;
