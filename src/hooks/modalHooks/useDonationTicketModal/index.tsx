@@ -28,6 +28,8 @@ export function useDonationTicketModal(initialState?: boolean) {
 
   const showDonationTicketModal = () => {
     show();
+    // eslint-disable-next-line no-console
+    console.log(localStorage.getItem("integrationName"));
     logEvent("dailyTicketDial_view");
   };
 

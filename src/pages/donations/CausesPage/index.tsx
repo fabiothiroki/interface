@@ -89,7 +89,12 @@ function CausesPage(): JSX.Element {
   }, []);
 
   useEffect(() => {
+    // eslint-disable-next-line no-console
+    console.log("effect");
+    // eslint-disable-next-line no-console
+
     if (localStorage.getItem("integrationName") !== "undefined") {
+      console.log(localStorage.getItem("integrationName"));
       logEvent("donateIntroDial_view");
     }
   }, [integration]);
