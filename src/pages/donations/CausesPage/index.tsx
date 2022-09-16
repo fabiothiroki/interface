@@ -94,6 +94,7 @@ function CausesPage(): JSX.Element {
     // eslint-disable-next-line no-console
 
     if (localStorage.getItem("integrationName") !== "undefined") {
+      // eslint-disable-next-line no-console
       console.log(localStorage.getItem("integrationName"));
       logEvent("donateIntroDial_view");
     }
