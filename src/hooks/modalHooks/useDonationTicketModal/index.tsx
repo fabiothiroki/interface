@@ -3,7 +3,6 @@ import { useAnimationReceiveTicketModal } from "hooks/modalHooks/useAnimationRec
 import { MODAL_TYPES } from "contexts/modalContext/helpers";
 import { useEffect } from "react";
 import Ticket from "assets/images/ticket.svg";
-import { logEvent } from "services/analytics";
 import { useModal } from "../useModal";
 
 export function useDonationTicketModal(initialState?: boolean) {
@@ -28,9 +27,6 @@ export function useDonationTicketModal(initialState?: boolean) {
 
   const showDonationTicketModal = () => {
     show();
-    // eslint-disable-next-line no-console
-    console.log(localStorage.getItem("integrationName"));
-    logEvent("dailyTicketDial_view");
   };
 
   const hideDonationTicketModal = () => {
