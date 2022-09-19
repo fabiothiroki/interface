@@ -89,16 +89,10 @@ function CausesPage(): JSX.Element {
   }, []);
 
   useEffect(() => {
-    // eslint-disable-next-line no-console
-    console.log("effect");
-    // eslint-disable-next-line no-console
-
     if (localStorage.getItem("integrationName") !== "undefined") {
-      // eslint-disable-next-line no-console
-      console.log(localStorage.getItem("integrationName"));
       logEvent("donateIntroDial_view");
     }
-  }, [integration]);
+  }, [integrationId]);
 
   useEffect(() => {
     if (state?.failedDonation) logEvent("donateDonationError_view");
