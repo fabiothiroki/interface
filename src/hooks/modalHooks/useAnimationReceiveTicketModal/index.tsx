@@ -27,6 +27,8 @@ export function useAnimationReceiveTicketModal(initialState?: boolean) {
   const showAnimationReceiveTicketModal = () => {
     show();
     setTimeout(() => {
+      // eslint-disable-next-line no-console
+      console.log(localStorage.getItem("integrationName"));
       logEvent("dailyTicketDial_view");
       hide();
     }, 3000);
